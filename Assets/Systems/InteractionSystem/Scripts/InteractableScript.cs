@@ -8,14 +8,17 @@ namespace InteractionSystem.Scripts {
         [Header("Interaction")]
         public string interactableName = "Interactable";
         public UIInteraction UIInteraction;
+        [SerializeField] private bool focusInteraction = true;
 
         [Header("Sub Interactions")]
         [SerializeField] private bool subInteractions = true;
         [SerializeField] private Collider[] interactionColliders;
         
         private bool _disabledCollidersForSubInteractions;
-        public bool HasSubInteractions => subInteractions;
         
+        public bool HasSubInteractions => subInteractions;
+        public bool FocusInteraction => focusInteraction;
+
         protected virtual void OnEnable() {
             GameEventBus.Subscribe(GameplayEvents.EndInspection, Restore);
         }

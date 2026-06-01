@@ -42,9 +42,11 @@ namespace InteractionSystem.Scripts {
                 if (performed) {
                     Debug.Log("Interacting..");
                     _currentInteractable.Interact();
-                    //inspectScript.StartInspect(_currentInteractable.gameObject); /// temp
-                    GameEventBus.Raise(GameplayEvents.MaxZoom);
-                    GameEventBus.Raise(GameplayEvents.StartInspection, _currentInteractable.gameObject);
+                    if (_currentInteractable.FocusInteraction) {
+                        GameEventBus.Raise(GameplayEvents.MaxZoom);
+                        GameEventBus.Raise(GameplayEvents.StartInspection, _currentInteractable.gameObject);
+                    }
+
                     ResetInteraction();
                 }
             }
