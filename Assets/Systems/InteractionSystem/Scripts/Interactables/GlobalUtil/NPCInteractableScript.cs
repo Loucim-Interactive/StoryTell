@@ -15,7 +15,7 @@ namespace Systems.InteractionSystem.Scripts.Interactables.GlobalUtil {
         }
 
         protected override void OnInteract() {
-            speaker.Speak();
+            //speaker.Speak();
         }
     }
 }

@@ -260,8 +260,8 @@ Material:
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _SurfaceType: 0
-    - _SwayIntensity: 0.2
-    - _SwaySpeed: 0.1
+    - _SwayIntensity: 0.25
+    - _SwaySpeed: 0.15
     - _TerrainOffset: 0
     - _TerrainSize: 50
     - _TexWorldScale: 1

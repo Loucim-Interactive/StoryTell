@@ -29,7 +29,7 @@ namespace DialogueSystem.Scripts {
                 _audio.Play();
             }
             
-            for (var i = 0; i < deStylizedText.Length; i++) {
+            for (var i = 0; i < deStylizedText.Length + 1; i++) {
                 _dialogueTextMesh.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(GetCharSpeed(dialogue.TextSpeed));
             }
@@ -52,11 +52,11 @@ namespace DialogueSystem.Scripts {
                 case ETextSpeed.Medium:
                     return 0.2f;
                 case ETextSpeed.Fast:
-                    return 0.1f;
+                    return 0.02f;
                 case ETextSpeed.VeryFast:
-                    return 0.05f;
+                    return 0.01f;
                 default:
-                    return 0.1f;
+                    return 0.02f;
             }
         }
     }
