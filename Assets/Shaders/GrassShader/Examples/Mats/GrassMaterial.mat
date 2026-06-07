@@ -299,10 +299,10 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.38995147, g: 1, b: 0, a: 0}
+    - _FarColor: {r: 0.6107249, g: 0.7735849, b: 0, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _NearColor: {r: 0.16862738, g: 0.737255, b: 0.24186453, a: 0}
+    - _NearColor: {r: 0.5296075, g: 0.67295593, b: 0.0021160715, a: 0}
     - _NearFarRange: {r: 10, g: 25, b: 0, a: 0}
     - _ShadowColor: {r: 0.3018868, g: 0.20600449, b: 0.20600449, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

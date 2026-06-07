@@ -1,5 +1,5 @@
-using EventSystem.Scripts;
 using InteractionSystem.Scripts.Utils;
+using Systems.EventSystem.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 

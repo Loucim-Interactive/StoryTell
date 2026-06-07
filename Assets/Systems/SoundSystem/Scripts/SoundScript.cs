@@ -9,6 +9,7 @@ namespace Systems.SoundSystem.Scripts {
         [SerializeField] private AudioClip[] soundClips;
         [SerializeField] private bool chooseRandomly = true;
         [SerializeField, Range(0, 1)] private float volume = 1f;
+        [SerializeField, Range(0, 1)] private float volume1 = 1f;
         [Header("Replay Settings")]
         [SerializeField] protected bool replay = false;
         [SerializeField] private bool useReplayWaitTimeRange = false;
@@ -21,9 +22,11 @@ namespace Systems.SoundSystem.Scripts {
             if (audioSource == null) audioSource = GetComponent<AudioSource>(); 
             if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
-            Guard();
+            CheckRefs();
         }
 
+        protected abstract void SendEffectEvent();
+        
         protected void PlaySound() {
             if (audioSource.isPlaying) return;
             if (chooseRandomly) {
@@ -35,6 +38,8 @@ namespace Systems.SoundSystem.Scripts {
                 audioSource.clip = soundClips[0];
                 audioSource.Play();
             }
+
+            SendEffectEvent();
             Debug.Log("Playing-sound: " + audioSource.clip.name);
         }
         
@@ -57,7 +62,7 @@ namespace Systems.SoundSystem.Scripts {
             }
         }
 
-        private void Guard() {
+        private void CheckRefs() {
             if (audioSource == null) {
                 Debug.LogWarning("No audio source assigned to SoundScript");
             }

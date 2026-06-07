@@ -1,18 +1,81 @@
+using System.Collections;
 using System.Collections.Generic;
-using InmersionSystem.Induced.Configs.Base;
+using InmersionSystem;
+using Systems.InmersionSystem.Induced.Configs;
+using Systems.InmersionSystem.Induced.Effects;
 using UnityEngine;
 
-namespace InmersionSystem.Induced {
+namespace Systems.InmersionSystem.Induced {
     public class InmersionHandlerScript : MonoBehaviour
     {
-        private Dictionary<InmersiveElements.EInducedEffect, InducedEffect<InducedEffectConfig>> _activeEffects;
+        [Header("References")]
+        [SerializeField] private Transform cameraTransform;
 
-        public void Trigger(InmersiveElements.EInducedEffect effect, float intensity = 1f)
+        [Header("Configs")]
+        [SerializeField] private ShakeVisionConfig shakeVisionConfig;
+        // add others as you build them
+
+        private readonly Dictionary<InmersiveElements.EInducedEffect, Coroutine> _activeCoroutines = new();
+        private readonly Dictionary<InmersiveElements.EInducedEffect, InducedEffect> _effects = new();
+
+        public static InmersionHandlerScript Instance { get; private set; }
+        
+        private void Awake()
         {
-            // If already active → restart it (your "re-trigger" behavior)
-            // If not → add and start
+            if (Instance != null) {
+                Destroy(this);
+                return;
+            }
+            
+            Instance = this;
+
+            if (cameraTransform == null && Camera.main != null) {
+                cameraTransform = Camera.main.transform;
+            }
+
+            RegisterEffects();
         }
 
-        public void ForceStop(InmersiveElements.EInducedEffect effect) {  }
+        public void Trigger(InmersiveElements.EInducedEffect effect, float intensity = 1f) {
+            if (!_effects.TryGetValue(effect, out var instance)) {
+                Debug.LogWarning($"[InmersionHandler] No effect registered for {effect}");
+                return;
+            }
+
+            // Restart if already running
+            if (_activeCoroutines.TryGetValue(effect, out var existing) && existing != null)
+                StopCoroutine(existing);
+
+            _activeCoroutines[effect] = StartCoroutine(RunEffect(effect, instance, intensity));
+        }
+
+        public void ForceStop(InmersiveElements.EInducedEffect effect)
+        {
+            if (_activeCoroutines.TryGetValue(effect, out var coroutine) && coroutine != null)
+                StopCoroutine(coroutine);
+
+            _activeCoroutines.Remove(effect);
+        }
+
+        private IEnumerator RunEffect(InmersiveElements.EInducedEffect key, InducedEffect instance, float intensity)
+        {
+            yield return instance.EffectRoutine(intensity);
+            _activeCoroutines.Remove(key);
+        }
+
+        private void RegisterEffects() {
+            if (cameraTransform == null) {
+                Debug.LogWarning("[InmersionHandler] No camera transform found. ShakeVision will not affect the camera.", this);
+            }
+
+            if (shakeVisionConfig == null) {
+                Debug.LogWarning("[InmersionHandler] No ShakeVisionConfig assigned. ShakeVision will not run.", this);
+                return;
+            }
+
+            // Register all effects
+            _effects[InmersiveElements.EInducedEffect.ShakeVision] = 
+                new ShakeVisionEffect(shakeVisionConfig, cameraTransform);
+        }
     }
 }

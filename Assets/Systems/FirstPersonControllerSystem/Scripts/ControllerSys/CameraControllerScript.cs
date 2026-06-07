@@ -16,6 +16,7 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
         [SerializeField] private CameraBobController bob;
 
         private float _cameraPitch;
+        private Vector3 _shakeRotationOffset;
         private float _targetFov;
         private Camera _camera;
 
@@ -50,7 +51,11 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
             // Vertical — rotate only the camera, clamped
             _cameraPitch -= look.y * sensitivityY;
             _cameraPitch = Mathf.Clamp(_cameraPitch, -clampAngle, clampAngle);
-            cameraTransform.localRotation = Quaternion.Euler(_cameraPitch, 0f, 0f);
+            cameraTransform.localRotation = Quaternion.Euler(_cameraPitch, 0f, 0f) * Quaternion.Euler(_shakeRotationOffset);
+        }
+
+        public void SetShakeRotationOffset(Vector3 offset) {
+            _shakeRotationOffset = offset;
         }
     }
 }

@@ -1155,6 +1155,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
   m_PrefabInstance: {fileID: 112227737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &543549594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4137447520734547597, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+  m_PrefabInstance: {fileID: 927895844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &543549605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543549594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bfd91edb5fb8d4ca072a404677033d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
+  shakeVisionConfig: {fileID: 11400000, guid: 2561288d8914bbd4da43ce36685715fc, type: 2}
 --- !u!4 &546046495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
@@ -1719,6 +1738,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1268234156155796353, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: soundType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268234156155796353, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: soundEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268234156155796353, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: soundEvents.Array.data[0].SoundType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3711708708669339399, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1095.72
@@ -1770,7 +1801,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4137447520734547597, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 543549605}
   m_SourcePrefab: {fileID: 100100000, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
 --- !u!4 &1000682094 stripped
 Transform:
@@ -2299,6 +2333,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43e73a5939d88ad49acc19fd411ce928, type: 3}
   chooseRandomly: 1
   volume: 1
+  volume1: 1
   replay: 0
   useReplayWaitTimeRange: 1
   replayWaitTimeRange:
@@ -2407,6 +2442,77 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1462579667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462579670}
+  - component: {fileID: 1462579669}
+  - component: {fileID: 1462579668}
+  m_Layer: 0
+  m_Name: Bomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1462579668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462579667}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1462579669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462579667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf02dab9430c2943afd588e5a111eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handler: {fileID: 0}
+  intensity: 1
+  sendExplosionPosition: 1
+  useTrigger: 1
+  triggerOnlyWithPlayer: 1
+--- !u!4 &1462579670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462579667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1078.47, y: 45.006, z: 984.116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1508734746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
@@ -3727,3 +3833,4 @@ SceneRoots:
   - {fileID: 470862204}
   - {fileID: 1807286261}
   - {fileID: 1621908652}
+  - {fileID: 1462579670}

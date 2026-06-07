@@ -1,11 +1,8 @@
-using EventSystem;
-using EventSystem.Scripts;
-using Unity.VisualScripting;
+using Systems.EventSystem.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
-namespace InspectionSystem.Scripts {
+namespace Systems.InspectionSystem.Scripts {
     public class InspectionScript : MonoBehaviour {
         #region Inspector Variables
         [Header("Config")] 

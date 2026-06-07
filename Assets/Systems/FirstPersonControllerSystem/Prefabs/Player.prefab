@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7956857358775688031}
   - component: {fileID: 8068369062217975436}
   - component: {fileID: 3800383409807930237}
+  - component: {fileID: 5454230464337849079}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -217,6 +218,20 @@ MonoBehaviour:
     m_Bits: 128
   _distanceDialogue: 3
   _dialogueAction: {fileID: 1120369429361536294, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+--- !u!114 &5454230464337849079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137447520734547597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bfd91edb5fb8d4ca072a404677033d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
+  shakeVisionConfig: {fileID: 11400000, guid: 2561288d8914bbd4da43ce36685715fc, type: 2}
 --- !u!1 &5512868196554628193
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +281,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 40fde15bcc5d5ff489a060bf110c9474, type: 3}
   chooseRandomly: 0
   volume: 0.4
+  volume1: 1
   replay: 1
   useReplayWaitTimeRange: 0
   replayWaitTimeRange:
@@ -273,6 +289,9 @@ MonoBehaviour:
     max: 6
   defaultWaitTime: 30
   playOnTrigger: 0
+  intensity: 0.1
+  soundType: 0
+  soundEvents: []
 --- !u!1 &6650455986368350787
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +651,14 @@ PrefabInstance:
     - target: {fileID: 1200970413639129907, guid: 604e03dd1b9113f448bdf7e192e59b6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250056164021209685, guid: 604e03dd1b9113f448bdf7e192e59b6b, type: 3}
+      propertyPath: soundType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250056164021209685, guid: 604e03dd1b9113f448bdf7e192e59b6b, type: 3}
+      propertyPath: soundEvents.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5250056164021209685, guid: 604e03dd1b9113f448bdf7e192e59b6b, type: 3}
       propertyPath: useReplayWaitTimeRange

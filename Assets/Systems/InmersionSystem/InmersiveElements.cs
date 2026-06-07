@@ -12,9 +12,10 @@ namespace InmersionSystem {
         }
 
         public enum EInducedEffect {
-            RingingEars,
             TunnelVision,
             BlurryVision,
+            ShakeVision,
+            RingingEars,
             MuffledHearing,
             PanicBreathing,
         }

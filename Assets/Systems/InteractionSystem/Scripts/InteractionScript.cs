@@ -1,10 +1,11 @@
-using EventSystem;
-using EventSystem.Scripts;
 using InspectionSystem.Scripts;
+using InteractionSystem.Scripts;
 using InteractionSystem.Scripts.Utils;
+using Systems.EventSystem.Scripts;
+using Systems.InspectionSystem.Scripts;
 using UnityEngine;
 
-namespace InteractionSystem.Scripts {
+namespace Systems.InteractionSystem.Scripts {
     public class InteractionScript : MonoBehaviour
     {
         [Header("References")]

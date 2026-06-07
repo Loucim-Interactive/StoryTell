@@ -1,16 +1,19 @@
 using System.Collections;
 using InmersionSystem.Induced.Configs.Base;
+using UnityEngine;
 
-namespace InmersionSystem.Induced {
-    public abstract class InducedEffect<TConfig>
+namespace Systems.InmersionSystem.Induced {
+    public abstract class InducedEffect<TConfig> : InducedEffect
         where TConfig : InducedEffectConfig
     {
-        protected TConfig Config;
-        protected InducedEffect(TConfig config)
-        {
-            this.Config = config;
+        [SerializeField] protected TConfig config;
+        protected InducedEffect(TConfig config) {
+            this.config = config;
         }
-
+    }
+    
+    public abstract class InducedEffect
+    {
         public abstract IEnumerator EffectRoutine(float intensity);
     }
 }

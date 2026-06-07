@@ -47,5 +47,7 @@ namespace Systems.SoundSystem.Scripts {
         private bool SphereInGroundCheck() {
             return Physics.CheckSphere(transform.position, sphereGroundCheckRadius, groundLayer); 
         }
+
+        protected override void SendEffectEvent() { }
     }
 }

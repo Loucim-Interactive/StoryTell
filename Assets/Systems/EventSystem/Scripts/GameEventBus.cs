@@ -1,26 +1,27 @@
 using System;
 using System.Collections.Generic;
 
-namespace EventSystem.Scripts {
+namespace Systems.EventSystem.Scripts {
     public static class GameEventBus
     {
         private static readonly Dictionary<string, Delegate> Events = new();
+        private static readonly Dictionary<(string EventName, Type PayloadType), Delegate> PayloadEvents = new();
 
         #region Payload Methods
 
         public static void Subscribe<T>(string eventName, Action<T> callback)
         {
-            InsertInEvents(eventName, callback);
+            InsertInPayloadEvents(eventName, callback);
         }
 
         public static void Unsubscribe<T>(string eventName, Action<T> callback)
         {
-            RemoveInEvents(eventName, callback);
+            RemoveInPayloadEvents(eventName, callback);
         }
         
         public static void Raise<T>(string eventName, T payload)
         {
-            if (Events.TryGetValue(eventName, out Delegate callback))
+            if (PayloadEvents.TryGetValue((eventName, typeof(T)), out Delegate callback))
                 ((Action<T>)callback)?.Invoke(payload);
         }
         
@@ -62,6 +63,26 @@ namespace EventSystem.Scripts {
                 Events.Remove(eventName);
             else
                 Events[eventName] = updated;
+        }
+
+        private static void InsertInPayloadEvents<T>(string eventName, Action<T> callback) {
+            var key = (eventName, typeof(T));
+            if (PayloadEvents.TryGetValue(key, out Delegate existing))
+                PayloadEvents[key] = Delegate.Combine(existing, callback);
+            else
+                PayloadEvents[key] = callback;
+        }
+        
+        private static void RemoveInPayloadEvents<T>(string eventName, Action<T> callback) {
+            var key = (eventName, typeof(T));
+            if (!PayloadEvents.TryGetValue(key, out Delegate existing)) return;
+
+            Delegate updated = Delegate.Remove(existing, callback);
+
+            if (updated == null)
+                PayloadEvents.Remove(key);
+            else
+                PayloadEvents[key] = updated;
         }
         #endregion
     }
