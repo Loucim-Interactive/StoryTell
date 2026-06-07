@@ -1155,25 +1155,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
   m_PrefabInstance: {fileID: 112227737}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &543549594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4137447520734547597, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
-  m_PrefabInstance: {fileID: 927895844}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &543549605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543549594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50bfd91edb5fb8d4ca072a404677033d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  shakeVisionConfig: {fileID: 11400000, guid: 2561288d8914bbd4da43ce36685715fc, type: 2}
 --- !u!4 &546046495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
@@ -1738,18 +1719,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1268234156155796353, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
-      propertyPath: soundType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1268234156155796353, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
-      propertyPath: soundEvents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1268234156155796353, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
-      propertyPath: soundEvents.Array.data[0].SoundType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3711708708669339399, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1095.72
@@ -1801,10 +1770,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4137447520734547597, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 543549605}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
 --- !u!4 &1000682094 stripped
 Transform:
