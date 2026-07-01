@@ -8,7 +8,8 @@ namespace FirstPersonControllerSystem.Scripts.Input {
         public Vector2 Look { get; private set; }
         public Vector2 Move { get; private set; }
         public bool Jumped { get; private set; }
-        
+        public bool Running { get; private set; }
+
         private PlayerLocomotionInput _playerLocomotionInput;
 
         private void Awake() {
@@ -63,7 +64,8 @@ namespace FirstPersonControllerSystem.Scripts.Input {
         }
         
         public void OnSprint(InputAction.CallbackContext context) {
-            //throw new System.NotImplementedException();
+            if (context.started) Running = true;
+            else if (context.canceled) Running = false;
         }
 
         #region Unused

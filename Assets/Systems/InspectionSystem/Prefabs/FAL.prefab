@@ -94,6 +94,9 @@ MonoBehaviour:
   UIInteraction:
     label: Grab
     interactionType: 0
+  focusInteraction: 1
+  subInteractions: 1
+  interactionColliders: []
 --- !u!54 &8825625018920638634
 Rigidbody:
   m_ObjectHideFlags: 0

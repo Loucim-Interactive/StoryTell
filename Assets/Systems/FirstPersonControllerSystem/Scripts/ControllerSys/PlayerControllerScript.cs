@@ -5,6 +5,7 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
     {
         [Header("Movement")]
         [SerializeField] private float walkSpeed = 3f;
+        [SerializeField] private float runSpeed = 5f;
 
         private PlayerMotorScript _playerMotor;
     
@@ -17,12 +18,19 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
             _playerMotor.UpdateGroundedState();
             _playerMotor.UpdateGravity();
             _playerMotor.UpdateMovement(GetMovementVelocity());
+            _playerMotor.UpdateMovementState(GetActions());
         }
 
         private Vector3 GetMovementVelocity() {
             Vector2 input = ScriptPlayerInput.Move;
             Vector3 move = transform.right * input.x + transform.forward * input.y;
-            return move * walkSpeed;
+            float mult = _playerMotor.IsRunning ? runSpeed : walkSpeed;
+            return move * mult;
+        }
+        
+        private bool GetActions() {
+            bool running = ScriptPlayerInput.Running;
+            return running;
         }
     }
 }

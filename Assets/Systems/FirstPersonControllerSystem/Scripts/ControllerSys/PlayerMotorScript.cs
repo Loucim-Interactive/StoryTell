@@ -4,13 +4,14 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMotorScript : ControllerScript
     {
-        [Header("Movement")]
+        [Header("Settings")]
         [SerializeField] private float gravity = -15f;
         [SerializeField] private float groundedGravity = -2f;
 
         private CharacterController _characterController;
         private Vector3 _velocity;
         private bool _isGrounded;
+        private bool _isRunning;
 
         protected override void Awake() {
             base.Awake();
@@ -34,10 +35,16 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
             _velocity.z = horizontalVelocity.z;
             _characterController.Move(_velocity * Time.deltaTime);
         }
+
+        public void UpdateMovementState(bool running) {
+            _isRunning = running;
+        }
         
         public bool IsGrounded => _characterController.isGrounded;
         public bool IsMoving => new Vector3(
             _characterController.velocity.x, 0, 
             _characterController.velocity.z).sqrMagnitude > 0.01f;
+        public bool IsWalking => IsMoving && !_isRunning;
+        public bool IsRunning => IsMoving && _isRunning;
     }
 }
