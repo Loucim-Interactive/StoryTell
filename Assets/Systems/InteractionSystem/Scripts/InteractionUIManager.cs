@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using InteractionSystem.Scripts.Utils;
+using Systems.InteractionSystem.Scripts.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace InteractionSystem.Scripts {
+namespace Systems.InteractionSystem.Scripts {
     public class InteractionUIManager : MonoBehaviour
     {
         

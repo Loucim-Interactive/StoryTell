@@ -1,8 +1,8 @@
-using InspectionSystem.Scripts;
 using InteractionSystem.Scripts;
 using InteractionSystem.Scripts.Utils;
 using Systems.EventSystem.Scripts;
 using Systems.InspectionSystem.Scripts;
+using Systems.InteractionSystem.Scripts.Utils;
 using UnityEngine;
 
 namespace Systems.InteractionSystem.Scripts {
@@ -43,11 +43,7 @@ namespace Systems.InteractionSystem.Scripts {
                 if (performed) {
                     Debug.Log("Interacting..");
                     _currentInteractable.Interact();
-                    if (_currentInteractable.FocusInteraction) {
-                        GameEventBus.Raise(GameplayEvents.MaxZoom);
-                        GameEventBus.Raise(GameplayEvents.StartInspection, _currentInteractable.gameObject);
-                    }
-
+                    HandleInteractableActions(_currentInteractable);
                     ResetInteraction();
                 }
             }
@@ -77,6 +73,20 @@ namespace Systems.InteractionSystem.Scripts {
             return (false, null);
         }
 
+        private void HandleInteractableActions(InteractableScript interactable) {
+            UIInteraction uiInteractionInfo = interactable.UIInteraction;
+            bool focus = interactable.FocusInteraction;
+            bool inspect = interactable.InspectInteractable;
+            bool stateDescription = interactable.StateInteractableDescription;
+
+            if (focus) 
+                GameEventBus.Raise(GameplayEvents.MaxZoom);
+            if (inspect) 
+                GameEventBus.Raise(GameplayEvents.StartInspection, _currentInteractable.gameObject);
+            if (stateDescription)
+                GameEventBus.Raise(GameplayEvents.StateThought, uiInteractionInfo.characterDescription);
+        }
+
         private bool ActionWasPerformed(EInteractions type) {
             switch (type) {
                 case EInteractions.LeftClick:
@@ -96,6 +106,7 @@ namespace Systems.InteractionSystem.Scripts {
         private void ResetInteraction() {
             _currentInteractable = null;
             _currentlyInteracting = false;
+            uiManager.HideInteraction();
         }
     }
 }

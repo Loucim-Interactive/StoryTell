@@ -1,14 +1,17 @@
 using InteractionSystem.Scripts.Utils;
 using Systems.EventSystem.Scripts;
+using Systems.InteractionSystem.Scripts.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace InteractionSystem.Scripts {
+namespace Systems.InteractionSystem.Scripts {
     public abstract class InteractableScript : MonoBehaviour {
-        [Header("Interaction")]
+        [Header("Interaction Settings")]
         public string interactableName = "Interactable";
         public UIInteraction UIInteraction;
+        [Header("Interaction actions")]
+        [SerializeField] private bool stateDescription = true;
         [SerializeField] private bool focusInteraction = true;
+        [SerializeField] private bool inspectInteraction = true;
 
         [Header("Sub Interactions")]
         [SerializeField] private bool subInteractions = true;
@@ -17,7 +20,9 @@ namespace InteractionSystem.Scripts {
         private bool _disabledCollidersForSubInteractions;
         
         public bool HasSubInteractions => subInteractions;
+        public bool InspectInteractable => inspectInteraction;
         public bool FocusInteraction => focusInteraction;
+        public bool StateInteractableDescription => stateDescription;
 
         protected virtual void OnEnable() {
             GameEventBus.Subscribe(GameplayEvents.EndInspection, Restore);
@@ -29,6 +34,7 @@ namespace InteractionSystem.Scripts {
         
         public void Interact() {
             PrepareSubInteractions();
+            FireGeneralActions();
             OnInteract();   
         }
         
@@ -39,6 +45,10 @@ namespace InteractionSystem.Scripts {
             foreach (Collider col in colliders) {
                 if (col) col.enabled = isEnabled;
             }
+        }
+        
+        private void FireGeneralActions() { // this fires some global stuff for the interactable
+            if (stateDescription) GameEventBus.Raise(GameplayEvents.StateThought, UIInteraction.characterDescription);
         }
         
         private void PrepareSubInteractions() {

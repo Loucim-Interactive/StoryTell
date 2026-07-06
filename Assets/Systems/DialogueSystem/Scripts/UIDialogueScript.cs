@@ -37,14 +37,36 @@ namespace DialogueSystem.Scripts {
             if (dialogue.VoiceClip) yield return new WaitWhile(() => _audio.isPlaying);
             else yield return new WaitForSeconds(dialogue.ExtraReadTime);
         }
+        
+        public IEnumerator DisplayDialogue(string dialogue, AudioClip voiceClip) {
+            CleanTexts();
+            _dialogueTextMesh.font = _defaultFont;
+            _nameTextMesh.text = "";
+            
+            _dialogueTextMesh.maxVisibleCharacters = 0;
+            _dialogueTextMesh.text = dialogue;
 
+            if (voiceClip) {
+                _audio.clip = voiceClip;
+                _audio.Play();
+            }
+            
+            for (var i = 0; i < dialogue.Length + 1; i++) {
+                _dialogueTextMesh.maxVisibleCharacters = i;
+                yield return new WaitForSeconds(GetCharSpeed(ETextSpeed.Fast));
+            }
+            
+            if (voiceClip) yield return new WaitWhile(() => _audio.isPlaying);
+            else yield return new WaitForSeconds(4); // hardcoded for now
+        }
+        
         public void CleanTexts() {
             _dialogueTextMesh.text = "";
             _nameTextMesh.text = "";
         }
         
         private float GetCharSpeed(ETextSpeed textSpeed) {
-            switch (textSpeed) {
+            switch (textSpeed) { // in seconds
                 case ETextSpeed.VerySlow:
                     return 0.8f;
                 case ETextSpeed.Slow:
@@ -52,7 +74,7 @@ namespace DialogueSystem.Scripts {
                 case ETextSpeed.Medium:
                     return 0.2f;
                 case ETextSpeed.Fast:
-                    return 0.02f;
+                    return 0.025f;
                 case ETextSpeed.VeryFast:
                     return 0.01f;
                 default:

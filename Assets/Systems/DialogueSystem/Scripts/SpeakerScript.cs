@@ -1,4 +1,5 @@
 using System.Collections;
+using Systems.DialogueSystem.Scripts;
 using UnityEngine;
 
 namespace DialogueSystem.Scripts {

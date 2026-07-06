@@ -1,3 +1,4 @@
+using Systems.InteractionSystem.Scripts.Interactables.Animations;
 using UnityEngine;
 
 namespace InteractionSystem.Scripts.Interactables.Animations {

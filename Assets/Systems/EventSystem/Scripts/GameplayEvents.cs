@@ -3,9 +3,10 @@ namespace Systems.EventSystem.Scripts {
     {
         Explosion,
         StartInspection,
-        MaxZoom,
         EndInspection,
-        LookAtPoint
+        MaxZoom,
+        LookAtPoint,
+        StateThought,
     }
 
     public static class GameplayEvents
@@ -15,6 +16,7 @@ namespace Systems.EventSystem.Scripts {
         public const string MaxZoom = "zoom.max";
         public const string EndInspection = "inspection.end";
         public const string LookAtPoint = "lookAtPoint";
+        public const string StateThought = "stateThought";
 
         public static string GetName(GameplayEventType eventType) {
             switch (eventType) {
@@ -28,6 +30,8 @@ namespace Systems.EventSystem.Scripts {
                     return EndInspection;
                 case GameplayEventType.LookAtPoint:
                     return LookAtPoint;
+                case GameplayEventType.StateThought:
+                    return StateThought;
                 default:
                     return string.Empty;
             }

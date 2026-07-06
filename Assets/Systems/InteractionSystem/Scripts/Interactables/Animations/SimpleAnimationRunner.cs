@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace InteractionSystem.Scripts.Interactables.Animations {
+namespace Systems.InteractionSystem.Scripts.Interactables.Animations {
     public class SimpleAnimationRunner : MonoBehaviour
     {   
         private Coroutine _turnKnobRoutine;
@@ -39,5 +39,6 @@ namespace InteractionSystem.Scripts.Interactables.Animations {
             target.localRotation = targetRotation;
             _turnKnobRoutine = null;
         }
+        
     }
 }

@@ -1,5 +1,6 @@
 using InteractionSystem.Scripts.Interactables.Animations;
 using InteractionSystem.Scripts.Utils;
+using Systems.InteractionSystem.Scripts;
 using UnityEngine;
 
 namespace InteractionSystem.Scripts.Interactables.Radio {

@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
+using DialogueSystem.Scripts;
+using Systems.EventSystem.Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace DialogueSystem.Scripts {
+namespace Systems.DialogueSystem.Scripts {
     public class DialogueManagerScript : MonoBehaviour {
         
         public UIDialogueScript uiDialogueScript;
@@ -22,7 +24,15 @@ namespace DialogueSystem.Scripts {
             if (!uiDialogueScript) uiDialogueScript = GameObject.FindAnyObjectByType<UIDialogueScript>();
             if (uiDialogueScript) uiDialogueScript.CleanTexts();
         }
+
+        private void OnEnable() {
+            GameEventBus.Subscribe<string>(GameplayEvents.StateThought, StateThought);
+        }
         
+        private void OnDisable() {
+            GameEventBus.Unsubscribe<string>(GameplayEvents.StateThought, StateThought);
+        }
+
         public IEnumerator PlayConversation(ConversationSO conversation) {
             _currentConversation = conversation;
             _isInConversation = true;
@@ -33,17 +43,27 @@ namespace DialogueSystem.Scripts {
 
             FinishConversation();
         }
+        
+        public void StateThought(string thought) {
+            //_isInConversation = true;
+            Coroutine dialogueRoutine = StartCoroutine(PlayThought(thought));
+        }
+        
+        private IEnumerator PlayThought(string thought) {
+            Coroutine text = StartCoroutine(uiDialogueScript.DisplayDialogue(thought, null));
+            yield return text;
+            uiDialogueScript.CleanTexts();
+        }
 
         private void FinishConversation() {
             _isInConversation = false;
             _currentConversation = null;
             uiDialogueScript.CleanTexts();
         }
-
+        
         private IEnumerator ProcessDialogue(DialogueSO dialogue) {
             Coroutine text = StartCoroutine(uiDialogueScript.DisplayDialogue(dialogue));
             yield return text;
         }
-
     }
 }

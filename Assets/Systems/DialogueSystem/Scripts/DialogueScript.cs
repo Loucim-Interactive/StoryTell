@@ -25,15 +25,16 @@ namespace DialogueSystem.Scripts {
         }
 
         private void Update() {
-            if (!_dialogueOrigin || !_dialogueAction ||
-                !_dialogueAction.action.WasPressedThisFrame()) return;
+            if (!_dialogueOrigin || !_dialogueAction || !_dialogueAction.action.WasPressedThisFrame()) 
+                return;
 
             if (Physics.Raycast(
                     _dialogueOrigin.position,
                     _dialogueOrigin.forward,
                     out RaycastHit hit,
                     _distanceDialogue,
-                    _dialogueLayer)) {
+                    _dialogueLayer)
+                ) {
                 SpeakerScript speaker = hit.collider.GetComponentInParent<SpeakerScript>();
                 if (speaker) speaker.Speak();
             }

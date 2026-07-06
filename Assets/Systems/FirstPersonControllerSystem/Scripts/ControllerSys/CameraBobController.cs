@@ -1,71 +1,96 @@
 using System;
+using FirstPersonControllerSystem.Scripts.ControllerSys;
 using UnityEngine;
 
-namespace FirstPersonControllerSystem.Scripts.ControllerSys
+namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys
 {
     [Serializable]
     public class CameraBobController
     {
         [Header("Bob Settings")]
-        [SerializeField] private float walkBobFrequency = 1.8f;
-        [SerializeField] private float sprintBobFrequency = 2.6f;
-        [SerializeField] private float walkBobAmplitudeY = 0.008f;
-        [SerializeField] private float walkBobAmplitudeX = 0.004f;
-        [SerializeField] private float sprintBobAmplitudeY = 0.014f;
-        [SerializeField] private float sprintBobAmplitudeX = 0.007f;
+        [SerializeField] private float walkBobFrequency     = 1.8f;
+        [SerializeField] private float sprintBobFrequency   = 2.6f;
+        [SerializeField] private float walkBobAmplitudeY    = 0.008f;
+        [SerializeField] private float walkBobAmplitudeRoll = 0.6f;
+        [SerializeField] private float walkBobAmplitudePitch= 0.3f;
+        [SerializeField] private float sprintBobAmplitudeY  = 0.014f;
+        [SerializeField] private float sprintBobAmplitudeRoll  = 1.1f;
+        [SerializeField] private float sprintBobAmplitudePitch = 0.5f;
 
         [Header("Smoothing")]
-        [SerializeField] private float bobSmoothing = 10f;
+        [SerializeField] private float bobSmoothing    = 10f;
         [SerializeField] private float returnSmoothing = 6f;
 
-        private Transform _cameraTransform;
+        // Owns only the bob pivot — look system keeps full ownership of the camera.
+        private Transform _bobPivot;
         private PlayerMotorScript _playerMotor;
-        private Vector3 _initialLocalPos;
-        private float _bobTimer;
-        private Vector3 _currentBob;
-        private Vector3 _bobVelocity;
+        private Vector3    _initialLocalPos;
+        private Quaternion _initialLocalRot;
 
-        public void Initialize(Transform cameraTransform, PlayerMotorScript playerMotor)
+        private float   _bobTimer;
+        private Vector3 _currentBobPos;
+        private Vector3 _bobPosVelocity;
+        private Vector3 _currentBobEuler;
+        private Vector3 _bobEulerVelocity;
+
+        /// <summary>
+        /// Pass the dedicated BobPivot child — NOT the camera itself.
+        /// Hierarchy: CameraRig (look) → BobPivot (bob) → Camera
+        /// </summary>
+        public void Initialize(Transform bobPivot, PlayerMotorScript playerMotor)
         {
-            _cameraTransform = cameraTransform;
-            _playerMotor = playerMotor;
-            _initialLocalPos = cameraTransform.localPosition;
+            _bobPivot        = bobPivot;
+            _playerMotor     = playerMotor;
+            _initialLocalPos = bobPivot.localPosition;
+            _initialLocalRot = bobPivot.localRotation;
         }
 
         public void Tick()
         {
-            bool isMoving = _playerMotor.IsMoving;
-            bool isSprinting = false; // temp
-            bool isGrounded = _playerMotor.IsGrounded;
+            bool isMoving    = _playerMotor.IsMoving;
+            bool isSprinting = _playerMotor.IsRunning;
+            bool isGrounded  = _playerMotor.IsGrounded;
 
             if (isMoving && isGrounded)
             {
-                float frequency = isSprinting ? sprintBobFrequency : walkBobFrequency;
-                float ampY = isSprinting ? sprintBobAmplitudeY : walkBobAmplitudeY;
-                float ampX = isSprinting ? sprintBobAmplitudeX : walkBobAmplitudeX;
+                float frequency = isSprinting ? sprintBobFrequency  : walkBobFrequency;
+                float ampY      = isSprinting ? sprintBobAmplitudeY  : walkBobAmplitudeY;
+                float ampRoll   = isSprinting ? sprintBobAmplitudeRoll  : walkBobAmplitudeRoll;
+                float ampPitch  = isSprinting ? sprintBobAmplitudePitch : walkBobAmplitudePitch;
 
                 _bobTimer += Time.deltaTime * frequency;
 
-                var targetBob = new Vector3(
-                    Mathf.Sin(_bobTimer * 0.5f) * ampX,
-                    Mathf.Sin(_bobTimer) * ampY,
-                    0f
+                var targetPos = new Vector3(0f, Mathf.Sin(_bobTimer) * ampY, 0f);
+
+                var targetEuler = new Vector3(
+                    Mathf.Cos(_bobTimer)       * ampPitch,
+                    0f,
+                    Mathf.Sin(_bobTimer * 0.5f) * ampRoll
                 );
 
-                _currentBob = Vector3.SmoothDamp(
-                    _currentBob, targetBob, ref _bobVelocity, 1f / bobSmoothing);
+                _currentBobPos = Vector3.SmoothDamp(
+                    _currentBobPos, targetPos, ref _bobPosVelocity, 1f / bobSmoothing);
+
+                _currentBobEuler = Vector3.SmoothDamp(
+                    _currentBobEuler, targetEuler, ref _bobEulerVelocity, 1f / bobSmoothing);
             }
             else
             {
-                _currentBob = Vector3.SmoothDamp(
-                    _currentBob, Vector3.zero, ref _bobVelocity, 1f / returnSmoothing);
+                float smoothTime = 1f / returnSmoothing;
+
+                _currentBobPos = Vector3.SmoothDamp(
+                    _currentBobPos, Vector3.zero, ref _bobPosVelocity, smoothTime);
+
+                _currentBobEuler = Vector3.SmoothDamp(
+                    _currentBobEuler, Vector3.zero, ref _bobEulerVelocity, smoothTime);
 
                 _bobTimer = Mathf.Lerp(_bobTimer,
                     Mathf.Round(_bobTimer / (Mathf.PI * 2f)) * (Mathf.PI * 2f),
                     Time.deltaTime * returnSmoothing);
             }
 
-            _cameraTransform.localPosition = _initialLocalPos + _currentBob;
+            _bobPivot.localPosition = _initialLocalPos + _currentBobPos;
+            _bobPivot.localRotation = _initialLocalRot * Quaternion.Euler(_currentBobEuler);
         }
     }
 }

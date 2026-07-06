@@ -1,9 +1,11 @@
+using Systems.FirstPersonControllerSystem.Scripts.ControllerSys;
 using UnityEngine;
 
 namespace FirstPersonControllerSystem.Scripts.ControllerSys {
     public class CameraControllerScript : ControllerScript
     {
         [Header("References")]
+        [SerializeField] private Transform bobPivotTransform;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private PlayerMotorScript playerMotor;
         
@@ -33,7 +35,7 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            bob.Initialize(cameraTransform, playerMotor);
+            bob.Initialize(bobPivotTransform, playerMotor);
 
         }
 

@@ -2,7 +2,7 @@ using Systems.EventSystem.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace InspectionSystem.Scripts {
+namespace Systems.InspectionSystem.Scripts {
     public class ZoomScript : MonoBehaviour
     {        
         [Header("References")]
