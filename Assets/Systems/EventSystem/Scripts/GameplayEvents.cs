@@ -4,8 +4,10 @@ namespace Systems.EventSystem.Scripts {
         Explosion,
         StartInspection,
         EndInspection,
+        DefaultZoom,
         MaxZoom,
-        LookAtPoint,
+        StartLookAtPoint,
+        EndLookAtPoint,
         StateThought,
     }
 
@@ -13,9 +15,11 @@ namespace Systems.EventSystem.Scripts {
     {
         public const string Explosion = "explosion";
         public const string StartInspection = "inspection.start";
+        public const string DefaultZoom = "zoom.default";
         public const string MaxZoom = "zoom.max";
         public const string EndInspection = "inspection.end";
-        public const string LookAtPoint = "lookAtPoint";
+        public const string StartLookAtPoint = "lookAtPoint.start";
+        public const string EndLookAtPoint = "lookAtPoint.end";
         public const string StateThought = "stateThought";
 
         public static string GetName(GameplayEventType eventType) {
@@ -24,12 +28,16 @@ namespace Systems.EventSystem.Scripts {
                     return Explosion;
                 case GameplayEventType.StartInspection:
                     return StartInspection;
+                case GameplayEventType.DefaultZoom:
+                    return DefaultZoom;
                 case GameplayEventType.MaxZoom:
                     return MaxZoom;
                 case GameplayEventType.EndInspection:
                     return EndInspection;
-                case GameplayEventType.LookAtPoint:
-                    return LookAtPoint;
+                case GameplayEventType.StartLookAtPoint:
+                    return StartLookAtPoint;
+                case GameplayEventType.EndLookAtPoint:
+                    return EndLookAtPoint;
                 case GameplayEventType.StateThought:
                     return StateThought;
                 default:

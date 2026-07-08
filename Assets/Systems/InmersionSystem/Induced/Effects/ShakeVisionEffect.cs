@@ -1,6 +1,7 @@
 using System.Collections;
 using FirstPersonControllerSystem.Scripts.ControllerSys;
 using InmersionSystem.Induced;
+using Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera;
 using Systems.InmersionSystem.Induced.Configs;
 using UnityEngine;
 

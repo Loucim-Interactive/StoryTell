@@ -1,0 +1,325 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1882291655083649653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4476864211555891914}
+  m_Layer: 0
+  m_Name: model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4476864211555891914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882291655083649653}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8005859405934783684}
+  m_Father: {fileID: 3011768478839305256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4668687003913618182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3011768478839305256}
+  - component: {fileID: 7107210931592172750}
+  - component: {fileID: 4608702657684970308}
+  - component: {fileID: 6912800198021069168}
+  m_Layer: 6
+  m_Name: Radio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3011768478839305256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668687003913618182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 46.91, y: 29.099, z: 267.132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4476864211555891914}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7107210931592172750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668687003913618182}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.39274216, y: 0.466362, z: 0.5282593}
+  m_Center: {x: -0.03759575, y: -0.02840805, z: 0}
+--- !u!54 &4608702657684970308
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668687003913618182}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6912800198021069168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668687003913618182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36b5ae9d3aa34c4aa321d160cfa5c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableName: Radio
+  UIInteraction:
+    label: Tune radio
+    interactionType: 0
+    characterDescription: This radio looks brand new..
+  stateDescription: 1
+  focusInteraction: 1
+  inspectInteraction: 1
+  subInteractions: 1
+  interactionColliders: []
+--- !u!1001 &7534592317748611887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4476864211555891914}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_Name
+      value: Radio2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698754170592561315, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878050967249619583, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1698754170592561315, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5434861599441812273}
+    - targetCorrespondingSourceObject: {fileID: 1698754170592561315, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2297081413811995408}
+    - targetCorrespondingSourceObject: {fileID: 4878050967249619583, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2419053419786188003}
+    - targetCorrespondingSourceObject: {fileID: 4878050967249619583, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873243771125775230}
+  m_SourcePrefab: {fileID: 100100000, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+--- !u!1 &3108167954695520592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4878050967249619583, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+  m_PrefabInstance: {fileID: 7534592317748611887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2419053419786188003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108167954695520592}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0002301251, y: 0.00041288848, z: 0.0004128883}
+  m_Center: {x: -0.0000026485031, y: -0.00000023858593, z: 0.000000029940566}
+--- !u!114 &1873243771125775230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108167954695520592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5492b1f1bd50fd4b8894f07255b9006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableName: Frequency
+  UIInteraction:
+    label: Tune
+    interactionType: 0
+    characterDescription: Is this good?
+  stateDescription: 1
+  focusInteraction: 1
+  inspectInteraction: 0
+  subInteractions: 0
+  interactionColliders: []
+  knobTurnAngles: 20
+  knobTurnDuration: 0.25
+  knobTurnAxis: 4
+  audioSource: {fileID: 0}
+--- !u!4 &8005859405934783684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+  m_PrefabInstance: {fileID: 7534592317748611887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9152176605696164748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1698754170592561315, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
+  m_PrefabInstance: {fileID: 7534592317748611887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5434861599441812273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152176605696164748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00023012489, y: 0.00041201554, z: 0.00041201545}
+  m_Center: {x: -0.0000026485031, y: -0.0000002384695, z: 5.820766e-11}
+--- !u!114 &2297081413811995408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152176605696164748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5492b1f1bd50fd4b8894f07255b9006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableName: Volume knob
+  UIInteraction:
+    label: Dial up
+    interactionType: 0
+    characterDescription: That sound a bit better
+  stateDescription: 1
+  focusInteraction: 1
+  inspectInteraction: 0
+  subInteractions: 1
+  interactionColliders: []
+  knobTurnAngles: 120
+  knobTurnDuration: 0.5
+  knobTurnAxis: 4
+  audioSource: {fileID: 0}

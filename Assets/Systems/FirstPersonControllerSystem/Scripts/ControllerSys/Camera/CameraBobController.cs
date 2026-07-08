@@ -2,7 +2,7 @@ using System;
 using FirstPersonControllerSystem.Scripts.ControllerSys;
 using UnityEngine;
 
-namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys
+namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
 {
     [Serializable]
     public class CameraBobController

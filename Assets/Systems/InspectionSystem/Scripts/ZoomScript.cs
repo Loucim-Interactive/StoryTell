@@ -20,12 +20,14 @@ namespace Systems.InspectionSystem.Scripts {
         private Camera _camera;
 
         private void OnEnable() {
+            GameEventBus.Subscribe(GameplayEvents.DefaultZoom, ResetFov);
             GameEventBus.Subscribe(GameplayEvents.MaxZoom, SetFovToMaxZoom);
             GameEventBus.Subscribe(GameplayEvents.EndInspection, ResetFov);
             scrollAction.action.Enable();
         }
         
         private void OnDisable() {
+            GameEventBus.Unsubscribe(GameplayEvents.DefaultZoom, ResetFov);
             GameEventBus.Unsubscribe(GameplayEvents.MaxZoom, SetFovToMaxZoom);
             GameEventBus.Unsubscribe(GameplayEvents.EndInspection, ResetFov);
             scrollAction.action.Disable();
