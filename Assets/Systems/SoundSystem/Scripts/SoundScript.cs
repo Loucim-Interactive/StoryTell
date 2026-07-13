@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Systems.SoundSystem.Scripts {
+namespace Systems.SoundSystem.Scripts
+{
     public abstract class SoundScript : MonoBehaviour
     {
-        [Header("General Sound Settings")]
+        [Header("Audio")]
         [SerializeField] protected AudioSource audioSource;
-        [SerializeField] private AudioClip[] soundClips;
+        [SerializeField] protected AudioClip[] soundClips;
+        [SerializeField, Range(0f, 1f)] private float volume = 1f;
         [SerializeField] private bool chooseRandomly = true;
-        [SerializeField, Range(0, 1)] private float volume = 1f;
-        [SerializeField, Range(0, 1)] private float volume1 = 1f;
-        [Header("Replay Settings")]
+
+        [Header("Replay")]
         [SerializeField] protected bool replay = false;
         [SerializeField] private bool useReplayWaitTimeRange = false;
         [SerializeField] private UnityEditorSerializables.FloatRange replayWaitTimeRange;
@@ -18,29 +19,56 @@ namespace Systems.SoundSystem.Scripts {
 
         protected Coroutine ReplayRoutine;
 
-        private void Awake() {
-            if (audioSource == null) audioSource = GetComponent<AudioSource>(); 
+        private void Awake()
+        {
+            if (audioSource == null) audioSource = GetComponent<AudioSource>();
             if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
             CheckRefs();
+            OnAwake();
         }
 
+        protected virtual void OnAwake() { }
         protected abstract void SendEffectEvent();
-        
-        protected void PlaySound() {
-            if (audioSource.isPlaying) return;
-            if (chooseRandomly) {
-                audioSource.clip = GetRandomClip();
-                audioSource.volume = volume;
-                audioSource.Play();
-            }
-            else {
-                audioSource.clip = soundClips[0];
-                audioSource.Play();
-            }
 
+        #region Play API
+
+        protected void InterruptPlay() {
+            if (ReplayRoutine != null) StopCoroutine(ReplayRoutine);
+            ReplayRoutine = null;
+            audioSource.Stop();
+            audioSource.clip = null;
+        }
+
+        protected void PlaySound() {
+            if (soundClips == null || soundClips.Length == 0) return;
+            int index = chooseRandomly ? GetRandomClipIndex() : 0;
+            PlayClipAt(index);
+        }
+
+        protected void PlaySound(int index) {
+            if (soundClips == null || index < 0 || index >= soundClips.Length) return;
+            PlayClipAt(index);
+        }
+
+        protected void PlaySound(AudioClip clip) {
+            if (!clip) return;
+            if (audioSource.isPlaying) return;
+            audioSource.clip   = clip;
+            audioSource.volume = volume;
+            audioSource.Play();
             SendEffectEvent();
-            Debug.Log("Playing-sound: " + audioSource.clip.name);
+        }
+        
+        #endregion
+
+        // Single internal method that actually drives the AudioSource
+        private void PlayClipAt(int index) {
+            if (audioSource.isPlaying) return;
+            audioSource.clip   = soundClips[index];
+            audioSource.volume = volume;
+            audioSource.Play();
+            SendEffectEvent();
         }
         
         protected IEnumerator Replay() {
@@ -48,27 +76,21 @@ namespace Systems.SoundSystem.Scripts {
             PlaySound();
             ReplayRoutine = null;
         }
-        
-        private AudioClip GetRandomClip() {
-            return soundClips[Random.Range(0, soundClips.Length)];
-        }
 
-        private float GetReplayWaitTime() {
-            if (useReplayWaitTimeRange) {
-                return Random.Range(replayWaitTimeRange.min, replayWaitTimeRange.max);
-            }
-            else {
-                return defaultWaitTime;
-            }
-        }
+        #region helpers
+
+        private int GetRandomClipIndex() => Random.Range(0, soundClips.Length);
+
+        private float GetReplayWaitTime() => useReplayWaitTimeRange ? 
+            Random.Range(replayWaitTimeRange.min, replayWaitTimeRange.max) : defaultWaitTime;
 
         private void CheckRefs() {
-            if (audioSource == null) {
-                Debug.LogWarning("No audio source assigned to SoundScript");
-            }
-            if (soundClips.Length == 0) {
-                Debug.LogWarning("Sound clips are empty!");
-            };
+            if (audioSource == null)
+                Debug.LogWarning($"[{nameof(SoundScript)}] No AudioSource on {gameObject.name}.");
+            if (soundClips == null || soundClips.Length == 0)
+                Debug.LogWarning($"[{nameof(SoundScript)}] No clips assigned on {gameObject.name}.");
         }
+        
+        #endregion
     }
 }

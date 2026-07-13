@@ -24,12 +24,12 @@ namespace Systems.InmersionSystem.Induced.Effects {
 
         public override IEnumerator EffectRoutine(float intensity)
         {
-            if (config == null) {
+            if (!config) {
                 Debug.LogWarning("[ShakeVisionEffect] Missing ShakeVisionConfig.");
                 yield break;
             }
 
-            if (_cameraTransform == null) {
+            if (!_cameraTransform) {
                 Debug.LogWarning("[ShakeVisionEffect] Missing camera transform.");
                 yield break;
             }
@@ -56,7 +56,7 @@ namespace Systems.InmersionSystem.Induced.Effects {
             }
 
             ApplyShake(Vector3.zero);
-            if (_cameraController == null) {
+            if (!_cameraController) {
                 _cameraTransform.localRotation = _initialRotation;
             }
 
@@ -64,7 +64,7 @@ namespace Systems.InmersionSystem.Induced.Effects {
         }
 
         private void ApplyShake(Vector3 offset) {
-            if (_cameraController != null) {
+            if (_cameraController) {
                 _cameraController.SetShakeRotationOffset(offset);
                 return;
             }

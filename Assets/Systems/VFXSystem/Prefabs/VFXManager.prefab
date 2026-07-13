@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &649240784810466709
+--- !u!1 &1502845771560602527
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2195975423915548465}
-  - component: {fileID: 8677909241397699735}
+  - component: {fileID: 6193993435741307861}
   m_Layer: 0
   m_Name: VFXManager
   m_TagString: Untagged
@@ -17,84 +16,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2195975423915548465
+--- !u!4 &6193993435741307861
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649240784810466709}
+  m_GameObject: {fileID: 1502845771560602527}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5410812629678352066}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8677909241397699735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649240784810466709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 062e8d14e4f984b4fbb6baa4eb26ef0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VFXManager
-  registry: {fileID: 5550857701950535753}
---- !u!1 &7916289049561896111
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5410812629678352066}
-  - component: {fileID: 5550857701950535753}
-  m_Layer: 0
-  m_Name: VFXRegistry
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5410812629678352066
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7916289049561896111}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 66.01033, y: 42.834248, z: 357.3913}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2195975423915548465}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5550857701950535753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7916289049561896111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adc9acb6cb1269b4792b896d8538d006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VFXRegistry
-  configs:
-  - {fileID: 11400000, guid: ea18df1f8cac9a546a4506cd46e75d9f, type: 2}
-  - {fileID: 11400000, guid: c76ac871df46b7a4fa26900093bb59fa, type: 2}
-  - {fileID: 11400000, guid: 19b738f8ae98f6844abf44ebe7123118, type: 2}
-  - {fileID: 11400000, guid: 86e2783a804905a46b3c38d0e94c6084, type: 2}
-  - {fileID: 11400000, guid: 734d88ed8c88d634db1cdb17125fd57a, type: 2}
-  - {fileID: 11400000, guid: ebc7bbb7cda8fc447be5efafa7a6e521, type: 2}
-  - {fileID: 11400000, guid: 367f487b67c5eb34d9e14b94454d175b, type: 2}

@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 7107210931592172750}
   - component: {fileID: 4608702657684970308}
   - component: {fileID: 6912800198021069168}
+  - component: {fileID: 1177108986505078854}
+  - component: {fileID: 6338520838083600729}
   m_Layer: 6
   m_Name: Radio
   m_TagString: Untagged
@@ -137,6 +139,127 @@ MonoBehaviour:
   inspectInteraction: 1
   subInteractions: 1
   interactionColliders: []
+--- !u!114 &1177108986505078854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668687003913618182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3124931961d26cb47af2c263d4a2bd26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  soundClips:
+  - {fileID: 8300000, guid: 53ce5f900b29632459ad7cda4803a456, type: 3}
+  volume: 1
+  chooseRandomly: 1
+  replay: 0
+  useReplayWaitTimeRange: 0
+  replayWaitTimeRange:
+    min: 0
+    max: 0
+  defaultWaitTime: 2
+  _frequencyChangeSound: {fileID: 8300000, guid: 47a318845419e1541968ea364016300e, type: 3}
+--- !u!82 &6338520838083600729
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668687003913618182}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &7534592317748611887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,13 +329,13 @@ PrefabInstance:
       addedObject: {fileID: 5434861599441812273}
     - targetCorrespondingSourceObject: {fileID: 1698754170592561315, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2297081413811995408}
+      addedObject: {fileID: 3781801756971526776}
     - targetCorrespondingSourceObject: {fileID: 4878050967249619583, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2419053419786188003}
     - targetCorrespondingSourceObject: {fileID: 4878050967249619583, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1873243771125775230}
+      addedObject: {fileID: 6859545744135867028}
   m_SourcePrefab: {fileID: 100100000, guid: 653e887f8ac832747b1d43762fbbf19d, type: 3}
 --- !u!1 &3108167954695520592 stripped
 GameObject:
@@ -240,7 +363,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0002301251, y: 0.00041288848, z: 0.0004128883}
   m_Center: {x: -0.0000026485031, y: -0.00000023858593, z: 0.000000029940566}
---- !u!114 &1873243771125775230
+--- !u!114 &6859545744135867028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,7 +372,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3108167954695520592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5492b1f1bd50fd4b8894f07255b9006, type: 3}
+  m_Script: {fileID: 11500000, guid: f0e3b0f3e61d0894aa74e6d3173bdb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactableName: Frequency
@@ -265,6 +388,7 @@ MonoBehaviour:
   knobTurnAngles: 20
   knobTurnDuration: 0.25
   knobTurnAxis: 4
+  interaction: 0
   audioSource: {fileID: 0}
 --- !u!4 &8005859405934783684 stripped
 Transform:
@@ -297,7 +421,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.00023012489, y: 0.00041201554, z: 0.00041201545}
   m_Center: {x: -0.0000026485031, y: -0.0000002384695, z: 5.820766e-11}
---- !u!114 &2297081413811995408
+--- !u!114 &3781801756971526776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,7 +430,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9152176605696164748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5492b1f1bd50fd4b8894f07255b9006, type: 3}
+  m_Script: {fileID: 11500000, guid: f0e3b0f3e61d0894aa74e6d3173bdb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactableName: Volume knob
@@ -317,9 +441,10 @@ MonoBehaviour:
   stateDescription: 1
   focusInteraction: 1
   inspectInteraction: 0
-  subInteractions: 1
+  subInteractions: 0
   interactionColliders: []
-  knobTurnAngles: 120
-  knobTurnDuration: 0.5
+  knobTurnAngles: 20
+  knobTurnDuration: 0.25
   knobTurnAxis: 4
+  interaction: 1
   audioSource: {fileID: 0}
