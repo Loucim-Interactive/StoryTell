@@ -2051,6 +2051,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
   m_PrefabInstance: {fileID: 441770511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &446670376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 446670377}
+  - component: {fileID: 446670380}
+  - component: {fileID: 446670379}
+  - component: {fileID: 446670378}
+  m_Layer: 0
+  m_Name: Narration zone 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &446670377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446670376}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 102.38, y: 28.93, z: 275.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000000000000000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &446670378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446670376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNarrationText: shit SHIT!
+  triggerOnEnter: 1
+  triggerOnExit: 0
+  canRepeat: 0
+  cooldown: 0
+--- !u!114 &446670379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446670376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e700da37cbeac546a0388c77773f857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidColor: {r: 0, g: 1, b: 0, a: 1}
+  triggerColor: {r: 0.015686274, g: 1, b: 0.82255405, a: 1}
+--- !u!65 &446670380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446670376}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 16.22, y: 5.2, z: 9.08}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &458549400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2744,8 +2830,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559942481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.21, z: -8.31}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -6.209999, z: -8.309998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5006,6 +5092,92 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1029000199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1029000200}
+  - component: {fileID: 1029000203}
+  - component: {fileID: 1029000202}
+  - component: {fileID: 1029000201}
+  m_Layer: 0
+  m_Name: Narration zone 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1029000200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029000199}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 109.89, y: 38.98, z: 340.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000000000000000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1029000201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029000199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNarrationText: The camp is rather small..
+  triggerOnEnter: 1
+  triggerOnExit: 0
+  canRepeat: 1
+  cooldown: 5
+--- !u!114 &1029000202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029000199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e700da37cbeac546a0388c77773f857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidColor: {r: 0, g: 1, b: 0, a: 1}
+  triggerColor: {r: 0.015686274, g: 1, b: 0.82255405, a: 1}
+--- !u!65 &1029000203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029000199}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20.7, y: 13.77, z: 13.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1029580162
 PrefabInstance:
@@ -7379,6 +7551,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
   m_PrefabInstance: {fileID: 1329244806}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1543786123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543786124}
+  - component: {fileID: 1543786127}
+  - component: {fileID: 1543786126}
+  - component: {fileID: 1543786125}
+  m_Layer: 0
+  m_Name: Narration zone 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543786124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543786123}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 87.25, y: 30.43, z: 299.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000000000000000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543786125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543786123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNarrationText: Almost everything is just rolling hills..
+  triggerOnEnter: 1
+  triggerOnExit: 0
+  canRepeat: 1
+  cooldown: 2
+--- !u!114 &1543786126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543786123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e700da37cbeac546a0388c77773f857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidColor: {r: 0, g: 1, b: 0, a: 1}
+  triggerColor: {r: 0.015686274, g: 1, b: 0.82255405, a: 1}
+--- !u!65 &1543786127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543786123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 16.22, y: 5.2, z: 9.08}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553887457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7627,6 +7885,93 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
   m_PrefabInstance: {fileID: 1589482690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1603112284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603112285}
+  - component: {fileID: 1603112288}
+  - component: {fileID: 1603112287}
+  - component: {fileID: 1603112286}
+  m_Layer: 0
+  m_Name: Narration zone 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1603112285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603112284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.04, y: 54.47, z: 414.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000000000000000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603112286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603112284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNarrationText: Just gotta walk over to the second camp... should be about
+    1-2 kilometers.
+  triggerOnEnter: 1
+  triggerOnExit: 0
+  canRepeat: 0
+  cooldown: 0
+--- !u!114 &1603112287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603112284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e700da37cbeac546a0388c77773f857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidColor: {r: 0, g: 1, b: 0, a: 1}
+  triggerColor: {r: 0.015686274, g: 1, b: 0.82255405, a: 1}
+--- !u!65 &1603112288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603112284}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 62.46, y: 49.19, z: 9.08}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1605344204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9960,6 +10305,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
   m_PrefabInstance: {fileID: 806241717}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2133232259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2133232263}
+  - component: {fileID: 2133232262}
+  - component: {fileID: 2133232261}
+  - component: {fileID: 2133232260}
+  m_Layer: 0
+  m_Name: Narration zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2133232260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133232259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNarrationText: Brrt... Its so cold..
+  triggerOnEnter: 1
+  triggerOnExit: 0
+  canRepeat: 0
+  cooldown: 0
+--- !u!114 &2133232261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133232259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e700da37cbeac546a0388c77773f857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidColor: {r: 0, g: 1, b: 0, a: 1}
+  triggerColor: {r: 0.015686274, g: 1, b: 0.82255405, a: 1}
+--- !u!65 &2133232262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133232259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.13, y: 5.2, z: 9.08}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2133232263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133232259}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.16005343, z: -0, w: 0.98710835}
+  m_LocalPosition: {x: 75.56, y: 30.43, z: 273.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000000000000000001}
+  m_LocalEulerAnglesHint: {x: 0, y: -18.42, z: 0}
 --- !u!1001 &2137254276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10777,6 +11208,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2133232263}
+  - {fileID: 1543786124}
+  - {fileID: 446670377}
+  - {fileID: 1029000200}
+  - {fileID: 1603112285}
   - {fileID: 9000000000000001003}
   - {fileID: 9000000000000001004}
   - {fileID: 9000000000000001005}

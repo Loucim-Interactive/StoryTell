@@ -41,8 +41,7 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
                 Quaternion fullLook = Quaternion.LookRotation(toTarget);
 
                 float targetYaw   = fullLook.eulerAngles.y;
-                float targetPitch = -fullLook.eulerAngles.x; // Unity pitch is inverted for camera
-
+                float targetPitch = -Mathf.DeltaAngle(0f, fullLook.eulerAngles.x);
                 // Rotate body yaw
                 Quaternion desiredBodyRot = Quaternion.Euler(0f, targetYaw, 0f);
                 _playerBody.rotation = Quaternion.Slerp(
