@@ -25,6 +25,7 @@ namespace Systems.EventSystem.Scripts {
         public const string EndLookAtPoint = "lookAtPoint.end";
         public const string StateThought = "stateThought";
         public const string VFX = "vfx";
+        public const string WalkieTalkieTrigger = "walkieTalkie.trigger";
 
         public static string GetName(GameplayEventType eventType) {
             switch (eventType) {

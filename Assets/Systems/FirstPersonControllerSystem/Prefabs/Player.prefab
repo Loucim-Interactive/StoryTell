@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 3800383409807930237}
   - component: {fileID: 5454230464337849079}
   - component: {fileID: 8704612130682276028}
+  - component: {fileID: 4258426762880883114}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -141,6 +142,7 @@ Transform:
   - {fileID: 651697223702577154}
   - {fileID: 5325764151779109607}
   - {fileID: 193002418458580306}
+  - {fileID: 3238055687020739331}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5848623691815735436
@@ -354,6 +356,26 @@ MonoBehaviour:
   _animator: {fileID: 59210639200949429}
   _characterController: {fileID: 5848623691815735436}
   _playerMotor: {fileID: 0}
+--- !u!114 &4258426762880883114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137447520734547597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1422e171b94f44d8dcee230f43f332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _walkieTalkieKey: 113
+  _walkieTalkieSubmit: {fileID: 392368643174621059, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+  _holdKey: 1
+  _enterWalkieCooldown: 0.7
+  decisionManager: {fileID: 0}
+  _stateMachine: {fileID: 0}
+  walkieChoiceTimer: {fileID: 0}
+  walkieTalkie: {fileID: 7348650516799257784}
 --- !u!1 &4957385649500417183
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +674,38 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &7348650516799257784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3238055687020739331}
+  m_Layer: 0
+  m_Name: WalkieTalkie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3238055687020739331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348650516799257784}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.49151185, z: -0, w: 0.8708709}
+  m_LocalPosition: {x: 0.15, y: 1.556, z: 0.734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4521626923918758058}
+  m_Father: {fileID: 3711708708669339399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7762401733796653203
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +932,68 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &4128308573819664193
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3238055687020739331}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+      propertyPath: m_Name
+      value: Talkie_LP
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+--- !u!4 &4521626923918758058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ee5beef283f9664093c0b933d59fe4c, type: 3}
+  m_PrefabInstance: {fileID: 4128308573819664193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4887458178364907001
 PrefabInstance:
   m_ObjectHideFlags: 0
