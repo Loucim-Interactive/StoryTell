@@ -1,18 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Systems.WalkieSystem.Scripts {
     public class WalkieTimer : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        [SerializeField] private Image fillImage;
+        [SerializeField] private Slider slider;
+
+        private void Awake()
         {
-        
+            if (!fillImage) fillImage = GetComponent<Image>();
+            if (!slider) slider = GetComponent<Slider>();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void SetProgress(float normalized)
         {
-        
+            normalized = Mathf.Clamp01(normalized);
+            if (fillImage) fillImage.fillAmount = normalized;
+            if (slider) slider.normalizedValue = normalized;
         }
     }
 }

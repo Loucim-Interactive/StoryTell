@@ -49,6 +49,7 @@ namespace Systems.Global {
         }
 
         private void Fire() {
+            _hasTriggered = true;
             Activate();
             HandleRepeat();
         }

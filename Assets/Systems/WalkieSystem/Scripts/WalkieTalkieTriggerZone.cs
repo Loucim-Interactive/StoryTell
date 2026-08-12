@@ -13,7 +13,6 @@ namespace Systems.WalkieSystem.Scripts {
         
         protected override void Activate() {
             GameEventBus.Raise(GameplayEvents.WalkieTalkieTrigger, decisionAsset); // we send the decision
-            GameEventBus.Raise(GameplayEvents.WalkieTalkieTrigger, WalkieInteractionMachine.WalkieInteractionStates.Awaiting); // and send the asset
             Debug.Log("Triggered walkie talkie interaction");
         }
     }

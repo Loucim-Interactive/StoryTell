@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 namespace Systems.DecisionSystem.UI
 {
@@ -21,6 +22,7 @@ namespace Systems.DecisionSystem.UI
 
         public int PreviousIndex => _previousChosenIndex;
         public int CurrentIndex => _currentChosenIndex;
+        public event Action<int> SelectionChanged;
 
         public void SetInitialChosen(int index)
         {
@@ -42,8 +44,7 @@ namespace Systems.DecisionSystem.UI
 
         private void Update()
         {
-            // Uncomment if navigation should only work while choosing.
-            // if (!_isChoosing) return;
+            if (!_isChoosing) return;
 
             if (_amountChoices <= 0)
                 return;
@@ -80,6 +81,7 @@ namespace Systems.DecisionSystem.UI
             _currentChosenIndex += direction;
 
             ClampChoices();
+            SelectionChanged?.Invoke(_currentChosenIndex);
         }
 
         private void ClampChoices()

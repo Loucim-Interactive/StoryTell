@@ -11,6 +11,9 @@ namespace Systems.DecisionSystem
         [Tooltip("The line the caller says. Shown above the choice list.")]
         [SerializeField] private string promptText;
 
+        [Tooltip("Voice line played when the call starts. Choices become available after it finishes.")]
+        [SerializeField] private AudioClip callerVoiceClip;
+
         [SerializeField] private List<RadioDecisionChoice> choices = new();
 
         [Header("Timing")]
@@ -20,10 +23,15 @@ namespace Systems.DecisionSystem
         [Tooltip("Seconds available to answer before it's treated as ignored. Only used if AllowIgnore is true.")]
         [SerializeField, Min(0.1f)] private float timeWindowSeconds = 15f;
 
+        [Tooltip("Optional inspector-driven hook fired when a timed decision is ignored.")]
+        [SerializeField] private UnityEngine.Events.UnityEvent onIgnored;
+
         public string PromptText => promptText;
+        public AudioClip CallerVoiceClip => callerVoiceClip;
         public IReadOnlyList<RadioDecisionChoice> Choices => choices;
         public bool AllowIgnore => allowIgnore;
         public float TimeWindowSeconds => timeWindowSeconds;
+        public void RaiseIgnored() => onIgnored?.Invoke();
     }
 
     [Serializable]

@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Systems.DecisionSystem;
 using Systems.DecisionSystem.UI;
-using Systems.EventSystem.Scripts;
 using UnityEngine;
 
 namespace Systems.WalkieSystem.Scripts {
@@ -12,11 +10,16 @@ namespace Systems.WalkieSystem.Scripts {
         [SerializeField] private CanvasGroup _root;
         [SerializeField] private GameObject indicatorPanel;
         [SerializeField] private GameObject timerPanel;
-        [SerializeField] private GameObject choicesPanel;
         [SerializeField] private DecisionManagerScript decisionManager;
+        [SerializeField] private GameObject choicesPanel;
+        [SerializeField] private GameObject choicesContent;
+        [Tooltip("Root containing the choice sidebar, walkie icon, and choice content.")]
+        [SerializeField] private GameObject choicesPanelRoot;
 
         [SerializeField] private GameObject choicePrefab;
         [SerializeField] private WalkieInteractionMachine _state;
+        [SerializeField] private WalkieTalkieScript walkieTalkie;
+        [SerializeField] private WalkieTimer timer;
 
         [Header("UI Settings")]
         [SerializeField] private float choicePaddingBottom = 1f;
@@ -25,45 +28,63 @@ namespace Systems.WalkieSystem.Scripts {
         private WalkieDecisionAsset _currentAsset;
 
         private void Start() {
-            HideAll();
             if (!_state) _state = FindFirstObjectByType<WalkieInteractionMachine>();
-            decisionManager = FindFirstObjectByType<DecisionManagerScript>();
+            if (!decisionManager) decisionManager = FindFirstObjectByType<DecisionManagerScript>();
+            if (!walkieTalkie) walkieTalkie = FindFirstObjectByType<WalkieTalkieScript>();
+            if (!timer && timerPanel) timer = timerPanel.GetComponentInChildren<WalkieTimer>(true);
+            if (!timer && timerPanel) timer = timerPanel.AddComponent<WalkieTimer>();
+            if (!choicesContent) choicesContent = choicesPanel;
+            if (!choicesPanelRoot && choicesPanel)
+                choicesPanelRoot = choicesPanel.transform.parent
+                    ? choicesPanel.transform.parent.gameObject
+                    : choicesPanel;
+            HideAll();
         }
 
         public void Update() {
-            if (_state.CurrentState == WalkieInteractionMachine.WalkieInteractionStates.Finished) {
-                _root.alpha = 0;
-                _root.interactable = false;
+            if (!_state || !decisionManager || !walkieTalkie) {
+                SetRootVisible(false);
                 return;
             }
-            
-            _root.alpha = 1;
-            _root.interactable = true;
-            
-            if (_currentAsset != _state.CurrentAsset) SetupChoices(_state.CurrentAsset);
-            
-            switch (_state.CurrentState) {
-                case WalkieInteractionMachine.WalkieInteractionStates.Awaiting:
-                    HideAll();
-                    ShowIndicator(true);
-                    ShowTimer(true);
-                    break;
-                case WalkieInteractionMachine.WalkieInteractionStates.Choosing:
-                    HideAll();
-                    ShowChoices(true);
-                    ShowTimer(true);
-                    break;
-                case WalkieInteractionMachine.WalkieInteractionStates.Talking:
-                    HideAll();
-                    ShowIndicator(true);
-                    break;
+
+            bool interactionActive = !_state.IsFinished && _state.CurrentAsset != null;
+            if (!interactionActive) {
+                decisionManager.SetChoosing(false);
+                HideAll();
+                SetRootVisible(false);
+                if (_currentAsset != null) ClearChoices();
+                return;
             }
 
+            SetRootVisible(true);
+
+            if (_currentAsset != _state.CurrentAsset) SetupChoices(_state.CurrentAsset);
+
+            bool responseNeeded = _state.IsChoosing;
+            bool showChoices = responseNeeded && walkieTalkie.IsEquipped;
+            bool showIndicator = (_state.IsTalking || responseNeeded) && !walkieTalkie.IsEquipped;
+            bool showTimer = _state.HasTimedResponse;
+
+            ShowIndicator(showIndicator);
+            ShowChoices(showChoices);
+            ShowTimer(showTimer);
+            decisionManager.SetChoosing(showChoices);
+
+            if (timer && showTimer) timer.SetProgress(_state.TimeNormalized);
             HandleChoiceSelection();
         }
 
+        private void SetRootVisible(bool visible)
+        {
+            if (!_root) return;
+            _root.alpha = visible ? 1f : 0f;
+            _root.interactable = visible;
+            _root.blocksRaycasts = visible;
+        }
+
         public void ShowChoices(bool show) {
-            choicesPanel.SetActive(show);
+            GameObject root = choicesPanelRoot ? choicesPanelRoot : choicesPanel;
+            if (root) root.SetActive(show);
         }
 
         public void ShowIndicator(bool show) {
@@ -82,6 +103,8 @@ namespace Systems.WalkieSystem.Scripts {
 
         private void SetupChoices(WalkieDecisionAsset asset)
         {
+            ClearChoices();
+            if (!asset) return;
             _currentAsset = asset;
 
             decisionManager.SetAmountChoices(asset.Choices.Count);
@@ -89,13 +112,25 @@ namespace Systems.WalkieSystem.Scripts {
 
             foreach (var choice in asset.Choices)
             {
-                GameObject view = Instantiate(choicePrefab, choicesPanel.transform);
+                GameObject view = Instantiate(choicePrefab, choicesContent.transform);
 
                 WalkieDecisionButton button = view.GetComponent<WalkieDecisionButton>();
                 button.Setup(choice.Label);
 
                 currentChoices.Add(button);
             }
+
+            if (currentChoices.Count > 0) currentChoices[0].SetSelected(true);
+        }
+
+        private void ClearChoices()
+        {
+            foreach (WalkieDecisionButton choice in currentChoices)
+                if (choice) Destroy(choice.gameObject);
+
+            currentChoices.Clear();
+            _currentAsset = null;
+            if (decisionManager) decisionManager.SetAmountChoices(0);
         }
 
         private void HandleChoiceSelection() {

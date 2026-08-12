@@ -13,6 +13,7 @@ namespace Systems.WalkieSystem.Scripts
         [Header("Walkie Talkie Settings")]
         [SerializeField] private KeyCode _walkieTalkieKey = KeyCode.Q;
         [SerializeField] private InputActionReference _walkieTalkieSubmit;
+        [SerializeField] private KeyCode _walkieTalkieSubmitKey = KeyCode.Return;
         [SerializeField] private bool _toggleWalkie = false;
         [SerializeField] private float _enterWalkieCooldown = 0.7f;
 
@@ -22,6 +23,7 @@ namespace Systems.WalkieSystem.Scripts
         [SerializeField] private GameObject walkieTalkie;
 
         private bool _walkieTalkieVisible;
+        public bool IsEquipped => _walkieTalkieVisible;
 
         private void Awake()
         {
@@ -34,37 +36,15 @@ namespace Systems.WalkieSystem.Scripts
             StoreWalkie();
         }
 
-        private void OnEnable()
-        {
-            GameEventBus.Subscribe<WalkieDecisionAsset>(
-                GameplayEvents.WalkieTalkieTrigger,
-                HandleTrigger
-            );
-        }
-
-        private void OnDisable()
-        {
-            GameEventBus.Unsubscribe<WalkieDecisionAsset>(
-                GameplayEvents.WalkieTalkieTrigger,
-                HandleTrigger
-            );
-        }
-
-        private void HandleTrigger(WalkieDecisionAsset asset)
-        {
-            _stateMachine.SwitchState(
-                WalkieInteractionMachine.WalkieInteractionStates.Awaiting
-            );
-        }
-
         private void Update()
         {
-            if (_walkieTalkieVisible) {
-                if (_stateMachine.IsAwaiting) {
-                    _stateMachine.SwitchState(WalkieInteractionMachine.WalkieInteractionStates.Choosing);
-                }
-            }
             HandleInput();
+
+            if (_walkieTalkieVisible && _stateMachine.IsChoosing && SubmitTriggered())
+            {
+                DecisionManagerScript decisions = FindFirstObjectByType<DecisionManagerScript>();
+                if (decisions) _stateMachine.Resolve(decisions.CurrentIndex);
+            }
         }
 
         private void HandleInput()
@@ -110,11 +90,6 @@ namespace Systems.WalkieSystem.Scripts
                 return;
 
             _walkieTalkieVisible = false;
-
-            _stateMachine.SwitchState(
-                WalkieInteractionMachine.WalkieInteractionStates.Finished
-            );
-
             StoreWalkie();
         }
 
@@ -126,6 +101,12 @@ namespace Systems.WalkieSystem.Scripts
         private void StoreWalkie()
         {
             walkieTalkie.SetActive(false);
+        }
+
+        private bool SubmitTriggered()
+        {
+            return (_walkieTalkieSubmit != null && _walkieTalkieSubmit.action.triggered) ||
+                   Input.GetKeyDown(_walkieTalkieSubmitKey);
         }
     }
 }
