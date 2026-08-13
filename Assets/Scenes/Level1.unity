@@ -2167,7 +2167,7 @@ Transform:
   m_GameObject: {fileID: 446670376}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 102.38, y: 28.93, z: 275.87}
+  m_LocalPosition: {x: 55.389996, y: 56.43, z: 533.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNarrationText: shit SHIT!
+  characterNarrationText: Mierda MIERDA!
   triggerOnEnter: 1
   triggerOnExit: 0
   canRepeat: 0
@@ -3107,7 +3107,7 @@ Transform:
   m_GameObject: {fileID: 622232139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -46.99, y: 27.5, z: 257.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4583,7 +4583,7 @@ MonoBehaviour:
   definition: {fileID: 11400000, guid: 4a991d4a2291f0c42b46fe8cbc7f9351, type: 2}
   delayTime: 0.4
   useDelay: 1
-  outputEvent: 3
+  outputEvent: 2
   useOutputEvent: 1
 --- !u!114 &907326467
 MonoBehaviour:
@@ -5474,7 +5474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNarrationText: The camp is rather small..
+  characterNarrationText: El campamento es bastante chiquito..
   triggerOnEnter: 1
   triggerOnExit: 0
   canRepeat: 1
@@ -5861,6 +5861,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 96529671}
     m_Modifications:
+    - target: {fileID: 947496432908032688, guid: 9db731de143546c438d13585e0b668c3, type: 3}
+      propertyPath: stateDescription
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 947496432908032688, guid: 9db731de143546c438d13585e0b668c3, type: 3}
+      propertyPath: UIInteraction.characterDescription
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5387937251382393311, guid: 9db731de143546c438d13585e0b668c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 71.85289
@@ -6323,9 +6331,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: interactableName
+      value: Agustin
+      objectReference: {fileID: 0}
     - target: {fileID: 4805960593866344309, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: m_Name
-      value: NPC (2)
+      value: NPC - Agustin
       objectReference: {fileID: 0}
     - target: {fileID: 5407896976484569735, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: breathParticles
@@ -6554,6 +6566,10 @@ PrefabInstance:
     - target: {fileID: 2617373717569101813, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590521136345428991, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
+      propertyPath: UIInteraction.characterDescription
+      value: Se siente vacio..
       objectReference: {fileID: 0}
     - target: {fileID: 5344921415997194668, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_Name
@@ -7392,12 +7408,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4805960593866344309, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: m_Name
-      value: NPC (1)
+      value: NPC - Jose
       objectReference: {fileID: 0}
     - target: {fileID: 5407896976484569735, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: breathParticles
       value: 
       objectReference: {fileID: 1353197122}
+    - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: '_conversationSos.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dff989734673ab4b9dc22b87f2a17cf, type: 2}
     - target: {fileID: 5768352103647193133, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 74.6599
@@ -8082,7 +8102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNarrationText: Casi todo son colinas.. nada de cobertura.
+  characterNarrationText: Casi todo son colinas.. nada de cobertura. Que porqueria.
   triggerOnEnter: 1
   triggerOnExit: 0
   canRepeat: 1
@@ -8488,8 +8508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160075b9e06b6454d92ff372b62db70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNarrationText: Just gotta walk over to the second camp... should be about
-    1-2 kilometers.
+  characterNarrationText: Solo tengo que llegar hasta el proximo campamento. Uno
+    o dos kilometros, ya casi.
   triggerOnEnter: 1
   triggerOnExit: 0
   canRepeat: 0
@@ -9271,6 +9291,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 96529671}
     m_Modifications:
+    - target: {fileID: 947496432908032688, guid: 9db731de143546c438d13585e0b668c3, type: 3}
+      propertyPath: UIInteraction.characterDescription
+      value: A cuanta gente mato este rifle?
+      objectReference: {fileID: 0}
     - target: {fileID: 5387937251382393311, guid: 9db731de143546c438d13585e0b668c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 71.70389
@@ -9347,8 +9371,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699257044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 94.939896, y: 28.811, z: 274.63}
+  m_LocalRotation: {x: -0, y: -0.39001408, z: -0, w: 0.9208089}
+  m_LocalPosition: {x: 96.8, y: 30.09, z: 272.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9357,7 +9381,7 @@ Transform:
   - {fileID: 662244451}
   - {fileID: 1628338520}
   m_Father: {fileID: 622232140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45.911, z: 0}
 --- !u!114 &1699257046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10287,6 +10311,10 @@ PrefabInstance:
     - target: {fileID: 2617373717569101813, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590521136345428991, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
+      propertyPath: UIInteraction.characterDescription
+      value: Se siente vacio..
       objectReference: {fileID: 0}
     - target: {fileID: 5344921415997194668, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_Name
@@ -11458,63 +11486,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7407747599275705136, guid: 648022f29385a2945b5233b17159ca32, type: 3}
   m_PrefabInstance: {fileID: 2847208221728502707}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1076377697313762696
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9000000000000000001}
-    m_Modifications:
-    - target: {fileID: 6679997879612380405, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_Name
-      value: testNPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1077.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 43.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 996.697
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
 --- !u!1001 &1577364274332000513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11631,6 +11602,10 @@ PrefabInstance:
     - target: {fileID: 2617373717569101813, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590521136345428991, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
+      propertyPath: UIInteraction.characterDescription
+      value: Se siente vacio..
       objectReference: {fileID: 0}
     - target: {fileID: 5344921415997194668, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_Name
@@ -11909,9 +11884,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: interactableName
+      value: Simon
+      objectReference: {fileID: 0}
     - target: {fileID: 4805960593866344309, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: NPC - Simon
       objectReference: {fileID: 0}
     - target: {fileID: 5407896976484569735, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: breathParticles
@@ -12022,7 +12001,6 @@ Transform:
   - {fileID: 9000000000000001004}
   - {fileID: 9000000000000001005}
   - {fileID: 9000000000000001006}
-  - {fileID: 9000000000000001007}
   - {fileID: 1884531151}
   - {fileID: 622232140}
   m_Father: {fileID: 0}
@@ -12061,11 +12039,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5768352103647193133, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
   m_PrefabInstance: {fileID: 1196866650}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &9000000000000001007 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7217169034369507231, guid: 4096b468b5ea3104e9c392060bfe3d0c, type: 3}
-  m_PrefabInstance: {fileID: 1076377697313762696}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &9000000000000001008 stripped
 Transform:
