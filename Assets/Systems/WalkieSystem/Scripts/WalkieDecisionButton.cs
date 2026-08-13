@@ -15,8 +15,8 @@ namespace Systems.WalkieSystem.Scripts {
         [SerializeField] private Color _unselectedTextColor = Color.white;
 
         public void Setup(string text) {
-            _selectedBackground.SetActive(false);
             _textMesh.text = text;
+            SetSelected(false);
         }
 
         public void SetSelected(bool selected) {

@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ed8848f5e9df924d9922a5878cea5de, type: 3}
-  m_Name: WalkieDecision
+  m_Name: Ignored1
   m_EditorClassIdentifier: 
-  promptText: Testtttingg..!
+  promptText: '**bzz** Nadie?'
+  callerName: ???
+  callerVoiceClip: {fileID: 0}
+  responseDelaySeconds: 2
   choices:
-  - label: '"Es boludo?"'
+  - label: '"-Te copio."'
+    nextDecision: {fileID: 11400000, guid: 887d125ceb7e3b14ab5d4880857e52e9, type: 2}
     onSelected:
       m_PersistentCalls:
         m_Calls: []
-  - label: '"Que tarado.."'
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - label: '"Pobre."'
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  allowIgnore: 0
-  timeWindowSeconds: 15
+  allowIgnore: 1
+  timeWindowSeconds: 18
+  onIgnored:
+    m_PersistentCalls:
+      m_Calls: []

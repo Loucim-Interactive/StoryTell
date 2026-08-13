@@ -13,6 +13,7 @@ namespace DialogueSystem.Scripts {
         [SerializeField] private TextMeshProUGUI _nameTextMesh;
         [SerializeField] private AudioSource _audio;
 
+        [SerializeField] private float waitSecondsAfterDisplay = 4f;
         public IEnumerator DisplayDialogue(DialogueSO dialogue) {
             CleanTexts();
             _dialogueTextMesh.font = dialogue.FontAsset ?? _defaultFont;
@@ -57,7 +58,27 @@ namespace DialogueSystem.Scripts {
             }
             
             if (voiceClip) yield return new WaitWhile(() => _audio.isPlaying);
-            else yield return new WaitForSeconds(4); // hardcoded for now
+            else yield return new WaitForSeconds(waitSecondsAfterDisplay); // hardcoded for now
+        }
+        
+        public IEnumerator DisplayDialogue(string dialogue) {
+            yield return StartCoroutine(DisplayDialogue(dialogue, voiceClip: null));
+        }
+        
+        public IEnumerator DisplayDialogue(string dialogue, string nameText) {
+            CleanTexts();
+            _dialogueTextMesh.font = _defaultFont;
+            _nameTextMesh.text = nameText;
+            
+            _dialogueTextMesh.maxVisibleCharacters = 0;
+            _dialogueTextMesh.text = dialogue;
+            
+            for (var i = 0; i < dialogue.Length + 1; i++) {
+                _dialogueTextMesh.maxVisibleCharacters = i;
+                yield return new WaitForSeconds(GetCharSpeed(ETextSpeed.Fast));
+            }
+            
+            yield return new WaitForSeconds(waitSecondsAfterDisplay); // hardcoded for now
         }
         
         public void CleanTexts() {

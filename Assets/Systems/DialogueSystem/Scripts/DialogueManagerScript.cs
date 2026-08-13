@@ -46,11 +46,16 @@ namespace Systems.DialogueSystem.Scripts {
         
         public void StateThought(string thought) {
             //_isInConversation = true;
-            Coroutine dialogueRoutine = StartCoroutine(PlayThought(thought));
+            Coroutine dialogueRoutine = StartCoroutine(PlayThought(thought, ""));
         }
         
-        private IEnumerator PlayThought(string thought) {
-            Coroutine text = StartCoroutine(uiDialogueScript.DisplayDialogue(thought, null));
+        public void StateThought(string thought, string caller) {
+            //_isInConversation = true;
+            Coroutine dialogueRoutine = StartCoroutine(PlayThought(thought, caller));
+        }
+        
+        private IEnumerator PlayThought(string thought, string caller) {
+            Coroutine text = StartCoroutine(uiDialogueScript.DisplayDialogue(thought, caller));
             yield return text;
             uiDialogueScript.CleanTexts();
         }

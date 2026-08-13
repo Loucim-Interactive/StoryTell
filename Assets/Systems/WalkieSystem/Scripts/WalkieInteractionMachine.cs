@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Systems.DecisionSystem;
+using Systems.DialogueSystem.Scripts;
 using Systems.EventSystem.Scripts;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Systems.WalkieSystem.Scripts {
         
         private WalkieInteractionStates _currentState = WalkieInteractionStates.Finished;
         [SerializeField] private AudioSource callerAudioSource;
+        [SerializeField] private DialogueManagerScript dialogueManager;
 
         private WalkieDecisionAsset _currentAsset;
         private Coroutine _callerRoutine;
@@ -43,6 +45,8 @@ namespace Systems.WalkieSystem.Scripts {
         {
             if (!callerAudioSource)
                 callerAudioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
+            if (!dialogueManager)
+                dialogueManager = FindFirstObjectByType<DialogueManagerScript>();
         }
 
         private void OnEnable() => GameEventBus.Subscribe<WalkieDecisionAsset>(GameplayEvents.WalkieTalkieTrigger, BeginInteraction);
@@ -71,11 +75,14 @@ namespace Systems.WalkieSystem.Scripts {
 
         public void Resolve(int choiceIndex)
         {
-            if (!IsChoosing || _currentAsset == null) return;
+            if (!IsChoosing || !_currentAsset) return;
+            RadioDecisionChoice choice = null;
 
             WalkieDecisionAsset resolvedAsset = _currentAsset;
-            if (choiceIndex >= 0 && choiceIndex < resolvedAsset.Choices.Count)
-                resolvedAsset.Choices[choiceIndex].RaiseSelected();
+            if (choiceIndex >= 0 && choiceIndex < resolvedAsset.Choices.Count) {
+                choice = resolvedAsset.Choices[choiceIndex];
+                choice.RaiseSelected();
+            }
             else
             {
                 choiceIndex = -1;
@@ -84,8 +91,14 @@ namespace Systems.WalkieSystem.Scripts {
 
             SwitchState(WalkieInteractionStates.Finished);
             Resolved?.Invoke(resolvedAsset, choiceIndex);
-            _currentAsset = null;
-            _timeRemaining = 0f;
+
+            if (choice != null && choice.NextAsset ) {
+                BeginInteraction(choice.NextAsset); // after choice is resolved, if next asset, go begin that. (and this loops)
+            }
+            else {
+                _currentAsset = null;
+                _timeRemaining = 0f;
+            }
         }
 
         private void BeginInteraction(WalkieDecisionAsset asset)
@@ -105,11 +118,23 @@ namespace Systems.WalkieSystem.Scripts {
         {
             SwitchState(WalkieInteractionStates.Talking);
 
+            if (!string.IsNullOrWhiteSpace(asset.PromptText) && dialogueManager)
+                dialogueManager.StateThought(asset.PromptText, asset.CallerName); // Temporary prompt presentation until walkie dialogue has its own view.
+        
+            float elapsed = 0f;
             if (asset.CallerVoiceClip && callerAudioSource)
             {
                 callerAudioSource.clip = asset.CallerVoiceClip;
                 callerAudioSource.Play();
-                yield return new WaitWhile(() => callerAudioSource && callerAudioSource.isPlaying);
+            }
+
+            // Do not expose choices until both the authored reading delay and any
+            // available caller audio have completed.
+            while (elapsed < asset.ResponseDelaySeconds ||
+                   (callerAudioSource && callerAudioSource.isPlaying))
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
             }
 
             _callerRoutine = null;

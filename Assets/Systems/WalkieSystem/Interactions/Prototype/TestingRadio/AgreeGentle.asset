@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed8848f5e9df924d9922a5878cea5de, type: 3}
+  m_Name: AgreeGentle
+  m_EditorClassIdentifier: 
+  promptText: Mi nombre es Carlos. Necesito que hables con el Coronel Juan y envie
+    las provisiones.
+  callerName: Carlos
+  callerVoiceClip: {fileID: 0}
+  responseDelaySeconds: 2
+  choices:
+  - label: '"Ok."'
+    nextDecision: {fileID: 0}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - label: '"No se donde esta."'
+    nextDecision: {fileID: 11400000, guid: 6a44812224d0fff4081ea88e2ab371cf, type: 2}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  allowIgnore: 0
+  timeWindowSeconds: 15
+  onIgnored:
+    m_PersistentCalls:
+      m_Calls: []

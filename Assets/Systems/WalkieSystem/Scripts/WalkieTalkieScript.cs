@@ -1,6 +1,7 @@
 using System;
 using Systems.DecisionSystem;
 using Systems.DecisionSystem.UI;
+using Systems.DialogueSystem.Scripts;
 using Systems.EventSystem.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,15 +17,15 @@ namespace Systems.WalkieSystem.Scripts
         [SerializeField] private KeyCode _walkieTalkieSubmitKey = KeyCode.Return;
         [SerializeField] private bool _toggleWalkie = false;
         [SerializeField] private float _enterWalkieCooldown = 0.7f;
-
+        
         [Header("Walkie Talkie Refs")]
         [SerializeField] private WalkieInteractionMachine _stateMachine;
         [SerializeField] private WalkieTimer walkieChoiceTimer;
         [SerializeField] private GameObject walkieTalkie;
-
+        
         private bool _walkieTalkieVisible;
         public bool IsEquipped => _walkieTalkieVisible;
-
+        
         private void Awake()
         {
             _stateMachine = GetComponent<WalkieInteractionMachine>();
@@ -35,13 +36,12 @@ namespace Systems.WalkieSystem.Scripts
             _walkieTalkieVisible = false;
             StoreWalkie();
         }
-
+        
         private void Update()
         {
             HandleInput();
 
-            if (_walkieTalkieVisible && _stateMachine.IsChoosing && SubmitTriggered())
-            {
+            if (_walkieTalkieVisible && _stateMachine.IsChoosing && SubmitTriggered()) {
                 DecisionManagerScript decisions = FindFirstObjectByType<DecisionManagerScript>();
                 if (decisions) _stateMachine.Resolve(decisions.CurrentIndex);
             }
