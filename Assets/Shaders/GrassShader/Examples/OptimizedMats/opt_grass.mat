@@ -37,7 +37,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: opt_grass
-  m_Shader: {fileID: -6465566751694194690, guid: 36ec64c9418fd0643a5c457dc293b58a, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 47566bc6e81c8a44a906800e0dd47c73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -214,6 +214,8 @@ Material:
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _ExcludeFromTUAndAA: 0
+    - _FadeEnd: 170
+    - _FadeStart: 100
     - _HeightAmplitude: 0.02
     - _HeightBlend: 1
     - _HeightCenter: 0.5
@@ -275,8 +277,9 @@ Material:
     - _SurfaceType: 0
     - _SwayIntensity: 0.2
     - _SwaySpeed: 0.1
+    - _TerrainBlend: 0.72
     - _TerrainOffset: 0
-    - _TerrainSize: 50
+    - _TerrainSize: 1500
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -299,6 +302,7 @@ Material:
     - _WindIntensity: 0.1
     - _WindNoiseSpeed: 0.27
     - _WindSpeed: 0.05
+    - _WindStrength: 0.08
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4

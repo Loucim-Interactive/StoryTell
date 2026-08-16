@@ -276,7 +276,7 @@ Material:
     - _SwayIntensity: 0.25
     - _SwaySpeed: 0.15
     - _TerrainOffset: 0
-    - _TerrainSize: 50
+    - _TerrainSize: 1500
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -294,7 +294,7 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _UseTerrainColor: 1
+    - _UseTerrainColor: 0
     - _WindHeight: 0.5
     - _WindIntensity: 0.1
     - _WindNoiseSpeed: 0.27

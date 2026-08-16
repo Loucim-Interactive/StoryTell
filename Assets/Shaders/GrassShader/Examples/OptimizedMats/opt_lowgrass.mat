@@ -37,7 +37,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: opt_lowgrass
-  m_Shader: {fileID: -6465566751694194690, guid: 36ec64c9418fd0643a5c457dc293b58a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 76aa3c7fd7a5470da6829019c0bdb0bb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -214,6 +214,8 @@ Material:
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _ExcludeFromTUAndAA: 0
+    - _FadeEnd: 170
+    - _FadeStart: 100
     - _HeightAmplitude: 0.02
     - _HeightBlend: 0.7
     - _HeightCenter: 0.5
@@ -275,8 +277,9 @@ Material:
     - _SurfaceType: 0
     - _SwayIntensity: 0.2
     - _SwaySpeed: 0.1
+    - _TerrainBlend: 0.72
     - _TerrainOffset: 0
-    - _TerrainSize: 50
+    - _TerrainSize: 1500
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -299,14 +302,15 @@ Material:
     - _WindIntensity: 0.1
     - _WindNoiseSpeed: 0.27
     - _WindSpeed: 0.05
+    - _WindStrength: 0.08
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.106772006, g: 0.5849056, b: 0.07541232, a: 1}
-    - _BottomColor: {r: 0.24520773, g: 0.27058825, b: 0.11764705, a: 0}
-    - _Color: {r: 0.38642338, g: 0.58431375, b: 0.07450979, a: 1}
+    - _BottomColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0}
+    - _Color: {r: 0.19496846, g: 0.19496846, b: 0.19496846, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

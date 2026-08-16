@@ -215,7 +215,7 @@ Material:
     - _EnergyConservingSpecularColor: 1
     - _ExcludeFromTUAndAA: 0
     - _HeightAmplitude: 0.02
-    - _HeightBlend: 0.7
+    - _HeightBlend: 2.07
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
     - _HeightMax: 1
@@ -253,7 +253,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0.41
+    - _Smoothness: -7.69
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -276,7 +276,7 @@ Material:
     - _SwayIntensity: 0.25
     - _SwaySpeed: 0.15
     - _TerrainOffset: 0
-    - _TerrainSize: 50
+    - _TerrainSize: 1500
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -294,7 +294,7 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _UseTerrainColor: 1
+    - _UseTerrainColor: 0
     - _WindHeight: 0.5
     - _WindIntensity: 0.1
     - _WindNoiseSpeed: 0.27
@@ -305,17 +305,17 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.106772006, g: 0.5849056, b: 0.07541232, a: 1}
-    - _BottomColor: {r: 0.24520773, g: 0.27058825, b: 0.11764705, a: 0}
+    - _BottomColor: {r: 0.21383637, g: 0.20105998, b: 0.20105998, a: 1}
     - _Color: {r: 0.38642338, g: 0.58431375, b: 0.07450979, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.2509869, g: 0.6415094, b: 0.034294482, a: 0}
+    - _FarColor: {r: 0.42138356, g: 0.42138356, b: 0.42138356, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _NearColor: {r: 0.14117317, g: 0.54088044, b: 0.33911228, a: 0}
+    - _NearColor: {r: 0.21383637, g: 0.21383637, b: 0.21383637, a: 1}
     - _NearFarRange: {r: 10, g: 25, b: 0, a: 0}
     - _ShadowColor: {r: 0.3018868, g: 0.20600449, b: 0.20600449, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

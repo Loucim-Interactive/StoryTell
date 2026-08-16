@@ -53,7 +53,7 @@ QualitySettings:
     terrainPixelError: 1
     terrainDetailDensityScale: 1
     terrainBasemapDistance: 1000
-    terrainDetailDistance: 80
+    terrainDetailDistance: 170
     terrainTreeDistance: 5000
     terrainBillboardStart: 50
     terrainFadeLength: 5
@@ -107,7 +107,7 @@ QualitySettings:
     terrainPixelError: 1
     terrainDetailDensityScale: 1
     terrainBasemapDistance: 1000
-    terrainDetailDistance: 80
+    terrainDetailDistance: 170
     terrainTreeDistance: 5000
     terrainBillboardStart: 50
     terrainFadeLength: 5
