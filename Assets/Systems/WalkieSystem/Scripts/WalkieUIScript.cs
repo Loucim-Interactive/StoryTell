@@ -20,6 +20,8 @@ namespace Systems.WalkieSystem.Scripts {
         [SerializeField] private WalkieInteractionMachine _state;
         [SerializeField] private WalkieTalkieScript walkieTalkie;
         [SerializeField] private WalkieTimer timer;
+        [Tooltip("Radio-only decoration hidden when this panel presents NPC options.")]
+        [SerializeField] private GameObject choicesRadioIcon;
 
         [Header("UI Settings")]
         [SerializeField, Min(0.05f)] private float transitionDuration = 0.2f;
@@ -32,6 +34,7 @@ namespace Systems.WalkieSystem.Scripts {
         private WalkieUIPanelTransition _indicatorTransition;
         private WalkieUIPanelTransition _choicesTransition;
         private WalkieUIPanelTransition _timerTransition;
+        private int _displayedRequestVersion = -1;
 
         private void Start() {
             if (!_state) _state = FindFirstObjectByType<WalkieInteractionMachine>();
@@ -48,28 +51,48 @@ namespace Systems.WalkieSystem.Scripts {
             _indicatorTransition = CreateTransition(indicatorPanel, new Vector2(indicatorSlideDistance, 0f));
             _choicesTransition = CreateTransition(choicesPanelRoot, new Vector2(-choicesSlideDistance, 0f));
             _timerTransition = CreateTransition(timerPanel, new Vector2(0f, -timerSlideDistance));
+            if (!choicesRadioIcon && choicesPanelRoot)
+            {
+                Transform icon = choicesPanelRoot.transform.Find("WalkieIcon");
+                if (icon) choicesRadioIcon = icon.gameObject;
+            }
+            if (decisionManager && choicePrefab && choicesContent && choicesPanelRoot)
+                decisionManager.RegisterPresenter(this);
             HideAll(true);
         }
 
-        public void Update() {
-            if (!_state || !decisionManager || !walkieTalkie) {
+        private void OnEnable() {
+            if (decisionManager && _choicesTransition) decisionManager.RegisterPresenter(this);
+        }
+
+        private void OnDisable() {
+            if (decisionManager) decisionManager.UnregisterPresenter(this);
+            HideAll(true);
+            ClearChoices();
+        }
+
+        // Render after gameplay/input updates so a selection begins fading out this frame.
+        private void LateUpdate() {
+            if (!decisionManager) {
                 SetRootVisible(false);
                 return;
             }
 
-            bool interactionActive = !_state.IsFinished && _state.CurrentAsset != null;
+            if (decisionManager.HasOwner) {
+                RenderExternalDecision();
+                return;
+            }
+
+            bool interactionActive = _state && walkieTalkie && !_state.IsFinished && _state.CurrentAsset != null;
             if (!interactionActive) {
-                decisionManager.SetChoosing(false);
-                HideAll();
-                SetRootVisible(false);
-                if (_currentAsset != null) ClearChoices();
+                HideDecisionUI();
                 return;
             }
 
             SetRootVisible(true);
 
             bool responseNeeded = _state.IsChoosing;
-            if (responseNeeded && _currentAsset != _state.CurrentAsset)
+            if (responseNeeded && (_currentAsset != _state.CurrentAsset || _displayedRequestVersion >= 0))
                 SetupChoices(_state.CurrentAsset);
 
             bool showChoices = responseNeeded && walkieTalkie.IsEquipped;
@@ -85,6 +108,42 @@ namespace Systems.WalkieSystem.Scripts {
 
             if (timer && showTimer) timer.SetProgress(_state.TimeNormalized);
             HandleChoiceSelection();
+        }
+
+        private void RenderExternalDecision()
+        {
+            ShowIndicator(false);
+            ShowTimer(false);
+            if (!decisionManager.HasRequest) {
+                HideDecisionUI();
+                return;
+            }
+
+            SetRootVisible(true);
+            if (_displayedRequestVersion != decisionManager.RequestVersion) {
+                // Finish fading out the previous list before binding new labels.
+                ShowChoices(false);
+                decisionManager.SetChoosing(false);
+                if (_choicesTransition && !_choicesTransition.IsHidden) return;
+                SetupChoices(decisionManager.Options);
+                _displayedRequestVersion = decisionManager.RequestVersion;
+                if (choicesRadioIcon) choicesRadioIcon.SetActive(false);
+            }
+
+            ShowChoices(true);
+            decisionManager.SetChoosing(true);
+            HandleChoiceSelection();
+        }
+
+        private void HideDecisionUI()
+        {
+            decisionManager.SetChoosing(false);
+            HideAll();
+            bool fading = (_choicesTransition && !_choicesTransition.IsHidden) ||
+                          (_indicatorTransition && !_indicatorTransition.IsHidden) ||
+                          (_timerTransition && !_timerTransition.IsHidden);
+            SetRootVisible(fading);
+            if (!fading && currentChoices.Count > 0) ClearChoices();
         }
 
         private void SetRootVisible(bool visible)
@@ -137,19 +196,26 @@ namespace Systems.WalkieSystem.Scripts {
 
         private void SetupChoices(WalkieDecisionAsset asset)
         {
-            ClearChoices();
             if (!asset) return;
+            var labels = new string[asset.Choices.Count];
+            for (int i = 0; i < labels.Length; i++) labels[i] = asset.Choices[i].Label;
+            SetupChoices(labels);
             _currentAsset = asset;
+            if (choicesRadioIcon) choicesRadioIcon.SetActive(true);
+        }
 
-            decisionManager.SetAmountChoices(asset.Choices.Count);
+        private void SetupChoices(IReadOnlyList<string> labels)
+        {
+            ClearChoices();
+            decisionManager.SetAmountChoices(labels.Count);
             decisionManager.SetInitialChosen(0);
 
-            foreach (var choice in asset.Choices)
+            foreach (string label in labels)
             {
                 GameObject view = Instantiate(choicePrefab, choicesContent.transform);
 
                 WalkieDecisionButton button = view.GetComponent<WalkieDecisionButton>();
-                button.Setup(choice.Label);
+                button.Setup(label);
 
                 currentChoices.Add(button);
             }
@@ -160,15 +226,18 @@ namespace Systems.WalkieSystem.Scripts {
         private void ClearChoices()
         {
             foreach (WalkieDecisionButton choice in currentChoices)
-                if (choice) Destroy(choice.gameObject);
+                if (choice) {
+                    choice.gameObject.SetActive(false);
+                    Destroy(choice.gameObject);
+                }
 
             currentChoices.Clear();
             _currentAsset = null;
+            _displayedRequestVersion = -1;
             if (decisionManager) decisionManager.SetAmountChoices(0);
         }
 
         private void HandleChoiceSelection() {
-            if (decisionManager.CurrentIndex == decisionManager.PreviousIndex) return;
             int counter = 0;
             foreach (var choice in currentChoices) {
                 if (counter == decisionManager.CurrentIndex) choice.SetSelected(true);
@@ -194,6 +263,7 @@ namespace Systems.WalkieSystem.Scripts {
         private bool _targetVisible;
         private bool _initialized;
         private bool _animating;
+        public bool IsHidden => !_targetVisible && !_animating;
 
         public void Initialize(Vector2 hiddenOffset, float duration)
         {

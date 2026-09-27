@@ -86,6 +86,11 @@ namespace DialogueSystem.Scripts {
             _nameTextMesh.text = "";
         }
         
+        public void StopDialogue() {
+            if (_audio) _audio.Stop();
+            CleanTexts();
+        }
+
         private float GetCharSpeed(ETextSpeed textSpeed) {
             switch (textSpeed) { // in seconds
                 case ETextSpeed.VerySlow:

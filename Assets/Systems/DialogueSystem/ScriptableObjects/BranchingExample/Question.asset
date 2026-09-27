@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b37457f1b49dd498230ee021b85639, type: 3}
+  m_Name: Question
+  m_EditorClassIdentifier: 
+  _extraReadTime: 1
+  _textSpeed: 3
+  _lookAtTarget: {fileID: 0}
+  _fontAsset: {fileID: 0}
+  _speaker: 0
+  _dialogueText: Que necesitas?
+  _voiceClip: {fileID: 0}
+  _subDialogueSO: {fileID: 0}
+  choices:
+  - label: '"Que rutas puedo tomar?"'
+    outcome: 1
+    nextConversation: {fileID: 11400000, guid: 31f15b6f11b744308280a8c99c2fd603, type: 2}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - label: '"Queda municion?"'
+    outcome: 1
+    nextConversation: {fileID: 11400000, guid: 31f15b6f11b744308280a8c99c2fd606, type: 2}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - label: '"Nada, olvidate"'
+    outcome: 0
+    nextConversation: {fileID: 0}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - label: Dejar de hablar.
+    outcome: 2
+    nextConversation: {fileID: 0}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []

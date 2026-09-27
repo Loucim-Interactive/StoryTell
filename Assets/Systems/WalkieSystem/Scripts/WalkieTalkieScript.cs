@@ -43,7 +43,7 @@ namespace Systems.WalkieSystem.Scripts
 
             if (_walkieTalkieVisible && _stateMachine.IsChoosing && SubmitTriggered()) {
                 DecisionManagerScript decisions = FindFirstObjectByType<DecisionManagerScript>();
-                if (decisions) _stateMachine.Resolve(decisions.CurrentIndex);
+                if (decisions && !decisions.HasOwner) _stateMachine.Resolve(decisions.CurrentIndex);
             }
         }
 

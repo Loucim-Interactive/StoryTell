@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Systems.DecisionSystem;
 using Systems.DialogueSystem.Scripts;
 using Systems.EventSystem.Scripts;
@@ -16,6 +17,7 @@ namespace Systems.WalkieSystem.Scripts {
         private WalkieDecisionAsset _currentAsset;
         private Coroutine _callerRoutine;
         private float _timeRemaining;
+        private readonly Queue<WalkieDecisionAsset> _deferredCalls = new();
 
         public enum WalkieInteractionStates {
             Awaiting,
@@ -54,10 +56,20 @@ namespace Systems.WalkieSystem.Scripts {
         {
             GameEventBus.Unsubscribe<WalkieDecisionAsset>(GameplayEvents.WalkieTalkieTrigger, BeginInteraction);
             if (_callerRoutine != null) StopCoroutine(_callerRoutine);
+            _callerRoutine = null;
+            _deferredCalls.Clear();
+            if (callerAudioSource) callerAudioSource.Stop();
+            _currentAsset = null;
+            _timeRemaining = 0f;
+            SwitchState(WalkieInteractionStates.Finished);
         }
 
         private void Update()
         {
+            if (IsFinished && _deferredCalls.Count > 0 &&
+                (!dialogueManager || !dialogueManager.IsInConversation))
+                BeginInteraction(_deferredCalls.Dequeue());
+
             if (!HasTimedResponse) return;
 
             _timeRemaining = Mathf.Max(0f, _timeRemaining - Time.deltaTime);
@@ -103,6 +115,13 @@ namespace Systems.WalkieSystem.Scripts {
 
         private void BeginInteraction(WalkieDecisionAsset asset)
         {
+            if (!dialogueManager) dialogueManager = DialogueManagerScript.Instance;
+            if (asset && IsFinished && dialogueManager && dialogueManager.IsInConversation)
+            {
+                if (!_deferredCalls.Contains(asset)) _deferredCalls.Enqueue(asset);
+                return;
+            }
+
             if (asset == null || !IsFinished)
             {
                 if (asset == null) Debug.LogWarning("Walkie trigger has no decision asset.", this);

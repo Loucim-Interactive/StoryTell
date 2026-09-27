@@ -1223,6 +1223,8 @@ MonoBehaviour:
   navigateChoicesBackwards: {fileID: 2411907206095950430, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
   navigateChoicesForwardKey: 9
   navigateChoicesBackwardKey: 50
+  submitChoice: {fileID: 0}
+  submitChoiceKey: 32
 --- !u!1001 &219039508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9715,6 +9717,7 @@ MonoBehaviour:
   _state: {fileID: 0}
   walkieTalkie: {fileID: 0}
   timer: {fileID: 0}
+  choicesRadioIcon: {fileID: 0}
   transitionDuration: 0.2
   indicatorSlideDistance: 18
   choicesSlideDistance: 28
@@ -13155,6 +13158,26 @@ PrefabInstance:
       propertyPath: breathParticles
       value: 
       objectReference: {fileID: 1353197122}
+    - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: _conversationSos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: '_conversationSos.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 31f15b6f11b744308280a8c99c2fd601, type: 2}
+    - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: '_conversationSos.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 31f15b6f11b744308280a8c99c2fd601, type: 2}
+    - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: '_conversationSos.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 31f15b6f11b744308280a8c99c2fd601, type: 2}
+    - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: '_conversationSos.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 31f15b6f11b744308280a8c99c2fd601, type: 2}
     - target: {fileID: 5768352103647193133, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 79.98989
