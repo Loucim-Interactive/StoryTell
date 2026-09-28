@@ -16,7 +16,8 @@ MonoBehaviour:
   _textSpeed: 3
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
-  _speaker: 6
+  _speaker: 5
   _dialogueText: ...
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
+  choices: []

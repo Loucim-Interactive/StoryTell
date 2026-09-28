@@ -9,6 +9,7 @@ Shader "StoryTell/Optimized Terrain Grass"
         _TerrainSize ("Terrain Size", Float) = 1500
         _TerrainOffset ("Terrain Offset", Float) = 0
         _TerrainBlend ("Terrain Blend", Range(0,1)) = 0.72
+        _LightColorInfluence ("Light Color Influence", Range(0,1)) = 0.2
         _Cutoff ("Alpha Cutoff", Range(0,1)) = 0.5
         _WindSpeed ("Wind Speed", Float) = 1.1
         _WindStrength ("Wind Strength", Float) = 0.08
@@ -48,6 +49,7 @@ Shader "StoryTell/Optimized Terrain Grass"
                 float _TerrainSize;
                 float _TerrainOffset;
                 half _TerrainBlend;
+                half _LightColorInfluence;
                 half _Cutoff;
                 float _WindSpeed;
                 float _WindStrength;
@@ -117,7 +119,12 @@ Shader "StoryTell/Optimized Terrain Grass"
                 float4 shadowCoord = TransformWorldToShadowCoord(input.positionWS);
                 Light mainLight = GetMainLight(shadowCoord);
                 half lighting = 0.42h + 0.58h * mainLight.shadowAttenuation;
-                half3 color = albedo * mainLight.color * lighting;
+                // Separate brightness from hue so warm sunlight does not overwrite the grass palette.
+                // Zero keeps neutral lighting; one restores the original full light-color response.
+                // Preserve light intensity (including darkness) and the existing shadow attenuation.
+                half lightBrightness = dot(mainLight.color, half3(0.2126h, 0.7152h, 0.0722h));
+                half3 lightColor = lerp(lightBrightness.xxx, mainLight.color, _LightColorInfluence);
+                half3 color = albedo * lightColor * lighting;
                 color = MixFog(color, input.fogFactor);
                 return half4(color, 1.0h);
             }

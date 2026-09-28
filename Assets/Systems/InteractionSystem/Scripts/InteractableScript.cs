@@ -48,7 +48,15 @@ namespace Systems.InteractionSystem.Scripts {
         }
         
         private void FireGeneralActions() { // this fires some global stuff for the interactable
-            if (stateDescription) GameEventBus.Raise(GameplayEvents.StateThought, UIInteraction.characterDescription);
+            if (!stateDescription || UIInteraction == null) return;
+            if (UIInteraction.characterDescriptionLines != null) {
+                foreach (string line in UIInteraction.characterDescriptionLines) {
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+                    GameEventBus.Raise(GameplayEvents.StateThought, UIInteraction.characterDescriptionLines);
+                    return;
+                }
+            }
+            GameEventBus.Raise(GameplayEvents.StateThought, UIInteraction.characterDescription);
         }
         
         private void PrepareSubInteractions() {

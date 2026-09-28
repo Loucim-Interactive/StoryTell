@@ -370,9 +370,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkieTalkieKey: 113
   _walkieTalkieSubmit: {fileID: 392368643174621059, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
-  _holdKey: 1
+  _walkieTalkieSubmitKey: 13
+  _toggleWalkie: 0
   _enterWalkieCooldown: 0.7
-  decisionManager: {fileID: 0}
   _stateMachine: {fileID: 0}
   walkieChoiceTimer: {fileID: 0}
   walkieTalkie: {fileID: 7348650516799257784}
@@ -1236,6 +1236,10 @@ PrefabInstance:
     - target: {fileID: 8640461999284608273, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
       propertyPath: m_Name
       value: AmbientEffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640461999284608273, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

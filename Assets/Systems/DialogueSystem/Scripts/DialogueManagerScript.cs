@@ -14,6 +14,9 @@ namespace Systems.DialogueSystem.Scripts
         public static DialogueManagerScript Instance { get; private set; }
         public bool IsInConversation { get; private set; }
 
+        public bool IsConversationOwnedBy(Object owner) =>
+            owner && IsInConversation && _conversationOwner == owner;
+
         private Coroutine _conversationRoutine;
         private Coroutine _thoughtRoutine;
         private Object _conversationOwner;
@@ -32,11 +35,16 @@ namespace Systems.DialogueSystem.Scripts
             if (uiDialogueScript) uiDialogueScript.CleanTexts();
         }
 
-        private void OnEnable() => GameEventBus.Subscribe<string>(GameplayEvents.StateThought, StateThought);
+        private void OnEnable()
+        {
+            GameEventBus.Subscribe<string>(GameplayEvents.StateThought, StateThought);
+            GameEventBus.Subscribe<string[]>(GameplayEvents.StateThought, StateThoughts);
+        }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<string>(GameplayEvents.StateThought, StateThought);
+            GameEventBus.Unsubscribe<string[]>(GameplayEvents.StateThought, StateThoughts);
             CancelConversation();
             StopThought();
         }
@@ -161,14 +169,27 @@ namespace Systems.DialogueSystem.Scripts
 
         public void StateThought(string thought, string caller)
         {
-            if (IsInConversation || !uiDialogueScript || string.IsNullOrWhiteSpace(thought)) return;
-            StopThought();
-            _thoughtRoutine = StartCoroutine(PlayThought(thought, caller));
+            StateThoughts(new[] { thought }, caller);
         }
 
-        private IEnumerator PlayThought(string thought, string caller)
+        public void StateThoughts(string[] thoughts) => StateThoughts(thoughts, "");
+
+        public void StateThoughts(string[] thoughts, string caller)
         {
-            yield return uiDialogueScript.DisplayDialogue(thought, caller);
+            if (!isActiveAndEnabled || IsInConversation || !uiDialogueScript || thoughts == null) return;
+            // Ignore empty requests without interrupting the current thought.
+            if (!System.Array.Exists(thoughts, line => !string.IsNullOrWhiteSpace(line))) return;
+            StopThought();
+            _thoughtRoutine = StartCoroutine(PlayThoughts((string[])thoughts.Clone(), caller));
+        }
+
+        private IEnumerator PlayThoughts(string[] thoughts, string caller)
+        {
+            foreach (string thought in thoughts)
+            {
+                if (string.IsNullOrWhiteSpace(thought)) continue;
+                yield return uiDialogueScript.DisplayDialogue(thought, caller);
+            }
             uiDialogueScript.CleanTexts();
             _thoughtRoutine = null;
         }

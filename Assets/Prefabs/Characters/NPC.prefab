@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 4325066322668450804}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3603c1246175d8648a2188ef374f635e, type: 3}
-  m_Controller: {fileID: 9100000, guid: fd9bcc3bb7fb2304da95827ad932baaf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 98dde9ad99a7492f9d1928e90a67da65, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 5768352103647193133}
   - component: {fileID: 5672327250795661145}
   - component: {fileID: 7722504579326541943}
+  - component: {fileID: 8502038745890321234}
   m_Layer: 7
   m_Name: NPC
   m_TagString: Player
@@ -103,9 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c59b91df8ffb3348bad491ca58725b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canRestart: 1
   _spokenAlready: 0
   _conversationSos:
-  - {fileID: 11400000, guid: fcb60349198051f42bc81cd5409bc18e, type: 2}
+  - {fileID: 11400000, guid: 202987fe6e4b96d498a114e099f7577d, type: 2}
   _dialogueManagerScript: {fileID: 0}
 --- !u!136 &7722504579326541943
 CapsuleCollider:
@@ -120,7 +122,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -130,6 +132,31 @@ CapsuleCollider:
   m_Height: 1.8888245
   m_Direction: 1
   m_Center: {x: 0, y: 0.8797207, z: 0}
+--- !u!114 &8502038745890321234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805960593866344309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f2bb1a88d74e738ff9391a12a75f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5798330085081817172}
+  speaker: {fileID: 5672327250795661145}
+  movementRoot: {fileID: 5768352103647193133}
+  walkingSpeedThreshold: 0.05
+  runningSpeedThreshold: 2.5
+  crouching: 0
+  armed: 0
+  grounded: 1
+  animateConversations: 1
+  transitionDuration: 0.15
+  lockAnimation: 0
+  fixedAnimation: 3
+  customStateName: 
 --- !u!1 &6416239541751780309
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,11 +225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030730a1c7ae9341bf5f06ea0f1d913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableName: Jose
+  interactableName: Agustin
   UIInteraction:
     label: Hablar
     interactionType: 0
     characterDescription: 
+    characterDescriptionLines: []
   stateDescription: 0
   focusInteraction: 1
   inspectInteraction: 1
@@ -265,12 +293,22 @@ PrefabInstance:
       propertyPath: groundLayers.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4800147518922925995, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 42f87d826711eae459927b34a612dc6b, type: 2}
+    - target: {fileID: 4800147518922925995, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
+      propertyPath: breathParticles
+      value: 
+      objectReference: {fileID: 7977158263992264062}
     - target: {fileID: 8640461999284608273, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
       propertyPath: m_Name
       value: Effects
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 2748109568320691465, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 3588764355138994503, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2802a81d2eb2fe544bd04ab28a8b7e0a, type: 3}
@@ -345,11 +383,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2087972310285539287, guid: 3603c1246175d8648a2188ef374f635e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7811128864058045438}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3603c1246175d8648a2188ef374f635e, type: 3}
 --- !u!4 &2884581997736674608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3603c1246175d8648a2188ef374f635e, type: 3}
   m_PrefabInstance: {fileID: 3423476196177453787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3709654060526368012 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2087972310285539287, guid: 3603c1246175d8648a2188ef374f635e, type: 3}
+  m_PrefabInstance: {fileID: 3423476196177453787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7815628764266701178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3709654060526368012}
+    m_Modifications:
+    - target: {fileID: 1273915125232972, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_Name
+      value: BreathEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273915125232972, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198791558892717060, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 447
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+--- !u!4 &7811128864058045438 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+  m_PrefabInstance: {fileID: 7815628764266701178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7977158263992264062 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198791558892717060, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+  m_PrefabInstance: {fileID: 7815628764266701178}
   m_PrefabAsset: {fileID: 0}

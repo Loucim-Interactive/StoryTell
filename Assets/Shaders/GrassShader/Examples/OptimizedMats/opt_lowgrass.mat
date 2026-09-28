@@ -189,7 +189,7 @@ Material:
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Cutoff: 0.5
+    - _Cutoff: 0.305
     - _DepthIntensity: 0.6
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -230,6 +230,7 @@ Material:
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
+    - _LightColorInfluence: 0
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
@@ -277,7 +278,7 @@ Material:
     - _SurfaceType: 0
     - _SwayIntensity: 0.2
     - _SwaySpeed: 0.1
-    - _TerrainBlend: 0.72
+    - _TerrainBlend: 0.629
     - _TerrainOffset: 0
     - _TerrainSize: 1500
     - _TexWorldScale: 1
@@ -309,8 +310,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.106772006, g: 0.5849056, b: 0.07541232, a: 1}
-    - _BottomColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0}
-    - _Color: {r: 0.19496846, g: 0.19496846, b: 0.19496846, a: 1}
+    - _BottomColor: {r: 0.29559743, g: 0.29559743, b: 0.29559743, a: 0}
+    - _Color: {r: 0.2578616, g: 0.2578616, b: 0.2578616, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

@@ -74,17 +74,13 @@ namespace Systems.InteractionSystem.Scripts {
         }
 
         private void HandleInteractableActions(InteractableScript interactable) {
-            UIInteraction uiInteractionInfo = interactable.UIInteraction;
             bool focus = interactable.FocusInteraction;
             bool inspect = interactable.InspectInteractable;
-            bool stateDescription = interactable.StateInteractableDescription;
 
             if (focus) 
                 GameEventBus.Raise(GameplayEvents.MaxZoom);
             if (inspect) 
                 GameEventBus.Raise(GameplayEvents.StartInspection, _currentInteractable.gameObject);
-            if (stateDescription)
-                GameEventBus.Raise(GameplayEvents.StateThought, uiInteractionInfo.characterDescription);
         }
 
         private bool ActionWasPerformed(EInteractions type) {
