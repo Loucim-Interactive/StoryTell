@@ -5,7 +5,6 @@ using Systems.DialogueSystem.Scripts;
 using Systems.EventSystem.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Systems.WalkieSystem.Scripts
 {
@@ -16,7 +15,6 @@ namespace Systems.WalkieSystem.Scripts
         [SerializeField] private InputActionReference _walkieTalkieSubmit;
         [SerializeField] private KeyCode _walkieTalkieSubmitKey = KeyCode.Return;
         [SerializeField] private bool _toggleWalkie = false;
-        [SerializeField] private float _enterWalkieCooldown = 0.7f;
         
         [Header("Walkie Talkie Refs")]
         [SerializeField] private WalkieInteractionMachine _stateMachine;
@@ -42,7 +40,7 @@ namespace Systems.WalkieSystem.Scripts
             HandleInput();
 
             if (_walkieTalkieVisible && _stateMachine.IsChoosing && SubmitTriggered()) {
-                DecisionManagerScript decisions = FindFirstObjectByType<DecisionManagerScript>();
+                DecisionManagerScript decisions = FindAnyObjectByType<DecisionManagerScript>();
                 if (decisions && !decisions.HasOwner) _stateMachine.Resolve(decisions.CurrentIndex);
             }
         }

@@ -14,7 +14,9 @@ namespace Systems.InteractionSystem.Scripts.Interactables.Chests {
         private float _initialRot;
 
         private void Start() {
-            if (canOpen && ChestLid == null) {
+            if (!canOpen) return;
+
+            if (ChestLid == null) {
                 Debug.LogError("ChestLid is not assigned.", this);
                 return;
             }

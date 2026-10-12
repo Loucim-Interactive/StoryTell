@@ -1,251 +1,268 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.UI;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace SceneManagement
 {
-    /// <summary>Prototype main menu and entry point into the player's current chapter.</summary>
+    /// <summary>Entry point for the StoryTell flow: MainMenu -> GameSelect.</summary>
     public sealed class MainMenuController : MonoBehaviour
     {
-        private const string DefaultChapterScene = "Level1";
+        private const string DefaultGameSelectScene = "GameSelect";
+        private const string LayoutResource = "StoryTellMainMenu/MainMenu";
+        private const string ThemeResource = "StoryTellMainMenu/MainMenuTheme";
+        private const string RuntimeThemeResource = "StoryTellMainMenu/RuntimeTheme";
+        private const string BackgroundResource = "StoryTellMainMenu/MainMenuBackground";
+        private const string VolumePreference = "storytell.master-volume";
+        private const string FullscreenPreference = "storytell.fullscreen";
 
-        [Header("Progression")]
-        [SerializeField] private string fallbackChapterScene = DefaultChapterScene;
-
-        [Header("Chapter Introduction")]
-        [SerializeField] private string chapterTitle = "CHAPTER I";
-        [SerializeField, TextArea(2, 4)] private string chapterDescription = "The beginning of the journey.";
-        [SerializeField] private string chapterDate = "1917";
-        [SerializeField] private AudioClip chapterTitleSound;
-        [SerializeField, Range(0f, 1f)] private float chapterTitleSoundVolume = 1f;
-
-        [Header("Transition Timing")]
-        [SerializeField, Min(0f)] private float fadeDuration = 0.55f;
-        [SerializeField, Min(0f)] private float titlePopDuration = 0.22f;
-        [SerializeField, Min(0f)] private float introductionHoldDuration = 2.5f;
-        [SerializeField, Min(0f)] private float postLoadHoldDuration = 0.25f;
+        [Header("Navigation")]
+        [SerializeField] private string gameSelectScene = DefaultGameSelectScene;
+        [SerializeField, Min(0f)] private float fadeDuration = 0.35f;
 
         private Button _continueButton;
-        private CanvasGroup _fadeOverlay;
-        private CanvasGroup _chapterContent;
-        private RectTransform _chapterTitleRect;
-        private AudioSource _audioSource;
-        private GameObject _menuContentRoot;
+        private Button _newGameButton;
+        private Button _optionsButton;
+        private Button _exitButton;
+        private Button _closeOptionsButton;
+        private VisualElement _optionsOverlay;
+        private VisualElement _fadeOverlay;
+        private Slider _volumeSlider;
+        private Toggle _fullscreenToggle;
         private bool _isLoading;
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
-            _audioSource = gameObject.AddComponent<AudioSource>();
-            _audioSource.playOnAwake = false;
-            _audioSource.ignoreListenerPause = true;
-            CreatePrototypeMenu();
+            CreateMenuDocument();
         }
 
-        public void ContinueGame()
+        private IEnumerator Start()
+        {
+            yield return null;
+            BindMenu();
+        }
+
+        private void Update()
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.escapeKey.wasPressedThisFrame &&
+                _optionsOverlay != null &&
+                _optionsOverlay.style.display == DisplayStyle.Flex)
+            {
+                HideOptions();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_continueButton != null) _continueButton.clicked -= OpenGameSelect;
+            if (_newGameButton != null) _newGameButton.clicked -= OpenGameSelect;
+            if (_optionsButton != null) _optionsButton.clicked -= ShowOptions;
+            if (_exitButton != null) _exitButton.clicked -= ExitGame;
+            if (_closeOptionsButton != null) _closeOptionsButton.clicked -= HideOptions;
+        }
+
+        public void ContinueGame() => OpenGameSelect();
+
+        public void StartNewGame() => OpenGameSelect();
+
+        private void OpenGameSelect()
         {
             if (!_isLoading)
-                StartCoroutine(LoadCurrentChapter());
+                StartCoroutine(LoadGameSelect());
         }
 
-        private IEnumerator LoadCurrentChapter()
+        private IEnumerator LoadGameSelect()
         {
             _isLoading = true;
-            _continueButton.interactable = false;
-            _fadeOverlay.blocksRaycasts = true;
+            SetNavigationEnabled(false);
 
-            string targetScene = GetCurrentChapterScene();
-            if (!Application.CanStreamedLevelBeLoaded(targetScene))
+            string sceneName = string.IsNullOrWhiteSpace(gameSelectScene)
+                ? DefaultGameSelectScene
+                : gameSelectScene;
+
+            if (!Application.CanStreamedLevelBeLoaded(sceneName))
             {
-                Debug.LogError($"Cannot continue: scene '{targetScene}' is not enabled in Build Settings.");
-                _continueButton.interactable = true;
+                Debug.LogError(
+                    $"No se puede abrir el selector: la escena '{sceneName}' no está habilitada en Build Settings.",
+                    this);
+                SetNavigationEnabled(true);
                 _isLoading = false;
                 yield break;
             }
 
-            yield return FadeCanvasGroup(_fadeOverlay, 0f, 1f, fadeDuration);
-            yield return ShowChapterIntroduction();
-
-            _menuContentRoot.SetActive(false);
-            yield return SceneManager.LoadSceneAsync(targetScene, LoadSceneMode.Single);
-
-            if (postLoadHoldDuration > 0f)
-                yield return new WaitForSecondsRealtime(postLoadHoldDuration);
-
-            yield return FadeCanvasGroup(_fadeOverlay, 1f, 0f, fadeDuration);
-            Destroy(gameObject);
+            _fadeOverlay.pickingMode = PickingMode.Position;
+            yield return FadeElement(_fadeOverlay, 0f, 1f, fadeDuration);
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         }
 
-        private IEnumerator ShowChapterIntroduction()
-        {
-            _chapterContent.alpha = 1f;
-            _chapterTitleRect.localScale = Vector3.one * 0.72f;
-
-            if (chapterTitleSound != null)
-                _audioSource.PlayOneShot(chapterTitleSound, chapterTitleSoundVolume);
-
-            float elapsed = 0f;
-            while (elapsed < titlePopDuration)
-            {
-                elapsed += Time.unscaledDeltaTime;
-                float t = titlePopDuration <= 0f ? 1f : Mathf.Clamp01(elapsed / titlePopDuration);
-                float eased = 1f - Mathf.Pow(1f - t, 3f);
-                _chapterTitleRect.localScale = Vector3.one * Mathf.LerpUnclamped(0.72f, 1f, eased);
-                yield return null;
-            }
-
-            _chapterTitleRect.localScale = Vector3.one;
-            if (introductionHoldDuration > 0f)
-                yield return new WaitForSecondsRealtime(introductionHoldDuration);
-        }
-
-        private static IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float duration)
+        private static IEnumerator FadeElement(VisualElement element, float from, float to, float duration)
         {
             if (duration <= 0f)
             {
-                group.alpha = to;
+                element.style.opacity = to;
                 yield break;
             }
 
             float elapsed = 0f;
-            group.alpha = from;
+            element.style.opacity = from;
             while (elapsed < duration)
             {
                 elapsed += Time.unscaledDeltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
-                group.alpha = Mathf.Lerp(from, to, t * t * (3f - 2f * t));
+                element.style.opacity = Mathf.Lerp(from, to, t * t * (3f - 2f * t));
                 yield return null;
             }
 
-            group.alpha = to;
+            element.style.opacity = to;
         }
 
-        private string GetCurrentChapterScene()
+        private void CreateMenuDocument()
         {
-            // Save-data lookup belongs here when chapter persistence is implemented.
-            return string.IsNullOrWhiteSpace(fallbackChapterScene) ? DefaultChapterScene : fallbackChapterScene;
-        }
-
-        private void CreatePrototypeMenu()
-        {
-            EnsureEventSystem();
-
-            var canvasObject = new GameObject("Main Menu Canvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
-            canvasObject.transform.SetParent(transform, false);
-            Canvas canvas = canvasObject.GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-
-            CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1920f, 1080f);
-            scaler.matchWidthOrHeight = 0.5f;
-
-            _menuContentRoot = new GameObject("Menu Content", typeof(RectTransform));
-            _menuContentRoot.transform.SetParent(canvasObject.transform, false);
-            Stretch(_menuContentRoot.GetComponent<RectTransform>());
-
-            Image background = CreateImage("Background", _menuContentRoot.transform, new Color(0.035f, 0.045f, 0.06f, 1f));
-            Stretch(background.rectTransform);
-
-            TextMeshProUGUI title = CreateText("Title", _menuContentRoot.transform, "STORYTELL", 76, FontStyles.Bold);
-            SetAnchoredRect(title.rectTransform, new Vector2(0.5f, 0.63f), new Vector2(850f, 130f));
-
-            GameObject buttonObject = new GameObject("Continue Button", typeof(RectTransform), typeof(Image), typeof(Button));
-            buttonObject.transform.SetParent(_menuContentRoot.transform, false);
-            SetAnchoredRect(buttonObject.GetComponent<RectTransform>(), new Vector2(0.5f, 0.42f), new Vector2(420f, 92f));
-
-            Image buttonImage = buttonObject.GetComponent<Image>();
-            buttonImage.color = new Color(0.78f, 0.68f, 0.42f, 1f);
-            _continueButton = buttonObject.GetComponent<Button>();
-            _continueButton.targetGraphic = buttonImage;
-            _continueButton.onClick.AddListener(ContinueGame);
-
-            ColorBlock colors = _continueButton.colors;
-            colors.highlightedColor = new Color(0.95f, 0.84f, 0.56f, 1f);
-            colors.pressedColor = new Color(0.62f, 0.52f, 0.31f, 1f);
-            _continueButton.colors = colors;
-
-            TextMeshProUGUI label = CreateText("Label", buttonObject.transform, "CONTINUE", 34, FontStyles.Bold);
-            Stretch(label.rectTransform);
-            label.color = new Color(0.06f, 0.07f, 0.08f, 1f);
-
-            Image fadeImage = CreateImage("Scene Fade", canvasObject.transform, Color.black);
-            Stretch(fadeImage.rectTransform);
-            fadeImage.transform.SetAsLastSibling();
-            fadeImage.raycastTarget = true;
-            _fadeOverlay = fadeImage.gameObject.AddComponent<CanvasGroup>();
-            _fadeOverlay.alpha = 0f;
-            _fadeOverlay.blocksRaycasts = false;
-
-            var contentObject = new GameObject("Chapter Introduction", typeof(RectTransform), typeof(CanvasGroup));
-            contentObject.transform.SetParent(fadeImage.transform, false);
-            Stretch(contentObject.GetComponent<RectTransform>());
-            _chapterContent = contentObject.GetComponent<CanvasGroup>();
-            _chapterContent.alpha = 0f;
-
-            TextMeshProUGUI chapterTitleText = CreateText("Chapter Title", contentObject.transform, chapterTitle, 72, FontStyles.Bold);
-            _chapterTitleRect = chapterTitleText.rectTransform;
-            SetAnchoredRect(_chapterTitleRect, new Vector2(0.5f, 0.59f), new Vector2(1200f, 130f));
-
-            TextMeshProUGUI descriptionText = CreateText("Chapter Description", contentObject.transform, chapterDescription, 30, FontStyles.Normal);
-            descriptionText.color = new Color(0.78f, 0.78f, 0.78f, 1f);
-            SetAnchoredRect(descriptionText.rectTransform, new Vector2(0.5f, 0.47f), new Vector2(1000f, 100f));
-
-            TextMeshProUGUI dateText = CreateText("Chapter Date", contentObject.transform, chapterDate, 25, FontStyles.Italic);
-            dateText.color = new Color(0.58f, 0.58f, 0.58f, 1f);
-            SetAnchoredRect(dateText.rectTransform, new Vector2(0.5f, 0.38f), new Vector2(700f, 70f));
-        }
-
-        private static void EnsureEventSystem()
-        {
-            if (EventSystem.current != null)
+            VisualTreeAsset layout = Resources.Load<VisualTreeAsset>(LayoutResource);
+            if (layout == null)
+            {
+                Debug.LogError($"No se encontró Resources/{LayoutResource}.", this);
+                enabled = false;
                 return;
+            }
 
-            new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+            var settings = ScriptableObject.CreateInstance<PanelSettings>();
+            settings.name = "StoryTell Main Menu Panel";
+            settings.scaleMode = PanelScaleMode.ScaleWithScreenSize;
+            settings.referenceResolution = new Vector2Int(1920, 1080);
+            settings.screenMatchMode = PanelScreenMatchMode.MatchWidthOrHeight;
+            settings.match = 0.5f;
+
+            ThemeStyleSheet runtimeTheme = Resources.Load<ThemeStyleSheet>(RuntimeThemeResource);
+            if (runtimeTheme == null)
+            {
+                Debug.LogError($"No se encontró Resources/{RuntimeThemeResource}.", this);
+                enabled = false;
+                return;
+            }
+
+            settings.themeStyleSheet = runtimeTheme;
+
+            UIDocument document = gameObject.AddComponent<UIDocument>();
+            document.panelSettings = settings;
+            document.visualTreeAsset = layout;
+            document.sortingOrder = 100;
         }
 
-        private static Image CreateImage(string name, Transform parent, Color color)
+        private void BindMenu()
         {
-            var gameObject = new GameObject(name, typeof(RectTransform), typeof(Image));
-            gameObject.transform.SetParent(parent, false);
-            Image image = gameObject.GetComponent<Image>();
-            image.color = color;
-            return image;
+            UIDocument document = GetComponent<UIDocument>();
+            VisualElement root = document != null ? document.rootVisualElement : null;
+            if (root == null)
+            {
+                Debug.LogError("El menú principal no pudo crear su árbol visual.", this);
+                enabled = false;
+                return;
+            }
+
+            StyleSheet theme = Resources.Load<StyleSheet>(ThemeResource);
+            if (theme != null && !root.styleSheets.Contains(theme))
+                root.styleSheets.Add(theme);
+
+            Texture2D backgroundTexture = Resources.Load<Texture2D>(BackgroundResource);
+            VisualElement background = root.Q<VisualElement>(className: "main-menu__background");
+            if (background != null && backgroundTexture != null)
+                background.style.backgroundImage = new StyleBackground(backgroundTexture);
+
+            _continueButton = Require<Button>(root, "continue-button");
+            _newGameButton = Require<Button>(root, "new-game-button");
+            _optionsButton = Require<Button>(root, "options-button");
+            _exitButton = Require<Button>(root, "exit-button");
+            _closeOptionsButton = Require<Button>(root, "close-options-button");
+            _optionsOverlay = Require<VisualElement>(root, "options-overlay");
+            _fadeOverlay = Require<VisualElement>(root, "fade-overlay");
+            _volumeSlider = Require<Slider>(root, "volume-slider");
+            _fullscreenToggle = Require<Toggle>(root, "fullscreen-toggle");
+
+            if (!enabled) return;
+
+            _continueButton.clicked += OpenGameSelect;
+            _newGameButton.clicked += OpenGameSelect;
+            _optionsButton.clicked += ShowOptions;
+            _exitButton.clicked += ExitGame;
+            _closeOptionsButton.clicked += HideOptions;
+            _volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
+            _fullscreenToggle.RegisterValueChangedCallback(OnFullscreenChanged);
+
+            LoadPreferences();
+            _optionsOverlay.style.display = DisplayStyle.None;
+            _optionsOverlay.pickingMode = PickingMode.Ignore;
+            _fadeOverlay.style.opacity = 0f;
+            _fadeOverlay.pickingMode = PickingMode.Ignore;
+            _continueButton.Focus();
         }
 
-        private static TextMeshProUGUI CreateText(string name, Transform parent, string value, float size, FontStyles style)
+        private T Require<T>(VisualElement root, string name) where T : VisualElement
         {
-            var gameObject = new GameObject(name, typeof(RectTransform), typeof(TextMeshProUGUI));
-            gameObject.transform.SetParent(parent, false);
-            TextMeshProUGUI text = gameObject.GetComponent<TextMeshProUGUI>();
-            text.text = value;
-            text.fontSize = size;
-            text.fontStyle = style;
-            text.alignment = TextAlignmentOptions.Center;
-            text.color = Color.white;
-            text.raycastTarget = false;
-            return text;
+            T element = root.Q<T>(name);
+            if (element == null)
+            {
+                Debug.LogError($"Falta el elemento '{name}' en el menú principal.", this);
+                enabled = false;
+            }
+
+            return element;
         }
 
-        private static void Stretch(RectTransform rect)
+        private void LoadPreferences()
         {
-            rect.anchorMin = Vector2.zero;
-            rect.anchorMax = Vector2.one;
-            rect.offsetMin = Vector2.zero;
-            rect.offsetMax = Vector2.zero;
+            float volume = PlayerPrefs.GetFloat(VolumePreference, AudioListener.volume);
+            bool fullscreen = PlayerPrefs.GetInt(FullscreenPreference, Screen.fullScreen ? 1 : 0) == 1;
+            _volumeSlider.SetValueWithoutNotify(volume);
+            _fullscreenToggle.SetValueWithoutNotify(fullscreen);
+            AudioListener.volume = volume;
         }
 
-        private static void SetAnchoredRect(RectTransform rect, Vector2 anchor, Vector2 size)
+        private void ShowOptions()
         {
-            rect.anchorMin = anchor;
-            rect.anchorMax = anchor;
-            rect.pivot = new Vector2(0.5f, 0.5f);
-            rect.anchoredPosition = Vector2.zero;
-            rect.sizeDelta = size;
+            _optionsOverlay.style.display = DisplayStyle.Flex;
+            _optionsOverlay.pickingMode = PickingMode.Position;
+            _volumeSlider.Focus();
+        }
+
+        private void HideOptions()
+        {
+            _optionsOverlay.style.display = DisplayStyle.None;
+            _optionsOverlay.pickingMode = PickingMode.Ignore;
+            _optionsButton.Focus();
+        }
+
+        private static void OnVolumeChanged(ChangeEvent<float> evt)
+        {
+            AudioListener.volume = evt.newValue;
+            PlayerPrefs.SetFloat(VolumePreference, evt.newValue);
+            PlayerPrefs.Save();
+        }
+
+        private static void OnFullscreenChanged(ChangeEvent<bool> evt)
+        {
+            Screen.fullScreen = evt.newValue;
+            PlayerPrefs.SetInt(FullscreenPreference, evt.newValue ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+
+        private void SetNavigationEnabled(bool value)
+        {
+            _continueButton?.SetEnabled(value);
+            _newGameButton?.SetEnabled(value);
+            _optionsButton?.SetEnabled(value);
+            _exitButton?.SetEnabled(value);
+        }
+
+        private static void ExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }

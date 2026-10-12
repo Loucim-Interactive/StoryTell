@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="screen notebook-screen">
+        <ui:Image name="notebook-background" class="notebook-screen__background" picking-mode="Ignore" />
+        <ui:VisualElement class="notebook-layout">
+            <ui:VisualElement class="notebook-page notebook-page--left">
+                <ui:Label text="PROYECTO&#10;HISTORIA" class="notebook-title stencil" />
+                <ui:Image name="campaign-photo" class="campaign-photo" picking-mode="Ignore" />
+                <ui:Label text="CAMPAÑA DISPONIBLE" class="campaign-status stencil" />
+            </ui:VisualElement>
+            <ui:VisualElement class="notebook-page notebook-page--right">
+                <ui:Label text="GUERRA DE&#10;MALVINAS" class="campaign-title stencil" />
+                <ui:Label text="1982 · ATLÁNTICO SUR" class="campaign-subtitle stencil" />
+                <ui:Label text="Viví la historia desde la perspectiva de un soldado argentino destinado en las islas." class="campaign-description" />
+                <ui:Button name="start-button" text="COMENZAR" class="notebook-action notebook-action--primary stencil" />
+                <ui:Button name="back-button" text="VOLVER" class="paper-link stencil" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="fade-overlay" class="fade-overlay">
+            <ui:VisualElement name="chapter-content" class="chapter-introduction">
+                <ui:Label name="chapter-title" text="ESCENA 1" class="chapter-introduction__title stencil" />
+                <ui:Label name="chapter-description" text="TRINCHERA ARGENTINA" class="chapter-introduction__description stencil" />
+                <ui:Label name="chapter-date" text="17:38 · ATLÁNTICO SUR · 1982" class="chapter-introduction__date" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

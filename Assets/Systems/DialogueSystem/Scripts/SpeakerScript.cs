@@ -19,15 +19,21 @@ namespace DialogueSystem.Scripts {
         public void Speak() {
             if (!_dialogueManagerScript ||
                 _dialogueManagerScript.IsInConversation ||
-                _conversationSos == null || _convIndex >= _conversationSos.Length) return;
+                (_spokenAlready && !_canRestart) ||
+                _conversationSos == null || _conversationSos.Length == 0) return;
+
+            if (_convIndex >= _conversationSos.Length)
+                _convIndex = 0;
 
             ConversationSO conversation = _conversationSos[_convIndex];
             if (!conversation) return;
 
             if (_dialogueManagerScript.TryStartConversation(conversation, this)) {
-                _spokenAlready = true;
-                if (_conversationSos.Length > 1)
-                    _convIndex++;
+                _convIndex++;
+                if (_convIndex >= _conversationSos.Length) {
+                    _spokenAlready = true;
+                    if (_canRestart) _convIndex = 0;
+                }
             }
         }
 

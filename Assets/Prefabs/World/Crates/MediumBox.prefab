@@ -163,4 +163,4 @@ MonoBehaviour:
   ChestLid: {fileID: 0}
   hingeAmount: 90
   lidSpeed: 5
-  canOpen: 1
+  canOpen: 0

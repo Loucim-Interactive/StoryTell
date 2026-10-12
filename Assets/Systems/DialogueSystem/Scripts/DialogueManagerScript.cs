@@ -30,8 +30,8 @@ namespace Systems.DialogueSystem.Scripts
                 return;
             }
             Instance = this;
-            if (!uiDialogueScript) uiDialogueScript = FindFirstObjectByType<UIDialogueScript>();
-            if (!decisionManager) decisionManager = FindFirstObjectByType<DecisionManagerScript>();
+            if (!uiDialogueScript) uiDialogueScript = FindAnyObjectByType<UIDialogueScript>();
+            if (!decisionManager) decisionManager = FindAnyObjectByType<DecisionManagerScript>();
             if (uiDialogueScript) uiDialogueScript.CleanTexts();
         }
 
@@ -59,10 +59,10 @@ namespace Systems.DialogueSystem.Scripts
             if (!isActiveAndEnabled || IsInConversation || !conversation || !uiDialogueScript) return false;
 
             // Both systems share subtitles and choices. Let an active radio call finish first.
-            WalkieInteractionMachine radio = FindFirstObjectByType<WalkieInteractionMachine>();
+            WalkieInteractionMachine radio = FindAnyObjectByType<WalkieInteractionMachine>();
             if (radio && !radio.IsFinished) return false;
 
-            if (!decisionManager) decisionManager = FindFirstObjectByType<DecisionManagerScript>();
+            if (!decisionManager) decisionManager = FindAnyObjectByType<DecisionManagerScript>();
             if (decisionManager && decisionManager.HasPresenter && !decisionManager.TryAcquire(this)) return false;
 
             StopThought();

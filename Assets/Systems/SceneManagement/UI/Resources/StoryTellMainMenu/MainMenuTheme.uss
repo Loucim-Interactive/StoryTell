@@ -1,0 +1,424 @@
+.screen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-grow: 1;
+}
+
+.stencil {
+    -unity-font-definition: url("project://database/Assets/Systems/SceneManagement/UI/Resources/StoryTellMainMenu/BlackOpsOne-Regular.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 2px;
+}
+
+.main-menu {
+    overflow: hidden;
+    background-color: rgb(8, 7, 6);
+    color: rgb(228, 222, 203);
+}
+
+.main-menu__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.main-menu__atmosphere {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(35, 27, 19, 0.16);
+}
+
+.main-menu__shade {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 56%;
+    background-color: rgba(3, 3, 3, 0.76);
+    border-right-width: 2px;
+    border-right-color: rgba(178, 148, 73, 0.22);
+}
+
+.main-menu__content {
+    position: absolute;
+    left: 5.2%;
+    top: 6%;
+    bottom: 5%;
+    width: 90%;
+}
+
+.main-menu__title {
+    max-width: none;
+    color: rgb(225, 222, 210);
+    font-size: 106px;
+    letter-spacing: 9px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.8);
+    -unity-text-outline-width: 2px;
+}
+
+.main-menu__eyebrow {
+    position: absolute;
+    top: 126px;
+    color: rgb(196, 164, 83);
+    font-size: 19px;
+    letter-spacing: 8px;
+}
+
+.main-menu__motto {
+    position: absolute;
+    top: 176px;
+    color: rgba(220, 214, 196, 0.5);
+    font-size: 12px;
+    letter-spacing: 6px;
+}
+
+.main-menu__navigation {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 520px;
+}
+
+.menu-button {
+    height: 78px;
+    margin-bottom: 14px;
+    padding-left: 22px;
+    border-width: 0;
+    border-left-width: 3px;
+    border-left-color: transparent;
+    border-radius: 0;
+    background-color: rgba(7, 7, 7, 0.14);
+    color: rgb(184, 184, 178);
+    font-size: 40px;
+    -unity-text-align: middle-left;
+    transition-property: color, background-color, border-left-color, translate;
+    transition-duration: 0.14s;
+    flex-shrink: 0;
+}
+
+.menu-button:hover,
+.menu-button:focus {
+    translate: 10px 0;
+    color: rgb(233, 209, 135);
+    background-color: rgba(37, 31, 18, 0.68);
+    border-left-color: rgb(190, 157, 76);
+}
+
+.menu-button:active {
+    translate: 14px 1px;
+    color: rgb(255, 234, 161);
+}
+
+.menu-button--primary {
+    color: rgb(216, 190, 108);
+}
+
+.menu-button:disabled {
+    opacity: 0.3;
+    translate: 0 0;
+}
+
+.main-menu__footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: rgba(222, 214, 190, 0.48);
+    font-size: 13px;
+    letter-spacing: 5px;
+}
+
+.modal-overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.78);
+}
+
+.modal-card {
+    width: 620px;
+    height: 500px;
+    padding: 54px;
+}
+
+.dossier-card {
+    background-color: rgb(199, 174, 116);
+    border-width: 2px;
+    border-color: rgb(77, 64, 37);
+    color: rgb(43, 38, 24);
+}
+
+.modal-card__title {
+    margin-bottom: 38px;
+    color: rgb(62, 65, 29);
+    font-size: 48px;
+}
+
+.field-label {
+    margin-bottom: 12px;
+    color: rgb(70, 63, 34);
+    font-size: 18px;
+}
+
+.field-slider,
+.field-toggle-row {
+    margin-bottom: 30px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.field-slider {
+    height: 72px;
+    color: rgb(43, 38, 24);
+}
+
+.field-slider .unity-base-field__label {
+    min-width: 190px;
+    color: rgb(43, 38, 24);
+    font-size: 18px;
+}
+
+.field-slider .unity-base-slider__tracker {
+    height: 8px;
+    border-width: 1px;
+    border-color: rgb(78, 67, 39);
+    background-color: rgba(68, 68, 32, 0.18);
+}
+
+.field-slider .unity-base-slider__dragger {
+    width: 22px;
+    height: 28px;
+    border-width: 1px;
+    border-color: rgb(58, 51, 28);
+    background-color: rgb(87, 87, 45);
+}
+
+.field-toggle-row {
+    height: 52px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.field-toggle {
+    width: 34px;
+    height: 34px;
+    color: rgb(43, 38, 24);
+}
+
+.field-toggle-label {
+    margin-left: 14px;
+    color: rgb(43, 38, 24);
+    font-size: 18px;
+}
+
+.field-toggle .unity-toggle__input {
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+    border-width: 1px;
+    border-color: rgb(78, 67, 39);
+    background-color: rgba(68, 68, 32, 0.12);
+}
+
+.field-toggle:checked .unity-toggle__input {
+    background-color: rgb(87, 87, 45);
+}
+
+.paper-button {
+    height: 58px;
+    margin-top: 16px;
+    border-width: 1px;
+    border-color: rgb(78, 67, 39);
+    border-radius: 0;
+    background-color: rgba(68, 68, 32, 0.15);
+    color: rgb(52, 50, 27);
+    font-size: 24px;
+}
+
+.paper-button:hover,
+.paper-button:focus {
+    background-color: rgba(68, 68, 32, 0.34);
+}
+
+.fade-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+}
+
+.chapter-introduction {
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.chapter-introduction__title {
+    color: rgb(229, 225, 211);
+    font-size: 74px;
+    letter-spacing: 8px;
+    -unity-text-align: middle-center;
+}
+
+.chapter-introduction__description {
+    margin-top: 28px;
+    color: rgb(190, 161, 86);
+    font-size: 27px;
+    letter-spacing: 6px;
+    -unity-text-align: middle-center;
+}
+
+.chapter-introduction__date {
+    margin-top: 18px;
+    color: rgba(225, 220, 204, 0.58);
+    font-size: 17px;
+    letter-spacing: 4px;
+    -unity-text-align: middle-center;
+}
+
+.notebook-screen {
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(4, 3, 2);
+    color: rgb(61, 59, 34);
+}
+
+.notebook-screen__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    scale: 1.45 1;
+}
+
+.notebook-layout {
+    width: 80%;
+    height: 80%;
+    margin-top: 1%;
+    flex-direction: row;
+}
+
+.notebook-page {
+    width: 50%;
+    padding: 42px 70px;
+}
+
+.notebook-page--left {
+    padding-right: 94px;
+}
+
+.notebook-page--right {
+    padding-left: 94px;
+    align-items: center;
+}
+
+.notebook-title {
+    color: rgb(68, 75, 25);
+    font-size: 86px;
+    letter-spacing: 5px;
+    -unity-text-align: middle-center;
+}
+
+.campaign-photo {
+    height: 300px;
+    margin-top: 54px;
+    margin-left: 12px;
+    margin-right: 12px;
+    rotate: -1.2deg;
+}
+
+.campaign-status {
+    margin-top: 22px;
+    color: rgba(75, 66, 36, 0.72);
+    font-size: 15px;
+    letter-spacing: 4px;
+    -unity-text-align: middle-center;
+}
+
+.campaign-title {
+    margin-top: 14px;
+    margin-bottom: 22px;
+    color: rgb(112, 117, 104);
+    font-size: 68px;
+    letter-spacing: 4px;
+    -unity-text-align: middle-center;
+}
+
+.campaign-subtitle {
+    margin-bottom: 34px;
+    color: rgba(75, 66, 36, 0.72);
+    font-size: 15px;
+    letter-spacing: 4px;
+    -unity-text-align: middle-center;
+}
+
+.campaign-description {
+    width: 480px;
+    margin-bottom: 52px;
+    color: rgb(71, 61, 39);
+    font-size: 22px;
+    white-space: normal;
+    -unity-text-align: upper-center;
+}
+
+.notebook-action {
+    width: 480px;
+    height: 74px;
+    margin-bottom: 22px;
+    border-width: 0;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: rgba(82, 73, 40, 0.28);
+    border-radius: 0;
+    background-color: rgba(89, 82, 46, 0.04);
+    color: rgb(66, 73, 31);
+    font-size: 40px;
+    transition-property: color, background-color, translate;
+    transition-duration: 0.14s;
+}
+
+.notebook-action:hover,
+.notebook-action:focus {
+    translate: 6px 0;
+    color: rgb(105, 77, 30);
+    background-color: rgba(98, 75, 29, 0.12);
+}
+
+.paper-link {
+    min-width: 150px;
+    height: 48px;
+    border-width: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: rgba(76, 70, 46, 0.72);
+    font-size: 17px;
+}
+
+.paper-link:hover,
+.paper-link:focus {
+    color: rgb(77, 70, 28);
+    background-color: rgba(89, 82, 46, 0.1);
+}
+

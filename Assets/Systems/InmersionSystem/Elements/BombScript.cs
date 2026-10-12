@@ -21,7 +21,7 @@ namespace Systems.InmersionSystem.Elements {
             }
 
             if (handler == null) {
-                handler = FindFirstObjectByType<InmersionHandlerScript>();
+                handler = FindAnyObjectByType<InmersionHandlerScript>();
             }
         }
 

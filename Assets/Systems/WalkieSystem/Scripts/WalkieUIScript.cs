@@ -37,9 +37,9 @@ namespace Systems.WalkieSystem.Scripts {
         private int _displayedRequestVersion = -1;
 
         private void Start() {
-            if (!_state) _state = FindFirstObjectByType<WalkieInteractionMachine>();
-            if (!decisionManager) decisionManager = FindFirstObjectByType<DecisionManagerScript>();
-            if (!walkieTalkie) walkieTalkie = FindFirstObjectByType<WalkieTalkieScript>();
+            if (!_state) _state = FindAnyObjectByType<WalkieInteractionMachine>();
+            if (!decisionManager) decisionManager = FindAnyObjectByType<DecisionManagerScript>();
+            if (!walkieTalkie) walkieTalkie = FindAnyObjectByType<WalkieTalkieScript>();
             if (!timer && timerPanel) timer = timerPanel.GetComponentInChildren<WalkieTimer>(true);
             if (!timer && timerPanel) timer = timerPanel.AddComponent<WalkieTimer>();
             if (!choicesContent) choicesContent = choicesPanel;

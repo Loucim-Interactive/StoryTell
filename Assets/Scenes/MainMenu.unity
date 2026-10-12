@@ -300,16 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f950daf4364c948aaf5e39bc4642b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallbackChapterScene: Level1
-  chapterTitle: Capitulo 1
-  chapterDescription: El comienzo.
-  chapterDate: 1982
-  chapterTitleSound: {fileID: 8300000, guid: 40fde15bcc5d5ff489a060bf110c9474, type: 3}
-  chapterTitleSoundVolume: 1
-  fadeDuration: 3
-  titlePopDuration: 1
-  introductionHoldDuration: 3.5
-  postLoadHoldDuration: 2
+  gameSelectScene: GameSelect
+  fadeDuration: 0.35
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="screen main-menu">
+        <ui:VisualElement class="main-menu__background" />
+        <ui:VisualElement class="main-menu__atmosphere" />
+        <ui:VisualElement class="main-menu__shade" />
+
+        <ui:VisualElement name="menu-content" class="main-menu__content">
+            <ui:Label text="STORYTELL" class="main-menu__title stencil" />
+            <ui:Label text="ATLÁNTICO SUR · 1982" class="main-menu__eyebrow stencil" />
+            <ui:Label text="MEMORIA · MIEDO · HUMANIDAD" class="main-menu__motto" />
+
+            <ui:VisualElement class="main-menu__navigation">
+                <ui:Button name="continue-button" text="CONTINUAR" class="menu-button menu-button--primary stencil" />
+                <ui:Button name="new-game-button" text="NUEVA PARTIDA" class="menu-button stencil" />
+                <ui:Button name="options-button" text="OPCIONES" class="menu-button stencil" />
+                <ui:Button name="exit-button" text="SALIR" class="menu-button stencil" />
+            </ui:VisualElement>
+
+            <ui:Label text="UNA HISTORIA SOBRE LA GUERRA DE MALVINAS" class="main-menu__footer" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="options-overlay" class="modal-overlay" focusable="true">
+            <ui:VisualElement class="modal-card dossier-card">
+                <ui:Label text="OPCIONES" class="modal-card__title stencil" />
+                <ui:Label text="AUDIO" class="field-label stencil" />
+                <ui:Slider name="volume-slider" label="Volumen general" low-value="0" high-value="1" value="1" class="field-slider" />
+                <ui:VisualElement class="field-toggle-row">
+                    <ui:Toggle name="fullscreen-toggle" class="field-toggle" />
+                    <ui:Label text="PANTALLA COMPLETA" class="field-toggle-label stencil" />
+                </ui:VisualElement>
+                <ui:Button name="close-options-button" text="VOLVER" class="paper-button stencil" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="fade-overlay" class="fade-overlay">
+            <ui:VisualElement name="chapter-content" class="chapter-introduction">
+                <ui:Label name="chapter-title" text="ESCENA 1" class="chapter-introduction__title stencil" />
+                <ui:Label name="chapter-description" text="TRINCHERA ARGENTINA" class="chapter-introduction__description stencil" />
+                <ui:Label name="chapter-date" text="17:38 · ATLÁNTICO SUR · 1982" class="chapter-introduction__date" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

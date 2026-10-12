@@ -48,7 +48,7 @@ namespace Systems.WalkieSystem.Scripts {
             if (!callerAudioSource)
                 callerAudioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
             if (!dialogueManager)
-                dialogueManager = FindFirstObjectByType<DialogueManagerScript>();
+                dialogueManager = FindAnyObjectByType<DialogueManagerScript>();
         }
 
         private void OnEnable() => GameEventBus.Subscribe<WalkieDecisionAsset>(GameplayEvents.WalkieTalkieTrigger, BeginInteraction);
