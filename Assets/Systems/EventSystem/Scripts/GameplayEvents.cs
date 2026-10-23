@@ -11,6 +11,8 @@ namespace Systems.EventSystem.Scripts {
         StateThought,
         InteractableAction,
         VFX,
+        WalkieTalkieTrigger,
+        EquipAction
     }
 
     public static class GameplayEvents
@@ -26,6 +28,8 @@ namespace Systems.EventSystem.Scripts {
         public const string StateThought = "stateThought";
         public const string VFX = "vfx";
         public const string WalkieTalkieTrigger = "walkieTalkie.trigger";
+        public const string EquipAction = "equip.action";
+
 
         public static string GetName(GameplayEventType eventType) {
             switch (eventType) {
@@ -49,6 +53,8 @@ namespace Systems.EventSystem.Scripts {
                     return InteractAction;
                 case GameplayEventType.VFX:
                     return VFX;
+                case GameplayEventType.WalkieTalkieTrigger:
+                    return WalkieTalkieTrigger;
                 default:
                     return string.Empty;
             }

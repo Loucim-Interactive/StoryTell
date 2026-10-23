@@ -72,7 +72,7 @@ namespace InmersionSystem.Ambient.Effects {
             }
 
             breathParticles.Play();
-
+    
             if (audioSource && config.exhaleSound)
                 audioSource.PlayOneShot(config.exhaleSound, config.exhaleVolume);
         }
