@@ -126,7 +126,7 @@ namespace StoryTell.GameplayPath
             ConversationSO conversation = GetConversation(action);
             if (conversation != null) { sequence = StartCoroutine(Talk(conversation, action)); return false; }
             if (action == PathAction.Ruben && Progress.Stage == PathStage.FindLetter)
-                Notice($"Recuperaste {Progress.Fragments}/4. Mirá sobre las cajas, junto al banco y cerca de la lona de la cocina.", 8);
+                Notice($"Recuperaste {Progress.Fragments}/4. Mirá sobre las cajas a los costados de la cocina y cerca del cartel.", 8);
             else Notice(Objective);
             return false;
         }
