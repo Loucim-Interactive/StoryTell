@@ -15,6 +15,7 @@ namespace StoryTell.Weapons
         [SerializeField] private WeaponCondition condition;
         [SerializeField] private Camera firingCamera;
         [SerializeField] private LayerMask hitMask = ~0;
+        [SerializeField] private Level1WeaponTrial useRestriction;
 
         [Header("View")]
         [SerializeField] private GameObject weaponVisual;
@@ -58,7 +59,9 @@ namespace StoryTell.Weapons
         private float nextFireTime;
         private float defaultFieldOfView = 60f;
         private bool isAiming;
+        private readonly RaycastHit[] shotHits = new RaycastHit[64];
 
+        public event Action ShotFired;
         public event Action<WeaponState> StateChanged;
         public event Action<int> MagazineRoundsChanged;
         public event Action<RaycastHit> ShotHit;
@@ -190,7 +193,7 @@ namespace StoryTell.Weapons
 
         public WeaponFireResult TryFire()
         {
-            if (!inputEnabled || definition == null ||
+            if ((useRestriction != null && !useRestriction.CanUseWeapon) || !inputEnabled || definition == null ||
                 (State != WeaponState.Ready && State != WeaponState.Aiming))
                 return WeaponFireResult.NotReady;
 
@@ -227,6 +230,7 @@ namespace StoryTell.Weapons
             onShot?.Invoke();
             PerformHitscan(wasAiming);
             SetState(wasAiming ? WeaponState.Aiming : WeaponState.Ready);
+            ShotFired?.Invoke();
             return WeaponFireResult.Fired;
         }
 
@@ -275,7 +279,7 @@ namespace StoryTell.Weapons
 
         public bool BeginClearJam()
         {
-            if (!inputEnabled || definition == null || State != WeaponState.Jammed)
+            if ((useRestriction != null && !useRestriction.CanUseWeapon) || !inputEnabled || definition == null || State != WeaponState.Jammed)
                 return false;
 
             SetState(WeaponState.ClearingJam);
@@ -321,9 +325,16 @@ namespace StoryTell.Weapons
                                  firingCamera.transform.right * offset.x +
                                  firingCamera.transform.up * offset.y).normalized;
 
-            if (!Physics.Raycast(firingCamera.transform.position, direction, out RaycastHit hit,
-                    definition.Range, hitMask, QueryTriggerInteraction.Ignore))
-                return;
+            int count = Physics.RaycastNonAlloc(firingCamera.transform.position, direction, shotHits,
+                definition.Range, hitMask, QueryTriggerInteraction.Ignore);
+            RaycastHit hit = default;
+            float nearest = float.PositiveInfinity;
+            for (int i = 0; i < count; i++)
+            {
+                if (shotHits[i].collider.transform.IsChildOf(transform.root) || shotHits[i].distance >= nearest) continue;
+                hit = shotHits[i]; nearest = hit.distance;
+            }
+            if (float.IsPositiveInfinity(nearest)) return;
 
             onImpact?.Invoke();
             ShotHit?.Invoke(hit);
@@ -349,7 +360,7 @@ namespace StoryTell.Weapons
 
         private void UpdateAimPresentation()
         {
-            if (definition == null)
+            if (definition == null || !IsEquipped)
                 return;
 
             float speed = definition.AimTransitionSpeed * Time.deltaTime;

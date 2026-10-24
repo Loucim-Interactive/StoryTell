@@ -1,0 +1,34 @@
+{
+    "name": "Level1MapInput",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "b175d5d1-3594-45eb-a027-7c6976c1b6d4",
+            "actions": [
+                {
+                    "name": "ToggleMap",
+                    "type": "Button",
+                    "id": "03770589-12fd-451b-b916-e2af35cd5059",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "de2adf67-8dce-4aaa-8e50-c4dac5035f5c",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

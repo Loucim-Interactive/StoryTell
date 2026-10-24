@@ -19,6 +19,28 @@ public class PhysicalMapController : MonoBehaviour
     [SerializeField] private bool autoFindMainCamera = true;
     [SerializeField] private bool keyboardInputEnabled = true;
 
+#if ENABLE_INPUT_SYSTEM
+    [Header("Input System")]
+    [SerializeField] private InputActionReference toggleMapAction;
+    private bool enabledToggleAction;
+    public InputActionReference ToggleMapAction => toggleMapAction;
+
+    private void OnEnable()
+    {
+        if (toggleMapAction == null || toggleMapAction.action == null) return;
+        enabledToggleAction = !toggleMapAction.action.enabled;
+        if (enabledToggleAction) toggleMapAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (enabledToggleAction && toggleMapAction != null && toggleMapAction.action != null)
+            toggleMapAction.action.Disable();
+        enabledToggleAction = false;
+        if (physicsController != null) SetOpenInternal(false, true, true);
+    }
+#endif
+
     private MapPhysicsController physicsController;
     private PaperDeformationController deformationController;
     private MapWindReceiver windReceiver;
@@ -267,6 +289,9 @@ public class PhysicalMapController : MonoBehaviour
     private bool WasMapKeyPressed()
     {
 #if ENABLE_INPUT_SYSTEM
+        if (toggleMapAction != null && toggleMapAction.action != null)
+            return toggleMapAction.action.WasPressedThisFrame();
+
         Keyboard keyboard = Keyboard.current;
         if (keyboard != null && Enum.TryParse(settings.mapKey.ToString(), true, out Key key))
         {

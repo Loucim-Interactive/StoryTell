@@ -39,6 +39,8 @@ public class MapPhysicsController : MonoBehaviour
         if (mapRigidbody == null)
             mapRigidbody = GetComponent<Rigidbody>();
 
+        if (mapRigidbody.isKinematic) return;
+
         mapRigidbody.linearVelocity = Vector3.zero;
         mapRigidbody.angularVelocity = Vector3.zero;
     }
