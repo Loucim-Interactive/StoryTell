@@ -19,6 +19,7 @@ namespace Systems.InteractionSystem.Scripts {
         
         private bool _disabledCollidersForSubInteractions;
         
+        public virtual bool UsesExternalPrompt => false;
         public bool HasSubInteractions => subInteractions;
         public bool InspectInteractable => inspectInteraction;
         public bool FocusInteraction => focusInteraction;

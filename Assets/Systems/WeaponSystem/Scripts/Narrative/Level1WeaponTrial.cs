@@ -23,15 +23,34 @@ namespace StoryTell.Weapons
         [SerializeField] private TMP_Text status, completion;
         [SerializeField] private Image darkness;
         [SerializeField] private WeaponSprayStress stress = new();
-        private bool collected, inspecting, ended;
+        [Header("Presentation")]
+        [SerializeField] private WeaponVignetteGraphic vignette;
+        [SerializeField] private TMP_Text hint;
+        [SerializeField] private CanvasGroup combatHUD, completionGroup;
+        [SerializeField] private GameObject ammoPanel;
+        [SerializeField, Min(1)] private int finalizationShots = 20;
+        [SerializeField, Min(0.1f)] private float fadeDuration = 1.3f;
+        [SerializeField, Min(0)] private float blackPause = 0.45f;
+        [SerializeField, Min(0.1f)] private float titleFadeDuration = 0.75f;
+        [SerializeField, Range(0, 1)] private float peripheralDarkness = 1;
+        [Tooltip("Disable when an external input context owns the pointer, for example touch controls.")]
+        [SerializeField] private bool requireLockedPointer = true;
+
+        private bool collected, inspecting, ended, finishing, controlsLocked;
+        private bool mapWasEnabled, movementWasEnabled, interactionWasEnabled;
+        private float endingTime, finalAlpha, hintUntil, noticeUntil;
+        private string notice;
         private int shots;
         public WeaponController Weapon => weapon;
         public bool HasRifle => collected;
         public bool Completed => ended;
+        public bool IsFinishing => finishing;
         public int ShotsFired => shots;
-        public float Darkness => stress.Darkness;
-        public bool CanUseWeapon => collected && !ended && !inspecting && (map == null || !map.IsOpen)
-            && Cursor.lockState == CursorLockMode.Locked && IsInsideZone;
+        public int FinalizationShots => finalizationShots;
+        public float Darkness => Mathf.Max(stress.Darkness * peripheralDarkness, finalAlpha);
+        public float CentralDarkness => finalAlpha;
+        public bool CanUseWeapon => collected && !finishing && !inspecting && (map == null || !map.IsOpen)
+            && (!requireLockedPointer || Cursor.lockState == CursorLockMode.Locked) && IsInsideZone;
         public bool IsInsideZone
         {
             get
@@ -53,57 +72,115 @@ namespace StoryTell.Weapons
             if (weapon != null) weapon.ShotFired -= OnShot;
             GameEventBus.Unsubscribe<GameObject>(GameplayEvents.StartInspection, BeginInspect);
             GameEventBus.Unsubscribe(GameplayEvents.EndInspection, EndInspect);
+            // Restore only the controls this component disabled if its owner is removed at runtime.
+            if (controlsLocked)
+            {
+                if (movement != null) movement.enabled = movementWasEnabled;
+                if (interaction != null) interaction.enabled = interactionWasEnabled;
+                if (map != null) map.enabled = mapWasEnabled;
+                if (look != null) look.SetInputLocked(false);
+                controlsLocked = false;
+            }
         }
         private void BeginInspect(GameObject _) { inspecting = true; weapon.SetAim(false); }
         private void EndInspect() { inspecting = false; }
         public bool CollectRifle()
         {
-            if (collected || ended || !IsInsideZone) return false;
+            if (collected || finishing || !IsInsideZone) return false;
             collected = true;
-            // Preserve any ammunition collected before the rifle.
             weapon.Equip();
             weapon.SetInputEnabled(true);
+            hintUntil = Time.unscaledTime + 9;
+            ShowNotice("FN FAL recogido", 2);
             return true;
         }
-        public bool CollectAmmunition(int count)
+        public bool CollectAmmunition(int count) => CollectMagazineCount(count) > 0;
+        public int CollectMagazineCount(int count)
         {
-            return !ended && weapon.MagazineInventory.AddFullMagazines(count) > 0;
+            if (finishing) return 0;
+            int added = weapon.MagazineInventory.AddFullMagazines(count);
+            ShowNotice(added > 0 ? $"+{added} cargadores" : "No podés llevar más cargadores", 2);
+            return added;
         }
+        private void ShowNotice(string value, float duration) { notice = value; noticeUntil = Time.unscaledTime + duration; }
         private void Start()
         {
             weapon.BeginSequence(weapon.Definition.MagazineCapacity, 0);
             weapon.EndSequence();
             completion.gameObject.SetActive(false);
+            if (completionGroup != null) completionGroup.alpha = 0;
         }
         private void OnShot()
         {
             shots++;
             stress.RecordShot(Time.time);
-            if (stress.Completed) EndScene();
+            // Story progression is persistent; temporary spray stress may recover between shots.
+            if (shots >= Mathf.Max(1, finalizationShots))
+            {
+                finishing = true;
+                weapon.SetInputEnabled(false);
+                if (map != null) map.SetOpen(false, true);
+            }
         }
-        private void EndScene()
+        private void UpdateEnding()
         {
-            ended = true;
-            // Defer holstering until TryFire has finished resolving its final shot.
-            completion.gameObject.SetActive(true);
-            if (map != null) { map.SetOpen(false, true); map.enabled = false; }
-            movement.enabled = false;
-            look.SetInputLocked(true);
-            interaction.enabled = false;
+            if (!finishing || ended) return;
+            endingTime += Time.unscaledDeltaTime;
+            finalAlpha = Mathf.SmoothStep(0, 1, Mathf.Clamp01(endingTime / Mathf.Max(0.1f, fadeDuration)));
+            if (finalAlpha >= 0.995f && !controlsLocked)
+            {
+                controlsLocked = true;
+                movementWasEnabled = movement.enabled; movement.enabled = false;
+                interactionWasEnabled = interaction.enabled; interaction.enabled = false;
+                mapWasEnabled = map != null && map.enabled;
+                if (map != null) { map.SetOpen(false, true); map.enabled = false; }
+                look.SetInputLocked(true);
+                weapon.EndSequence();
+            }
+            float titleTime = endingTime - fadeDuration - blackPause;
+            if (titleTime >= 0)
+            {
+                completion.gameObject.SetActive(true);
+                if (completionGroup != null) completionGroup.alpha = Mathf.SmoothStep(0, 1, Mathf.Clamp01(titleTime / Mathf.Max(0.1f, titleFadeDuration)));
+                ended = titleTime >= titleFadeDuration;
+            }
         }
         private void Update()
         {
             stress.Tick(Time.time, Time.deltaTime);
-            if (ended && weapon.IsEquipped) weapon.EndSequence();
-            Color color = Color.black; color.a = stress.Darkness; darkness.color = color;
-            bool visible = collected && !ended && !inspecting && (map == null || !map.IsOpen);
+            UpdateEnding();
+            if (vignette != null) vignette.Intensity = stress.Darkness * peripheralDarkness;
+            Color color = Color.black; color.a = finalAlpha; darkness.color = color;
+            bool visible = collected && finalAlpha < 0.995f && !inspecting && (map == null || !map.IsOpen);
             heldVisual.SetActive(visible);
             viewCamera.enabled = visible;
             viewCamera.fieldOfView = firingCamera.fieldOfView;
-            status.text = ended ? "" : !collected ? "PRUEBA DE ARMAS\nBuscá el FAL y los cargadores en el piso, junto al inicio.\nMirá el objeto y pulsá ESPACIO para recogerlo." :
-                $"FN FAL    {weapon.RoundsInMagazine:00} / {weapon.MagazineInventory.TotalReserveRounds:00}\n" +
-                (weapon.State == WeaponState.Jammed ? "ENCASQUILLADA · R para destrabar" : weapon.State == WeaponState.Reloading ? "Recargando…" : weapon.State == WeaponState.ClearingJam ? "Destrabando…" : !IsInsideZone ? "Volvé a la zona de prueba para disparar" : map != null && map.IsOpen ? "Cerrá el mapa para usar el arma" :
-                "CLIC IZQ mantener: disparar · CLIC DER: apuntar · R: recargar\nLas ráfagas oscurecen la visión; soltá el gatillo para recuperarla.");
+            viewCamera.aspect = firingCamera.aspect;
+            if (combatHUD != null) combatHUD.alpha = inspecting || (map != null && map.IsOpen) ? 0 : 1 - finalAlpha;
+            UpdateHUD();
+        }
+        private void UpdateHUD()
+        {
+            if (ammoPanel != null) ammoPanel.SetActive(collected && !finishing);
+            if (status != null)
+            {
+                status.text = !collected || finishing ? "" : $"<size=18>FN FAL</size>\n<size=36>{weapon.RoundsInMagazine:00}</size> <color=#AAB2B5>/ {weapon.MagazineInventory.TotalReserveRounds:00}</color>";
+            }
+            if (hint == null) return;
+            if (finishing) { hint.text = ""; return; }
+            var pickup = interaction != null ? interaction.CurrentTarget as WeaponTrialPickup : null;
+            if (pickup != null)
+            {
+                hint.text = pickup.IsAmmunition ? "<color=#D8C59C>[E]</color> Recoger cargadores" : "<color=#D8C59C>[E]</color> Recoger FN FAL";
+                return;
+            }
+            if (Time.unscaledTime < noticeUntil) { hint.text = notice; return; }
+            if (!collected) { hint.text = "Recogé el FAL y los cargadores junto al inicio"; return; }
+            hint.text = weapon.State == WeaponState.Jammed ? "Arma encasquillada · <color=#D8C59C>[R]</color> Destrabar" :
+                weapon.State == WeaponState.Reloading ? "Recargando…" : weapon.State == WeaponState.ClearingJam ? "Destrabando…" :
+                !IsInsideZone ? "Volvé a la zona de prueba para usar el arma" : weapon.RoundsInMagazine == 0 ?
+                (weapon.MagazineInventory.MagazineCount > 0 ? "<color=#D8C59C>[R]</color> Recargar" : "Sin munición · Buscá cargadores") :
+                Time.unscaledTime < hintUntil ? "CLIC IZQ · Disparar     CLIC DER · Apuntar     R · Recargar" : "";
         }
     }
 }

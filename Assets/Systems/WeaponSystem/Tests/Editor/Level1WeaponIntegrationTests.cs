@@ -62,11 +62,12 @@ public sealed class Level1WeaponIntegrationTests
         Assert.That(InputScript.Instance, Is.Not.Null, "Level1 player input must exist in Play Mode.");
         var generated = (PlayerLocomotionInput)typeof(InputScript).GetField("_playerLocomotionInput", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(InputScript.Instance);
         generated.devices = new InputDevice[] { keyboard, mouse };
-        yield return new WaitForSeconds(0.4f);
+        yield return WaitGameTime(0.4f);
         Cursor.lockState = CursorLockMode.Locked;
         var trial = Object.FindAnyObjectByType<Level1WeaponTrial>();
         Debug.Log("Weapon trial runtime checkpoint: found trial " + (trial != null));
         Assert.That(trial, Is.Not.Null, "Level1 weapon trial must exist in Play Mode.");
+        if (Application.isBatchMode) { var context = new UnityEditor.SerializedObject(trial); context.FindProperty("requireLockedPointer").boolValue = false; context.ApplyModifiedPropertiesWithoutUndo(); }
         var weapon = trial.Weapon;
         Debug.Log("Weapon trial runtime checkpoint: weapon=" + (weapon != null));
         Assert.That(weapon, Is.Not.Null, "Trial must retain its serialized weapon reference.");
@@ -85,18 +86,18 @@ public sealed class Level1WeaponIntegrationTests
         var rifle = pickups.Single(p => !p.IsAmmunition);
         Debug.Log("Weapon trial runtime checkpoint: looking toward rifle");
         LookAt(player.transform, look, camera, rifle.transform.position);
-        yield return new WaitForSeconds(0.2f);
+        yield return WaitGameTime(0.2f);
         Debug.Log("Pickup ray: camera=" + camera.transform.position + " forward=" + camera.transform.forward + " rifle=" + rifle.transform.position + " in zone=" + trial.IsInsideZone);
         foreach (var hit in Physics.RaycastAll(camera.transform.position, camera.transform.forward, 5, ~0, QueryTriggerInteraction.Ignore).OrderBy(h => h.distance))
             Debug.Log("Pickup ray hit: " + hit.collider.name + " layer=" + hit.collider.gameObject.layer + " distance=" + hit.distance);
         yield return Capture("Library/Level1Weapons-pickup.png");
-        InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Space));
-        yield return new WaitForSeconds(0.2f);
-        Assert.That(trial.HasRifle, Is.True, "SPACE interaction must collect the floor rifle.");
+        InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.E));
+        yield return WaitGameTime(0.2f);
+        Assert.That(trial.HasRifle, Is.True, "E interaction must collect the floor rifle.");
         Assert.That(weapon.MagazineInventory.MagazineCount, Is.EqualTo(3), "Picking up rifle must preserve prior ammo.");
         InputSystem.QueueStateEvent(keyboard, new KeyboardState());
         look.SetCameraPitch(0);
-        yield return new WaitForSeconds(0.2f);
+        yield return WaitGameTime(0.2f);
         foreach (Renderer r in weapon.GetComponentsInChildren<Renderer>(true)) Debug.Log("Weapon child renderer " + r.name);
         foreach (Renderer r in camera.GetComponentsInChildren<Renderer>(true))
             if (r.gameObject.layer == LayerMask.NameToLayer("WeaponView")) Debug.Log("Held FAL renderer " + r.name + " active=" + r.gameObject.activeInHierarchy + " local center=" + camera.transform.InverseTransformPoint(r.bounds.center) + " size=" + r.bounds.size);
@@ -105,7 +106,7 @@ public sealed class Level1WeaponIntegrationTests
         LookAt(player.transform, look, camera, target.transform.position);
         yield return null;
         InputSystem.QueueStateEvent(mouse, new MouseState().WithButton(MouseButton.Right));
-        yield return new WaitForSeconds(0.15f);
+        yield return WaitGameTime(0.15f);
         Assert.That(weapon.IsAiming, Is.True);
         float pitchBeforeFire = look.CameraPitch;
         Vector3 positionBeforeFire = player.transform.position;
@@ -121,6 +122,7 @@ public sealed class Level1WeaponIntegrationTests
         Assert.That(trial.ShotsFired, Is.GreaterThanOrEqualTo(3));
         Assert.That(Vector3.Distance(player.transform.position, positionBeforeFire), Is.GreaterThan(0.1f), "Player can walk while firing.");
         Assert.That(target.Health, Is.LessThan(100), "Hitscan must damage cylinder targets.");
+        Assert.That(weapon.GetComponent<WeaponImpactFeedback>().ImpactCount, Is.GreaterThan(0), "Successful hits must generate impact feedback.");
         Assert.That(look.CameraPitch, Is.LessThan(pitchBeforeFire), "Each shot must kick the player's view upward.");
         InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.R));
         yield return null;
@@ -137,7 +139,7 @@ public sealed class Level1WeaponIntegrationTests
         Vector3 oldPosition = player.transform.position; player.transform.position += Vector3.right * 80;
         Assert.That(weapon.TryFire(), Is.EqualTo(WeaponFireResult.NotReady));
         player.transform.position = oldPosition; cc.enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return WaitGameTime(0.2f);
         weapon.ForceNextJam(); Assert.That(weapon.TryFire(), Is.EqualTo(WeaponFireResult.Jammed));
         InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.R));
         yield return null;
@@ -161,6 +163,7 @@ public sealed class Level1WeaponIntegrationTests
         yield return Capture("Library/Level1Weapons-complete.png");
         yield return new ExitPlayMode();
     }
+    private static IEnumerator WaitGameTime(float duration) { float until = Time.time + duration; while (Time.time < until) yield return null; }
     private static void LookAt(Transform player, CameraControllerScript look, Camera camera, Vector3 point)
     {
         Vector3 direction = point - camera.transform.position;
@@ -180,21 +183,27 @@ public sealed class Level1WeaponIntegrationTests
     private static IEnumerator Capture(string path)
     {
         if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) yield break;
-        yield return new WaitForEndOfFrame();
+        if (Application.isBatchMode) yield return null; else yield return new WaitForEndOfFrame();
         var rt = new RenderTexture(1280, 720, 24);
         var pixels = new Texture2D(1280, 720, TextureFormat.RGB24, false);
         RenderTexture previous = RenderTexture.active;
         var canvas = Object.FindObjectsByType<Canvas>(FindObjectsSortMode.None).Single(c => c.name == "WeaponHUD");
         var mode = canvas.renderMode;
         var previousCamera = canvas.worldCamera;
+        var previousTarget = Camera.main.targetTexture;
         try
         {
             canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = Camera.main; canvas.planeDistance = 0.3f;
             rt.Create();
+            Camera.main.targetTexture = rt;
+            Canvas.ForceUpdateCanvases();
             RenderPipeline.SubmitRenderRequest(Camera.main, new RenderPipeline.StandardRequest { destination = rt });
             RenderTexture.active = rt; pixels.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0); pixels.Apply(); File.WriteAllBytes(path, pixels.EncodeToPNG());
+            if (path.Contains("-complete"))
+                foreach (Vector2 point in new[] { new Vector2(5, 5), new Vector2(1274, 5), new Vector2(5, 714), new Vector2(1274, 714) })
+                    Assert.That(pixels.GetPixel((int)point.x, (int)point.y).maxColorComponent, Is.LessThan(0.03f), "The ending must cover every corner of the screen.");
         }
-        finally { canvas.renderMode = mode; canvas.worldCamera = previousCamera; RenderTexture.active = previous; rt.Release(); Object.DestroyImmediate(rt); Object.DestroyImmediate(pixels); }
+        finally { Camera.main.targetTexture = previousTarget; canvas.renderMode = mode; canvas.worldCamera = previousCamera; RenderTexture.active = previous; rt.Release(); Object.DestroyImmediate(rt); Object.DestroyImmediate(pixels); }
     }
 }
 #endif

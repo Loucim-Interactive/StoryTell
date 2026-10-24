@@ -33,6 +33,7 @@ namespace Systems.InteractionSystem.Scripts {
         }
 
         public void DisplayInteraction(InteractableScript interactionScript) {
+            if (interactionScript.UsesExternalPrompt) { uiObject.SetActive(false); return; }
             uiObject.SetActive(true);
             UIInteraction interaction = interactionScript.UIInteraction;
             interactionName.text = interactionScript.interactableName;

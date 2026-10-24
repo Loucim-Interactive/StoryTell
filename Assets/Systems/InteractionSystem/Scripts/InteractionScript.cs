@@ -21,8 +21,17 @@ namespace Systems.InteractionSystem.Scripts
         [SerializeField] private bool usePlayerCameraForOrigin = true;
         [SerializeField] private float interactionDistance = 5f;
 
+        public InteractableScript CurrentTarget => _currentInteractable;
+        [SerializeField] private UnityEngine.InputSystem.InputActionReference interactAction;
+        private bool ownsInteractAction;
         private InteractableScript _currentInteractable;
         private readonly RaycastHit[] obstructionHits = new RaycastHit[64];
+
+        private void OnEnable()
+        {
+            ownsInteractAction = interactAction != null && interactAction.action != null && !interactAction.action.enabled;
+            if (ownsInteractAction) interactAction.action.Enable();
+        }
 
         private void Start()
         {
@@ -81,9 +90,10 @@ namespace Systems.InteractionSystem.Scripts
             if (target.InspectInteractable) GameEventBus.Raise(GameplayEvents.StartInspection, target.gameObject);
         }
 
-        private static bool ActionWasPerformed(EInteractions type)
+        private bool ActionWasPerformed(EInteractions type)
         {
 #if ENABLE_INPUT_SYSTEM
+            if (type == EInteractions.Interact) return interactAction != null && interactAction.action != null && interactAction.action.WasPressedThisFrame();
             if (Mouse.current != null)
             {
                 switch (type)
@@ -114,6 +124,11 @@ namespace Systems.InteractionSystem.Scripts
             if (uiManager != null) uiManager.HideInteraction();
         }
 
-        private void OnDisable() => ResetInteraction();
+        private void OnDisable()
+        {
+            if (ownsInteractAction && interactAction != null && interactAction.action != null) interactAction.action.Disable();
+            ownsInteractAction = false;
+            ResetInteraction();
+        }
     }
 }
