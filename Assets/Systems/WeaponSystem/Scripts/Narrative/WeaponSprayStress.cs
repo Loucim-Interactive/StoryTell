@@ -16,12 +16,12 @@ namespace StoryTell.Weapons
         public float Darkness => Completed ? 1f : Heat <= lowVisibilityShots
             ? Mathf.Clamp01(Heat / lowVisibilityShots) * 0.85f
             : Mathf.Lerp(0.85f, 1f, Mathf.InverseLerp(lowVisibilityShots, Mathf.Max(lowVisibilityShots + 1, completionShots), Heat));
-        public void RecordShot(float now)
+        public void RecordShot(float now, bool canComplete = true)
         {
             if (Completed) return;
-            Heat++;
+            Heat = canComplete ? Heat + 1 : Mathf.Min(lowVisibilityShots, Heat + 1);
             lastShotTime = now;
-            Completed = Heat >= Mathf.Max(lowVisibilityShots + 1, completionShots);
+            Completed = canComplete && Heat >= Mathf.Max(lowVisibilityShots + 1, completionShots);
         }
         public void Tick(float now, float delta)
         {

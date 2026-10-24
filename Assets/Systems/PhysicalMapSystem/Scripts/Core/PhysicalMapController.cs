@@ -201,7 +201,7 @@ public class PhysicalMapController : MonoBehaviour
         if (settings == null || viewAnchor == null)
             return;
 
-        transform.SetPositionAndRotation(
+        physicsController.SnapToPose(
             viewAnchor.TransformPoint(settings.localHoldPosition),
             viewAnchor.rotation * Quaternion.Euler(settings.localHoldEulerAngles));
 

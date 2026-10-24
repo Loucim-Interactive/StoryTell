@@ -40,6 +40,12 @@ public sealed class Level1PhysicalMapIntegrationTests
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
         yield return new EnterPlayMode();
+        yield return null;
+        var questPath = Object.FindAnyObjectByType<StoryTell.GameplayPath.GameplayPathController>();
+        if (questPath != null) {
+            questPath.Progress.Advance(StoryTell.GameplayPath.PathAction.Ruben);
+            questPath.Interact(StoryTell.GameplayPath.PathAction.Map);
+        }
         background = (int)InputSystem.settings.backgroundBehavior;
         editorInput = (int)InputSystem.settings.editorInputBehaviorInPlayMode;
         InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;

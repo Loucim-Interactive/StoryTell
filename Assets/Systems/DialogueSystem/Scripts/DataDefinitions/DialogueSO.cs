@@ -15,6 +15,8 @@ namespace DialogueSystem.Scripts {
 
         [Header("Dialogue")]
         [SerializeField] private ESpeakers _speaker;
+        [SerializeField] private string speakerDisplayName;
+        public string SpeakerDisplayName => string.IsNullOrWhiteSpace(speakerDisplayName) ? _speaker.ToString() : speakerDisplayName;
         [TextArea] [SerializeField] private string _dialogueText;
         [SerializeField] private AudioClip _voiceClip;
         [SerializeField] private DialogueSO _subDialogueSO;

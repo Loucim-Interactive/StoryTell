@@ -1,5 +1,6 @@
 using FirstPersonControllerSystem.Scripts.ControllerSys;
 using StoryTell.PhysicalMap;
+using StoryTell.GameplayPath;
 using Systems.EventSystem.Scripts;
 using Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera;
 using Systems.InteractionSystem.Scripts;
@@ -12,6 +13,7 @@ namespace StoryTell.Weapons
     public sealed class Level1WeaponTrial : MonoBehaviour
     {
         [SerializeField] private WeaponController weapon;
+        [SerializeField] private GameplayPathController gameplayPath;
         [SerializeField] private Transform player;
         [SerializeField] private Camera firingCamera, viewCamera;
         [SerializeField] private GameObject heldVisual;
@@ -50,7 +52,7 @@ namespace StoryTell.Weapons
         public float Darkness => Mathf.Max(stress.Darkness * peripheralDarkness, finalAlpha);
         public float CentralDarkness => finalAlpha;
         public bool CanUseWeapon => collected && !finishing && !inspecting && (map == null || !map.IsOpen)
-            && (!requireLockedPointer || Cursor.lockState == CursorLockMode.Locked) && IsInsideZone;
+            && (!requireLockedPointer || Cursor.lockState == CursorLockMode.Locked) && IsInsideZone && (gameplayPath == null || gameplayPath.WeaponAllowed);
         public bool IsInsideZone
         {
             get
@@ -86,7 +88,7 @@ namespace StoryTell.Weapons
         private void EndInspect() { inspecting = false; }
         public bool CollectRifle()
         {
-            if (collected || finishing || !IsInsideZone) return false;
+            if (collected || finishing || (gameplayPath == null && !IsInsideZone)) return false;
             collected = true;
             weapon.Equip();
             weapon.SetInputEnabled(true);
@@ -113,14 +115,22 @@ namespace StoryTell.Weapons
         private void OnShot()
         {
             shots++;
-            stress.RecordShot(Time.time);
+            stress.RecordShot(Time.time, gameplayPath == null);
             // Story progression is persistent; temporary spray stress may recover between shots.
-            if (shots >= Mathf.Max(1, finalizationShots))
+            if (gameplayPath == null && shots >= Mathf.Max(1, finalizationShots))
             {
                 finishing = true;
                 weapon.SetInputEnabled(false);
                 if (map != null) map.SetOpen(false, true);
             }
+        }
+        public void FinishFromGameplay(float duration)
+        {
+            if (finishing) return;
+            fadeDuration = Mathf.Max(0.1f, duration);
+            finishing = true;
+            weapon.SetInputEnabled(false);
+            if (map != null) map.SetOpen(false, true);
         }
         private void UpdateEnding()
         {
@@ -151,7 +161,7 @@ namespace StoryTell.Weapons
             UpdateEnding();
             if (vignette != null) vignette.Intensity = stress.Darkness * peripheralDarkness;
             Color color = Color.black; color.a = finalAlpha; darkness.color = color;
-            bool visible = collected && finalAlpha < 0.995f && !inspecting && (map == null || !map.IsOpen);
+            bool visible = collected && finalAlpha < 0.995f && !inspecting && (map == null || !map.IsOpen) && (gameplayPath == null || gameplayPath.ShowRifle);
             heldVisual.SetActive(visible);
             viewCamera.enabled = visible;
             viewCamera.fieldOfView = firingCamera.fieldOfView;
@@ -161,12 +171,13 @@ namespace StoryTell.Weapons
         }
         private void UpdateHUD()
         {
-            if (ammoPanel != null) ammoPanel.SetActive(collected && !finishing);
+            if (ammoPanel != null) ammoPanel.SetActive(collected && !finishing && (gameplayPath == null || gameplayPath.WeaponAllowed));
             if (status != null)
             {
                 status.text = !collected || finishing ? "" : $"<size=18>FN FAL</size>\n<size=36>{weapon.RoundsInMagazine:00}</size> <color=#AAB2B5>/ {weapon.MagazineInventory.TotalReserveRounds:00}</color>";
             }
             if (hint == null) return;
+            if (gameplayPath != null) { hint.text = ""; return; }
             if (finishing) { hint.text = ""; return; }
             var pickup = interaction != null ? interaction.CurrentTarget as WeaponTrialPickup : null;
             if (pickup != null)

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137606ee1d91474eb7b182be693a05f, type: 3}
+  m_Name: 06_OrdenSargento
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Scripts.ConversationSO
+  _autoNext: 1
+  Dialogues:
+  - {fileID: 11400000, guid: 78f6b360413a9f64c8d9052ef325cfb4, type: 2}
+  - {fileID: 11400000, guid: 4be43f9a3d53e104fb663e02d45539d0, type: 2}
+  - {fileID: 11400000, guid: ad3841847567744499e364abafcd84f0, type: 2}
+  - {fileID: 11400000, guid: 69e9a53fbfc746c47a68225d83c8edd9, type: 2}
+  - {fileID: 11400000, guid: 6e2b11b86e3343644b16d47658bf2305, type: 2}
+  - {fileID: 11400000, guid: daf1a07313d282b43a2bb7d64c449b3f, type: 2}

@@ -53,6 +53,7 @@ public sealed class Level1WeaponIntegrationTests
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
         yield return new EnterPlayMode();
+        StoryTell.GameplayPath.Editor.GameplayPathEditorLegacyFixture.RestoreTrialForLegacyTests();
         background = (int)InputSystem.settings.backgroundBehavior;
         editorInput = (int)InputSystem.settings.editorInputBehaviorInPlayMode;
         InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;

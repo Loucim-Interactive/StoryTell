@@ -1,0 +1,54 @@
+{
+    "name": "GameplayPath",
+    "maps": [
+        {
+            "name": "GameplayPath",
+            "id": "c6aa6db6-0340-4be8-b9bc-60bd086bad2c",
+            "actions": [
+                {
+                    "name": "CloseReading",
+                    "type": "Button",
+                    "id": "9299c899-387b-4259-b83b-cbd6b1c9b7b7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReadMother",
+                    "type": "Button",
+                    "id": "b17a5a51-ba36-4c50-9818-ca9c845c53f3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f7a59239-a7a7-4fb4-9fed-e1e0a65fb7f0",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseReading",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62fac503-72dd-4bd9-a30d-3d265492257f",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReadMother",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

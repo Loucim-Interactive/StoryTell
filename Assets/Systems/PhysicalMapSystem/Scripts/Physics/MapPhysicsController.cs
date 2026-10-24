@@ -34,6 +34,15 @@ public class MapPhysicsController : MonoBehaviour
         ConfigureRigidbody();
     }
 
+    public void SnapToPose(Vector3 position, Quaternion rotation)
+    {
+        if (mapRigidbody == null) mapRigidbody = GetComponent<Rigidbody>();
+        mapRigidbody.position = position;
+        mapRigidbody.rotation = rotation;
+        transform.SetPositionAndRotation(position, rotation);
+        ResetMotion();
+    }
+
     public void ResetMotion()
     {
         if (mapRigidbody == null)

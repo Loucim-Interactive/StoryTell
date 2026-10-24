@@ -17,7 +17,7 @@ namespace DialogueSystem.Scripts {
         public IEnumerator DisplayDialogue(DialogueSO dialogue) {
             CleanTexts();
             _dialogueTextMesh.font = dialogue.FontAsset ?? _defaultFont;
-            _nameTextMesh.text = dialogue.SpeakerName.ToString();
+            _nameTextMesh.text = dialogue.SpeakerDisplayName;
             
             string stylizedText = DialogueFormatter.Format(dialogue.DialogueText);
             string deStylizedText = DialogueFormatter.Format(dialogue.DialogueText, true);

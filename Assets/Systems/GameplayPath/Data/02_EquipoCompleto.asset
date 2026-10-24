@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137606ee1d91474eb7b182be693a05f, type: 3}
+  m_Name: 02_EquipoCompleto
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Scripts.ConversationSO
+  _autoNext: 1
+  Dialogues:
+  - {fileID: 11400000, guid: aae7b4cc76e71fc408fcec25b2f24772, type: 2}
+  - {fileID: 11400000, guid: 9a329db914af8d54a9410b293f575be8, type: 2}
+  - {fileID: 11400000, guid: 8e51e3d412c8bd34b81656b98a9856a4, type: 2}
+  - {fileID: 11400000, guid: 069df0edcc9ac6c4eb2ca50061445dd9, type: 2}

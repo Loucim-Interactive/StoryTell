@@ -13,6 +13,7 @@ namespace Systems.DialogueSystem.Scripts
         [SerializeField] private DecisionManagerScript decisionManager;
         public static DialogueManagerScript Instance { get; private set; }
         public bool IsInConversation { get; private set; }
+        public int CompletedConversationCount { get; private set; }
 
         public bool IsConversationOwnedBy(Object owner) =>
             owner && IsInConversation && _conversationOwner == owner;
@@ -142,6 +143,7 @@ namespace Systems.DialogueSystem.Scripts
                     // Give the presenter a frame to observe the resolved request.
                     yield return null;
                 }
+                CompletedConversationCount++;
             }
             finally
             {

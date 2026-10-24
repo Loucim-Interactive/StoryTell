@@ -21,6 +21,7 @@ public sealed class WeaponPolishTests
     {
         EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         yield return new EnterPlayMode();
+        StoryTell.GameplayPath.Editor.GameplayPathEditorLegacyFixture.RestoreTrialForLegacyTests();
         var cameraHost = new GameObject("VignetteVerificationCamera");
         var camera = cameraHost.AddComponent<Camera>(); camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = Color.white;
         camera.cullingMask = 1 << 5;
@@ -34,7 +35,7 @@ public sealed class WeaponPolishTests
         var previous = RenderTexture.active;
         try
         {
-            target.Create(); Canvas.ForceUpdateCanvases();
+            target.Create(); camera.targetTexture = target; Canvas.ForceUpdateCanvases();
             RenderPipeline.SubmitRenderRequest(camera, new RenderPipeline.StandardRequest { destination = target });
             RenderTexture.active = target; pixels.ReadPixels(new Rect(0, 0, 256, 256), 0, 0); pixels.Apply();
             System.IO.File.WriteAllBytes("Library/WeaponPolish-vignette.png", pixels.EncodeToPNG());
@@ -43,7 +44,7 @@ public sealed class WeaponPolishTests
             string diagnostic = $"Peripheral stress must be visibly darker than the center. Mesh={(mesh != null ? mesh.vertexCount : 0)}, rect={rect.rect}, culled={graphic.canvasRenderer.cull}, materials={graphic.canvasRenderer.materialCount}";
             Assert.That(pixels.GetPixel(12, 128).r + 0.2f, Is.LessThan(pixels.GetPixel(128, 128).r), diagnostic);
         }
-        finally { RenderTexture.active = previous; target.Release(); Object.DestroyImmediate(target); Object.DestroyImmediate(pixels); }
+        finally { camera.targetTexture = null; RenderTexture.active = previous; target.Release(); Object.DestroyImmediate(target); Object.DestroyImmediate(pixels); }
         yield return new ExitPlayMode();
     }
     [Test]
@@ -70,6 +71,7 @@ public sealed class WeaponPolishTests
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
         yield return new EnterPlayMode();
+        StoryTell.GameplayPath.Editor.GameplayPathEditorLegacyFixture.RestoreTrialForLegacyTests();
         float readyAt = Time.time + 0.4f;
         while (Time.time < readyAt) yield return null;
         Cursor.lockState = CursorLockMode.Locked;
@@ -109,6 +111,7 @@ public sealed class WeaponPolishTests
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
         yield return new EnterPlayMode();
+        StoryTell.GameplayPath.Editor.GameplayPathEditorLegacyFixture.RestoreTrialForLegacyTests();
         yield return null;
         var trial = Object.FindAnyObjectByType<Level1WeaponTrial>();
         Assert.That(trial.CollectRifle(), Is.True);

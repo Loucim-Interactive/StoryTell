@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c373ba4947a5141a5a08417e6767bb, type: 3}
+  m_Name: SO_GameplayPath_Level1
+  m_EditorClassIdentifier: Assembly-CSharp::StoryTell.GameplayPath.GameplayPathDefinition
+  introduction: {fileID: 11400000, guid: 02b61611fd68756419d856e7289a9eef, type: 2}
+  equipmentReady: {fileID: 11400000, guid: 8a57c08bd8b010348a159c3a0526ed4d, type: 2}
+  kitchen: {fileID: 11400000, guid: d7eb0bb861c04b440889fa2f6ea4b122, type: 2}
+  letterRequest: {fileID: 11400000, guid: 08471b6d6058feb48b7731ff5d2a6e71, type: 2}
+  letterReturn: {fileID: 11400000, guid: 6de3fcdd5b4966c42a142e82d34bc20a, type: 2}
+  sergeant: {fileID: 11400000, guid: bcb9fdb821ac1c449b6834836f61e475, type: 2}
+  delivery: {fileID: 11400000, guid: e50871b187ac6c84ba4538ed65554094, type: 2}
+  battle: {fileID: 11400000, guid: e0545342c3efa8240923c31795787d4b, type: 2}
+  motherLetter: "Rub\xE9n querido:\nTe escribo desde la mesa de la cocina. Dej\xE9
+    tu taza donde estaba, aunque todos me dicen que la guarde. Tu hermana quiso agregar
+    un dibujo y termin\xF3 ocupando medio sobre.\n\nAc\xE1 preguntan por vos. Cuando
+    no sabemos qu\xE9 decir, contamos alguna de tus historias y por un rato parece
+    que est\xE1s sentado con nosotros. Si pod\xE9s, mandanos unas l\xEDneas. No tienen
+    que ser largas.\n\nOjal\xE1 estas palabras te acompa\xF1en un rato. Te abrazo
+    fuerte.\nMam\xE1.\n\nTexto ficticio provisional; no es una carta hist\xF3rica
+    real."
+  totalEnemies: 45
+  simultaneousEnemies: 6
+  enemySpeed: 1.6
+  enemyHealth: 70
+  spawnInterval: 1.4
+  contactDistance: 0.85

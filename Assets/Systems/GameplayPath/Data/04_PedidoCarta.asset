@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137606ee1d91474eb7b182be693a05f, type: 3}
+  m_Name: 04_PedidoCarta
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Scripts.ConversationSO
+  _autoNext: 1
+  Dialogues:
+  - {fileID: 11400000, guid: 181a3623e698fca40b2ecbf558c4cdf4, type: 2}
+  - {fileID: 11400000, guid: 6133e01e8a714004fbcf8ed9bb6711f0, type: 2}
+  - {fileID: 11400000, guid: eb1bb564266a042489c1c3562db772d1, type: 2}
+  - {fileID: 11400000, guid: 41cf1f6872d3b4742b44b385d24d5b94, type: 2}
+  - {fileID: 11400000, guid: 3858e1a163fe18f41b0af76e1a295846, type: 2}

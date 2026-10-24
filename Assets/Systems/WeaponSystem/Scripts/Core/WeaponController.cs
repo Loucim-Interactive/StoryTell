@@ -14,6 +14,7 @@ namespace StoryTell.Weapons
         [SerializeField] private MagazineInventory magazineInventory;
         [SerializeField] private WeaponCondition condition;
         [SerializeField] private Camera firingCamera;
+        private Transform firingOwner;
         [SerializeField] private LayerMask hitMask = ~0;
         [SerializeField] private Level1WeaponTrial useRestriction;
 
@@ -331,7 +332,7 @@ namespace StoryTell.Weapons
             float nearest = float.PositiveInfinity;
             for (int i = 0; i < count; i++)
             {
-                if (shotHits[i].collider.transform.IsChildOf(transform.root) || shotHits[i].distance >= nearest) continue;
+                if (shotHits[i].collider.transform.IsChildOf(firingOwner != null ? firingOwner : transform) || shotHits[i].distance >= nearest) continue;
                 hit = shotHits[i]; nearest = hit.distance;
             }
             if (float.IsPositiveInfinity(nearest)) return;
@@ -398,6 +399,7 @@ namespace StoryTell.Weapons
 
         private void ResolveReferences()
         {
+            if (firingOwner == null) { var character = GetComponentInParent<CharacterController>(); firingOwner = character != null ? character.transform : transform; }
             if (magazineInventory == null)
                 TryGetComponent(out magazineInventory);
             if (condition == null)
