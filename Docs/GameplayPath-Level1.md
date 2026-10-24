@@ -49,3 +49,5 @@ Los recursos disponibles se reutilizan. El casco y las siluetas son modelos prov
 La zona original de bombas se habilita después de la entrega. Rubén cambia de ubicación fuera de la vista cercana del jugador y se comunica por radio durante el combate y el cierre.
 
 Resultado de la verificación final: 24 pruebas aprobadas, 0 fallidas, 0 omitidas, en Unity 6000.4.6f1. Incluye GameplayPath, referencias e Input System del mapa, arma y presentación visual. El defecto de ubicación del mapa físico se corrigió sincronizando su cuerpo físico al abrirlo. El hitscan excluye solo al portador del arma, no a todos los objetos del grupo de escena compartido.
+
+El rifle en primera persona se muestra únicamente dentro de la zona de combate, con el ataque activo. Se guarda al salir, abrir el mapa o sacar la radio. Mapa y radio se pueden usar durante el recorrido después de recogerlos; la radio también oculta y bloquea temporalmente el disparo para evitar superposiciones.

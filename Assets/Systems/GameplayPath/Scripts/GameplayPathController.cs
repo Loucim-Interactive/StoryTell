@@ -7,6 +7,7 @@ using StoryTell.Weapons;
 using Systems.DialogueSystem.Scripts;
 using Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera;
 using Systems.InteractionSystem.Scripts;
+using Systems.WalkieSystem.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,13 +34,14 @@ namespace StoryTell.GameplayPath
         private float noticeUntil, readingSince;
         private Coroutine sequence;
         private Camera playerView;
+        private WalkieTalkieScript radio;
         private int visibleRuben;
         public GameplayPathProgress Progress { get; } = new();
         public Transform Player => player;
         public GameplayPathDefinition Definition => definition;
         public bool IsBusy => busy || reading || (dialogue != null && dialogue.IsInConversation);
-        public bool WeaponAllowed => Progress.Stage == PathStage.Combat && !IsBusy;
-        public bool ShowRifle => Progress.Stage != PathStage.CarryCrate && !IsBusy;
+        public bool WeaponAllowed => Progress.Stage == PathStage.Combat && !IsBusy && (radio == null || !radio.IsEquipped);
+        public bool ShowRifle => WeaponAllowed && trial != null && trial.IsInsideZone;
         public string Objective => Progress.Stage switch
         {
             PathStage.Arrival => "Hablá con Rubén junto al punto de llegada.",
@@ -76,6 +78,7 @@ namespace StoryTell.GameplayPath
         private void Start()
         {
             playerView = player.GetComponentInChildren<Camera>();
+            radio = player.GetComponent<WalkieTalkieScript>();
             map.SetOpen(false, true); map.enabled = false;
             Refresh(); Notice(Objective, 8);
         }
