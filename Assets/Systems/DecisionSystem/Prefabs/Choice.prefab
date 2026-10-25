@@ -265,8 +265,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"This is a test for a lengthy choice."'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de604bdbddce0474b95a21e36ff6f0da, type: 2}
-  m_sharedMaterial: {fileID: -9099130437901431422, guid: de604bdbddce0474b95a21e36ff6f0da, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 198d901800ababe44b8e056b75171aef, type: 2}
+  m_sharedMaterial: {fileID: 5628747728981154384, guid: 198d901800ababe44b8e056b75171aef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 2.13
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

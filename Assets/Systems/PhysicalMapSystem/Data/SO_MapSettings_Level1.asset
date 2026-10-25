@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SO_MapSettings_Level1
   m_EditorClassIdentifier: Assembly-CSharp::MapSettings
   mapKey: 109
-  localHoldPosition: {x: 0, y: -0.1, z: 0.8}
+  localHoldPosition: {x: -0.22, y: -0.08, z: 1}
   localHoldEulerAngles: {x: -68, y: 0, z: 0}
   openCloseDuration: 0.16
   closedScale: 0.88

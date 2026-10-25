@@ -35,6 +35,7 @@ namespace Systems.InteractionSystem.Scripts
 
         private void Start()
         {
+            if (inspectScript == null) inspectScript = GetComponent<InspectionScript>();
             if (uiManager == null) uiManager = InteractionUIManager.Instance;
             if (usePlayerCameraForOrigin && Camera.main != null)
                 interactionOrigin = Camera.main.transform;
@@ -42,6 +43,8 @@ namespace Systems.InteractionSystem.Scripts
 
         private void Update()
         {
+            // E also closes inspection: do not interact with the restored object again in that frame.
+            if (inspectScript != null && inspectScript.LastInspectionEndFrame == Time.frameCount) { ResetInteraction(); return; }
             InteractableScript candidate = DetectInteraction();
             if (candidate != _currentInteractable)
             {

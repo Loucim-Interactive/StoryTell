@@ -7,6 +7,8 @@ using StoryTell.Weapons;
 using Systems.DialogueSystem.Scripts;
 using Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera;
 using Systems.InteractionSystem.Scripts;
+using Systems.InspectionSystem.Scripts;
+using Systems.EventSystem.Scripts;
 using Systems.WalkieSystem.Scripts;
 using TMPro;
 using UnityEngine;
@@ -29,17 +31,19 @@ namespace StoryTell.GameplayPath
         [SerializeField] private GameObject rubenAtStart, rubenAtKitchen, rubenAtFront;
         [SerializeField] private TMP_Text noticeText, journalText, readingText;
         [SerializeField] private GameObject journalPanel, readingPanel;
+        [SerializeField] private InspectableDocument motherDocument;
         [SerializeField] private InputActionReference closeReading, readMother;
         private bool ownsClose, ownsRead, busy, reading, inputLocked, wasMoving, wasInteracting, mapAvailable;
         private float noticeUntil, readingSince;
         private Coroutine sequence;
         private Camera playerView;
         private WalkieTalkieScript radio;
+        private InspectionScript inspection;
         private int visibleRuben;
         public GameplayPathProgress Progress { get; } = new();
         public Transform Player => player;
         public GameplayPathDefinition Definition => definition;
-        public bool IsBusy => busy || reading || (dialogue != null && dialogue.IsInConversation);
+        public bool IsBusy => busy || reading || (inspection != null && inspection.IsInspecting) || (dialogue != null && dialogue.IsInConversation);
         public bool WeaponAllowed => Progress.Stage == PathStage.Combat && !IsBusy && (radio == null || !radio.IsEquipped);
         public bool ShowRifle => WeaponAllowed && trial != null && trial.IsInsideZone;
         public string Objective => Progress.Stage switch
@@ -79,6 +83,7 @@ namespace StoryTell.GameplayPath
         {
             playerView = player.GetComponentInChildren<Camera>();
             radio = player.GetComponent<WalkieTalkieScript>();
+            inspection = player.GetComponent<InspectionScript>();
             map.SetOpen(false, true); map.enabled = false;
             Refresh(); Notice(Objective, 8);
         }
@@ -87,13 +92,14 @@ namespace StoryTell.GameplayPath
             UpdateRuben();
             if (reading && Time.unscaledTime > readingSince + 0.25f && closeReading.action.WasPressedThisFrame()) CloseReading();
             if (!reading && !IsBusy && map.enabled && map.IsOpen && Progress.Fragments == 4 && readMother.action.WasPressedThisFrame())
-                OpenReading("Carta de la madre de Rubén — ficción provisional\n\n" + definition.motherLetter);
+                InspectMotherLetter();
             bool showJournal = map.enabled && map.IsOpen && !reading && !trial.IsFinishing;
             if (journalPanel.activeSelf != showJournal) journalPanel.SetActive(showJournal);
             if (noticeText != null)
             {
                 var target = interaction != null ? interaction.CurrentTarget as GameplayPathInteractable : null;
-                noticeText.text = IsBusy || trial.IsFinishing ? "" : target != null ? "[E] " + target.UIInteraction.label :
+                bool otherPrompt = interaction != null && interaction.CurrentTarget != null && target == null;
+                noticeText.text = IsBusy || trial.IsFinishing || otherPrompt || map.IsOpen ? "" : target != null ? "[E] " + target.UIInteraction.label :
                     Progress.Stage == PathStage.Combat && !trial.IsInsideZone ? "Volvé a la posición de combate para usar el FAL." : Time.unscaledTime < noticeUntil ? lastNotice : "";
             }
             if (heldCrate != null) heldCrate.SetActive(Progress.Stage == PathStage.CarryCrate && !map.IsOpen && !reading);
@@ -176,6 +182,16 @@ namespace StoryTell.GameplayPath
             if (string.IsNullOrWhiteSpace(text) || IsBusy || trial.IsFinishing) return;
             reading = true; readingSince = Time.unscaledTime; readingText.text = text + "\n\n<size=22>[E] Cerrar</size>";
             readingPanel.SetActive(true); map.SetOpen(false, true); LockInput();
+        }
+        public void InspectMotherLetter()
+        {
+            if (IsBusy || Progress.Fragments != 4 || trial.IsFinishing) return;
+            if (motherDocument != null)
+            {
+                motherDocument.gameObject.SetActive(true);
+                GameEventBus.Raise(GameplayEvents.StartInspection, motherDocument.gameObject);
+            }
+            else OpenReading("Carta de la madre de Rubén — ficción provisional\n\n" + definition.motherLetter);
         }
         private void CloseReading() { reading = false; readingPanel.SetActive(false); UnlockInput(); }
         private void LockInput()
