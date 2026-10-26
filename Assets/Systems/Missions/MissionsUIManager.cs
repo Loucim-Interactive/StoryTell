@@ -26,7 +26,10 @@ namespace Systems.Missions {
         public static MissionsUIManager Instance { get; private set; }
 
         private readonly List<Mission> _missions = new();
-        private bool _initialized;
+        private bool _initialized, overlaySuppressed, requestedVisible;
+        public event System.Action<string> MissionAdded;
+        public bool IsVisible => uiObject && uiObject.activeInHierarchy;
+        public void SetOverlaySuppressed(bool suppressed) { overlaySuppressed = suppressed; if (uiObject) uiObject.SetActive(requestedVisible && !suppressed); }
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -35,6 +38,7 @@ namespace Systems.Missions {
             }
 
             Instance = this;
+            requestedVisible = uiObject && uiObject.activeSelf;
             InitializeUI();
         }
 
@@ -59,12 +63,12 @@ namespace Systems.Missions {
 
         public void ShowMissionsUI() {
             if (!InitializeUI()) return;
-            uiObject.SetActive(true);
+            requestedVisible = true; uiObject.SetActive(!overlaySuppressed);
             RefreshLayout();
         }
 
         public void HideMissionsUI() {
-            if (uiObject) uiObject.SetActive(false);
+            requestedVisible = false; if (uiObject) uiObject.SetActive(false);
         }
 
         /// <summary>Adds a mission once. Existing titles retain all their items.</summary>
@@ -80,6 +84,7 @@ namespace Systems.Missions {
             foreach (Transform child in mission.itemsView) child.gameObject.SetActive(false);
             mission.itemsView.gameObject.SetActive(true);
             _missions.Add(mission);
+            MissionAdded?.Invoke(title);
             RefreshLayout();
         }
 

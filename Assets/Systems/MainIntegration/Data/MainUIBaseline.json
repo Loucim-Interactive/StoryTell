@@ -1,0 +1,2771 @@
+{
+    "ui": [
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5397389804538908708-2049172914",
+            "path": "====MANAGERS====/Canvas",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 640.0,
+                "y": 480.0
+            },
+            "position": {
+                "x": 320.0,
+                "y": 240.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5829946118558927526-2049172914",
+            "path": "====MANAGERS====/Canvas/InteractionInfoUI",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 100.0,
+                "y": 100.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3409878657406216100-2049172914",
+            "path": "====MANAGERS====/Canvas/InteractionInfoUI/InfoText",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 756.6699829101563,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": -496.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 36.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-9208204449391010760-2049172914",
+            "path": "====MANAGERS====/Canvas/InteractionUI",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 645.7999877929688,
+                "y": 118.5
+            },
+            "position": {
+                "x": 0.00006103515625,
+                "y": -126.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5349228258193796462-2049172914",
+            "path": "====MANAGERS====/Canvas/InteractionUI/Name",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 645.7999877929688,
+                "y": 50.0
+            },
+            "position": {
+                "x": -0.00006675731128780171,
+                "y": 34.249961853027347
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 45.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8728768665616256311-2049172914",
+            "path": "====MANAGERS====/Canvas/InteractionUI/Action",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 163.8325958251953,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": -47.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 30.600000381469728,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5727524624981343361-2049172914",
+            "path": "====MANAGERS====/Canvas/InteractionUI/Icon",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 33.44649887084961,
+                "y": 40.37369918823242
+            },
+            "position": {
+                "x": -87.5999984741211,
+                "y": -47.000038146972659
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3992923586650414865-2049172914",
+            "path": "====MANAGERS====/Canvas/DialogueUI",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 756.6699829101563,
+                "y": 90.89999389648438
+            },
+            "position": {
+                "x": 0.0,
+                "y": -475.54998779296877
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-677636951824473629-2049172914",
+            "path": "====MANAGERS====/Canvas/DialogueUI/NarrationText",
+            "font": "Assets/Fonts/static/InterTight-Medium SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 756.6699829101563,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": -20.45001220703125
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 36.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2697097910055353689-2049172914",
+            "path": "====MANAGERS====/Canvas/DialogueUI/NameText",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 324.1000061035156,
+                "y": -70.19999694824219
+            },
+            "position": {
+                "x": 0.0,
+                "y": 80.54998779296875
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 22.0,
+            "color": {
+                "r": 0.849056601524353,
+                "g": 0.849056601524353,
+                "b": 0.849056601524353,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1417818922-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 2560.0,
+                "y": 1412.1455078125
+            },
+            "position": {
+                "x": 0.0,
+                "y": 13.927200317382813
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2035393805-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Countdown",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 767.30419921875,
+                "y": 21.95949935913086
+            },
+            "position": {
+                "x": 0.0,
+                "y": -687.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-224197998-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 684.9816284179688,
+                "y": 196.25869750976563
+            },
+            "position": {
+                "x": -79.5999984741211,
+                "y": -138.60000610351563
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1195248147-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5000000596046448,
+                "y": 0.4999999403953552
+            },
+            "size": {
+                "x": 219.70538330078126,
+                "y": 40.019500732421878
+            },
+            "position": {
+                "x": -427.9800109863281,
+                "y": 43.99800109863281
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1591014085-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Side bar",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 2.4463999271392824,
+                "y": 132.1199951171875
+            },
+            "position": {
+                "x": 111.07998657226563,
+                "y": -46.04898452758789
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-886848821-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/WalkieIcon",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 56.91469955444336,
+                "y": 56.91469955444336
+            },
+            "position": {
+                "x": 59.079986572265628,
+                "y": -48.466590881347659
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1371008890-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Content",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 100.0,
+                "y": 100.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-798458164-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 524.4392700195313,
+                "y": 62.42660140991211
+            },
+            "position": {
+                "x": 500.0,
+                "y": 737.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-17003887-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/TAB",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 213.61929321289063,
+                "y": 34.82229995727539
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1736925880-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/TAB/Label (1)",
+            "font": "Assets/Fonts/static/InterTight-Bold SDF.asset",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 140.47909545898438,
+                "y": 34.821998596191409
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 22.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-708351327-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/TAB/Icon",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 79.24929809570313,
+                "y": 34.82229995727539
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-360339537-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/TAB/Icon/Label",
+            "font": "Assets/Fonts/static/InterTight-Black SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 79.24700164794922,
+                "y": 34.821998596191409
+            },
+            "position": {
+                "x": 0.0013541999505832792,
+                "y": -0.00002741800017247442
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 22.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1222629468-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/SPACE",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 213.61929321289063,
+                "y": 34.82229995727539
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-623405377-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/SPACE/Label (1)",
+            "font": "Assets/Fonts/static/InterTight-Bold SDF.asset",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 140.47909545898438,
+                "y": 34.821998596191409
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 22.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1953554416-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/SPACE/Icon",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 106.12930297851563,
+                "y": 34.82229995727539
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1119086962-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/ChoicesPanel/Hint/SPACE/Icon/Label",
+            "font": "Assets/Fonts/static/InterTight-Black SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 106.12999725341797,
+                "y": 34.821998596191409
+            },
+            "position": {
+                "x": 0.0001087199998437427,
+                "y": -0.00002741800017247442
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 22.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1019688619-0",
+            "path": "====MANAGERS====/Canvas/DecisionsUI/Main/IndicatorWalkieIcon",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 56.91469955444336,
+                "y": 56.91469955444336
+            },
+            "position": {
+                "x": 541.0,
+                "y": -546.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-317336024-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 901.6699829101563,
+                "y": 1439.199951171875
+            },
+            "position": {
+                "x": -829.1699829101563,
+                "y": -0.3896999955177307
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1266447725-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Title",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 478.8599853515625,
+                "y": 71.04900360107422
+            },
+            "position": {
+                "x": -211.39999389648438,
+                "y": 634.4703369140625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1722397812-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Title/Flag",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 478.8577880859375,
+                "y": 71.05439758300781
+            },
+            "position": {
+                "x": -0.0011138916015625,
+                "y": 0.0023193359375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1164865277-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Title/Text",
+            "font": "Assets/Fonts/static/InterTight-Black SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 478.8599853515625,
+                "y": 50.0
+            },
+            "position": {
+                "x": -0.001171099953353405,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 25.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-303655631-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 20.0,
+                "y": 5.0
+            },
+            "position": {
+                "x": -416.8999938964844,
+                "y": 585.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-865328496-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-64226821-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item/dash",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 36.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1733697240-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item/Text",
+            "font": "Assets/Fonts/static/InterTight-Bold SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 26.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1262310090-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item/Cross",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 160.0,
+                "y": 3.9000000953674318
+            },
+            "position": {
+                "x": 0.5,
+                "y": 1.7999999523162842
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-39212078-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (1)",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1161046604-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (1)/dash",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 36.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-714132204-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (1)/Text",
+            "font": "Assets/Fonts/static/InterTight-Bold SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 26.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1577251851-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (1)/Cross",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 160.0,
+                "y": 3.9000000953674318
+            },
+            "position": {
+                "x": 0.5,
+                "y": 1.7999999523162842
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-158976916-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (2)",
+            "font": "",
+            "anchorMin": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "anchorMax": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-29216477-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (2)/dash",
+            "font": "Assets/Settings/Dump/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 36.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-519918435-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (2)/Text",
+            "font": "Assets/Fonts/static/InterTight-Bold SDF.asset",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 200.0,
+                "y": 50.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 26.0,
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-439984821-0",
+            "path": "====MANAGERS====/Canvas/MissionsUI/Items/Item (2)/Cross",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 160.0,
+                "y": 3.9000000953674318
+            },
+            "position": {
+                "x": 0.5,
+                "y": 1.7999999523162842
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1969968559052173755-2049172914",
+            "path": "====MANAGERS====/Canvas/Dot",
+            "font": "",
+            "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "size": {
+                "x": 10.0,
+                "y": 10.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "fontSize": 0.0,
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            }
+        }
+    ],
+    "positions": [
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3711708708669339399-927895844",
+            "name": "Player",
+            "position": {
+                "x": 36.56999969482422,
+                "y": 60.02000045776367,
+                "z": 496.5400085449219
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.792396068572998,
+                "z": 0.0,
+                "w": 0.6100069284439087
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-4894363451509422954",
+            "name": "NPC - Simon",
+            "position": {
+                "x": 79.9898910522461,
+                "y": 27.959999084472658,
+                "z": 267.6400146484375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.10192445665597916,
+                "z": 0.0,
+                "w": 0.9947921633720398
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-4894363451509422954",
+            "name": "Interaction",
+            "position": {
+                "x": 79.9898910522461,
+                "y": 27.959999084472658,
+                "z": 267.6400146484375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.10192445665597916,
+                "z": 0.0,
+                "w": 0.9947921633720398
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-1375599719",
+            "name": "NPC - Jose",
+            "position": {
+                "x": 74.65989685058594,
+                "y": 28.079999923706056,
+                "z": 268.44000244140627
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.3280423581600189,
+                "z": 0.0,
+                "w": 0.9446630477905273
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-1375599719",
+            "name": "Interaction",
+            "position": {
+                "x": 74.65989685058594,
+                "y": 28.079999923706056,
+                "z": 268.44000244140627
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.3280423581600189,
+                "z": 0.0,
+                "w": 0.9446630477905273
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-1110496901",
+            "name": "NPC - Pedro",
+            "position": {
+                "x": 36.63199996948242,
+                "y": 42.630001068115237,
+                "z": 365.09100341796877
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.9970293641090393,
+                "z": 0.0,
+                "w": 0.07702284306287766
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-1110496901",
+            "name": "Interaction",
+            "position": {
+                "x": 36.63199996948242,
+                "y": 42.630001068115237,
+                "z": 365.09100341796877
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.9970293641090393,
+                "z": 0.0,
+                "w": 0.07702284306287766
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-1196866650",
+            "name": "NPC - Agustin",
+            "position": {
+                "x": 90.71989440917969,
+                "y": 28.079999923706056,
+                "z": 265.6300048828125
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.49151185154914858,
+                "z": 0.0,
+                "w": 0.8708708882331848
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-1196866650",
+            "name": "Interaction",
+            "position": {
+                "x": 90.71989440917969,
+                "y": 28.079999923706056,
+                "z": 265.6300048828125
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.49151185154914858,
+                "z": 0.0,
+                "w": 0.8708708882331848
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-223360596236889437-4388082106785761648",
+            "name": "Binoculares",
+            "position": {
+                "x": 88.61194610595703,
+                "y": 28.26300048828125,
+                "z": 284.63299560546877
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8721872335597250864-1844650499127091822",
+            "name": "Cura",
+            "position": {
+                "x": 88.61194610595703,
+                "y": 28.17799949645996,
+                "z": 284.41998291015627
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8721872335597250864-885848242",
+            "name": "Cura (1)",
+            "position": {
+                "x": 88.53794860839844,
+                "y": 28.21230125427246,
+                "z": 284.4519958496094
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2929782504773026195-5148780659200957945",
+            "name": "Jerrycan",
+            "position": {
+                "x": 88.5295639038086,
+                "y": 27.07400131225586,
+                "z": 285.7179870605469
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2929782504773026195-221024517",
+            "name": "Jerrycan (1)",
+            "position": {
+                "x": 88.5295639038086,
+                "y": 27.07400131225586,
+                "z": 285.85699462890627
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.1175931915640831,
+                "z": 0.0,
+                "w": 0.9930618405342102
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2929782504773026195-1748723827",
+            "name": "Jerrycan (2)",
+            "position": {
+                "x": 88.46095275878906,
+                "y": 27.07400131225586,
+                "z": 285.5690002441406
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.027551285922527314,
+                "z": 0.0,
+                "w": 0.9996204376220703
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2929782504773026195-241807463",
+            "name": "Jerrycan (4)",
+            "position": {
+                "x": 88.72674560546875,
+                "y": 28.255001068115236,
+                "z": 285.0562744140625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.027551285922527314,
+                "z": 0.0,
+                "w": 0.9996204376220703
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2929782504773026195-940583203",
+            "name": "Jerrycan (3)",
+            "position": {
+                "x": 88.23194885253906,
+                "y": 27.114999771118165,
+                "z": 285.6259765625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.6986311674118042,
+                "y": 0.019705304875969888,
+                "z": -0.0192554984241724,
+                "w": 0.7149512767791748
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5594133549240951463-8174517885012572209",
+            "name": "Spica",
+            "position": {
+                "x": 88.7929458618164,
+                "y": 28.236000061035158,
+                "z": 284.5019836425781
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.9997181296348572,
+                "z": 0.0,
+                "w": 0.02374301850795746
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-395220966459336486-966540528",
+            "name": "Rosario",
+            "position": {
+                "x": 88.07794952392578,
+                "y": 28.131799697875978,
+                "z": 284.8279724121094
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3328131086992063225-1810117067",
+            "name": "Diario1",
+            "position": {
+                "x": 88.58976745605469,
+                "y": 28.150999069213868,
+                "z": 283.8041687011719
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3328131086992063225-1283800823",
+            "name": "Diario1 (1)",
+            "position": {
+                "x": 88.39094543457031,
+                "y": 28.237001419067384,
+                "z": 283.6629943847656
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3328131086992063225-207441204",
+            "name": "Diario1 (2)",
+            "position": {
+                "x": 88.26394653320313,
+                "y": 28.349000930786134,
+                "z": 283.4369812011719
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-6328633858518507586-5448375775940398921",
+            "name": "Carta2",
+            "position": {
+                "x": 77.7217025756836,
+                "y": 28.961000442504884,
+                "z": 267.3192138671875
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.1304091513156891,
+                "y": 0.8080748915672302,
+                "z": -0.5403463840484619,
+                "w": 0.19502371549606324
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-488256328",
+            "name": "NPC",
+            "position": {
+                "x": 94.08599853515625,
+                "y": 36.569000244140628,
+                "z": 352.0610046386719
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7580446600914002,
+                "z": 0.0,
+                "w": 0.6522027254104614
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-488256328",
+            "name": "Interaction",
+            "position": {
+                "x": 94.08599853515625,
+                "y": 36.569000244140628,
+                "z": 352.0610046386719
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7580446600914002,
+                "z": 0.0,
+                "w": 0.6522027254104614
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-1183645711",
+            "name": "NPC - Ruben",
+            "position": {
+                "x": 92.7030029296875,
+                "y": 37.05500030517578,
+                "z": 352.10198974609377
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.5109306573867798,
+                "z": 0.0,
+                "w": -0.8596219420433044
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-1183645711",
+            "name": "Interaction",
+            "position": {
+                "x": 92.7030029296875,
+                "y": 37.05500030517578,
+                "z": 352.10198974609377
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.5109306573867798,
+                "z": 0.0,
+                "w": -0.8596219420433044
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5768352103647193133-868168506",
+            "name": "NPC - Franco",
+            "position": {
+                "x": 92.01000213623047,
+                "y": 37.073001861572269,
+                "z": 352.8089904785156
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9422586560249329,
+                "z": 0.0,
+                "w": 0.33488622307777407
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8972945843737577942-868168506",
+            "name": "Interaction",
+            "position": {
+                "x": 92.01000213623047,
+                "y": 37.073001861572269,
+                "z": 352.8089904785156
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9422586560249329,
+                "z": 0.0,
+                "w": 0.33488622307777407
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-8154196117749594402-3024481299816808258",
+            "name": "Casco",
+            "position": {
+                "x": 90.80500030517578,
+                "y": 29.170000076293947,
+                "z": 260.0260009765625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-7068186473346550594-85595113718343742",
+            "name": "WalkieTalkie",
+            "position": {
+                "x": 91.62200164794922,
+                "y": 29.047000885009767,
+                "z": 260.4389953613281
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5387937251382393311-383885462",
+            "name": "RIFLE",
+            "position": {
+                "x": 91.59300231933594,
+                "y": 29.125999450683595,
+                "z": 260.7720031738281
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.015727324411273004,
+                "y": -0.7309362292289734,
+                "z": -0.6822618246078491,
+                "w": 0.001939204754307866
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-699249396547749938-12273370",
+            "name": "NPC - Diego (equipamiento)",
+            "position": {
+                "x": 91.7760009765625,
+                "y": 27.270000457763673,
+                "z": 281.0150146484375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.9509204626083374,
+                "z": 0.0,
+                "w": 0.30943554639816286
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2683926052374178249-12273370",
+            "name": "Interaction",
+            "position": {
+                "x": 91.7760009765625,
+                "y": 27.270000457763673,
+                "z": 281.0150146484375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.9509204626083374,
+                "z": 0.0,
+                "w": 0.30943554639816286
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1660646143872722591-1012269248",
+            "name": "NPC - Mateo (carta perdida)",
+            "position": {
+                "x": 74.77999877929688,
+                "y": 27.788000106811525,
+                "z": 282.07000732421877
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9659258723258972,
+                "z": 0.0,
+                "w": -0.2588190734386444
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-4287655302463522660-1012269248",
+            "name": "Interaction",
+            "position": {
+                "x": 74.77999877929688,
+                "y": 27.788000106811525,
+                "z": 282.07000732421877
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9659258723258972,
+                "z": 0.0,
+                "w": -0.2588190734386444
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5400163964794437041-1401684914",
+            "name": "MateoLetterFragment1",
+            "position": {
+                "x": 68.0,
+                "y": 27.840259552001954,
+                "z": 263.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-131640289367193811-1591363053",
+            "name": "MateoLetterFragment2",
+            "position": {
+                "x": 77.0,
+                "y": 27.840259552001954,
+                "z": 264.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.5948227643966675,
+                "z": 0.0,
+                "w": 0.8038569092750549
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2976012896056710908-1298685662",
+            "name": "MateoLetterFragment3",
+            "position": {
+                "x": 74.0,
+                "y": 27.840259552001954,
+                "z": 273.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9563047289848328,
+                "z": 0.0,
+                "w": 0.2923717796802521
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-908637283767839373-1838171327",
+            "name": "MateoLetterFragment4",
+            "position": {
+                "x": 64.0,
+                "y": 27.840259552001954,
+                "z": 270.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9426414966583252,
+                "z": 0.0,
+                "w": -0.3338068723678589
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2470357241054806088-4317416152540977434",
+            "name": "ElectronicBox",
+            "position": {
+                "x": 77.074951171875,
+                "y": 28.826377868652345,
+                "z": 266.6121826171875
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.9962628483772278,
+                "z": 0.0,
+                "w": 0.08637331426143646
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-841226657023805176-96875117026096659",
+            "name": "MediumBox",
+            "position": {
+                "x": 74.7598876953125,
+                "y": 27.94449234008789,
+                "z": 266.91845703125
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-7407747599275705136-2847208221728502707",
+            "name": "SmallBox",
+            "position": {
+                "x": 75.5614013671875,
+                "y": 28.886676788330079,
+                "z": 266.4154052734375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.9883747696876526,
+                "z": 0.0,
+                "w": 0.15203723311424256
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2617373717569101813-1942703872827716716",
+            "name": "Fuel Canister",
+            "position": {
+                "x": 73.8026123046875,
+                "y": 28.892799377441408,
+                "z": 266.102294921875
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": -0.6509330868721008,
+                "y": 0.2720421552658081,
+                "z": 0.2702910006046295,
+                "w": 0.6551503539085388
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-3011768478839305256-1577364274332000513",
+            "name": "Radio",
+            "position": {
+                "x": 78.54000091552735,
+                "y": 29.099000930786134,
+                "z": 266.968994140625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.2945139706134796,
+                "z": 0.0,
+                "w": 0.9556471705436707
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2180383991566745372-1577364274332000513",
+            "name": "Speakers_Low.004",
+            "position": {
+                "x": 78.40845489501953,
+                "y": 29.114707946777345,
+                "z": 267.1457824707031
+            },
+            "scale": {
+                "x": 100.0,
+                "y": 100.0,
+                "z": 100.0
+            },
+            "rotation": {
+                "x": -0.6757447123527527,
+                "y": 0.20825280249118806,
+                "z": 0.20825286209583283,
+                "w": 0.6757445335388184
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1856016046718749109-1577364274332000513",
+            "name": "Speakers_Low.005",
+            "position": {
+                "x": 78.4428939819336,
+                "y": 29.139705657958986,
+                "z": 267.19635009765627
+            },
+            "scale": {
+                "x": 100.0,
+                "y": 100.0,
+                "z": 100.0
+            },
+            "rotation": {
+                "x": -0.6757447123527527,
+                "y": 0.20825280249118806,
+                "z": 0.20825286209583283,
+                "w": 0.6757445335388184
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2617373717569101813-1869390501",
+            "name": "Fuel Canister (1)",
+            "position": {
+                "x": 73.64405822753906,
+                "y": 28.826385498046876,
+                "z": 265.33447265625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-2617373717569101813-1235489546",
+            "name": "Fuel Canister",
+            "position": {
+                "x": 73.7881851196289,
+                "y": 28.826385498046876,
+                "z": 265.4866027832031
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5387937251382393311-470862204",
+            "name": "FAL",
+            "position": {
+                "x": 1077.2740478515625,
+                "y": 44.70000076293945,
+                "z": 983.9650268554688
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.624122679233551,
+                "y": -0.3243178725242615,
+                "z": -0.32370349764823916,
+                "w": 0.6328546404838562
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5387937251382393311-1696811826",
+            "name": "FAL2",
+            "position": {
+                "x": 71.70388793945313,
+                "y": 28.201000213623048,
+                "z": 265.32598876953127
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.44977524876594546,
+                "y": -0.5763824582099915,
+                "z": -0.5456209778785706,
+                "w": 0.4096136689186096
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5387937251382393311-755198359",
+            "name": "FAL2 (2)",
+            "position": {
+                "x": 87.62699890136719,
+                "y": 27.667999267578126,
+                "z": 284.6090087890625
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.44977524876594546,
+                "y": -0.5763824582099915,
+                "z": -0.5456209778785706,
+                "w": 0.4096136689186096
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-5387937251382393311-1122070596",
+            "name": "FAL2 (1)",
+            "position": {
+                "x": 71.85289001464844,
+                "y": 28.301000595092775,
+                "z": 265.3070068359375
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": -0.39689135551452639,
+                "y": 0.4907091557979584,
+                "z": -0.5852155089378357,
+                "w": 0.5091214179992676
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-841226657023805176-1712556139",
+            "name": "MediumBox",
+            "position": {
+                "x": 37.59600067138672,
+                "y": 42.959999084472659,
+                "z": 365.0589904785156
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            }
+        },
+        {
+            "id": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-612476809-0",
+            "name": "Shadow Spawn Area",
+            "position": {
+                "x": 76.72798919677735,
+                "y": 60.02000045776367,
+                "z": 562.1209106445313
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.8481153249740601,
+                "z": 0.0,
+                "w": 0.5298118591308594
+            }
+        }
+    ]
+}

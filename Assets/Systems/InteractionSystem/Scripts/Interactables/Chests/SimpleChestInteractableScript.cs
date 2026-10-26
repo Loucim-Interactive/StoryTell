@@ -14,8 +14,10 @@ namespace Systems.InteractionSystem.Scripts.Interactables.Chests {
         private float _initialRot;
 
         private void Start() {
-            if (canOpen && ChestLid == null) {
-                Debug.LogError("ChestLid is not assigned.", this);
+            if (!canOpen) return;
+            if (ChestLid == null) {
+                canOpen = false;
+                Debug.LogWarning("This chest has no lid assigned; opening is disabled.", this);
                 return;
             }
 
@@ -23,7 +25,7 @@ namespace Systems.InteractionSystem.Scripts.Interactables.Chests {
         }
 
         protected override void OnInteract() {
-            if (!canOpen) return;
+            if (!canOpen || !ChestLid) return;
             if (_isRotating) return;
 
             if (!_isOpen) {

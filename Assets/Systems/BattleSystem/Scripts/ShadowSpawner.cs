@@ -25,6 +25,7 @@ namespace Systems.BattleSystem {
                 if (!spawnArea.TryGetPosition(out var position)) continue;
                 var shadow = GameObject.CreatePrimitive(PrimitiveType.Capsule);
                 shadow.name = "Battle Shadow";
+                shadow.AddComponent<ShadowDamageTarget>();
                 shadow.transform.position = position + Vector3.up * (height * .5f);
                 shadow.transform.localScale = new Vector3(radius * 2, height * .5f, radius * 2);
                 var renderer = shadow.GetComponent<MeshRenderer>();

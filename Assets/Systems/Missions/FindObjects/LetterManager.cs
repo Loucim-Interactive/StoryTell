@@ -18,6 +18,8 @@ namespace Systems.Missions.FindObjects {
         [SerializeField] private string missionTitle = "La carta de Mateo";
         [SerializeField] private string returnObjective = "Devolverla";
 
+        public bool LetterAssembled { get; private set; }
+        public bool MarkLetterAssembled() { if (_collected.Count != fragments.Length || LetterAssembled) return false; LetterAssembled = true; return true; }
         private readonly HashSet<LetterInteractableScript> _collected = new();
         public bool MissionStarted { get; private set; }
         public bool MissionCompleted { get; private set; }

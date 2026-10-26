@@ -15,6 +15,8 @@ namespace Systems.InspectionSystem.Scripts {
         [SerializeField] private float zoomStep = 5f;
         [SerializeField] private float zoomSmoothing = 12f;
 
+        private bool externalFov;
+        public void SetExternalFov(bool active) { externalFov = active; }
         private float _targetFov;
         private float _defaultFov;
         private Camera _camera;
@@ -50,7 +52,7 @@ namespace Systems.InspectionSystem.Scripts {
         }
 
         private void Update() {
-            HandleZoom();
+            if (!externalFov) HandleZoom();
         }
 
         private void HandleZoom() {
