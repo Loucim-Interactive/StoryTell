@@ -30,6 +30,7 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
 
         private float   _cameraPitch;
         private Vector3 _shakeRotationOffset;
+        private float _recoilPitchOffset;
         private bool    _inputLocked;
         private UnityEngine.Camera _camera;
 
@@ -89,7 +90,9 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
             _cameraPitch  = Mathf.Clamp(_cameraPitch, -clampAngle, clampAngle);
         }
 
-        private void ApplyCameraRotation() => cameraTransform.localRotation = Quaternion.Euler(_cameraPitch, 0f, 0f) * Quaternion.Euler(_shakeRotationOffset);
+        private void ApplyCameraRotation() => cameraTransform.localRotation = Quaternion.Euler(Mathf.Clamp(_cameraPitch + _recoilPitchOffset, -clampAngle, clampAngle), 0f, 0f) * Quaternion.Euler(_shakeRotationOffset);
+
+        public void SetRecoilPitchOffset(float offset) => _recoilPitchOffset = offset;
 
         public void SetShakeRotationOffset(Vector3 offset) => _shakeRotationOffset = offset;
 
