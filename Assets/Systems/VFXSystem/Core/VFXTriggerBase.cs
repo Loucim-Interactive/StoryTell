@@ -57,11 +57,13 @@ namespace Systems.VFXSystem.New {
 
         private void PlayEffect<T>(VFXObject<T> vfx) {
             VFXManager.PlayVFXAt(vfx.Definition, vfx.Position);
-            if (vfx.UseEvent && vfx.Event != null) RaiseEffectEvent(vfx);
+            if (vfx.UseEvent) RaiseEffectEvents(vfx);
         }
 
-        private void RaiseEffectEvent<T>(VFXObject<T> vfx) {
-            GameEventBus.Raise(GameplayEvents.VFX, vfx.Event);
+        private void RaiseEffectEvents<T>(VFXObject<T> vfx) {
+            foreach (var effect in vfx.Events) {
+                if (effect != null) GameEventBus.Raise(GameplayEvents.VFX, effect);
+            }
         }
         
     }

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: LevelComplete
   m_EditorClassIdentifier: 
   message: 
-  textAnimation: 0
+  textAnimation: 1
   font: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   fontSize: 56
   fontColor: {r: 1, g: 1, b: 1, a: 1}
   overlayFadeInDuration: 0.75
   textFadeInDuration: 0.3
-  holdDuration: 1
+  holdDuration: 3.15
   textFadeOutDuration: 0.25
   overlayFadeOutDuration: 0.75
   overlayCurve:
