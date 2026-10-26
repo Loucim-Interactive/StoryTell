@@ -49,7 +49,9 @@ namespace Systems.InspectionSystem.Scripts {
         // Call this from your detection layer when player presses interact
         #region Public API 
         public void StartInspect(GameObject obj) {
-            if (_isInspecting) return;
+            if (!obj || !obj.activeInHierarchy || !inspectAnchor || !isActiveAndEnabled) return;
+            if (_isInspecting && _target == obj) return;
+            if (_isInspecting) StopInspect();
 
             _target = obj;
             _isInspecting = true;
@@ -70,40 +72,47 @@ namespace Systems.InspectionSystem.Scripts {
         }
 
         public void StopInspect() {
-            if (!_isInspecting || !_target) return;
-
-            _target.transform.SetParent(_originalParent, worldPositionStays: false);
-            _target.transform.localPosition = _originalLocalPos;
-            _target.transform.localRotation = _originalLocalRot;
-            
-            inspectAnchor.transform.localPosition = _originalInspectorAnchorLocalPos;
-
-            Freeze(false, _target); //before nulling _target
-
+            if (!_isInspecting) return;
+            GameObject inspected = _target;
             _target = null;
             _isInspecting = false;
-            GameEventBus.Raise(GameplayEvents.EndInspection);
 
+            if (inspected) {
+                inspected.transform.SetParent(_originalParent, worldPositionStays: false);
+                inspected.transform.localPosition = _originalLocalPos;
+                inspected.transform.localRotation = _originalLocalRot;
+            }
+            if (inspectAnchor) inspectAnchor.localPosition = _originalInspectorAnchorLocalPos;
+            Freeze(false, inspected);
+            GameEventBus.Raise(GameplayEvents.EndInspection);
+            if (inspected) {
+                foreach (var target in inspected.GetComponents<IInspectionTarget>())
+                    target.OnInspectionEnded();
+            }
         }
         #endregion
 
         #region Lifecycle
 
-        private void Start() {
-            _originalInspectorAnchorLocalPos = inspectAnchor.transform.localPosition;
+        private void Awake() {
+            if (inspectAnchor) _originalInspectorAnchorLocalPos = inspectAnchor.localPosition;
         }
         
         private void OnEnable() {
             GameEventBus.Subscribe<GameObject>(GameplayEvents.StartInspection, StartInspect);
-            inspectAction.action.performed += _ => {
-                if (_isInspecting) StopInspect();
-            };
+            if (inspectAction) inspectAction.action.performed += OnInspectPerformed;
             EnableInputActions(true);
         }
         
         private void OnDisable() {
             GameEventBus.Unsubscribe<GameObject>(GameplayEvents.StartInspection, StartInspect);
+            if (inspectAction) inspectAction.action.performed -= OnInspectPerformed;
+            StopInspect();
             EnableInputActions(false);
+        }
+
+        private void OnInspectPerformed(InputAction.CallbackContext context) {
+            if (_isInspecting) StopInspect();
         }
 
         private void Update() {
@@ -118,7 +127,10 @@ namespace Systems.InspectionSystem.Scripts {
 
         private bool ShouldUpdate() {
             if (!_isInspecting) return false;
-            if (!_target) return false;
+            if (!_target || !_target.activeInHierarchy) {
+                StopInspect();
+                return false;
+            }
             return true;
         }
         
@@ -170,25 +182,27 @@ namespace Systems.InspectionSystem.Scripts {
             }
         }
         private void Freeze(bool freeze, GameObject target) {
-            var rb = target.GetComponent<Rigidbody>();
+            var rb = target ? target.GetComponent<Rigidbody>() : null;
             if (rb) rb.isKinematic = freeze;
-            foreach (var script in onOffScripts) script.enabled = !freeze;
+            if (onOffScripts != null)
+                foreach (var script in onOffScripts)
+                    if (script && script != this) script.enabled = !freeze;
             if (lockCursor) Cursor.lockState = freeze ? CursorLockMode.Locked : CursorLockMode.None;
         }
         #endregion
 
         private void EnableInputActions(bool enabled) {
             if (enabled) {
-                inspectAction.action.Enable();
-                rotateDelta.action.Enable();
-                mouseClick.action.Enable();
-                movementAction.action.Enable();
+                if (inspectAction) inspectAction.action.Enable();
+                if (rotateDelta) rotateDelta.action.Enable();
+                if (mouseClick) mouseClick.action.Enable();
+                if (movementAction) movementAction.action.Enable();
             }
             else {
-                inspectAction.action.Disable();
-                rotateDelta.action.Disable();
-                mouseClick.action.Disable();
-                movementAction.action.Disable();
+                if (inspectAction) inspectAction.action.Disable();
+                if (rotateDelta) rotateDelta.action.Disable();
+                if (mouseClick) mouseClick.action.Disable();
+                if (movementAction) movementAction.action.Disable();
             }
         }
     }

@@ -10,6 +10,14 @@ namespace DialogueSystem.Scripts {
         [SerializeField] private DialogueManagerScript _dialogueManagerScript;
         
         private int _convIndex = 0;
+
+        // Changes the next interaction without interrupting a conversation already playing.
+        public void SetConversation(ConversationSO conversation) {
+            if (!conversation) return;
+            _conversationSos = new[] { conversation };
+            _convIndex = 0;
+            _spokenAlready = false;
+        }
         
         private void Start() {
             _dialogueManagerScript = DialogueManagerScript.Instance;

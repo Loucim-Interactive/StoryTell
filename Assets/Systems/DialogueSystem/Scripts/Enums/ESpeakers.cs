@@ -12,5 +12,7 @@ namespace DialogueSystem.Scripts {
         Jeremias,
         Simon,
         Yo,
+        Mateo,
+        Diego,
     }
 }

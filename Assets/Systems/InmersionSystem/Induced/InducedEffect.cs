@@ -15,5 +15,6 @@ namespace Systems.InmersionSystem.Induced {
     public abstract class InducedEffect
     {
         public abstract IEnumerator EffectRoutine(float intensity);
+        public virtual void Reset() { }
     }
 }

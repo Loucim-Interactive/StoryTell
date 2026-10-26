@@ -3,7 +3,17 @@ guid: 5305f599a06e21a438969140ab93a6ee
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Diario1
+    second: {fileID: 2100000, guid: 3a3a1bfc3a19cb54882a9da839738981, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: multimedia.normal.aaec8f3362345c6c.326465616272696c3139383243726f6e6963615f6e6f726d616c2e6a7067
+    second: {fileID: 2800000, guid: 478d1669ec400be4480fca06a68f9e96, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

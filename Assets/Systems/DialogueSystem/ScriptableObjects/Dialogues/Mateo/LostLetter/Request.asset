@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b37457f1b49dd498230ee021b85639, type: 3}
+  m_Name: Request
+  m_EditorClassIdentifier: 
+  _extraReadTime: 1.5
+  _textSpeed: 3
+  _lookAtTarget: {fileID: 0}
+  _fontAsset: {fileID: 0}
+  _speaker: 12
+  _dialogueText: "Una r\xE1faga me los arranc\xF3 de la mano. Los vi caer por ac\xE1
+    cerca, alrededor del puesto, pero me llamaron a la guardia y no pude buscarlos.
+    \xBFMe das una mano para juntarlos?"
+  _voiceClip: {fileID: 0}
+  _subDialogueSO: {fileID: 0}
+  choices:
+  - label: Dale, yo te busco los pedazos.
+    outcome: 1
+    nextConversation: {fileID: 11400000, guid: ba091c17ae1d18044b16b18f5cba098f, type: 2}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: fa4b2a53a0e21704c95edf4059ef3357, type: 2}
+          m_TargetAssemblyTypeName: Systems.Missions.FindObjects.LetterMissionAction,
+            Assembly-CSharp
+          m_MethodName: AcceptMission
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - label: "Ahora no puedo. Despu\xE9s vuelvo."
+    outcome: 1
+    nextConversation: {fileID: 11400000, guid: 68374668db0025e41acbf7bfdc18d63f, type: 2}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []

@@ -8,21 +8,34 @@ namespace Systems.InmersionSystem.Induced.Effects {
     public class RingingEarsEffect : InducedEffect<RingingEarsConfig>
     {
         private readonly AudioSource _audioSource;
+        private float _originalVolume;
+        private bool _playing;
 
         public RingingEarsEffect(RingingEarsConfig config, AudioSource audioSource) : base(config) {
             this._audioSource = audioSource;
         }
 
         public override IEnumerator EffectRoutine(float intensity) {
-            if (!config) {
-                Debug.LogWarning("[ShakeVisionEffect] Missing ShakeVisionConfig.");
+            if (!config || !_audioSource || !config.ringingClip) {
                 yield break;
             }
-
+            _originalVolume = _audioSource.volume;
+            _playing = true;
             _audioSource.clip = config.ringingClip;
-            // there is an AnimationCurve that comes from "config.volumeCurve" i want it to dictate how strongly you hear the clip over time
-            _audioSource.volume = _audioSource.volume; // placeholder
             _audioSource.Play();
+            float duration = config.ringingClip.length / Mathf.Max(.01f, Mathf.Abs(_audioSource.pitch));
+            for (float elapsed = 0; elapsed < duration; elapsed += Time.deltaTime) {
+                if (!_audioSource) break;
+                float curve = config.volumeCurve != null && config.volumeCurve.length > 0 ? config.volumeCurve.Evaluate(elapsed / duration) : 1;
+                _audioSource.volume = _originalVolume * Mathf.Clamp01(intensity) * config.maxIntensity * Mathf.Clamp01(curve);
+                yield return null;
+            }
+            Reset();
+        }
+
+        public override void Reset() {
+            if (_playing && _audioSource) { _audioSource.Stop(); _audioSource.volume = _originalVolume; }
+            _playing = false;
         }
     }
 }

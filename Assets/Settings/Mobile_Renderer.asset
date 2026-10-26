@@ -26,8 +26,9 @@ MonoBehaviour:
     probeSamplingDebugMesh: {fileID: 0}
     probeSamplingDebugTexture: {fileID: 0}
     probeVolumeBlendStatesCS: {fileID: 0}
-  m_RendererFeatures: []
-  m_RendererFeatureMap: 
+  m_RendererFeatures:
+  - {fileID: 932740001}
+  m_RendererFeatureMap: a17b983700000000
   m_UseNativeRenderPass: 1
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   m_AssetVersion: 2
@@ -64,3 +65,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   _baseProfile: {fileID: 11400000, guid: f2d4d916a6612574cad220d125febbf2, type: 2}
+--- !u!114 &932740001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33eee5bc7c0edcb4ea94030d9bc55934, type: 3}
+  m_Name: Induced Vision
+  m_EditorClassIdentifier:
+  m_Active: 1
+  shader: {fileID: 4800000, guid: 29cf751579f98ac40b2239daad22e9d8, type: 3}

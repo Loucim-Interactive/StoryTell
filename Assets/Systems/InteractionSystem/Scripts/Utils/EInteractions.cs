@@ -4,6 +4,7 @@ namespace InteractionSystem.Scripts.Utils {
         LeftClick,
         RightClick,
         MiddleClick,
-        Spacebar
+        Spacebar,
+        EKeypress,
     }
 }

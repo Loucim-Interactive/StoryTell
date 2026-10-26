@@ -37,7 +37,13 @@ namespace Systems.InteractionSystem.Scripts {
             UIInteraction interaction = interactionScript.UIInteraction;
             interactionName.text = interactionScript.interactableName;
             interactionAction.text = interaction.label;
-            interactionImage.sprite = GetSprite(interaction.interactionType);
+            
+            Sprite imgSprite = GetSprite(interaction.interactionType);
+            if (!imgSprite) interactionImage.enabled = false;
+            else {
+                interactionImage.enabled = true;
+                interactionImage.sprite = imgSprite;
+            }
         }
 
         public void HideInteraction() {

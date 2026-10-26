@@ -337,6 +337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bfd91edb5fb8d4ca072a404677033d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blurryVisionConfig: {fileID: 11400000, guid: cbf4855d84d54f69b76cefdc496ad86a, type: 2}
+  tunnelVisionConfig: {fileID: 11400000, guid: f8724e236ffb4d85993548cdf0a03056, type: 2}
+  stepPrintingConfig: {fileID: 11400000, guid: 07d9dd0766314ab18a142425377fad03, type: 2}
+  muffledHearingConfig: {fileID: 11400000, guid: 31c8e68e91964b16b52cc8ee1904766a, type: 2}
   cameraTransform: {fileID: 0}
   ringingEarsAudioSrc: {fileID: 5799818128618220255}
   shakeVisionConfig: {fileID: 11400000, guid: 2561288d8914bbd4da43ce36685715fc, type: 2}

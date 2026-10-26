@@ -12,6 +12,7 @@ namespace InmersionSystem {
         }
 
         public enum EInducedEffect {
+            StepPrinting,
             TunnelVision,
             BlurryVision,
             ShakeVision,

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137606ee1d91474eb7b182be693a05f, type: 3}
+  m_Name: Offer
+  m_EditorClassIdentifier: 
+  _autoNext: 1
+  Dialogues:
+  - {fileID: 11400000, guid: f89a5420e455e7a4e811c4cec857eaa5, type: 2}
+  - {fileID: 11400000, guid: b3c465ad1437576439af94b2346ff1fd, type: 2}
+  - {fileID: 11400000, guid: 2a5a01c349bf08546ace36af04a35629, type: 2}

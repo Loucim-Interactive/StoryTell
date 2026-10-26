@@ -12,6 +12,7 @@ namespace Systems.InmersionSystem.Induced.Effects {
         private readonly CameraControllerScript _cameraController;
         private Quaternion _initialRotation;
         private float _trauma;
+        private bool _applied;
 
         public ShakeVisionEffect(ShakeVisionConfig config, Transform cameraTransform) 
             : base(config)
@@ -35,6 +36,7 @@ namespace Systems.InmersionSystem.Induced.Effects {
             }
 
             _initialRotation = _cameraTransform.localRotation;
+            _applied = true;
             _trauma = Mathf.Clamp01(intensity);
             float duration = config.maxDuration * Mathf.Clamp01(intensity);
             float elapsed = 0f;
@@ -55,12 +57,13 @@ namespace Systems.InmersionSystem.Induced.Effects {
                 yield return null;
             }
 
-            ApplyShake(Vector3.zero);
-            if (!_cameraController) {
-                _cameraTransform.localRotation = _initialRotation;
-            }
+            Reset();
+        }
 
-            _trauma = 0f;
+        public override void Reset() {
+            if (_applied && _cameraTransform) ApplyShake(Vector3.zero);
+            _applied = false;
+            _trauma = 0;
         }
 
         private void ApplyShake(Vector3 offset) {

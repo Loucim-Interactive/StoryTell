@@ -12,7 +12,8 @@ namespace Systems.EventSystem.Scripts {
         InteractableAction,
         VFX,
         WalkieTalkieTrigger,
-        EquipAction
+        EquipAction,
+        PickupAction
     }
 
     public static class GameplayEvents
@@ -29,6 +30,7 @@ namespace Systems.EventSystem.Scripts {
         public const string VFX = "vfx";
         public const string WalkieTalkieTrigger = "walkieTalkie.trigger";
         public const string EquipAction = "equip.action";
+        public const string PickupAction = "pickup.action";
 
 
         public static string GetName(GameplayEventType eventType) {
@@ -55,6 +57,10 @@ namespace Systems.EventSystem.Scripts {
                     return VFX;
                 case GameplayEventType.WalkieTalkieTrigger:
                     return WalkieTalkieTrigger;
+                case GameplayEventType.EquipAction:
+                    return EquipAction;
+                case GameplayEventType.PickupAction:
+                    return PickupAction;
                 default:
                     return string.Empty;
             }

@@ -93,6 +93,8 @@ namespace Systems.InteractionSystem.Scripts {
                     return Input.GetMouseButtonDown(2);
                 case EInteractions.Spacebar:
                     return Input.GetKeyDown(KeyCode.Space);
+                case EInteractions.EKeypress:
+                    return Input.GetKeyDown(KeyCode.E);
                 default:
                     Debug.Log("Unknown interaction type: " + type);
                     return false;
