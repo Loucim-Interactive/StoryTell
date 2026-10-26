@@ -40,7 +40,7 @@ namespace StoryTell.GameplayPath
                 hideOnInspectionEnd = controller != null && controller.Interact(action, fragmentIndex, readingText) && hideAfterUse;
                 return;
             }
-            if (controller != null && controller.Interact(action, fragmentIndex, readingText) && hideAfterUse)
+            if (controller != null && controller.Interact(action, fragmentIndex, readingText, transform) && hideAfterUse)
                 gameObject.SetActive(false);
         }
     }

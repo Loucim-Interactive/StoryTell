@@ -30,7 +30,7 @@ public sealed class GameplayPathTests
         var p=Equipped();for(int i=0;i<4;i++)Assert.That(p.CollectFragment(i),Is.True);
         Assert.That(p.CollectFragment(0),Is.False);Assert.That(p.CollectFragment(4),Is.False);
         p.Advance(PathAction.Ruben);p.Advance(PathAction.Eat);p.Advance(PathAction.Ruben);
-        Assert.That(p.Stage,Is.EqualTo(PathStage.ReturnLetter));Assert.That(p.Advance(PathAction.Ruben),Is.True);Assert.That(p.Stage,Is.EqualTo(PathStage.Sergeant));
+        Assert.That(p.Stage,Is.EqualTo(PathStage.ReturnLetter));Assert.That(p.Advance(PathAction.Ruben),Is.False);Assert.That(p.AssembleLetter(),Is.True);Assert.That(p.Advance(PathAction.Ruben),Is.True);Assert.That(p.Stage,Is.EqualTo(PathStage.Sergeant));
     }
     [Test] public void Progress_NoBattleBeforeDelivery_OnlyOneEnding()
     {
@@ -102,7 +102,7 @@ public sealed class GameplayPathTests
         var exitRadio=radio.GetType().GetMethod("ExitWalkie",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance);
         enterRadio.Invoke(radio,null);yield return null;Assert.That(radio.IsEquipped,Is.True,"Radio remains available outside combat.");exitRadio.Invoke(radio,null);
         foreach(var item in new[]{PathEquipment.Helmet,PathEquipment.Ammunition,PathEquipment.Radio})p.Collect(item);
-        p.Advance(PathAction.Ruben);p.Advance(PathAction.Eat);p.Advance(PathAction.Ruben);for(int i=0;i<4;i++)p.CollectFragment(i);
+        p.Advance(PathAction.Ruben);p.Advance(PathAction.Eat);p.Advance(PathAction.Ruben);for(int i=0;i<4;i++)p.CollectFragment(i);p.AssembleLetter();
         p.Advance(PathAction.Ruben);p.Advance(PathAction.Sergeant);p.Advance(PathAction.Crate);p.Advance(PathAction.Officer);
         var gate=Object.FindAnyObjectByType<GameplayPathBattleGate>();var cc=controller.Player.GetComponent<CharacterController>();cc.enabled=false;controller.Player.position=gate.transform.position-Vector3.up*2;cc.enabled=true;
         Assert.That(controller.TryEnterBattle(),Is.True);Assert.That(controller.WeaponAllowed,Is.True);
@@ -141,7 +141,7 @@ public sealed class GameplayPathTests
         EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");yield return new EnterPlayMode();yield return null;
         var controller=Object.FindAnyObjectByType<GameplayPathController>();var battle=Object.FindAnyObjectByType<GameplayPathBattle>();var trial=Object.FindAnyObjectByType<Level1WeaponTrial>();
         var p=controller.Progress;p.Advance(PathAction.Ruben);p.Collect(PathEquipment.All);p.Advance(PathAction.Ruben);p.Advance(PathAction.Eat);p.Advance(PathAction.Ruben);
-        for(int i=0;i<4;i++)p.CollectFragment(i);p.Advance(PathAction.Ruben);p.Advance(PathAction.Sergeant);p.Advance(PathAction.Crate);p.Advance(PathAction.Officer);
+        for(int i=0;i<4;i++)p.CollectFragment(i);p.AssembleLetter();p.Advance(PathAction.Ruben);p.Advance(PathAction.Sergeant);p.Advance(PathAction.Crate);p.Advance(PathAction.Officer);
         var config=Object.Instantiate(controller.Definition);config.enemySpeed=0.1f;config.spawnInterval=0;
         var s=new SerializedObject(battle);s.FindProperty("definition").objectReferenceValue=config;s.ApplyModifiedPropertiesWithoutUndo();
         Assert.That(controller.TryEnterBattle(),Is.True);float deadline=Time.realtimeSinceStartup+18;
@@ -182,7 +182,7 @@ public sealed class GameplayPathTests
     }
     [UnityTearDown] public IEnumerator Cleanup(){Time.timeScale=1;if(Application.isPlaying)yield return new ExitPlayMode();}
     private static GameplayPathProgress Equipped(){var p=new GameplayPathProgress();p.Advance(PathAction.Ruben);p.Collect(PathEquipment.All);return p;}
-    private static GameplayPathProgress BeforeDelivery(){var p=Equipped();p.Advance(PathAction.Ruben);p.Advance(PathAction.Eat);p.Advance(PathAction.Ruben);for(int i=0;i<4;i++)p.CollectFragment(i);p.Advance(PathAction.Ruben);p.Advance(PathAction.Sergeant);p.Advance(PathAction.Crate);return p;}
+    private static GameplayPathProgress BeforeDelivery(){var p=Equipped();p.Advance(PathAction.Ruben);p.Advance(PathAction.Eat);p.Advance(PathAction.Ruben);for(int i=0;i<4;i++)p.CollectFragment(i);p.AssembleLetter();p.Advance(PathAction.Ruben);p.Advance(PathAction.Sergeant);p.Advance(PathAction.Crate);return p;}
     private static T[] All<T>(Scene s)where T:Component=>s.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<T>(true)).ToArray();
     private static void Capture(string path)
     {

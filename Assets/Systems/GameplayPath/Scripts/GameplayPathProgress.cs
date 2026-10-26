@@ -10,6 +10,7 @@ namespace StoryTell.GameplayPath
         public PathStage Stage { get; private set; }
         public PathEquipment Equipment { get; private set; }
         public int Fragments { get; private set; }
+        public bool LetterAssembled { get; private set; }
         private int fragmentMask;
         public bool Has(PathEquipment item) => (Equipment & item) == item;
         public bool Collect(PathEquipment item)
@@ -34,7 +35,7 @@ namespace StoryTell.GameplayPath
                 case PathStage.ReturnEquipment when action == PathAction.Ruben: Stage = PathStage.Kitchen; break;
                 case PathStage.Kitchen when action == PathAction.Eat: Stage = PathStage.LetterRequest; break;
                 case PathStage.LetterRequest when action == PathAction.Ruben: Stage = Fragments == 4 ? PathStage.ReturnLetter : PathStage.FindLetter; break;
-                case PathStage.ReturnLetter when action == PathAction.Ruben: Stage = PathStage.Sergeant; break;
+                case PathStage.ReturnLetter when action == PathAction.Ruben && LetterAssembled: Stage = PathStage.Sergeant; break;
                 case PathStage.Sergeant when action == PathAction.Sergeant: Stage = PathStage.TakeCrate; break;
                 case PathStage.TakeCrate when action == PathAction.Crate: Stage = PathStage.CarryCrate; break;
                 case PathStage.CarryCrate when action == PathAction.Officer: Stage = PathStage.ApproachBattle; break;
@@ -47,6 +48,11 @@ namespace StoryTell.GameplayPath
         {
             if (Stage != PathStage.Combat) return false;
             Stage = PathStage.Complete; return true;
+        }
+        public bool AssembleLetter()
+        {
+            if (Fragments != 4 || LetterAssembled) return false;
+            LetterAssembled = true; return true;
         }
     }
 }

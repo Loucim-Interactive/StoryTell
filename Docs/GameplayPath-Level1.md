@@ -7,10 +7,10 @@ Implementación en StoryTell, rama GameplayPath, escena `Assets/Scenes/Level1.un
 1. Hablar con Rubén junto al punto de llegada.
 2. Recoger casco, FAL, tres cargadores, mapa y radio en el sector EQUIPO. Volver con Rubén.
 3. Ir a la cocina y comer con Gómez.
-4. Hablar con Rubén, recuperar los cuatro fragmentos cerca de la cocina y devolver la carta. Leerla no es obligatorio.
+4. Hablar con Rubén, recuperar los cuatro fragmentos cerca de la cocina, reconstruir la carta con el minijuego y devolvérsela a Rubén. Leerla no es obligatorio.
 5. Hablar con el sargento Acosta en la carpa principal. Recoger herramientas y mantas.
 6. Seguir por Narration zone 5 hacia el minicampamento nuevo, sobre el terreno cerca de X=114, Z=361. Entregar la caja al oficial.
-7. Continuar por los carteles hacia la zona de explosiones existente, cerca de X=50, Z=530. Atravesarla después de entregar la caja; la entrada de combate queda más adelante, cerca de X=56, Z=543, con las coberturas hacia Z=563.
+7. Consultar el mapa y continuar hacia la zona de explosiones existente, cerca de X=50, Z=530. Atravesarla después de entregar la caja; la entrada de combate queda más adelante, cerca de X=56, Z=543, con las coberturas hacia Z=563.
 8. Enfrentarse a 45 siluetas, con seis activas como máximo (ajustable entre cinco y ocho). Los recorridos pasan entre y detrás de coberturas. Contacto enemigo: fundido breve a negro. Eliminar las 45: fundido progresivo. Ambos muestran «Finalización escena 1».
 
 Las coordenadas anteriores son referencias del plano horizontal; las alturas se ajustan al terreno. El punto negativo indicado inicialmente fue reemplazado por la ubicación después de Narration zone 5, con autorización del usuario.
@@ -19,7 +19,7 @@ Las coordenadas anteriores son referencias del plano horizontal; las alturas se 
 
 - E: interacción contextual; también cierra una lectura abierta.
 - M: mapa físico y lista de tareas, después de recoger el mapa.
-- L con el mapa abierto: leer la carta de la madre después de recuperar sus cuatro fragmentos.
+- L con el mapa abierto: reconstruir la carta después de recuperar sus cuatro fragmentos; una vez armada, inspeccionarla y leerla.
 - Clic izquierdo: disparar durante el combate. Clic derecho: apuntar. R: recargar o destrabar.
 
 La caja se oculta temporalmente al consultar el mapa; permanece registrada como transportada. Se entrega exclusivamente al oficial. Las lecturas y conversaciones bloquean temporalmente movimiento, mirada y disparo para evitar acciones superpuestas. No se añade una barra de hambre.

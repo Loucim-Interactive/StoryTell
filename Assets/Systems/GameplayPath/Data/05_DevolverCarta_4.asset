@@ -19,7 +19,7 @@ MonoBehaviour:
   _speaker: 0
   speakerDisplayName: "Rub\xE9n"
   _dialogueText: "S\xED. Escuch\xE1: te buscaba el sargento Acosta. Est\xE1 en la
-    carpa principal, junto al cartel."
+    carpa principal, en la zona indicada en el mapa."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

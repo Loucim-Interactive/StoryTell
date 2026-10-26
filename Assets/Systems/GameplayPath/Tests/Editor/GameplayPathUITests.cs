@@ -87,7 +87,11 @@ public sealed class GameplayPathUITests
             Assert.That(fragment.gameObject.activeSelf,Is.True,"A collected fragment remains visible until inspection ends.");
             Assert.That(panel.IsVisible,Is.True);inspection.StopInspect();yield return null;Assert.That(fragment.gameObject.activeSelf,Is.False);
         }
-        Assert.That(controller.Progress.Fragments,Is.EqualTo(4));controller.InspectMotherLetter();yield return null;
+        Assert.That(controller.Progress.Fragments,Is.EqualTo(4));Assert.That(controller.BeginLetterAssembly(),Is.True);yield return null;
+        var puzzle=Object.FindAnyObjectByType<LetterAssemblyPuzzle>();
+        foreach(var piece in Object.FindObjectsByType<LetterPuzzlePiece>(FindObjectsSortMode.None))
+        {piece.transform.position=puzzle.Slot(piece.slotIndex).position;piece.rectTransform.localRotation=Quaternion.identity;Assert.That(puzzle.TrySnap(piece),Is.True);}
+        Assert.That(controller.Progress.LetterAssembled,Is.True);puzzle.Close();controller.InspectMotherLetter();yield return null;
         Assert.That(panel.IsVisible,Is.True);Assert.That(panel.Body.text,Is.EqualTo(controller.Definition.motherLetter));
         Capture("Library/GameplayPathUI-mother-letter.png",1280,720,panel);
         var assembled=inspection.CurrentTarget;inspection.StopInspect();yield return null;Assert.That(assembled.activeSelf,Is.False);

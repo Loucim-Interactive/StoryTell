@@ -18,8 +18,8 @@ MonoBehaviour:
   _fontAsset: {fileID: 0}
   _speaker: 0
   speakerDisplayName: Sargento Acosta
-  _dialogueText: "Segu\xED el paso que sale del campamento y los carteles al puesto.
-    Est\xE1 pasando la subida. Consult\xE1 el mapa si perd\xE9s la referencia."
+  _dialogueText: "Segu\xED el paso que sale del campamento hacia la subida. El PUESTO
+    AVANZADO est\xE1 marcado en el mapa; consultalo si perd\xE9s la referencia."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

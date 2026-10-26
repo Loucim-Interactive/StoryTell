@@ -18,7 +18,7 @@ MonoBehaviour:
   _fontAsset: {fileID: 0}
   _speaker: 0
   speakerDisplayName: "Mart\xEDn"
-  _dialogueText: "Encontr\xE9 los cuatro pedazos. Ac\xE1 ten\xE9s."
+  _dialogueText: "Encontr\xE9 los cuatro pedazos y arm\xE9 la carta. Ac\xE1 ten\xE9s."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

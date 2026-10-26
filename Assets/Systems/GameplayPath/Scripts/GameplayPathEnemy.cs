@@ -13,6 +13,7 @@ namespace StoryTell.GameplayPath
         private Transform[] route;
         private int waypoint;
         private float health, nextRepath, lastProgressTime, lastDistance;
+        private readonly RaycastHit[] contactHits = new RaycastHit[32];
         public bool IsAlive => health > 0 && gameObject.activeSelf;
         public float Health => health;
         public bool Activate(GameplayPathBattle owner, GameplayPathController path, GameplayPathDefinition config, Transform[] points)
@@ -28,15 +29,10 @@ namespace StoryTell.GameplayPath
         }
         private void Update()
         {
-            if (!IsAlive || controller == null || !battle.Active || !agent.isOnNavMesh) return;
+            if (!IsAlive || controller == null || !battle.Active) return;
+            if (CheckPlayerContact()) return;
+            if (agent == null || !agent.isOnNavMesh) return;
             var player = controller.Player;
-            Vector3 delta = player.position - transform.position;
-            if (Mathf.Abs(delta.y) < 1.9f && new Vector2(delta.x, delta.z).sqrMagnitude < definition.contactDistance * definition.contactDistance)
-            {
-                if (!Physics.Linecast(transform.position + Vector3.up, player.position + Vector3.up, 1 << 0 | 1 << 3, QueryTriggerInteraction.Ignore))
-                    controller.FinishBattle(true);
-                return;
-            }
             if (Time.time < nextRepath) return;
             nextRepath = Time.time + 0.35f;
             if (waypoint < route.Length && Vector3.Distance(transform.position, route[waypoint].position) < 1.6f) { waypoint++; lastProgressTime = Time.time; }
@@ -54,6 +50,45 @@ namespace StoryTell.GameplayPath
             health = Mathf.Max(0, health - damage);
             if (health <= 0) { gameObject.SetActive(false); battle.EnemyDefeated(); }
             return true;
+        }
+        public bool CheckPlayerContact()
+        {
+            if (!IsAlive || controller == null || battle == null || !battle.Active) return false;
+            Transform player = controller.Player;
+            if (player == null) return false;
+            var body = GetComponent<Collider>();
+            var playerBody = player.GetComponent<Collider>();
+            Vector3 delta = player.position - transform.position;
+            bool close = Mathf.Abs(delta.y) < 1.9f && new Vector2(delta.x, delta.z).sqrMagnitude <= definition.contactDistance * definition.contactDistance;
+            if (!close && body != null && playerBody != null)
+            {
+                Vector3 playerPoint;
+                if(playerBody is CharacterController capsule)
+                {
+                    Vector3 scale=player.lossyScale;
+                    float radius=capsule.radius*Mathf.Max(Mathf.Abs(scale.x),Mathf.Abs(scale.z));
+                    float half=Mathf.Max(0,capsule.height*Mathf.Abs(scale.y)*0.5f-radius);
+                    Vector3 center=player.TransformPoint(capsule.center);
+                    Vector3 axisPoint=center+player.up*Mathf.Clamp(Vector3.Dot(body.bounds.center-center,player.up),-half,half);
+                    Vector3 offset=body.bounds.center-axisPoint;
+                    playerPoint=offset.sqrMagnitude<=radius*radius?body.bounds.center:axisPoint+offset.normalized*radius;
+                }
+                else playerPoint=playerBody.ClosestPoint(body.bounds.center);
+                close = (body.ClosestPoint(playerPoint) - playerPoint).sqrMagnitude <= 0.08f * 0.08f;
+            }
+            if (!close) return false;
+            Vector3 from = body != null ? body.bounds.center : transform.position + Vector3.up;
+            Vector3 to = playerBody != null ? playerBody.bounds.center : player.position + Vector3.up;
+            Vector3 direction = to - from;
+            int hits = Physics.RaycastNonAlloc(from, direction.normalized, contactHits, direction.magnitude, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hits; i++)
+            {
+                Transform hit = contactHits[i].collider.transform;
+                if (hit.IsChildOf(transform) || hit.IsChildOf(player)) continue;
+                if (hit.GetComponentInParent<GameplayPathEnemy>() != null) continue;
+                return false;
+            }
+            return controller.FinishBattle(true);
         }
     }
 }

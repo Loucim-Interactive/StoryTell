@@ -19,7 +19,7 @@ MonoBehaviour:
   _speaker: 0
   speakerDisplayName: "Rub\xE9n"
   _dialogueText: "Casco, FAL, munici\xF3n, mapa y radio. Est\xE1n en la mesa de suministros,
-    al lado del cartel EQUIPO. Volv\xE9 cuando tengas todo."
+    en el sector EQUIPO indicado en el mapa. Volv\xE9 cuando tengas todo."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

@@ -251,6 +251,16 @@ namespace StoryTell.PhysicalMap.Editor
             return reference;
         }
 
+        public static void ReframeSurvey(PhysicalMapController map, Vector3 center, Vector2 size)
+        {
+            var reference=map.GetComponent<MapWorldReference>();
+            Undo.RecordObject(reference.WorldOrigin,"Frame the playable route on the map");
+            reference.WorldOrigin.position=center;
+            Undo.RecordObject(reference,"Map the playable route");reference.Configure(reference.WorldOrigin,size,map);
+            Undo.RecordObject(map.GetComponent<MeshRenderer>(),"Refresh the route survey");
+            map.GetComponent<MeshRenderer>().sharedMaterial=EnsureSurveyMaterial(map.gameObject.scene,center,size);
+        }
+
         private static Material EnsureSurveyMaterial(Scene scene, Vector3 center, Vector2 size)
         {
             const int width = 768, height = 512;

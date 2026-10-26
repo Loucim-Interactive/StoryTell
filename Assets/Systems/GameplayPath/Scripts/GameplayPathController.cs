@@ -32,8 +32,9 @@ namespace StoryTell.GameplayPath
         [SerializeField] private TMP_Text noticeText, journalText, readingText;
         [SerializeField] private GameObject journalPanel, readingPanel;
         [SerializeField] private InspectableDocument motherDocument;
+        [SerializeField] private LetterAssemblyPuzzle letterPuzzle;
         [SerializeField] private InputActionReference closeReading, readMother;
-        private bool ownsClose, ownsRead, busy, reading, inputLocked, wasMoving, wasInteracting, mapAvailable;
+        private bool ownsClose, ownsRead, busy, reading, assembling, inputLocked, wasMoving, wasInteracting, mapAvailable;
         private float noticeUntil, readingSince;
         private Coroutine sequence;
         private Camera playerView;
@@ -43,7 +44,7 @@ namespace StoryTell.GameplayPath
         public GameplayPathProgress Progress { get; } = new();
         public Transform Player => player;
         public GameplayPathDefinition Definition => definition;
-        public bool IsBusy => busy || reading || (inspection != null && inspection.IsInspecting) || (dialogue != null && dialogue.IsInConversation);
+        public bool IsBusy => busy || reading || assembling || (inspection != null && inspection.IsInspecting) || (dialogue != null && dialogue.IsInConversation);
         public bool WeaponAllowed => Progress.Stage == PathStage.Combat && !IsBusy && (radio == null || !radio.IsEquipped);
         public bool ShowRifle => WeaponAllowed && trial != null && trial.IsInsideZone;
         public string Objective => Progress.Stage switch
@@ -54,10 +55,10 @@ namespace StoryTell.GameplayPath
             PathStage.Kitchen => "Andá a la cocina de campaña y acercá el jarro para comer.",
             PathStage.LetterRequest => "Hablá con Rubén junto a la cocina.",
             PathStage.FindLetter => "Buscá los cuatro fragmentos cerca de la cocina, las cajas y la lona.",
-            PathStage.ReturnLetter => "Devolvé la carta a Rubén. Leerla es opcional.",
+            PathStage.ReturnLetter => Progress.LetterAssembled ? "Devolvé la carta reconstruida a Rubén. Leerla es opcional." : "Reconstruí la carta: abrí el mapa con M y presioná L, o volvé con Rubén.",
             PathStage.Sergeant => "Buscá al sargento Acosta en la carpa principal.",
             PathStage.TakeCrate => "Recogé la caja de herramientas y mantas junto al sargento.",
-            PathStage.CarryCrate => "Llevá la caja al puesto avanzado por la subida y los carteles del camino.",
+            PathStage.CarryCrate => "Llevá la caja al puesto avanzado por la subida. Consultá las zonas del mapa.",
             PathStage.ApproachBattle => "Seguí por el paso junto a las explosiones. Rubén te espera más adelante.",
             PathStage.Combat => "Mantené la distancia: las siluetas avanzan entre las coberturas. R para recargar.",
             _ => "Finalización escena 1"
@@ -106,14 +107,14 @@ namespace StoryTell.GameplayPath
         }
         private string lastNotice;
         public void Notice(string text, float seconds = 5) { lastNotice = text; noticeUntil = Time.unscaledTime + seconds; }
-        public bool Interact(PathAction action, int fragmentIndex = 0, string text = null)
+        public bool Interact(PathAction action, int fragmentIndex = 0, string text = null, Transform speaker = null)
         {
             if (IsBusy || trial.IsFinishing) return false;
             if (action == PathAction.Read) { OpenReading(text); return false; }
             if (action == PathAction.Fragment)
             {
                 if (!Progress.CollectFragment(fragmentIndex)) return false;
-                Refresh(); Notice($"Fragmentos recuperados: {Progress.Fragments}/4. " + (Progress.Fragments == 4 ? "Volvé con Rubén; podés leer la carta desde el mapa con L." : "")); return true;
+                Refresh(); Notice($"Fragmentos recuperados: {Progress.Fragments}/4. " + (Progress.Fragments == 4 ? "Reconstruí la carta con L desde el mapa, o volvé con Rubén." : "")); return true;
             }
             PathEquipment item = action switch {
                 PathAction.Helmet => PathEquipment.Helmet, PathAction.Rifle => PathEquipment.Rifle,
@@ -132,10 +133,12 @@ namespace StoryTell.GameplayPath
                 if (!Progress.Advance(action)) { Notice("El sargento tiene que darte la orden antes de llevarte la caja."); return false; }
                 Refresh(); Notice("Caja recogida. Podés consultar el mapa con M; la caja se apoya temporalmente."); return true;
             }
+            if(action==PathAction.Ruben&&Progress.Stage==PathStage.ReturnLetter&&!Progress.LetterAssembled)
+            {BeginLetterAssembly();return false;}
             ConversationSO conversation = GetConversation(action);
-            if (conversation != null) { sequence = StartCoroutine(Talk(conversation, action)); return false; }
+            if (conversation != null) { sequence = StartCoroutine(Talk(conversation, action, speaker)); return false; }
             if (action == PathAction.Ruben && Progress.Stage == PathStage.FindLetter)
-                Notice($"Recuperaste {Progress.Fragments}/4. Mirá sobre las cajas a los costados de la cocina y cerca del cartel.", 8);
+                Notice($"Recuperaste {Progress.Fragments}/4. Mirá sobre las cajas a los costados de la cocina y cerca de la lona.", 8);
             else Notice(Objective);
             return false;
         }
@@ -151,13 +154,24 @@ namespace StoryTell.GameplayPath
             if (action == PathAction.Officer && Progress.Stage == PathStage.CarryCrate) return definition.delivery;
             return null;
         }
-        private IEnumerator Talk(ConversationSO conversation, PathAction action)
+        private IEnumerator Talk(ConversationSO conversation, PathAction action, Transform speaker)
         {
             int completedBefore = dialogue.CompletedConversationCount;
             if (!dialogue.TryStartConversation(conversation, this)) { Notice("Esperá a que termine la conversación o la llamada de radio."); yield break; }
+            var facing = speaker != null ? speaker.GetComponent<NpcConversationFacing>() : null;
+            if(facing==null)
+            {
+                foreach(var npc in GetComponentsInChildren<NpcConversationFacing>(true))
+                {
+                    var interactable=npc.GetComponent<GameplayPathInteractable>();
+                    if(npc.gameObject.activeInHierarchy&&interactable!=null&&interactable.Action==action){facing=npc;break;}
+                }
+            }
+            if(facing!=null)facing.Begin(player);
             busy = true; LockInput(); map.SetOpen(false, true);
             if (action == PathAction.Eat && eatingVisual != null) eatingVisual.SetActive(true);
-            while (dialogue.IsConversationOwnedBy(this)) yield return null;
+            try { while (dialogue.IsConversationOwnedBy(this)) yield return null; }
+            finally { if(facing!=null)facing.End(); }
             if (eatingVisual != null) eatingVisual.SetActive(false);
             if (dialogue.CompletedConversationCount > completedBefore) Progress.Advance(action);
             busy = false; UnlockInput(); Refresh(); Notice(Objective, 7); sequence = null;
@@ -186,12 +200,29 @@ namespace StoryTell.GameplayPath
         public void InspectMotherLetter()
         {
             if (IsBusy || Progress.Fragments != 4 || trial.IsFinishing) return;
+            if(!Progress.LetterAssembled){BeginLetterAssembly();return;}
             if (motherDocument != null)
             {
+                motherDocument.transcription=definition.motherLetter;
                 motherDocument.gameObject.SetActive(true);
                 GameEventBus.Raise(GameplayEvents.StartInspection, motherDocument.gameObject);
             }
             else OpenReading("Carta de la madre de Rubén — ficción provisional\n\n" + definition.motherLetter);
+        }
+        public bool BeginLetterAssembly()
+        {
+            if(IsBusy||Progress.Fragments!=4||Progress.LetterAssembled||trial.IsFinishing||letterPuzzle==null)return false;
+            map.SetOpen(false,true);LockInput();assembling=true;letterPuzzle.Open();return true;
+        }
+        public void CompleteLetterAssembly()
+        {
+            if(!assembling||letterPuzzle==null||!letterPuzzle.Complete)return;
+            Progress.AssembleLetter();Refresh();
+        }
+        public void EndLetterAssembly()
+        {
+            if(!assembling)return;
+            assembling=false;UnlockInput();Refresh();Notice(Progress.LetterAssembled?"Carta reconstruida. Devolvésela a Rubén.":"Podés continuar el armado desde el mapa con L.",7);
         }
         private void CloseReading() { reading = false; readingPanel.SetActive(false); UnlockInput(); }
         private void LockInput()
@@ -219,8 +250,8 @@ namespace StoryTell.GameplayPath
             journalText.text = "<size=32>Tareas — Escena 1</size>\n\n" + Objective + "\n\n" +
                 Check(PathEquipment.Helmet, "Casco") + "\n" + Check(PathEquipment.Rifle, "FAL") + "\n" +
                 Check(PathEquipment.Ammunition, "Munición") + "\n" + Check(PathEquipment.Map, "Mapa") + "\n" + Check(PathEquipment.Radio, "Radio") +
-                $"\n\nCarta: {Progress.Fragments}/4 fragmentos" + (Progress.Fragments == 4 ? "\n[L] Leer la carta (opcional)" : "") +
-                "\n\n<size=21>[M] Guardar mapa\nEquipo → Cocina → Carpa principal\n→ Puesto avanzado → Paso de combate</size>";
+                $"\n\nCarta: {Progress.Fragments}/4 fragmentos" + (Progress.Fragments == 4 ? Progress.LetterAssembled ? "\nCarta reconstruida\n[L] Leer la carta (opcional)" : "\n[L] Reconstruir la carta" : "") +
+                "\n\n<size=21>[M] Guardar mapa\nEquipo → Cocina → Carpa principal\n→ Puesto avanzado → Frente</size>";
         }
         private void UpdateRuben()
         {
