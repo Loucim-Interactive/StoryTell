@@ -34,6 +34,7 @@ namespace StoryTell.GameplayPath
         [SerializeField] private InspectableDocument motherDocument;
         [SerializeField] private LetterAssemblyPuzzle letterPuzzle;
         [SerializeField] private InputActionReference closeReading, readMother;
+        private bool routeReturning;
         private bool ownsClose, ownsRead, busy, reading, assembling, inputLocked, wasMoving, wasInteracting, mapAvailable;
         private float noticeUntil, readingSince;
         private Coroutine sequence;
@@ -44,7 +45,7 @@ namespace StoryTell.GameplayPath
         public GameplayPathProgress Progress { get; } = new();
         public Transform Player => player;
         public GameplayPathDefinition Definition => definition;
-        public bool IsBusy => busy || reading || assembling || (inspection != null && inspection.IsInspecting) || (dialogue != null && dialogue.IsInConversation);
+        public bool IsBusy => routeReturning || busy || reading || assembling || (inspection != null && inspection.IsInspecting) || (dialogue != null && dialogue.IsInConversation);
         public bool WeaponAllowed => Progress.Stage == PathStage.Combat && !IsBusy && (radio == null || !radio.IsEquipped);
         public bool ShowRifle => WeaponAllowed && trial != null && trial.IsInsideZone;
         public string Objective => Progress.Stage switch
@@ -100,7 +101,7 @@ namespace StoryTell.GameplayPath
             {
                 var target = interaction != null ? interaction.CurrentTarget as GameplayPathInteractable : null;
                 bool otherPrompt = interaction != null && interaction.CurrentTarget != null && target == null;
-                noticeText.text = IsBusy || trial.IsFinishing || otherPrompt || map.IsOpen ? "" : target != null ? "[E] " + target.UIInteraction.label :
+                noticeText.text = routeReturning ? lastNotice : IsBusy || trial.IsFinishing || otherPrompt || map.IsOpen ? "" : target != null ? "[E] " + target.UIInteraction.label :
                     Progress.Stage == PathStage.Combat && !trial.IsInsideZone ? "Volvé a la posición de combate para usar el FAL." : Time.unscaledTime < noticeUntil ? lastNotice : "";
             }
             if (heldCrate != null) heldCrate.SetActive(Progress.Stage == PathStage.CarryCrate && !map.IsOpen && !reading);
@@ -126,7 +127,7 @@ namespace StoryTell.GameplayPath
                 if (Progress.Has(item)) return false;
                 if (item == PathEquipment.Rifle && !trial.CollectRifle()) return false;
                 if (item == PathEquipment.Ammunition) trial.CollectMagazineCount(3);
-                Progress.Collect(item); Refresh(); Notice(item == PathEquipment.Map ? "Mapa recogido · [M] Mapa y tareas" : "Equipo recogido. " + (Progress.Stage == PathStage.ReturnEquipment ? Objective : "Revisá la lista con M cuando tengas el mapa.")); return true;
+                Progress.Collect(item); Refresh(); Notice(item == PathEquipment.Map ? "Mapa recogido · [M] Mapa y zonas" : "Equipo recogido. " + (Progress.Stage == PathStage.ReturnEquipment ? Objective : "Revisá la checklist de equipo arriba a la izquierda.")); return true;
             }
             if (action == PathAction.Crate)
             {
@@ -246,12 +247,18 @@ namespace StoryTell.GameplayPath
             map.enabled = Progress.Has(PathEquipment.Map) && !IsBusy;
             if (deliveredCrate != null) deliveredCrate.SetActive(Progress.Stage >= PathStage.ApproachBattle);
             UpdateRuben();
-            string Check(PathEquipment flag, string label) => (Progress.Has(flag) ? "[x] " : "[ ] ") + label;
-            journalText.text = "<size=32>Tareas — Escena 1</size>\n\n" + Objective + "\n\n" +
-                Check(PathEquipment.Helmet, "Casco") + "\n" + Check(PathEquipment.Rifle, "FAL") + "\n" +
-                Check(PathEquipment.Ammunition, "Munición") + "\n" + Check(PathEquipment.Map, "Mapa") + "\n" + Check(PathEquipment.Radio, "Radio") +
-                $"\n\nCarta: {Progress.Fragments}/4 fragmentos" + (Progress.Fragments == 4 ? Progress.LetterAssembled ? "\nCarta reconstruida\n[L] Leer la carta (opcional)" : "\n[L] Reconstruir la carta" : "") +
-                "\n\n<size=21>[M] Guardar mapa\nEquipo → Cocina → Carpa principal\n→ Puesto avanzado → Frente</size>";
+            journalText.text = "<size=32>Mapa de operaciones</size>\n\nLas tareas aparecen al guardar el mapa." +
+                (Progress.Fragments == 4 ? Progress.LetterAssembled ? "\n\n[L] Leer la carta (opcional)" : "\n\n[L] Reconstruir la carta" : "") + "\n\n[M] Guardar mapa";
+        }
+        public bool BeginRouteReturn()
+        {
+            if (IsBusy || trial.IsFinishing) return false;
+            map.SetOpen(false, true); LockInput(); routeReturning = true; return true;
+        }
+        public void EndRouteReturn()
+        {
+            if (!routeReturning) return;
+            routeReturning = false; if (trial == null || !trial.IsFinishing) UnlockInput();
         }
         private void UpdateRuben()
         {

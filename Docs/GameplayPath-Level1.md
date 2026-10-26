@@ -18,7 +18,7 @@ Las coordenadas anteriores son referencias del plano horizontal; las alturas se 
 ## Controles
 
 - E: interacción contextual; también cierra una lectura abierta.
-- M: mapa físico y lista de tareas, después de recoger el mapa.
+- M: mapa físico y zonas, después de recoger el mapa. La checklist de tareas aparece arriba a la izquierda y se oculta al abrirlo.
 - L con el mapa abierto: reconstruir la carta después de recuperar sus cuatro fragmentos; una vez armada, inspeccionarla y leerla.
 - Clic izquierdo: disparar durante el combate. Clic derecho: apuntar. R: recargar o destrabar.
 
