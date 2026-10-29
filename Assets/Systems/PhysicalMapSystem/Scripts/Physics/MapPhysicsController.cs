@@ -9,6 +9,8 @@ public class MapPhysicsController : MonoBehaviour
     [SerializeField] private MapSettings settings;
     [SerializeField] private Transform viewAnchor;
     [SerializeField] private bool followHoldPose = true;
+    [Tooltip("Readable first-person paper without physics lag, collision or wind impulses.")]
+    [SerializeField] private bool stableHold;
 
     private Rigidbody mapRigidbody;
     private bool physicalActive = true;
@@ -21,10 +23,18 @@ public class MapPhysicsController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (stableHold) return;
         if (!followHoldPose || settings == null || viewAnchor == null)
             return;
 
         ApplyHoldForces();
+    }
+
+    private void LateUpdate()
+    {
+        if (!stableHold || !physicalActive || settings == null || viewAnchor == null) return;
+        transform.SetPositionAndRotation(viewAnchor.TransformPoint(settings.localHoldPosition),
+            viewAnchor.rotation * Quaternion.Euler(settings.localHoldEulerAngles));
     }
 
     public void ApplySettings(MapSettings newSettings, Transform newViewAnchor)
@@ -61,8 +71,8 @@ public class MapPhysicsController : MonoBehaviour
 
         followHoldPose = active;
         physicalActive = active;
-        mapRigidbody.useGravity = active;
-        mapRigidbody.isKinematic = !active;
+        mapRigidbody.useGravity = active && !stableHold;
+        mapRigidbody.isKinematic = !active || stableHold;
 
         if (!active)
             ResetMotion();
@@ -94,8 +104,9 @@ public class MapPhysicsController : MonoBehaviour
         mapRigidbody.mass = 0.08f;
         mapRigidbody.linearDamping = 5f;
         mapRigidbody.angularDamping = 7f;
-        mapRigidbody.useGravity = physicalActive;
-        mapRigidbody.isKinematic = !physicalActive;
+        mapRigidbody.useGravity = physicalActive && !stableHold;
+        mapRigidbody.isKinematic = !physicalActive || stableHold;
+        mapRigidbody.detectCollisions = !stableHold;
     }
 
     private void ApplyHoldForces()

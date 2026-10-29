@@ -34,13 +34,16 @@ namespace DialogueSystem.Scripts {
                 _dialogueManagerScript.IsInConversation ||
                 _conversationSos == null || _convIndex >= _conversationSos.Length) return;
 
-            ConversationSO conversation = _conversationSos[_convIndex];
+            var hints = GetComponent<LetterHintProvider>();
+            ConversationSO conversation = hints ? hints.GetHint() : null;
+            bool givingHint = conversation != null;
+            if (!conversation) conversation = _conversationSos[_convIndex];
             if (!conversation) return;
 
             if (_dialogueManagerScript.TryStartConversation(conversation, this)) {
                 if (conversationFacing) facingRoutine = StartCoroutine(FaceWhileSpeaking());
                 _spokenAlready = true;
-                if (_conversationSos.Length > 1)
+                if (!givingHint && _conversationSos.Length > 1)
                     _convIndex++;
             }
         }

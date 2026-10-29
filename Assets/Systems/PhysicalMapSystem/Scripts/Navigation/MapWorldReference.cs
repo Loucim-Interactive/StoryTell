@@ -73,6 +73,13 @@ public sealed class MapWorldReference : MonoBehaviour
             markerHeight,
             Mathf.Lerp(-settings.height * 0.5f, settings.height * 0.5f, v));
 
+        // The visible side changes with the hold pose. Always place markers toward
+        // the reader instead of assuming the negative normal faces the camera.
+        if (mapController.ViewAnchor != null)
+        {
+            float side = Mathf.Sign(Vector3.Dot(mapController.ViewAnchor.position - transform.position, transform.up));
+            localPosition.y = Mathf.Abs(markerHeight) * (side == 0 ? 1 : side);
+        }
         mapWorldPosition = transform.TransformPoint(localPosition);
         return true;
     }
