@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2
@@ -336,6 +340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1710490218}
     m_Modifications:
+    - target: {fileID: 681879034776548056, guid: f76fdba964894194abd6cbd2ce059d60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
     - target: {fileID: 699249396547749938, guid: f76fdba964894194abd6cbd2ce059d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 91.776
@@ -384,6 +392,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Diego (equipamiento)
       objectReference: {fileID: 0}
+    - target: {fileID: 2059977805324712515, guid: f76fdba964894194abd6cbd2ce059d60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 2174063866073846850, guid: f76fdba964894194abd6cbd2ce059d60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
+    - target: {fileID: 3714444518829443840, guid: f76fdba964894194abd6cbd2ce059d60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
+    - target: {fileID: 6586712220307905216, guid: f76fdba964894194abd6cbd2ce059d60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -503,6 +527,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -1107,6 +1135,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -1365,6 +1397,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1 (2)
@@ -1390,6 +1426,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -1508,6 +1548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (1)
@@ -1806,6 +1850,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (4)
@@ -1898,6 +1946,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (1)
@@ -1994,6 +2046,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2082,6 +2142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (2)
@@ -2147,6 +2211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (1)
@@ -2234,6 +2302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -2424,6 +2496,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (2)
@@ -2493,6 +2569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (2)
@@ -2699,6 +2779,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -2773,6 +2857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: sandbag barricade (1)
@@ -2915,6 +3003,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -3208,6 +3300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (1)
@@ -3517,6 +3613,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3824,6 +3928,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433012863}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -3942,6 +4050,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (5)
@@ -4085,6 +4197,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (2)
@@ -4137,6 +4253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 171907492}
     m_Modifications:
+    - target: {fileID: 389435450123452760, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f36af94d3062e449a4fdddc983cf5ea, type: 2}
     - target: {fileID: 2786134804011754947, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
       propertyPath: UIInteraction.label
       value: Inspeccionar
@@ -4405,6 +4525,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (1)
@@ -4787,6 +4911,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 171907492}
     m_Modifications:
+    - target: {fileID: 389435450123452760, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f36af94d3062e449a4fdddc983cf5ea, type: 2}
     - target: {fileID: 2786134804011754947, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
       propertyPath: interactableName
       value: Jerrycan
@@ -4879,6 +5007,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -5117,6 +5249,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -5403,6 +5539,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -5728,6 +5868,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -5899,6 +6043,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (3)
@@ -6259,6 +6407,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -6373,6 +6525,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (1)
@@ -6601,6 +6757,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 839304015}
     m_Modifications:
+    - target: {fileID: 2599037441989190141, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 4143108661451987422, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6178098
@@ -6807,6 +6967,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -12543,6 +12707,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12802,6 +12974,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (1)
@@ -12980,6 +13156,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1
@@ -13427,6 +13607,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -13624,6 +13808,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -13698,6 +13886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -13710,6 +13902,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: conversationFacing
       value: 
@@ -13754,6 +13954,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 8502038745890321234, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: lockAnimation
       value: 1
@@ -13819,6 +14027,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1 (2)
@@ -18726,6 +18938,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -18800,6 +19016,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -18874,6 +19094,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -18993,6 +19217,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (1)
@@ -19209,6 +19437,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 903130542}
     m_Modifications:
+    - target: {fileID: 8385164612814004, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 404635252868518264, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 1985722076530329300, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 4755993655428565019, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 5126931405045255819, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.464054
@@ -19253,6 +19497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: artillery_position
       objectReference: {fileID: 0}
+    - target: {fileID: 6932190860654049077, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19315,6 +19563,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (2)
@@ -19691,6 +19943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -19765,6 +20021,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -19911,6 +20171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (3)
@@ -24891,6 +25155,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1
@@ -24943,6 +25211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -25017,6 +25289,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -25163,6 +25439,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433012863}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -25648,6 +25928,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -26451,6 +26735,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (2)
@@ -26600,6 +26888,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1
@@ -26625,6 +26917,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -26888,6 +27184,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (2)
@@ -27001,6 +27301,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: sandbag barricade
@@ -27058,6 +27362,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -27132,6 +27440,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -27397,6 +27709,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2
@@ -27581,6 +27897,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -27695,6 +28015,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1
@@ -27774,6 +28098,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -27892,6 +28220,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27980,6 +28316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2
@@ -28112,6 +28452,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1 (1)
@@ -28324,6 +28668,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1 (1)
@@ -28804,6 +29152,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (2)
@@ -29335,6 +29687,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (1)
@@ -29400,6 +29756,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7037542274713373824, guid: 388633057eacc03469561bf8d844cbca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
+    - target: {fileID: 7698229864830647003, guid: 388633057eacc03469561bf8d844cbca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 7963644241107693469, guid: 388633057eacc03469561bf8d844cbca, type: 3}
       propertyPath: m_Name
       value: Hub
@@ -29481,6 +29845,7 @@ GameObject:
   m_Component:
   - component: {fileID: 822331022}
   - component: {fileID: 822331023}
+  - component: {fileID: 822331024}
   m_Layer: 0
   m_Name: WarmLandmarkLight
   m_TagString: Untagged
@@ -29568,6 +29933,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &822331024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822331021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1001 &830208393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29620,6 +30014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8139114481675259565, guid: 526b2f9dc37d1c4428182c7e387dfe29, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29787,6 +30185,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (1)
@@ -29877,6 +30279,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -29897,6 +30303,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Franco
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: conversationFacing
       value: 
@@ -29941,6 +30355,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 8502038745890321234, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: lockAnimation
       value: 1
@@ -30032,6 +30454,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -30229,6 +30655,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (9)
@@ -30626,6 +31056,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (2)
@@ -30830,6 +31264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (2)
@@ -30899,6 +31337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (2)
@@ -31095,6 +31537,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 839304015}
     m_Modifications:
+    - target: {fileID: 2599037441989190141, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 4143108661451987422, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1765889
@@ -31532,6 +31978,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (2)
@@ -31897,6 +32347,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 460547530261976125, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
+    - target: {fileID: 2990083335517791614, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 3153568143051524991, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 3238055687020739331, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.292
@@ -31965,6 +32427,10 @@ PrefabInstance:
       propertyPath: _walkieTalkieSubmitKey
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 4368191795246362085, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
     - target: {fileID: 5713192566001777361, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
       propertyPath: near clip plane
       value: 0.06
@@ -32017,6 +32483,10 @@ PrefabInstance:
       propertyPath: 'onOffScripts.Array.data[6]'
       value: 
       objectReference: {fileID: 1658147060}
+    - target: {fileID: 7962603594558359037, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 8046198502203961779, guid: 90622fbdcc85cd64a95b46ba81ceec43, type: 3}
       propertyPath: interactAction
       value: 
@@ -32168,6 +32638,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (1)
@@ -32460,6 +32934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -32574,6 +33052,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2
@@ -32626,6 +33108,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 171907492}
     m_Modifications:
+    - target: {fileID: 389435450123452760, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f36af94d3062e449a4fdddc983cf5ea, type: 2}
     - target: {fileID: 2786134804011754947, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
       propertyPath: interactableName
       value: Jerrycan
@@ -32922,6 +33408,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 839304015}
     m_Modifications:
+    - target: {fileID: 2599037441989190141, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 4143108661451987422, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1765889
@@ -33040,6 +33530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8139114481675259565, guid: 526b2f9dc37d1c4428182c7e387dfe29, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33142,6 +33636,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 903130542}
     m_Modifications:
+    - target: {fileID: 8385164612814004, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 404635252868518264, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 1985722076530329300, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 4755993655428565019, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 5126931405045255819, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.157497
@@ -33186,6 +33696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: artillery_position (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6932190860654049077, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33569,6 +34083,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2
@@ -33763,6 +34281,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -33877,6 +34399,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (1)
@@ -34142,6 +34668,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1
@@ -34167,6 +34697,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433012863}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -34281,6 +34815,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (1)
@@ -34346,6 +34884,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -34551,6 +35093,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34845,6 +35395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433012863}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -34919,6 +35473,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -35099,6 +35657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -35115,6 +35677,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Pedro
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5407896976484569735, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: characterRigidbody
       value: 
@@ -35167,6 +35737,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35276,6 +35854,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7037542274713373824, guid: 388633057eacc03469561bf8d844cbca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
+    - target: {fileID: 7698229864830647003, guid: 388633057eacc03469561bf8d844cbca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 7963644241107693469, guid: 388633057eacc03469561bf8d844cbca, type: 3}
       propertyPath: m_Name
       value: Hub (1)
@@ -35500,6 +36086,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -35619,6 +36209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (2)
@@ -40547,6 +41141,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1 (1)
@@ -40599,6 +41197,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -40713,6 +41315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (2)
@@ -41067,6 +41673,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529165}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Entrance_Sandbags
@@ -41505,6 +42115,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -41525,6 +42139,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Ruben
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: conversationFacing
       value: 
@@ -41569,10 +42191,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
     - target: {fileID: 6416239541751780309, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 8502038745890321234, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: lockAnimation
       value: 1
@@ -41655,6 +42285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2
@@ -41843,6 +42477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1
@@ -41900,6 +42538,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -41912,6 +42554,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Agustin
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: conversationFacing
       value: 
@@ -41956,6 +42606,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42021,6 +42679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandbag barricade2
       objectReference: {fileID: 0}
+    - target: {fileID: 6340712090798692153, guid: 3b13dda245fd09e4785213cdb48c0bd2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42104,7 +42766,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36c31fd4fd4bb7946a3dd23fd38eac40, type: 2}
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1
@@ -42174,6 +42836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandbag barricade2
       objectReference: {fileID: 0}
+    - target: {fileID: 6340712090798692153, guid: 3b13dda245fd09e4785213cdb48c0bd2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42192,6 +42858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -42330,6 +43000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -42404,6 +43078,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 96529671}
     m_Modifications:
+    - target: {fileID: 808107520294785216, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d9ad56309b04f2b4da2996ec30cae5d5, type: 2}
     - target: {fileID: 2617373717569101813, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73.788185
@@ -42562,6 +43240,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (4)
@@ -42768,6 +43450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 839304015}
     m_Modifications:
+    - target: {fileID: 2599037441989190141, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 4143108661451987422, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1765889
@@ -42882,6 +43568,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (2)
@@ -42907,6 +43597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529165}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Entrance_Sandbags
@@ -43026,6 +43720,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (3)
@@ -43075,6 +43773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1278294505}
   - component: {fileID: 1278294506}
+  - component: {fileID: 1278294507}
   m_Layer: 0
   m_Name: WarmLandmarkLight
   m_TagString: Untagged
@@ -43162,6 +43861,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1278294507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278294504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1001 &1283800823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43348,6 +44076,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529165}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Entrance_Sandbags
@@ -43422,6 +44154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -44064,6 +44800,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -44290,6 +45030,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2
@@ -44377,6 +45121,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (1)
@@ -44558,6 +45306,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (2)
@@ -44735,6 +45487,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 839304015}
     m_Modifications:
+    - target: {fileID: 2599037441989190141, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 4143108661451987422, guid: 2c8a33736a62af941800d5ae9a0bf260, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1765889
@@ -45040,6 +45796,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -45052,6 +45812,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Jose
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5407896976484569735, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: characterRigidbody
       value: 
@@ -45104,6 +45872,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45265,6 +46041,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -45473,6 +46253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -45833,6 +46617,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 903130542}
     m_Modifications:
+    - target: {fileID: 404635252868518264, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 1985722076530329300, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 3652018118269970073, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.69
@@ -45994,6 +46786,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -46081,6 +46877,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433012863}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -46258,6 +47058,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (3)
@@ -46559,6 +47363,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433012863}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -46677,6 +47485,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47095,6 +47911,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -47169,6 +47989,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -47243,6 +48067,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -47357,6 +48185,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (4)
@@ -47805,6 +48637,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -52972,6 +53808,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529165}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Entrance_Sandbags
@@ -53570,6 +54410,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (2)
@@ -53662,6 +54506,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2
@@ -53709,6 +54557,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -54146,6 +54998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (2)
@@ -54238,6 +55094,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (1)
@@ -54736,6 +55596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (6)
@@ -54910,6 +55774,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (2)
@@ -54957,6 +55825,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529165}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Entrance_Sandbags
@@ -55031,6 +55903,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -55149,6 +56025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandbag barricade2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6340712090798692153, guid: 3b13dda245fd09e4785213cdb48c0bd2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55283,6 +56163,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (2)
@@ -55370,6 +56254,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (1)
@@ -55479,6 +56367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1619077576}
   - component: {fileID: 1619077577}
+  - component: {fileID: 1619077578}
   m_Layer: 0
   m_Name: WarmLandmarkLight
   m_TagString: Untagged
@@ -55566,6 +56455,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1619077578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619077575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1621908651
 GameObject:
   m_ObjectHideFlags: 0
@@ -55627,6 +56545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529165}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Entrance_Sandbags
@@ -55791,6 +56713,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (1)
@@ -55966,6 +56892,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1 (1)
@@ -56097,6 +57027,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2
@@ -56295,6 +57229,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (7)
@@ -56875,6 +57813,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -57105,6 +58047,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8139114481675259565, guid: 526b2f9dc37d1c4428182c7e387dfe29, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57275,6 +58221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2
@@ -58257,6 +59207,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8139114481675259565, guid: 526b2f9dc37d1c4428182c7e387dfe29, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58315,6 +59269,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 74abff08af5f4994398e35da3ab41cfe, type: 3}
       propertyPath: m_Name
       value: RockCl M 1
@@ -58364,6 +59322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1743447145}
   - component: {fileID: 1743447146}
+  - component: {fileID: 1743447147}
   m_Layer: 0
   m_Name: WarmLandmarkLight
   m_TagString: Untagged
@@ -58451,6 +59410,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1743447147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743447144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1001 &1748723827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58459,6 +59447,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 171907492}
     m_Modifications:
+    - target: {fileID: 389435450123452760, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f36af94d3062e449a4fdddc983cf5ea, type: 2}
     - target: {fileID: 2786134804011754947, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
       propertyPath: UIInteraction.label
       value: Inspeccionar
@@ -58582,6 +59574,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (3)
@@ -58669,6 +59665,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (4)
@@ -58783,6 +59783,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -58857,6 +59861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -59106,6 +60114,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -59292,6 +60304,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -59831,6 +60851,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: feded72d70cb6ff488a8cce361c9a04f, type: 3}
       propertyPath: m_Name
       value: RockCl S 2 (2)
@@ -59923,6 +60947,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (3)
@@ -60015,6 +61043,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1
@@ -60137,6 +61169,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (1)
@@ -60539,6 +61575,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (1)
@@ -60591,6 +61631,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -60665,6 +61709,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 903130542}
     m_Modifications:
+    - target: {fileID: 8385164612814004, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 1985722076530329300, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
+    - target: {fileID: 4755993655428565019, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 5126931405045255819, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.46581
@@ -60709,6 +61765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: artillery_position (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6932190860654049077, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 9110215599095684900, guid: 9d511d4112d74404b987fa45c43ffed2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.172
@@ -60780,6 +61840,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60828,6 +61896,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 96529671}
     m_Modifications:
+    - target: {fileID: 808107520294785216, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d9ad56309b04f2b4da2996ec30cae5d5, type: 2}
     - target: {fileID: 2617373717569101813, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73.64406
@@ -60889,6 +61961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -61003,6 +62079,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (1)
@@ -61124,6 +62204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -66034,6 +67118,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -66185,6 +67273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (8)
@@ -66373,6 +67465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2
@@ -66438,6 +67534,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1 (1)
@@ -66617,6 +67717,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -66953,6 +68057,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: e0861bb86612f5a4bb1d17bba75283c8, type: 3}
       propertyPath: m_Name
       value: RockCl S 1
@@ -67375,6 +68483,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: f063bf3b213b2de4f8980b41d0719697, type: 3}
       propertyPath: m_Name
       value: RockCl L 2 (1)
@@ -68001,6 +69113,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_002 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b924ef5fc45d9954290d40a6fa620cf3, type: 2}
+    - target: {fileID: 8310492541305575169, guid: 1f3b8ed346d9f334aa7516a8dcc012f7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e7eb0f74844c634f8b5ff636de903f3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -68044,6 +69164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -68342,6 +69466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -68915,6 +70043,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: a61de654d732a0b4fba2e10f960da376, type: 3}
       propertyPath: m_Name
       value: RockCl M 2 (3)
@@ -68962,6 +70094,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1478178609}
     m_Modifications:
+    - target: {fileID: 5607230934875462327, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 735f1499b45d3e944a78f68fc600830f, type: 2}
     - target: {fileID: 7821441111213724946, guid: 0130f1e32e5a1f543b720cf72794fa6b, type: 3}
       propertyPath: m_Name
       value: Access_SandbagWall
@@ -69210,6 +70346,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fb276cf9724fc3458869a796e6085db, type: 2}
     - target: {fileID: 919132149155446097, guid: 08a7405c5525597418ebc64f9c5b41a1, type: 3}
       propertyPath: m_Name
       value: RockCl L 1 (1)
@@ -69901,6 +71041,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1621908652}
     m_Modifications:
+    - target: {fileID: 808107520294785216, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d9ad56309b04f2b4da2996ec30cae5d5, type: 2}
     - target: {fileID: 2617373717569101813, guid: 8b4da15283413dd49b476f67455c205b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1049.3134
@@ -70200,6 +71344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pallet
       objectReference: {fileID: 0}
+    - target: {fileID: 7883366101253016920, guid: 3a8cacc6cb200be4b82acce6c2f3ca76, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 63d389e3bf04f66449a3c8eb518e3676, type: 2}
     - target: {fileID: 8293990262335985453, guid: 3a8cacc6cb200be4b82acce6c2f3ca76, type: 3}
       propertyPath: m_LocalPosition.x
       value: 75.29541
@@ -70485,6 +71633,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000000000000000001}
     m_Modifications:
+    - target: {fileID: 203161092234115807, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     - target: {fileID: 3194628492801761429, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: focusInteraction
       value: 0
@@ -70501,6 +71653,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC - Simon
       objectReference: {fileID: 0}
+    - target: {fileID: 4985472505443998300, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3a046b5114697c49a5aac8a4d3e8de6, type: 2}
+    - target: {fileID: 5157366643994539101, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4204a906b09c85d4aad4fa1c6cbbe296, type: 2}
     - target: {fileID: 5672327250795661145, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
       propertyPath: conversationFacing
       value: 
@@ -70565,6 +71725,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5823140490547188423, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cb0c1220eedd08b4b80a2f47aa32ca62, type: 2}
+    - target: {fileID: 7653073367894846239, guid: 69d39e54b998907489276a790fb63a6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022986e51334824ead7c5b6d6ed4f0b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -70646,6 +71814,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 171907492}
     m_Modifications:
+    - target: {fileID: 389435450123452760, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f36af94d3062e449a4fdddc983cf5ea, type: 2}
     - target: {fileID: 2786134804011754947, guid: 74f01b5b229cc9049899744fdf08a95b, type: 3}
       propertyPath: UIInteraction.label
       value: Inspeccionar

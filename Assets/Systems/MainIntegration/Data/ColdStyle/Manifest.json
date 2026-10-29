@@ -1,0 +1,71 @@
+{
+    "materials": [
+        {
+            "role": "Canvas",
+            "original": "Assets/Art/Outsourced/Props/Military_Free/Materials/Picture_1.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Canvas_edca6c24fd4821f4191df0171418dd3a.mat",
+            "users": 9
+        },
+        {
+            "role": "Canvas",
+            "original": "Assets/Art/Outsourced/Props/Military_Free/Materials/Military_base.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Canvas_fc755e92d041af14dadee646a00c6e2b.mat",
+            "users": 9
+        },
+        {
+            "role": "Metal",
+            "original": "Assets/Art/Maximo/Interactables/Jerrycan.fbx",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Metal_80898f958dc67a544b58e53643864609.mat",
+            "users": 5
+        },
+        {
+            "role": "Metal",
+            "original": "Assets/Art/Outsourced/Props/Defensive_props/Materials/military prop pack.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Metal_e852a975c8618b34886ffec1c8f40004.mat",
+            "users": 3
+        },
+        {
+            "role": "Sandbags",
+            "original": "Assets/Art/Outsourced/Props/Defensive_props/Materials/military prop pack.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Sandbags_e852a975c8618b34886ffec1c8f40004.mat",
+            "users": 92
+        },
+        {
+            "role": "Stone",
+            "original": "Assets/Art/Maximo/Terrain/Rocks/JC_StylizedRocks_Lite/Materials/M_StylizedRocks_01.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Stone_36c31fd4fd4bb7946a3dd23fd38eac40.mat",
+            "users": 87
+        },
+        {
+            "role": "Uniform",
+            "original": "Assets/Art/Maximo/NPCS/soldier/Casco.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Uniform_1961e48d86fee0044aba966283207728.mat",
+            "users": 9
+        },
+        {
+            "role": "Uniform",
+            "original": "Assets/Art/Maximo/NPCS/soldier/Campera.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Uniform_2726f926c5ec95e41b0a437c7056c32f.mat",
+            "users": 9
+        },
+        {
+            "role": "Uniform",
+            "original": "Assets/Art/Maximo/NPCS/soldier/PantalonBS.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Uniform_301d02f7ffea7614aa9f69beb6c0e6cc.mat",
+            "users": 9
+        },
+        {
+            "role": "Uniform",
+            "original": "Assets/Art/Maximo/NPCS/soldier/PantalonYBotas.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Uniform_f49b7aa5ca0eba54db9a561833953b9e.mat",
+            "users": 18
+        },
+        {
+            "role": "Wood",
+            "original": "Assets/Art/Outsourced/Props/Defensive_props/Materials/military prop pack.mat",
+            "variant": "Assets/Systems/MainIntegration/Data/ColdStyle/Wood_e852a975c8618b34886ffec1c8f40004.mat",
+            "users": 14
+        }
+    ],
+    "lighting": "{\n    \"fog\": true,\n    \"mode\": 3,\n    \"density\": 0.006500000134110451,\n    \"fogColor\": {\n        \"r\": 0.47999998927116396,\n        \"g\": 0.550000011920929,\n        \"b\": 0.5899999737739563,\n        \"a\": 1.0\n    },\n    \"sky\": {\n        \"r\": 0.47999998927116396,\n        \"g\": 0.550000011920929,\n        \"b\": 0.6299999952316284,\n        \"a\": 1.0\n    },\n    \"equator\": {\n        \"r\": 0.3100000023841858,\n        \"g\": 0.3499999940395355,\n        \"b\": 0.3799999952316284,\n        \"a\": 1.0\n    },\n    \"ground\": {\n        \"r\": 0.1599999964237213,\n        \"g\": 0.18000000715255738,\n        \"b\": 0.1899999976158142,\n        \"a\": 1.0\n    },\n    \"lights\": [\n        {\n            \"path\": \"====GAMEPLAY====/Player/CameraRig/BobPivot/Main Camera/Battle Weapon Mount/FAL_MuzzleEffects/ShotLight\",\n            \"color\": {\n                \"r\": 1.0,\n                \"g\": 0.7200000286102295,\n                \"b\": 0.4000000059604645,\n                \"a\": 1.0\n            },\n            \"intensity\": 1.2999999523162842,\n            \"range\": 2.0,\n            \"bias\": 0.05000000074505806,\n            \"normalBias\": 0.4000000059604645,\n            \"type\": 2,\n            \"shadows\": 0\n        },\n        {\n            \"path\": \"===ENVIRONMENT===/Directional Light\",\n            \"color\": {\n                \"r\": 0.8299999833106995,\n                \"g\": 0.8999999761581421,\n                \"b\": 1.0,\n                \"a\": 1.0\n            },\n            \"intensity\": 0.8999999761581421,\n            \"range\": 10.0,\n            \"bias\": 0.04500000178813934,\n            \"normalBias\": 0.3499999940395355,\n            \"type\": 1,\n            \"shadows\": 2\n        },\n        {\n            \"path\": \"Level1_ExperiencePolish/AdvancedPost_Fire/WarmLandmarkLight\",\n            \"color\": {\n                \"r\": 1.0,\n                \"g\": 0.5699999928474426,\n                \"b\": 0.27000001072883608,\n                \"a\": 1.0\n            },\n            \"intensity\": 2.0,\n            \"range\": 6.0,\n            \"bias\": 0.05000000074505806,\n            \"normalBias\": 0.4000000059604645,\n            \"type\": 2,\n            \"shadows\": 0\n        },\n        {\n            \"path\": \"Level1_ExperiencePolish/CampMain_Fire/WarmLandmarkLight\",\n            \"color\": {\n                \"r\": 1.0,\n                \"g\": 0.5699999928474426,\n                \"b\": 0.27000001072883608,\n                \"a\": 1.0\n            },\n            \"intensity\": 2.0,\n            \"range\": 6.0,\n            \"bias\": 0.05000000074505806,\n            \"normalBias\": 0.4000000059604645,\n            \"type\": 2,\n            \"shadows\": 0\n        },\n        {\n            \"path\": \"Level1_ExperiencePolish/RestStop_Fire/WarmLandmarkLight\",\n            \"color\": {\n                \"r\": 1.0,\n                \"g\": 0.5699999928474426,\n                \"b\": 0.27000001072883608,\n                \"a\": 1.0\n            },\n            \"intensity\": 2.0,\n            \"range\": 6.0,\n            \"bias\": 0.05000000074505806,\n            \"normalBias\": 0.4000000059604645,\n            \"type\": 2,\n            \"shadows\": 0\n        },\n        {\n            \"path\": \"Level1_ExperiencePolish/Stores_Fire/WarmLandmarkLight\",\n            \"color\": {\n                \"r\": 1.0,\n                \"g\": 0.5699999928474426,\n                \"b\": 0.27000001072883608,\n                \"a\": 1.0\n            },\n            \"intensity\": 2.0,\n            \"range\": 6.0,\n            \"bias\": 0.05000000074505806,\n            \"normalBias\": 0.4000000059604645,\n            \"type\": 2,\n            \"shadows\": 0\n        },\n        {\n            \"path\": \"Level1_ExperiencePolish/WestShelter_Fire/WarmLandmarkLight\",\n            \"color\": {\n                \"r\": 1.0,\n                \"g\": 0.5699999928474426,\n                \"b\": 0.27000001072883608,\n                \"a\": 1.0\n            },\n            \"intensity\": 2.0,\n            \"range\": 6.0,\n            \"bias\": 0.05000000074505806,\n            \"normalBias\": 0.4000000059604645,\n            \"type\": 2,\n            \"shadows\": 0\n        }\n    ]\n}"
+}
