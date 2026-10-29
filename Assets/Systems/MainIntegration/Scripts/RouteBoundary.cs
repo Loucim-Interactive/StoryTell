@@ -15,10 +15,11 @@ namespace StoryTell.MainIntegration
         [SerializeField] private EquipmentManager equipment;
         [SerializeField] private LetterManager letter;
         [SerializeField] private Section[] sections;
+        [SerializeField] private Vector2 minimumWorldXZ = new Vector2(8,205);
+        [SerializeField] private Vector2 maximumWorldXZ = new Vector2(170,610);
         [SerializeField] private float frontGateZ;
         [SerializeField] private GameObject frontBarrier;
         [SerializeField] private Entrance[] entrances = System.Array.Empty<Entrance>();
-        private int nextEntrance;
         private Vector3 lastSafe;
         private float nextThought;
         private bool initialized;
@@ -26,6 +27,7 @@ namespace StoryTell.MainIntegration
         public bool CanProceed => equipment.MissionCompleted && (!letter.MissionStarted || letter.MissionCompleted);
         public bool Contains(Vector3 position)
         {
+            if(position.x<minimumWorldXZ.x||position.x>maximumWorldXZ.x||position.z<minimumWorldXZ.y||position.z>maximumWorldXZ.y)return false;
             foreach(var s in sections)
             {
                 Vector2 a=new Vector2(s.from.x,s.from.z), b=new Vector2(s.to.x,s.to.z), p=new Vector2(position.x,position.z);
@@ -41,15 +43,9 @@ namespace StoryTell.MainIntegration
             if(frontBarrier && frontBarrier.activeSelf!=locked)frontBarrier.SetActive(locked);
             if(!initialized || !player || !controller || !controller.enabled)return;
             Vector3 current=player.position;
-            if(nextEntrance<entrances.Length)
-            {
-                var entry=entrances[nextEntrance];var delta=current-entry.point;delta.y=0;
-                if(delta.sqrMagnitude<=entry.radius*entry.radius)nextEntrance++;
-            }
             bool outside=!Contains(current), gated=locked&&current.z>frontGateZ;
-            bool skippedEntrance=nextEntrance<entrances.Length&&current.z>entrances[nextEntrance].exitZ;
             if(locked&&current.z>frontGateZ-2)Thought(true);
-            if(!outside&&!gated&&!skippedEntrance){lastSafe=current;return;}
+            if(!outside&&!gated){lastSafe=current;return;}
             // Revert movement in the same frame, including sprinting across an edge.
             controller.enabled=false;player.position=lastSafe;controller.enabled=true;
             Thought(gated);

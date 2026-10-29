@@ -1,0 +1,136 @@
+{
+    "fog": true,
+    "mode": 3,
+    "density": 0.006500000134110451,
+    "fogColor": {
+        "r": 0.47999998927116396,
+        "g": 0.550000011920929,
+        "b": 0.5899999737739563,
+        "a": 1.0
+    },
+    "sky": {
+        "r": 0.47999998927116396,
+        "g": 0.550000011920929,
+        "b": 0.6299999952316284,
+        "a": 1.0
+    },
+    "equator": {
+        "r": 0.3100000023841858,
+        "g": 0.3499999940395355,
+        "b": 0.3799999952316284,
+        "a": 1.0
+    },
+    "ground": {
+        "r": 0.1599999964237213,
+        "g": 0.18000000715255738,
+        "b": 0.1899999976158142,
+        "a": 1.0
+    },
+    "lights": [
+        {
+            "path": "====GAMEPLAY====/Player/CameraRig/BobPivot/Main Camera/Battle Weapon Mount/FAL_MuzzleEffects/ShotLight",
+            "color": {
+                "r": 1.0,
+                "g": 0.7200000286102295,
+                "b": 0.4000000059604645,
+                "a": 1.0
+            },
+            "intensity": 1.2999999523162842,
+            "range": 2.0,
+            "bias": 0.05000000074505806,
+            "normalBias": 0.4000000059604645,
+            "type": 2,
+            "shadows": 0
+        },
+        {
+            "path": "===ENVIRONMENT===/Directional Light",
+            "color": {
+                "r": 0.8299999833106995,
+                "g": 0.8999999761581421,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "intensity": 0.8999999761581421,
+            "range": 10.0,
+            "bias": 0.04500000178813934,
+            "normalBias": 0.3499999940395355,
+            "type": 1,
+            "shadows": 2
+        },
+        {
+            "path": "Level1_ExperiencePolish/AdvancedPost_Fire/WarmLandmarkLight",
+            "color": {
+                "r": 1.0,
+                "g": 0.5699999928474426,
+                "b": 0.27000001072883608,
+                "a": 1.0
+            },
+            "intensity": 2.0,
+            "range": 6.0,
+            "bias": 0.05000000074505806,
+            "normalBias": 0.4000000059604645,
+            "type": 2,
+            "shadows": 0
+        },
+        {
+            "path": "Level1_ExperiencePolish/CampMain_Fire/WarmLandmarkLight",
+            "color": {
+                "r": 1.0,
+                "g": 0.5699999928474426,
+                "b": 0.27000001072883608,
+                "a": 1.0
+            },
+            "intensity": 2.0,
+            "range": 6.0,
+            "bias": 0.05000000074505806,
+            "normalBias": 0.4000000059604645,
+            "type": 2,
+            "shadows": 0
+        },
+        {
+            "path": "Level1_ExperiencePolish/RestStop_Fire/WarmLandmarkLight",
+            "color": {
+                "r": 1.0,
+                "g": 0.5699999928474426,
+                "b": 0.27000001072883608,
+                "a": 1.0
+            },
+            "intensity": 2.0,
+            "range": 6.0,
+            "bias": 0.05000000074505806,
+            "normalBias": 0.4000000059604645,
+            "type": 2,
+            "shadows": 0
+        },
+        {
+            "path": "Level1_ExperiencePolish/Stores_Fire/WarmLandmarkLight",
+            "color": {
+                "r": 1.0,
+                "g": 0.5699999928474426,
+                "b": 0.27000001072883608,
+                "a": 1.0
+            },
+            "intensity": 2.0,
+            "range": 6.0,
+            "bias": 0.05000000074505806,
+            "normalBias": 0.4000000059604645,
+            "type": 2,
+            "shadows": 0
+        },
+        {
+            "path": "Level1_ExperiencePolish/WestShelter_Fire/WarmLandmarkLight",
+            "color": {
+                "r": 1.0,
+                "g": 0.5699999928474426,
+                "b": 0.27000001072883608,
+                "a": 1.0
+            },
+            "intensity": 2.0,
+            "range": 6.0,
+            "bias": 0.05000000074505806,
+            "normalBias": 0.4000000059604645,
+            "type": 2,
+            "shadows": 0
+        }
+    ]
+}

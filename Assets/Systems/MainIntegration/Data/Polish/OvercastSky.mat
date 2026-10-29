@@ -24,8 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _CloudScale: 3.8
     m_Colors:
+    - _CloudLight: {r: 0.59, g: 0.62, b: 0.64, a: 1}
+    - _CloudShadow: {r: 0.31, g: 0.35, b: 0.39, a: 1}
     - _Horizon: {r: 0.53, g: 0.59, b: 0.62, a: 1}
     - _Zenith: {r: 0.21999997, g: 0.27999997, b: 0.33999997, a: 1}
   m_BuildTextureStacks: []

@@ -93,9 +93,9 @@ public sealed class LevelPolishTests
         var player=Object.FindAnyObjectByType<PlayerControllerScript>();var controller=player.GetComponent<CharacterController>();var safe=player.transform.position;
         controller.enabled=false;player.transform.position=new Vector3(500,safe.y,500);controller.enabled=true;yield return null;
         Assert.That(Vector3.Distance(player.transform.position,safe),Is.LessThan(1));Assert.That(player.GetComponent<RouteBoundary>().CanProceed,Is.False);
-        // Being inside the broad outpost area does not let a side approach skip zone 5.
+        // The outpost can now be explored freely without touching a small waypoint.
         controller.enabled=false;player.transform.position=new Vector3(94,safe.y,353);controller.enabled=true;yield return null;
-        Assert.That(Vector3.Distance(player.transform.position,safe),Is.LessThan(1));
+        Assert.That(Vector2.Distance(new Vector2(player.transform.position.x,player.transform.position.z),new Vector2(94,353)),Is.LessThan(1));
         yield return new ExitPlayMode();
     }
     [UnityTest] public IEnumerator Weapon_FlashEmitsAndExpires()
