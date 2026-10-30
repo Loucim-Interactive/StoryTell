@@ -20,7 +20,14 @@ namespace StoryTell.MainIntegration
         private int openedFrame;
         public bool IsOpen { get; private set; }
         public int PlacedCount => state.PlacedCount;
+        public event System.Action ProgressChanged;
         public bool Complete => state.Complete;
+        public int PlacedMask => state.Mask;
+        public void RestorePlaced(int mask)
+        {
+            state.Restore(mask);
+            foreach(var piece in pieces)if(state.IsPlaced(piece.slotIndex))PlaceVisual(piece);
+        }
         public RectTransform Slot(int index) => slots[index];
 
         private void OnEnable()
@@ -71,10 +78,15 @@ namespace StoryTell.MainIntegration
             var target=slots[piece.slotIndex];
             Vector3 difference=board.InverseTransformPoint(piece.transform.position)-board.InverseTransformPoint(target.position);
             if(!state.TryPlace(piece.slotIndex,new Vector2(difference.x,difference.y).magnitude,piece.rectTransform.localEulerAngles.z))return false;
-            piece.transform.SetParent(board,false);piece.rectTransform.anchorMin=target.anchorMin;piece.rectTransform.anchorMax=target.anchorMax;piece.rectTransform.pivot=target.pivot;piece.rectTransform.sizeDelta=target.sizeDelta;piece.rectTransform.anchoredPosition=target.anchoredPosition;piece.rectTransform.localRotation=Quaternion.identity;piece.MarkPlaced();
+            PlaceVisual(piece);
             if(selected==piece)selected=null;
             if(state.Complete)controller.CompleteLetterAssembly();
+            ProgressChanged?.Invoke();
             UpdateStatus();return true;
+        }
+        private void PlaceVisual(LetterPuzzlePiece piece)
+        {
+            var target=slots[piece.slotIndex];piece.transform.SetParent(board,false);piece.rectTransform.anchorMin=target.anchorMin;piece.rectTransform.anchorMax=target.anchorMax;piece.rectTransform.pivot=target.pivot;piece.rectTransform.sizeDelta=target.sizeDelta;piece.rectTransform.anchoredPosition=target.anchoredPosition;piece.rectTransform.localRotation=Quaternion.identity;piece.MarkPlaced();
         }
         private void UpdateStatus()
         {

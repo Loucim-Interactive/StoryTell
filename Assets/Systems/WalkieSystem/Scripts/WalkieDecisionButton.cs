@@ -19,11 +19,14 @@ namespace Systems.WalkieSystem.Scripts {
         private Action select,confirm;
         private bool hasSelection,selectedState;
         private bool sizing;
+        private float originalFontSize;
+        private void Awake(){if(_textMesh)originalFontSize=_textMesh.fontSize;}
         public void Bind(Action onSelect,Action onConfirm){select=onSelect;confirm=onConfirm;}
         public void OnPointerEnter(PointerEventData data)=>select?.Invoke();
         public void OnPointerClick(PointerEventData data){if(data.button==PointerEventData.InputButton.Left)confirm?.Invoke();}
 
         public void Setup(string text) {
+            if(originalFontSize>0)_textMesh.fontSize=originalFontSize*StoryTell.MainIntegration.ComfortSettings.Current.textSize;
             _textMesh.text = text;
             _textMesh.textWrappingMode=TextWrappingModes.Normal;_textMesh.overflowMode=TextOverflowModes.Overflow;
             Resize();

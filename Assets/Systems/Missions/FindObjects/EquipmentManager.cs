@@ -14,6 +14,7 @@ namespace Systems.Missions.FindObjects {
         [SerializeField] private ConversationSO completedConversation;
 
         private readonly HashSet<EquipmentInteractableScript> _equipped = new();
+        public event System.Action Changed;
         public bool MissionStarted { get; private set; }
         public string MissionTitle => _missionName;
         public bool MissionCompleted { get; private set; }
@@ -34,6 +35,7 @@ namespace Systems.Missions.FindObjects {
             _missionsUI.SetItemCompleted(_missionName, item.interactableName);
             MissionCompleted = _equipped.Count == equipment.Length;
             if (MissionCompleted && missionGiver) missionGiver.SetConversation(completedConversation);
+            Changed?.Invoke();
         }
 
         public void StartMission() {
@@ -58,6 +60,14 @@ namespace Systems.Missions.FindObjects {
             }
             _missionsUI.ShowMissionsUI();
             if (missionGiver) missionGiver.SetConversation(searchingConversation);
+            Changed?.Invoke();
+        }
+        public int CollectedMask { get { int mask=0; for(int i=0;i<equipment.Length;i++)if(_equipped.Contains(equipment[i]))mask|=1<<i;return mask; } }
+        public void RestoreProgress(bool started,int mask)
+        {
+            if(!started)return;
+            StartMission();
+            for(int i=0;i<equipment.Length;i++)if((mask&(1<<i))!=0)OnPickup(equipment[i]);
         }
     }
 }

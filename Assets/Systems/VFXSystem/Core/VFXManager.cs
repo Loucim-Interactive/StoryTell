@@ -52,6 +52,7 @@ namespace Systems.VFXSystem.New {
             }
 
             audioSrc.clip = data.vfxSoundClip;
+            StoryTell.MainIntegration.ComfortAudioGain.AttachTo(audioSrc);
 
             ps.Play();
             audioSrc.Play();
@@ -61,11 +62,11 @@ namespace Systems.VFXSystem.New {
         }
 
 
-        public static void PlayVFXAt(VFXDefinition def, Vector3 position) => PlayVFXAt(def.data, position);
+        public static void PlayVFXAt(VFXDefinition def, Vector3 position) { if(def)PlayVFXAt(def.data, position); }
 
         public static void PlayVFXAt(VFXTypes type, Vector3 position) {
-            if (!registry) Debug.LogWarning($"[VFXManagerScript] No VFXRegistry assigned");;
-            if (registry.TryGet(type, out var def)) {
+            var catalog=Registry;if(!catalog)return;
+            if (catalog.TryGet(type, out var def)) {
                 PlayVFXAt(def.data, position);
             } else {
                 Debug.LogWarning($"[VFXManagerScript] No VFXDefinition registered for type '{type}'");

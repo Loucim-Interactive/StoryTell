@@ -24,6 +24,7 @@ namespace Systems.SoundSystem.Scripts
             if (audioSource == null) audioSource = GetComponent<AudioSource>();
             if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
+            StoryTell.MainIntegration.ComfortAudioGain.AttachTo(audioSource);
             CheckRefs();
             OnAwake();
         }

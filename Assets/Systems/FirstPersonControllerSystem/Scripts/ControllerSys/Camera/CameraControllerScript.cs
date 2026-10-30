@@ -34,6 +34,8 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
         public void SetWeaponShakeRotationOffset(Vector3 value) => _weaponShakeRotationOffset = value;
         private float _recoilPitchOffset;
         private bool    _inputLocked;
+        private float comfortSensitivity=1,comfortMotion=1;
+        public void SetComfort(float sensitivity,float motion){comfortSensitivity=sensitivity;comfortMotion=motion;}
         private UnityEngine.Camera _camera;
 
         private Coroutine _returnCoroutine;
@@ -79,20 +81,20 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
 
             // Always apply pitch to camera (LookAt drives pitch via SetCameraPitch)
             ApplyCameraRotation();
-            bob.Tick();
+            bob.Tick(comfortMotion);
         }
 
         private void UpdateCameraRotation()
         {
             Vector2 lookInput = ScriptPlayerInput.Look;
 
-            transform.Rotate(Vector3.up * (lookInput.x * sensitivityX));
+            transform.Rotate(Vector3.up * (lookInput.x * sensitivityX * comfortSensitivity));
 
-            _cameraPitch -= lookInput.y * sensitivityY;
+            _cameraPitch -= lookInput.y * sensitivityY * comfortSensitivity;
             _cameraPitch  = Mathf.Clamp(_cameraPitch, -clampAngle, clampAngle);
         }
 
-        private void ApplyCameraRotation() => cameraTransform.localRotation = Quaternion.Euler(Mathf.Clamp(_cameraPitch + _recoilPitchOffset, -clampAngle, clampAngle), 0f, 0f) * Quaternion.Euler(_shakeRotationOffset + _weaponShakeRotationOffset);
+        private void ApplyCameraRotation() => cameraTransform.localRotation = Quaternion.Euler(Mathf.Clamp(_cameraPitch + _recoilPitchOffset*comfortMotion, -clampAngle, clampAngle), 0f, 0f) * Quaternion.Euler((_shakeRotationOffset + _weaponShakeRotationOffset)*comfortMotion);
 
         public void SetRecoilPitchOffset(float offset) => _recoilPitchOffset = offset;
 

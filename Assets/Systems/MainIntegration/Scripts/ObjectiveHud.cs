@@ -23,12 +23,25 @@ namespace StoryTell.MainIntegration
         [SerializeField] private MissionAnnouncement feedback;
         [SerializeField] private Systems.Missions.MissionsUIManager missions;
         [SerializeField] private SpeakerScript mateo;
+        [SerializeField] private LevelProgress progress;
+        [SerializeField] private UiSessionCoordinator session;
+        private bool dirty=true;
         private bool initialized, equipmentDone, letterDone, hadMap;
         private int equipmentCount, letterCount;
         public string CurrentObjective {get;private set;}
         // Matches the four authored map references; no future events are disclosed.
         public int DestinationZone {get;private set;}
+        private void OnEnable(){equipment.Changed+=MarkDirty;letter.Changed+=MarkDirty;if(mateo)mateo.ConversationCompleted+=MarkDirty;if(progress)progress.Changed+=MarkDirty;}
+        private void OnDisable(){equipment.Changed-=MarkDirty;letter.Changed-=MarkDirty;if(mateo)mateo.ConversationCompleted-=MarkDirty;if(progress)progress.Changed-=MarkDirty;}
+        private void MarkDirty()=>dirty=true;
+        public void ResetFeedback(){initialized=false;dirty=true;}
         private void LateUpdate()
+        {
+            if(dirty||map.enabled&&!hadMap){dirty=false;RefreshObjectives();}
+            bool visible=!(map.IsOpen||inspection.IsInspecting||dialogue.IsInConversation||puzzle.IsOpen||(session&&session.Mode!=UiMode.None));
+            if(panel.activeSelf!=visible)panel.SetActive(visible);
+        }
+        private void RefreshObjectives()
         {
             string objective;
             DestinationZone=0;
@@ -39,9 +52,9 @@ namespace StoryTell.MainIntegration
                 DestinationZone=1;
                 objective=letter.CollectedCount<4?$"Buscá los fragmentos · {letter.CollectedCount}/4\nPreguntales a Simón y José.":"Devolvé la carta a Mateo";
             }
-            else if(!letter.MissionStarted&&mateo&&!mateo.HasSpoken&&player.position.z<375){DestinationZone=1;objective="Hablá con Mateo\nEstá en el campamento.";}
-            else if(weapon.EquippedWeapon!=null){DestinationZone=3;objective="Seguí por el camino";}
-            else if(player.position.z<375){DestinationZone=2;objective="Andá al puesto avanzado";}
+            else if(!letter.MissionStarted&&mateo&&!mateo.HasSpoken&&(!progress||progress.Stage==RouteStage.Camp)){DestinationZone=1;objective="Hablá con Mateo\nEstá en el campamento.";}
+            else if(progress&&progress.Stage==RouteStage.Battle){DestinationZone=3;objective="Seguí por el camino";}
+            else if(!progress||progress.Stage==RouteStage.Camp){DestinationZone=2;objective="Andá al puesto avanzado";}
             else {DestinationZone=3;objective="Andá al frente\nPor el paso entre los sacos de arena.";}
             CurrentObjective=objective;if(label.text!=objective)label.text=objective;
             if(initialized&&feedback)
@@ -55,7 +68,6 @@ namespace StoryTell.MainIntegration
             }
             initialized=true;equipmentCount=equipment.EquippedCount;letterCount=letter.CollectedCount;equipmentDone=equipment.MissionCompleted;letterDone=letter.MissionCompleted;hadMap|=map.enabled;
             if(missions)missions.ShowOnlyMission(!equipment.MissionCompleted&&equipment.MissionStarted?equipment.MissionTitle:letter.MissionStarted&&!letter.MissionCompleted?letter.MissionTitle:null);
-            panel.SetActive(!(map.IsOpen||inspection.IsInspecting||dialogue.IsInConversation||puzzle.IsOpen));
         }
     }
 }

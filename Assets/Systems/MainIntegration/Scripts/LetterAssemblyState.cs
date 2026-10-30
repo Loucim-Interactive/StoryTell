@@ -7,6 +7,8 @@ namespace StoryTell.MainIntegration
         private int mask;
         public int PlacedCount { get; private set; }
         public bool Complete => mask == 15;
+        public int Mask => mask;
+        public void Restore(int value){mask=value&15;PlacedCount=0;for(int i=0;i<4;i++)if(IsPlaced(i))PlacedCount++;}
         public bool IsPlaced(int index) => index >= 0 && index < 4 && (mask & (1 << index)) != 0;
         public bool TryPlace(int index, float distance, float angle)
         {

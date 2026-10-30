@@ -13,6 +13,8 @@ namespace Systems.DialogueSystem.Scripts
         public UIDialogueScript uiDialogueScript;
         [SerializeField] private DecisionManagerScript decisionManager;
         [SerializeField] private bool manualNpcAdvance=true;
+        [SerializeField] private StoryTell.MainIntegration.UiSessionCoordinator session;
+        public bool IsThoughtActive => _thoughtRoutine != null;
         private InputAction cancel;
         public bool LastConversationCompleted {get;private set;}
         public static DialogueManagerScript Instance { get; private set; }
@@ -72,6 +74,7 @@ namespace Systems.DialogueSystem.Scripts
 
             if (!decisionManager) decisionManager = FindFirstObjectByType<DecisionManagerScript>();
             if (decisionManager && decisionManager.HasPresenter && !decisionManager.TryAcquire(this)) return false;
+            if (session && !session.TryAcquire(StoryTell.MainIntegration.UiMode.Dialogue, this)) { if(decisionManager)decisionManager.Release(this); return false; }
 
             StopThought();
             IsInConversation = true;
@@ -176,6 +179,7 @@ namespace Systems.DialogueSystem.Scripts
             _conversationOwner = null;
             _conversationRoutine = null;
             if (uiDialogueScript) uiDialogueScript.StopDialogue();
+            if (session) session.Release(this);
         }
 
         public void StateThought(string thought) => StateThought(thought, "");

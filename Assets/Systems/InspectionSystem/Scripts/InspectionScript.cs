@@ -18,6 +18,7 @@ namespace Systems.InspectionSystem.Scripts
         public float smoothing = 12f;
         [Header("Input")]
         public InputActionReference inspectAction, rotateDelta, mouseClick, movementAction;
+        [SerializeField] private StoryTell.MainIntegration.UiSessionCoordinator session;
         private GameObject _target;
         private bool _isInspecting, originalKinematic;
         private Transform _originalParent;
@@ -42,6 +43,7 @@ namespace Systems.InspectionSystem.Scripts
         public void StartInspect(GameObject obj)
         {
             if (_isInspecting || !obj || !obj.activeInHierarchy || !inspectAnchor || !isActiveAndEnabled) return;
+            if (session && !session.TryAcquire(StoryTell.MainIntegration.UiMode.Inspection, this)) return;
             _target = obj; _isInspecting = true; startedAt = Time.unscaledTime;
             _originalParent = obj.transform.parent;
             _originalLocalPos = obj.transform.localPosition;
@@ -72,11 +74,11 @@ namespace Systems.InspectionSystem.Scripts
             holdPosition = _originalInspectorAnchorLocalPos + (document ? document.inspectionOffset : Vector3.zero);
             _lateralOffset = Vector2.zero; _currentPos = FitDocument(holdPosition);
             inspectAnchor.localPosition = _currentPos;
-            enabledScripts = new bool[onOffScripts?.Length ?? 0];
+            enabledScripts = new bool[session ? 0 : onOffScripts?.Length ?? 0];
             for (int i = 0; i < enabledScripts.Length; i++)
                 if (onOffScripts[i] && onOffScripts[i] != this) { enabledScripts[i] = onOffScripts[i].enabled; onOffScripts[i].enabled = false; }
             originalCursorLock = Cursor.lockState; originalCursorVisible = Cursor.visible;
-            if (lockCursor) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
+            if (lockCursor && !session) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
         }
 
         public void StopInspect()
@@ -94,9 +96,10 @@ namespace Systems.InspectionSystem.Scripts
             if (inspectAnchor) inspectAnchor.localPosition = _originalInspectorAnchorLocalPos;
             for (int i = 0; i < (enabledScripts?.Length ?? 0); i++)
                 if (onOffScripts[i] && onOffScripts[i] != this) onOffScripts[i].enabled = enabledScripts[i];
-            if (lockCursor) { Cursor.lockState = originalCursorLock; Cursor.visible = originalCursorVisible; }
+            if (lockCursor && !session) { Cursor.lockState = originalCursorLock; Cursor.visible = originalCursorVisible; }
             _target = null; _isInspecting = false;
             LastInspectionEndFrame = Time.frameCount;
+            if (session) session.Release(this);
             GameEventBus.Raise(GameplayEvents.EndInspection);
             if (inspected) foreach (var target in inspected.GetComponents<IInspectionTarget>()) target.OnInspectionEnded();
             if (inspected && inspected.TryGetComponent<InspectableDocument>(out var doc) && doc.hideAfterInspection) inspected.SetActive(false);

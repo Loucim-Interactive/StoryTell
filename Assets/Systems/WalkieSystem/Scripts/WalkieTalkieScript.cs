@@ -24,6 +24,8 @@ namespace Systems.WalkieSystem.Scripts
         [SerializeField] private GameObject walkieTalkie;
         
         private bool _walkieTalkieVisible;
+        [SerializeField] private StoryTell.MainIntegration.UiSessionCoordinator session;
+        private DecisionManagerScript decisions;
         public bool IsEquipped => _walkieTalkieVisible;
         
         private void Awake()
@@ -35,6 +37,7 @@ namespace Systems.WalkieSystem.Scripts
 
             _walkieTalkieVisible = false;
             StoreWalkie();
+            decisions = FindAnyObjectByType<DecisionManagerScript>();
         }
         
         private void Update()
@@ -42,7 +45,6 @@ namespace Systems.WalkieSystem.Scripts
             HandleInput();
 
             if (_walkieTalkieVisible && _stateMachine.IsChoosing && SubmitTriggered()) {
-                DecisionManagerScript decisions = FindFirstObjectByType<DecisionManagerScript>();
                 if (decisions && !decisions.HasOwner) _stateMachine.Resolve(decisions.CurrentIndex);
             }
         }
@@ -79,19 +81,22 @@ namespace Systems.WalkieSystem.Scripts
         {
             if (_walkieTalkieVisible)
                 return;
+            if(session && !session.TryAcquire(StoryTell.MainIntegration.UiMode.Radio,this)) return;
 
             _walkieTalkieVisible = true;
             TakeOutWalkie();
         }
 
-        private void ExitWalkie()
+        public void ExitWalkie()
         {
             if (!_walkieTalkieVisible)
                 return;
 
             _walkieTalkieVisible = false;
             StoreWalkie();
+            if(session)session.Release(this);
         }
+        private void OnDisable() => ExitWalkie();
 
         private void TakeOutWalkie()
         {

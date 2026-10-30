@@ -17,7 +17,7 @@ namespace FirstPersonControllerSystem.Scripts.Input {
             Instance = this;
         }
         private void OnEnable() {
-            _playerLocomotionInput = new PlayerLocomotionInput();
+            _playerLocomotionInput ??= new PlayerLocomotionInput();
             _playerLocomotionInput.Player.SetCallbacks(this);
             _playerLocomotionInput.Player.Enable();
             _playerLocomotionInput.UI.SetCallbacks(this);
@@ -26,9 +26,10 @@ namespace FirstPersonControllerSystem.Scripts.Input {
         }
 
         private void OnDisable() {
-            _playerLocomotionInput.Player.Disable();
-            _playerLocomotionInput.UI.Disable();
+            if(_playerLocomotionInput!=null){_playerLocomotionInput.Player.Disable();_playerLocomotionInput.UI.Disable();}
+            Move=Look=Scroll=Vector2.zero;Running=false;Jumped=false;
         }
+        private void OnDestroy(){if(Instance==this)Instance=null;_playerLocomotionInput?.Dispose();}
         public void LateUpdate() {
             Jumped = false;
             Scroll = Vector2.zero;

@@ -21,6 +21,8 @@ namespace Systems.InmersionSystem {
         
         private Collider _collider;
         private bool _hasTriggered;
+        public bool HasTriggered => _hasTriggered;
+        public void RestoreTriggered(bool value){StopAllCoroutines();_hasTriggered=value;}
         private float _timer;
 
         private void Awake() {

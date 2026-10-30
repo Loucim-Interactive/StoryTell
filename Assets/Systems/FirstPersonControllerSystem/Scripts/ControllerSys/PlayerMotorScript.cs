@@ -39,6 +39,7 @@ namespace FirstPersonControllerSystem.Scripts.ControllerSys {
         public void UpdateMovementState(bool running) {
             _isRunning = running;
         }
+        public void ResetMotion(){_velocity=Vector3.zero;_isRunning=false;_characterController.Move(Vector3.zero);}
         
         public bool IsGrounded => _characterController.isGrounded;
         public bool IsMoving => new Vector3(

@@ -16,6 +16,8 @@ namespace Systems.Global {
         
         private Collider _collider;
         private bool _hasTriggered;
+        public bool HasTriggered => _hasTriggered;
+        public void RestoreTriggered(bool triggered) { StopAllCoroutines(); _hasTriggered=triggered; }
         private float _timer;
 
         private void Awake() {
@@ -30,16 +32,15 @@ namespace Systems.Global {
                 _collider.isTrigger = true;
             }
             
-            Debug.LogWarning("Trigger zones only trigger by player tags!");
         }
 
         public void OnTriggerEnter(Collider col) {
-            if (!col.gameObject.CompareTag("Player") || _hasTriggered || !triggerOnEnter) return;
+            if (!IsPlayer(col) || _hasTriggered || !triggerOnEnter) return;
             Fire();
         }
 
         public void OnTriggerExit(Collider col) {
-            if (!col.gameObject.CompareTag("Player") || _hasTriggered || !triggerOnExit) return;
+            if (!IsPlayer(col) || _hasTriggered || !triggerOnExit) return;
             Fire();
         }
 
@@ -55,6 +56,7 @@ namespace Systems.Global {
         }
 
         protected abstract void Activate();
+        private static bool IsPlayer(Collider col) { for(var t=col.transform;t!=null;t=t.parent)if(t.CompareTag("Player"))return true;return false; }
 
         private void HandleRepeat() {
             if (!canRepeat) return;

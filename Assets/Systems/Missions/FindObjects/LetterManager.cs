@@ -19,7 +19,8 @@ namespace Systems.Missions.FindObjects {
         [SerializeField] private string returnObjective = "Devolverla";
 
         public bool LetterAssembled { get; private set; }
-        public bool MarkLetterAssembled() { if (_collected.Count != fragments.Length || LetterAssembled) return false; LetterAssembled = true; return true; }
+        public bool MarkLetterAssembled() { if (_collected.Count != fragments.Length || LetterAssembled) return false; LetterAssembled = true; Changed?.Invoke(); return true; }
+        public event System.Action Changed;
         private readonly HashSet<LetterInteractableScript> _collected = new();
         public bool MissionStarted { get; private set; }
         public string MissionTitle => missionTitle;
@@ -37,6 +38,7 @@ namespace Systems.Missions.FindObjects {
             // Inspection pickups arrive only after the object has been restored to the world.
             obj.gameObject.SetActive(false);
             if (MissionStarted) RefreshProgress();
+            Changed?.Invoke();
         }
 
         public void StartMission() {
@@ -56,6 +58,7 @@ namespace Systems.Missions.FindObjects {
             _missionsUI.AddItemToMission(missionTitle, returnObjective);
             _missionsUI.ShowMissionsUI();
             RefreshProgress();
+            Changed?.Invoke();
         }
 
         public void CompleteMission() {
@@ -63,6 +66,16 @@ namespace Systems.Missions.FindObjects {
             MissionCompleted = true;
             _missionsUI.SetItemCompleted(missionTitle, returnObjective);
             if (missionGiver) missionGiver.SetConversation(completedConversation);
+            Changed?.Invoke();
+        }
+        public int CollectedMask { get { int mask=0;for(int i=0;i<fragments.Length;i++)if(_collected.Contains(fragments[i]))mask|=1<<i;return mask; } }
+        public void RestoreProgress(bool started,int mask,bool complete,bool assembled)
+        {
+            if(!started)return;
+            StartMission();
+            for(int i=0;i<fragments.Length;i++)if((mask&(1<<i))!=0)OnPickup(fragments[i]);
+            if(assembled)MarkLetterAssembled();
+            if(complete)CompleteMission();
         }
 
         private void RefreshProgress() {

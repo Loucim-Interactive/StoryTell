@@ -45,7 +45,7 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
             _initialLocalRot = bobPivot.localRotation;
         }
 
-        public void Tick()
+        public void Tick(float motionScale=1)
         {
             bool isMoving    = _playerMotor.IsMoving;
             bool isSprinting = _playerMotor.IsRunning;
@@ -89,8 +89,8 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
                     Time.deltaTime * returnSmoothing);
             }
 
-            _bobPivot.localPosition = _initialLocalPos + _currentBobPos;
-            _bobPivot.localRotation = _initialLocalRot * Quaternion.Euler(_currentBobEuler);
+            _bobPivot.localPosition = _initialLocalPos + _currentBobPos*motionScale;
+            _bobPivot.localRotation = _initialLocalRot * Quaternion.Euler(_currentBobEuler*motionScale);
         }
     }
 }

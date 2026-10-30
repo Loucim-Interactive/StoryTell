@@ -12,6 +12,7 @@ namespace StoryTell.MainIntegration
         private readonly Queue<string> pending = new();
         private float remaining;
         public string CurrentMessage => label ? label.text : "";
+        public void Clear(){pending.Clear();remaining=0;label.text="";panel.SetActive(false);}
         public void ShowMessage(string message){if(!string.IsNullOrWhiteSpace(message)&&pending.Count<8)pending.Enqueue(message);}
         private void OnEnable(){missions.MissionAdded+=Show;}
         private void OnDisable(){if(missions)missions.MissionAdded-=Show;}

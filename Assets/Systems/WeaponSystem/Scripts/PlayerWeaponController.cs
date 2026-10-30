@@ -25,6 +25,8 @@ namespace Systems.WeaponSystem
         private float nextShotTime,reloadUntil,originalFov;
         private bool presentationBlocked,aiming;
         private Quaternion originalVisualRotation;
+        private int displayedRounds=-1,displayedReserve=-1;
+        private bool displayedReloading;
         public string EquippedWeapon {get;private set;}
         public int RoundsInMagazine {get;private set;}
         public int ReserveRounds => reserveRounds;
@@ -76,8 +78,12 @@ namespace Systems.WeaponSystem
             bool visible=EquippedWeapon=="FAL"&&!presentationBlocked;
             if(zoom)zoom.SetExternalFov(visible);
             if(ammoPanel)ammoPanel.SetActive(visible);
-            if(ammoLabel)ammoLabel.text="FN FAL\n"+RoundsInMagazine.ToString("00")+" / "+reserveRounds.ToString("00")+(Reloading?"\nRecargando…":"\n[R] Recargar");
-            if(vignette)vignette.Intensity=visible?stress.Darkness*0.65f:0;
+            if(ammoLabel&&(RoundsInMagazine!=displayedRounds||reserveRounds!=displayedReserve||Reloading!=displayedReloading))
+            {
+                displayedRounds=RoundsInMagazine;displayedReserve=reserveRounds;displayedReloading=Reloading;
+                ammoLabel.text="FN FAL\n"+RoundsInMagazine.ToString("00")+" / "+reserveRounds.ToString("00")+(Reloading?"\nRecargando…":"\n[R] Recargar");
+            }
+            if(vignette)vignette.Intensity=visible?stress.Darkness*0.65f*ComfortSettings.Current.darkness:0;
             if(visible&&firingCamera)firingCamera.fieldOfView=Mathf.Lerp(firingCamera.fieldOfView,aiming?38:originalFov,1-Mathf.Exp(-12*Time.deltaTime));
             if(falVisual)falVisual.transform.localRotation=originalVisualRotation*(Reloading?Quaternion.Euler(-8,0,12)*Quaternion.Euler(0,0,Mathf.Sin(Time.time*4)*2):Quaternion.identity);
         }

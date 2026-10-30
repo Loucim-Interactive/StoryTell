@@ -56,6 +56,7 @@ namespace DialogueSystem.Scripts
                 int visible=first;float clock=0;IsTyping=true;IsWaitingForAdvance=false;Hint(manual?"[E / Espacio] Completar texto · [Esc] Salir":"");
                 while(visible<last&&token==version)
                 {
+                    if(Time.timeScale<=0){yield return null;continue;}
                     page=Mathf.Min(page,PageCount-1);_dialogueTextMesh.pageToDisplay=page+1;last=PageEnd(page);
                     if(ConsumeAdvance()){visible=last;_dialogueTextMesh.maxVisibleCharacters=visible;break;}
                     clock+=Time.unscaledDeltaTime;int count=Mathf.FloorToInt(clock/interval);if(count>0){clock-=count*interval;visible=Mathf.Min(last,visible+count);_dialogueTextMesh.maxVisibleCharacters=visible;}yield return null;
@@ -69,7 +70,7 @@ namespace DialogueSystem.Scripts
                 }
                 else
                 {
-                    float until=Time.unscaledTime+Mathf.Max(.35f,hold);while(token==version&&(Time.unscaledTime<until||_audio&&_audio.isPlaying))yield return null;
+                    float remaining=Mathf.Max(.35f,hold);while(token==version&&(remaining>0||_audio&&_audio.isPlaying||Time.timeScale<=0)){remaining-=Time.deltaTime;yield return null;}
                 }
             }
             if(token==version){IsTyping=false;IsWaitingForAdvance=false;activeLine=false;Hint("");}
