@@ -17,6 +17,7 @@ Shader "StoryTell/ColdWeatherSurface"
         _Wetness("Patchy dampness",Range(0,1))=.2
         _MudAmount("Base grime",Range(0,1))=.15
         _MudHeight("Grime height in metres",Float)=.35
+        _DetailStrength("Fine surface grain",Range(0,.2))=0
         [Enum(UnityEngine.Rendering.CullMode)] _Cull("Cull",Float)=2
     }
     HLSLINCLUDE
@@ -29,7 +30,7 @@ Shader "StoryTell/ColdWeatherSurface"
     CBUFFER_START(UnityPerMaterial)
     float4 _BaseMap_ST,_BaseColor,_ColdTint;
     float _BumpScale,_Metallic,_Smoothness,_HasMetallicMap,_OcclusionStrength;
-    float _Saturation,_Wetness,_MudAmount,_MudHeight,_Cull;
+    float _Saturation,_Wetness,_MudAmount,_MudHeight,_Cull,_DetailStrength;
     CBUFFER_END
     float Hash(float2 p){p=frac(p*float2(123.34,456.21));p+=dot(p,p+45.32);return frac(p.x*p.y);}
     float Noise(float2 p){float2 a=floor(p),f=frac(p);f=f*f*(3-2*f);return lerp(lerp(Hash(a),Hash(a+float2(1,0)),f.x),lerp(Hash(a+float2(0,1)),Hash(a+1),f.x),f.y);}
@@ -71,6 +72,9 @@ Shader "StoryTell/ColdWeatherSurface"
                 float grime=(1-smoothstep(0,max(.01,_MudHeight),i.localMetres.y))*(.55+patch*.45)*_MudAmount;
                 base=lerp(base*(1-damp*.28),half3(.13,.115,.085),grime);
                 half3 normalTS=UnpackNormalScale(SAMPLE_TEXTURE2D(_BumpMap,sampler_BumpMap,i.uv),_BumpScale);
+                float detailFade=saturate((15-distance(_WorldSpaceCameraPos,i.world))/10);
+                normalTS.xy+=(float2(Noise(i.localMetres.xz*35),Noise(i.localMetres.xy*41))-.5)*2*_DetailStrength*detailFade;
+                normalTS=normalize(normalTS);
                 half3 n=normalize(i.normal),t=normalize(i.tangent.xyz);half3 b=cross(n,t)*i.tangent.w;
                 InputData input=(InputData)0;input.positionWS=i.world;input.positionCS=i.positionCS;input.normalWS=NormalizeNormalPerPixel(TransformTangentToWorld(normalTS,half3x3(t,b,n)));input.viewDirectionWS=GetWorldSpaceNormalizeViewDir(i.world);
                 #if defined(_MAIN_LIGHT_SHADOWS_SCREEN)

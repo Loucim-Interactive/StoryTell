@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+  <ui:VisualElement class="screen notebook-screen">
+    <ui:VisualElement name="notebook-frame" class="notebook-frame">
+      <ui:Image name="notebook-background" class="notebook-screen__background" picking-mode="Ignore" />
+      <ui:VisualElement class="notebook-layout">
+        <ui:VisualElement class="notebook-page notebook-page--left">
+          <ui:Label text="PROYECTO&#10;HISTORIA" class="notebook-title stencil" />
+          <ui:Image name="campaign-photo" class="campaign-photo" picking-mode="Ignore" />
+          <ui:Label name="campaign-status" class="campaign-status stencil" />
+        </ui:VisualElement>
+        <ui:VisualElement class="notebook-page notebook-page--right">
+          <ui:Label text="GUERRA DE&#10;MALVINAS" class="campaign-title stencil" />
+          <ui:Button name="continue-button" text="CONTINUAR PARTIDA" class="notebook-action notebook-action--primary stencil" />
+          <ui:VisualElement class="part-list">
+            <ui:Button name="part-1-button" text="PARTE 1" class="part-button stencil" />
+            <ui:Button name="part-2-button" text="PARTE 2 · PRÓXIMAMENTE" class="part-button stencil" />
+            <ui:Button name="part-3-button" text="PARTE 3 · PRÓXIMAMENTE" class="part-button stencil" />
+          </ui:VisualElement>
+          <ui:VisualElement class="notebook-secondary-actions">
+            <ui:Button name="start-button" text="COMENZAR" class="paper-link stencil" />
+            <ui:Button name="restart-button" text="REINICIAR" class="paper-link stencil" />
+            <ui:Button name="back-button" text="VOLVER" class="paper-link stencil" />
+          </ui:VisualElement>
+        </ui:VisualElement>
+      </ui:VisualElement>
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>

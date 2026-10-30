@@ -1,0 +1,507 @@
+.screen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-grow: 1;
+}
+
+.stencil {
+    -unity-font-definition: url("project://database/Assets/Systems/MainIntegration/Menu/Resources/StoryMenus/Fonts/BlackOpsOne-Regular.ttf");
+    -unity-font-style: normal;
+    letter-spacing: 2px;
+}
+
+.main-menu {
+    background-color: rgb(8, 7, 6);
+    color: rgb(228, 222, 203);
+}
+
+.main-menu__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url("project://database/Assets/Systems/MainIntegration/Menu/Resources/StoryMenus/Images/MainMenuBackground.png");
+    -unity-background-scale-mode: scale-and-crop;
+    scale: -1 1;
+}
+
+.main-menu__shade {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 54%;
+    background-color: rgba(3, 3, 3, 0.72);
+    border-right-width: 2px;
+    border-right-color: rgba(170, 143, 78, 0.18);
+}
+
+.main-menu__content {
+    position: absolute;
+    left: 5.2%;
+    top: 6%;
+    bottom: 5%;
+    width: 90%;
+}
+
+.main-menu__title {
+    margin-top: 0;
+    max-width: none;
+    color: rgb(224, 222, 213);
+    font-size: 102px;
+    letter-spacing: 7px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.75);
+    -unity-text-outline-width: 2px;
+}
+
+.main-menu__eyebrow {
+    position: absolute;
+    top: 136px;
+    color: rgb(184, 157, 89);
+    font-size: 17px;
+    letter-spacing: 8px;
+}
+
+.main-menu__navigation {
+    position: absolute;
+    left: 0;
+    top: 430px;
+    width: 520px;
+}
+
+.menu-button {
+    height: 82px;
+    margin-bottom: 18px;
+    padding-left: 22px;
+    border-width: 0;
+    border-left-width: 3px;
+    border-left-color: transparent;
+    border-radius: 0;
+    background-color: rgba(7, 7, 7, 0.14);
+    color: rgb(184, 184, 178);
+    font-size: 44px;
+    -unity-text-align: middle-left;
+    transition-property: color, background-color, border-left-color, translate;
+    transition-duration: 0.14s;
+    flex-shrink: 0;
+}
+
+.menu-button:hover,
+.menu-button:focus {
+    translate: 10px 0;
+    color: rgb(226, 204, 133);
+    background-color: rgba(37, 31, 18, 0.62);
+    border-left-color: rgb(178, 148, 73);
+}
+
+.menu-button:active {
+    translate: 14px 1px;
+    color: rgb(255, 234, 161);
+}
+
+.menu-button--primary {
+    color: rgb(209, 185, 105);
+}
+
+.menu-button:disabled {
+    opacity: 0.3;
+    translate: 0 0;
+}
+
+.main-menu__footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: rgba(211, 204, 183, 0.46);
+    font-size: 13px;
+    letter-spacing: 6px;
+}
+
+.modal-overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.72);
+}
+
+.modal-card {
+    width: 620px;
+    height: 520px;
+    padding: 54px;
+}
+
+.dossier-card {
+    background-color: rgb(203, 178, 120);
+    border-width: 2px;
+    border-color: rgb(84, 71, 41);
+    color: rgb(49, 44, 28);
+}
+
+.modal-card__title {
+    margin-bottom: 38px;
+    font-size: 48px;
+    color: rgb(67, 72, 32);
+}
+
+.field-label {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: rgb(76, 70, 39);
+}
+
+.field-slider,
+.field-toggle-row {
+    margin-bottom: 30px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.field-slider {
+    height: 72px;
+    color: rgb(49, 44, 28);
+}
+
+.field-slider .unity-base-field__label {
+    min-width: 190px;
+    color: rgb(49, 44, 28);
+    font-size: 18px;
+}
+
+.field-slider .unity-base-slider__tracker {
+    height: 8px;
+    border-width: 1px;
+    border-color: rgb(83, 73, 43);
+    background-color: rgba(68, 68, 32, 0.18);
+}
+
+.field-slider .unity-base-slider__dragger {
+    width: 22px;
+    height: 28px;
+    border-width: 1px;
+    border-color: rgb(61, 55, 31);
+    background-color: rgb(91, 91, 48);
+}
+
+.field-toggle {
+    width: 34px;
+    height: 34px;
+    color: rgb(49, 44, 28);
+}
+
+.field-toggle-row {
+    height: 52px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.field-toggle-label {
+    margin-left: 14px;
+    color: rgb(49, 44, 28);
+    font-size: 18px;
+}
+
+.field-toggle .unity-toggle__input {
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+    border-width: 1px;
+    border-color: rgb(83, 73, 43);
+    background-color: rgba(68, 68, 32, 0.12);
+}
+
+.field-toggle:checked .unity-toggle__input {
+    background-color: rgb(91, 91, 48);
+}
+
+.paper-button {
+    height: 58px;
+    margin-top: 16px;
+    border-width: 1px;
+    border-color: rgb(83, 73, 43);
+    border-radius: 0;
+    background-color: rgba(68, 68, 32, 0.15);
+    color: rgb(58, 57, 31);
+    font-size: 24px;
+}
+
+.paper-button:hover {
+    background-color: rgba(68, 68, 32, 0.32);
+}
+
+.notebook-screen {
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(4, 3, 2);
+    color: rgb(61, 59, 34);
+}
+
+.notebook-screen__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url("project://database/Assets/Systems/MainIntegration/Menu/Resources/StoryMenus/Images/CampaignNotebook.png");
+    -unity-background-scale-mode: scale-and-crop;
+    scale: 1.45 1;
+}
+
+.notebook-layout {
+    width: 80%;
+    height: 80%;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+.notebook-page {
+    width: 50%;
+    padding: 42px 70px;
+}
+
+.notebook-page--left {
+    padding-right: 94px;
+}
+
+.notebook-page--right {
+    padding-left: 94px;
+    align-items: center;
+}
+
+.notebook-title {
+    color: rgb(68, 75, 25);
+    font-size: 86px;
+    letter-spacing: 5px;
+    -unity-text-align: middle-center;
+}
+
+.notebook-title--small {
+    font-size: 68px;
+}
+
+.campaign-photo {
+    height: 300px;
+    margin-top: 54px;
+    margin-left: 12px;
+    margin-right: 12px;
+    background-image: url("project://database/Assets/Systems/MainIntegration/Menu/Resources/StoryMenus/Images/MalvinasPhoto.png");
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: -1.2deg;
+}
+
+.campaign-status {
+    margin-top: 22px;
+    color: rgba(75, 66, 36, 0.72);
+    font-size: 15px;
+    letter-spacing: 4px;
+    -unity-text-align: middle-center;
+}
+
+.campaign-title {
+    margin-top: 14px;
+    margin-bottom: 58px;
+    color: rgb(112, 117, 104);
+    font-size: 68px;
+    letter-spacing: 4px;
+    -unity-text-align: middle-center;
+}
+
+.campaign-title--completion {
+    margin-top: 52px;
+    margin-bottom: 28px;
+    color: rgb(70, 77, 31);
+    font-size: 42px;
+}
+
+.completion-copy {
+    max-width: 510px;
+    margin-bottom: 38px;
+    color: rgb(71, 61, 39);
+    font-size: 20px;
+    white-space: normal;
+    -unity-text-align: upper-center;
+}
+
+.notebook-action {
+    width: 480px;
+    height: 70px;
+    margin-bottom: 20px;
+    border-width: 0;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: rgba(82, 73, 40, 0.28);
+    border-radius: 0;
+    background-color: rgba(89, 82, 46, 0.04);
+    color: rgb(66, 73, 31);
+    font-size: 40px;
+    transition-property: color, background-color, translate;
+    transition-duration: 0.14s;
+}
+
+.notebook-action:hover,
+.notebook-action:focus {
+    translate: 6px 0;
+    color: rgb(105, 77, 30);
+    background-color: rgba(98, 75, 29, 0.12);
+}
+
+.notebook-action:disabled {
+    opacity: 0.32;
+}
+
+.part-list {
+    width: 430px;
+    margin-top: 4px;
+}
+
+.part-button {
+    height: 62px;
+    margin-bottom: 8px;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(82, 73, 40, 0.22);
+    border-radius: 0;
+    background-color: transparent;
+    color: rgb(67, 72, 33);
+    font-size: 26px;
+}
+
+.part-button:hover,
+.part-button:focus {
+    background-color: rgba(93, 81, 38, 0.13);
+    color: rgb(115, 79, 25);
+}
+
+.part-button--completed {
+    color: rgb(88, 93, 48);
+}
+
+.part-button--locked {
+    opacity: 0.28;
+}
+
+.notebook-secondary-actions {
+    margin-top: 28px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.paper-link {
+    min-width: 118px;
+    height: 44px;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-width: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: rgba(76, 70, 46, 0.72);
+    font-size: 16px;
+}
+
+.paper-link:hover {
+    color: rgb(77, 70, 28);
+    background-color: rgba(89, 82, 46, 0.1);
+}
+
+.paper-link--danger:hover {
+    color: rgb(124, 54, 34);
+}
+
+.dialogue-screen {
+    justify-content: flex-end;
+    padding: 0 6% 4.5% 6%;
+}
+
+.dialogue-surface {
+    min-height: 245px;
+    padding: 30px 38px 24px 38px;
+    border-width: 1px;
+    border-color: rgba(201, 179, 114, 0.55);
+    background-color: rgba(13, 12, 9, 0.94);
+}
+
+.dialogue-surface__rule {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 7px;
+    background-color: rgb(119, 104, 52);
+}
+
+.dialogue-speaker {
+    margin-bottom: 14px;
+    color: rgb(190, 168, 83);
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+
+.dialogue-copy {
+    min-height: 100px;
+    color: rgb(232, 225, 202);
+    font-size: 25px;
+    white-space: normal;
+}
+
+.dialogue-footer {
+    margin-top: 12px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dialogue-prompt {
+    margin-right: 24px;
+    color: rgba(222, 213, 184, 0.62);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.dialogue-next {
+    height: 42px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-width: 1px;
+    border-color: rgba(181, 155, 78, 0.58);
+    border-radius: 0;
+    background-color: rgba(110, 93, 43, 0.18);
+    color: rgb(212, 195, 130);
+    font-size: 15px;
+}
+
+.dialogue-next:hover {
+    background-color: rgba(150, 125, 56, 0.3);
+    color: rgb(245, 225, 154);
+}
+
+/* StoryTell: preserve the imported art while spreading controls over the page. */
+.main-menu__content { left: 6%; top: 7%; bottom: 6%; width: 88%; }
+.main-menu__title { font-size: 94px; letter-spacing: 5px; white-space: normal; max-width: 1400px; }
+.main-menu__navigation { top: 36%; width: 650px; }
+.menu-button { height: 100px; margin-bottom: 24px; font-size: 48px; padding-left: 28px; }
+.notebook-frame { width: 1536px; height: 1024px; flex-shrink: 0; }
+.notebook-screen__background { position: absolute; left: 0; right: 0; top: 0; bottom: 0; scale: 1 1; }
+.notebook-layout { position: absolute; left: 22%; right: 22%; top: 8%; bottom: 8%; width: 56%; height: 84%; margin-top: 0; }
+.notebook-page { padding: 26px 24px; justify-content: space-between; }
+.notebook-page--left { padding-left: 12px; padding-right: 28px; }
+.notebook-page--right { padding-left: 28px; padding-right: 12px; }
+.notebook-title { font-size: 55px; letter-spacing: 2px; }
+.campaign-photo { height: 360px; margin-top: 20px; margin-left: 0; margin-right: 0; flex-shrink: 0; }
+.campaign-status { font-size: 22px; letter-spacing: 2px; margin-top: 25px; white-space: normal; }
+.campaign-title { font-size: 48px; letter-spacing: 2px; margin-top: 0; margin-bottom: 0; color: rgb(63,68,42); }
+.notebook-action { width: 100%; height: 85px; font-size: 26px; margin-bottom: 0; flex-shrink: 0; }
+.part-list { width: 100%; margin-top: 0; }
+.part-button { height: 78px; font-size: 22px; margin-bottom: 18px; }
+.notebook-secondary-actions { width: 100%; flex-direction: row; justify-content: space-between; }
+.paper-link { min-width: 0; width: 48%; height: 78px; margin-left: 0; margin-right: 0; font-size: 20px; }
+#start-button { display: none; }

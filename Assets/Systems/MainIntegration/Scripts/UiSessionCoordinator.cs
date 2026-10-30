@@ -62,6 +62,12 @@ namespace StoryTell.MainIntegration
             Changed?.Invoke();
         }
         private void OnDisable() => Restore();
-        private void LateUpdate() { if (Mode != UiMode.None && !owner) Restore(); }
+        private void LateUpdate()
+        {
+            if(Mode!=UiMode.None&&!owner)Restore();
+            bool transitioning=SceneSystem.Scripts.SceneTransitionManager.Instance&&SceneSystem.Scripts.SceneTransitionManager.Instance.IsTransitioning;
+            if(transitioning&&Mode==UiMode.None)TryAcquire(UiMode.Pause,this);
+            else if(!transitioning&&owner==this)Release(this);
+        }
     }
 }

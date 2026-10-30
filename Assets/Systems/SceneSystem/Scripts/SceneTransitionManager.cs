@@ -21,6 +21,7 @@ namespace SceneSystem.Scripts
 
         private SceneTransitionView _view;
         private Coroutine _transitionRoutine;
+        public void SetDefaultProfileIfMissing(SceneTransitionProfile profile){if(!defaultProfile)defaultProfile=profile;}
 
         private void Awake()
         {
@@ -36,6 +37,7 @@ namespace SceneSystem.Scripts
             _view = GetComponent<SceneTransitionView>();
             _view.Initialize();
         }
+        private void OnDestroy(){if(Instance==this)Instance=null;}
 
         public void TransitionToScene(string targetSceneName)
         {
@@ -44,7 +46,7 @@ namespace SceneSystem.Scripts
 
         public void TransitionToScene(string targetSceneName, SceneTransitionProfile profile)
         {
-            if (string.IsNullOrWhiteSpace(targetSceneName))
+            if (string.IsNullOrWhiteSpace(targetSceneName)||!Application.CanStreamedLevelBeLoaded(targetSceneName))
             {
                 Debug.LogWarning("Scene transition cancelled because the scene name is empty.");
                 return;

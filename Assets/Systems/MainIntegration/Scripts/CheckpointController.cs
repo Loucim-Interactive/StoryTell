@@ -39,8 +39,10 @@ namespace StoryTell.MainIntegration
         private CheckpointStore store;
         private bool pendingSave, started, restoring;
         private static CheckpointData pendingRestart;
+        private static int menuLaunch;
+        public static void SetMenuLaunch(bool fresh)=>menuLaunch=fresh?1:2;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetPendingRestart()=>pendingRestart=null;
+        private static void ResetPendingRestart(){pendingRestart=null;menuLaunch=0;}
         public CheckpointData LastSaved { get; private set; }
         public bool CanRestart => LastSaved != null;
         public bool IsRestoring => restoring;
@@ -50,12 +52,15 @@ namespace StoryTell.MainIntegration
         {
             // The existing mission managers hide their uncollected objects in Awake/Start.
             yield return null;
-            if(!Application.isBatchMode)store = new CheckpointStore(Path.Combine(Application.persistentDataPath,"level1-checkpoint.json"));
+            while((SceneSystem.Scripts.SceneTransitionManager.Instance&&SceneSystem.Scripts.SceneTransitionManager.Instance.IsTransitioning)||session.Mode!=UiMode.None)yield return null;
+            if(!Application.isBatchMode||menuLaunch!=0)store = new CheckpointStore(MenuScreenController.SavePath);
             if (pendingRestart != null)
             {
                 var saved = pendingRestart; pendingRestart = null;
                 Restore(saved); LastSaved = saved; started = true;
             }
+            else if(menuLaunch==1){menuLaunch=0;BeginNewSession();}
+            else if(menuLaunch==2){menuLaunch=0;if(store.TryRead(out var resume)){Restore(resume);LastSaved=resume;started=true;}else BeginNewSession();}
             else if(Application.isBatchMode)yield break; // Tests use an isolated store explicitly.
             else if (store.TryRead(out var saved))
             {

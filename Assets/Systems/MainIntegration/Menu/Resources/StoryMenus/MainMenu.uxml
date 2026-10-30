@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="screen main-menu">
+        <ui:VisualElement class="main-menu__background" />
+        <ui:VisualElement class="main-menu__shade" />
+        <ui:VisualElement class="main-menu__content">
+            <ui:Label text="PROYECTO HISTORIA" class="main-menu__title stencil" />
+            <ui:VisualElement class="main-menu__navigation">
+                <ui:Button name="continue-button" text="CONTINUAR" class="menu-button menu-button--primary stencil" />
+                <ui:Button name="new-game-button" text="NUEVA PARTIDA" class="menu-button stencil" />
+                <ui:Button name="options-button" text="OPCIONES" class="menu-button stencil" />
+                <ui:Button name="exit-button" text="SALIR" class="menu-button stencil" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="options-overlay" class="modal-overlay" focusable="true">
+            <ui:VisualElement class="modal-card dossier-card">
+                <ui:Label text="OPCIONES" class="modal-card__title stencil" />
+                <ui:Label text="AUDIO" class="field-label stencil" />
+                <ui:Slider name="volume-slider" label="Volumen general" low-value="0" high-value="1" value="1" class="field-slider" />
+                <ui:VisualElement class="field-toggle-row">
+                    <ui:Toggle name="fullscreen-toggle" class="field-toggle" />
+                    <ui:Label text="PANTALLA COMPLETA" class="field-toggle-label stencil" />
+                </ui:VisualElement>
+                <ui:Button name="close-options-button" text="VOLVER" class="paper-button stencil" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

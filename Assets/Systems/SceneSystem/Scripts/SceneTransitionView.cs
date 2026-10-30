@@ -170,7 +170,10 @@ namespace SceneSystem.Scripts
                 overlayGroup = overlayCanvas.GetComponent<CanvasGroup>();
 
             if (audioSource == null)
-                audioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
+            {
+                audioSource=GetComponent<AudioSource>();
+                if(!audioSource)audioSource=gameObject.AddComponent<AudioSource>();
+            }
 
             audioSource.playOnAwake = false;
             audioSource.ignoreListenerPause = true;

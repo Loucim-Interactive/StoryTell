@@ -7,6 +7,9 @@ Shader "StoryTell/ColdOvercastSky"
         _CloudLight("Cloud edges",Color)=(.59,.62,.64,1)
         _CloudShadow("Cloud body",Color)=(.31,.35,.39,1)
         _CloudScale("Cloud scale",Range(1,8))=3.8
+        _WindSpeed("Cloud drift",Range(0,.08))=.018
+        _WindDirection("Wind direction",Vector)=(.85,0,.35,0)
+        _SunDirection("Light opening",Vector)=(-.35,.8,-.3,0)
     }
     SubShader
     {
@@ -20,7 +23,8 @@ Shader "StoryTell/ColdOvercastSky"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             CBUFFER_START(UnityPerMaterial)
             float4 _Zenith, _Horizon, _CloudLight, _CloudShadow;
-            float _CloudScale;
+            float _CloudScale,_WindSpeed;
+            float4 _WindDirection,_SunDirection;
             CBUFFER_END
             struct A { float4 positionOS:POSITION; };
             struct V { float4 positionCS:SV_POSITION; float3 direction:TEXCOORD0; };
@@ -45,14 +49,15 @@ Shader "StoryTell/ColdOvercastSky"
             {
                 float3 d=normalize(i.direction);float h=saturate(d.y);
                 // Spherical noise avoids stretching near the horizon and seams.
-                float3 p=d*_CloudScale+float3(_Time.y*.0025,0,_Time.y*.0012);
+                float3 p=d*_CloudScale+_WindDirection.xyz*_Time.y*_WindSpeed;
                 float broad=cloudNoise(p);
                 float detail=noise(p*13.7+float3(5.2,_Time.y*.0007,9.1));
                 float density=smoothstep(.30,.69,broad*.91+detail*.09);
                 float3 baseSky=lerp(_Horizon.rgb,_Zenith.rgb,pow(h,.55));
                 float3 cloudColor=lerp(_CloudLight.rgb,_CloudShadow.rgb,saturate(density*1.05));
                 float fade=smoothstep(.015,.30,h);
-                return half4(lerp(baseSky,cloudColor,density*fade*.88),1);
+                float lightBreak=pow(saturate(dot(d,normalize(_SunDirection.xyz))),38)*(1-density)*.34;
+                return half4(lerp(baseSky,cloudColor,density*fade*.88)+lightBreak*float3(.69,.75,.81),1);
             }
             ENDHLSL
         }
