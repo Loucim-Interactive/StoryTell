@@ -22,6 +22,7 @@ namespace Systems.Missions.FindObjects {
         public bool MarkLetterAssembled() { if (_collected.Count != fragments.Length || LetterAssembled) return false; LetterAssembled = true; return true; }
         private readonly HashSet<LetterInteractableScript> _collected = new();
         public bool MissionStarted { get; private set; }
+        public string MissionTitle => missionTitle;
         public bool MissionCompleted { get; private set; }
         public int CollectedCount => _collected.Count;
 

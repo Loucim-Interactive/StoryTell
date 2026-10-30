@@ -29,6 +29,15 @@ namespace Systems.Missions {
         private bool _initialized, overlaySuppressed, requestedVisible;
         public event System.Action<string> MissionAdded;
         public bool IsVisible => uiObject && uiObject.activeInHierarchy;
+        public void ShowOnlyMission(string title) {
+            bool changed = false;
+            foreach (var mission in _missions) {
+                bool visible = mission.name == title;
+                if (mission.titleView.gameObject.activeSelf != visible) { mission.titleView.gameObject.SetActive(visible); changed = true; }
+                if (mission.itemsView.gameObject.activeSelf != visible) mission.itemsView.gameObject.SetActive(visible);
+            }
+            if(changed) RefreshLayout();
+        }
         public void SetOverlaySuppressed(bool suppressed) { overlaySuppressed = suppressed; if (uiObject) uiObject.SetActive(requestedVisible && !suppressed); }
 
         private void Awake() {
@@ -122,6 +131,7 @@ namespace Systems.Missions {
 
         private Mission FindMission(string title) {
             foreach (Mission mission in _missions) {
+                if (!mission.titleView.gameObject.activeSelf) continue;
                 if (mission.name == title) return mission;
             }
             return null;

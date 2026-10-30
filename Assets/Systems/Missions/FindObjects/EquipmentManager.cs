@@ -15,6 +15,7 @@ namespace Systems.Missions.FindObjects {
 
         private readonly HashSet<EquipmentInteractableScript> _equipped = new();
         public bool MissionStarted { get; private set; }
+        public string MissionTitle => _missionName;
         public bool MissionCompleted { get; private set; }
         public int EquippedCount => _equipped.Count;
         public bool IsEquipped(EquipmentInteractableScript item) => _equipped.Contains(item);

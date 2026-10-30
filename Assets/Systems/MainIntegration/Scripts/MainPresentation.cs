@@ -58,9 +58,9 @@ namespace StoryTell.MainIntegration
             if(combatInstructions)combatInstructions.SetActive(originalInstructionsActive&&!modal&&!open&&weapon.EquippedWeapon==null);
             if(open&&!mapInteractionLocked){interactionBeforeMap=interaction.enabled;interaction.enabled=false;mapInteractionLocked=true;}
             if(!open)ReleaseMapInteraction();
-            missions.SetOverlaySuppressed(open||inspection.IsInspecting||puzzle.IsOpen);
+            missions.SetOverlaySuppressed(open||modal);
             mapLegend.SetActive(open);
-            bool ready=letter.CollectedCount==4&&!modal;
+            bool ready=letter.CollectedCount==4&&!modal&&!open;
             assemblyHint.SetActive(ready);
             assemblyHintText.text=letter.LetterAssembled?"[L] Leer la carta reconstruida":"[L] Reconstruir la carta · Se conservan los avances";
             weapon.SetPresentationBlocked(BlocksWeapon);

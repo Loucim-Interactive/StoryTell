@@ -24,6 +24,7 @@ namespace Systems.DecisionSystem.UI
         private MonoBehaviour _presenter;
         private Action<int> _onSelected;
         private int _presentedFrame;
+        private float _submitReadyAt;
         public bool HasOwner => _owner != null;
         public bool HasPresenter => _presenter && _presenter.isActiveAndEnabled;
         public IReadOnlyList<string> Options { get; private set; }
@@ -58,6 +59,7 @@ namespace Systems.DecisionSystem.UI
             _onSelected = onSelected;
             RequestVersion++;
             _presentedFrame = Time.frameCount;
+            _submitReadyAt=Time.unscaledTime+.18f;
             SetAmountChoices(Options.Count);
             SetInitialChosen(0);
             SetChoosing(false); // The presenter enables input once the list is bound.
@@ -66,7 +68,7 @@ namespace Systems.DecisionSystem.UI
 
         public void Submit(int index)
         {
-            if (!HasRequest || !_isChoosing || Time.frameCount <= _presentedFrame ||
+            if (!HasRequest || !_isChoosing || Time.frameCount <= _presentedFrame ||Time.unscaledTime<_submitReadyAt ||
                 index < 0 || index >= Options.Count) return;
 
             Action<int> callback = _onSelected;
@@ -105,6 +107,7 @@ namespace Systems.DecisionSystem.UI
             _currentChosenIndex = index;
             _previousChosenIndex = index;
             ClampChoices();
+            SelectionChanged?.Invoke(_currentChosenIndex);
         }
 
         public void SetAmountChoices(int amount)
@@ -126,6 +129,7 @@ namespace Systems.DecisionSystem.UI
                 return;
 
             int direction = 0;
+            var keyboard=Keyboard.current;
 
             if (useActions)
             {
@@ -143,10 +147,10 @@ namespace Systems.DecisionSystem.UI
             }
             else
             {
-                if (Input.GetKeyDown(navigateChoicesForwardKey))
+                if (keyboard!=null&&(keyboard.tabKey.wasPressedThisFrame&&!keyboard.shiftKey.isPressed||keyboard.downArrowKey.wasPressedThisFrame))
                     direction++;
 
-                if (Input.GetKeyDown(navigateChoicesBackwardKey))
+                if (keyboard!=null&&(keyboard.tabKey.wasPressedThisFrame&&keyboard.shiftKey.isPressed||keyboard.upArrowKey.wasPressedThisFrame))
                     direction--;
             }
 
@@ -159,7 +163,7 @@ namespace Systems.DecisionSystem.UI
             }
 
             if (HasRequest && ((submitChoice != null && submitChoice.action.triggered) ||
-                Input.GetKeyDown(submitChoiceKey)))
+                keyboard!=null&&(keyboard.spaceKey.wasPressedThisFrame||keyboard.enterKey.wasPressedThisFrame)))
                 Submit(_currentChosenIndex);
         }
 

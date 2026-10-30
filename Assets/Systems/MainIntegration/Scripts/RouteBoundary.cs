@@ -59,8 +59,8 @@ namespace StoryTell.MainIntegration
         {
             if(Time.unscaledTime>=nextThought)
             {
-                string text=gated?(letter.MissionStarted&&!letter.MissionCompleted?"Antes de ir al frente, tengo que devolverle la carta a Mateo.":"No puedo ir al frente sin recoger mi equipo."):
-                    "Tengo que seguir el camino y ayudar a mis compañeros.";
+                string text=gated?(!equipment.MissionCompleted?"Me falta recoger mi equipo.":letter.CollectedCount<4?$"Me faltan partes de la carta · {letter.CollectedCount}/4.":"Tengo que devolverle la carta a Mateo."):
+                    "Tengo que seguir el camino.";
                 GameEventBus.Raise(GameplayEvents.StateThought,text);nextThought=Time.unscaledTime+7;
             }
         }

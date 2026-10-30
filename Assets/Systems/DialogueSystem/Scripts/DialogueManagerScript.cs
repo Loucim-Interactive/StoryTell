@@ -4,6 +4,7 @@ using Systems.DecisionSystem.UI;
 using Systems.EventSystem.Scripts;
 using Systems.WalkieSystem.Scripts;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Systems.DialogueSystem.Scripts
 {
@@ -11,6 +12,9 @@ namespace Systems.DialogueSystem.Scripts
     {
         public UIDialogueScript uiDialogueScript;
         [SerializeField] private DecisionManagerScript decisionManager;
+        [SerializeField] private bool manualNpcAdvance=true;
+        private InputAction cancel;
+        public bool LastConversationCompleted {get;private set;}
         public static DialogueManagerScript Instance { get; private set; }
         public bool IsInConversation { get; private set; }
 
@@ -37,12 +41,14 @@ namespace Systems.DialogueSystem.Scripts
 
         private void OnEnable()
         {
+            cancel??=new InputAction("CloseConversation",InputActionType.Button,"<Keyboard>/escape");cancel.Enable();
             GameEventBus.Subscribe<string>(GameplayEvents.StateThought, StateThought);
             GameEventBus.Subscribe<string[]>(GameplayEvents.StateThought, StateThoughts);
         }
 
         private void OnDisable()
         {
+            cancel?.Disable();
             GameEventBus.Unsubscribe<string>(GameplayEvents.StateThought, StateThought);
             GameEventBus.Unsubscribe<string[]>(GameplayEvents.StateThought, StateThoughts);
             CancelConversation();
@@ -51,8 +57,10 @@ namespace Systems.DialogueSystem.Scripts
 
         private void OnDestroy()
         {
+            cancel?.Dispose();
             if (Instance == this) Instance = null;
         }
+        private void Update(){if(IsInConversation&&cancel.WasPressedThisFrame())CancelConversation();}
 
         public bool TryStartConversation(ConversationSO conversation, Object owner = null)
         {
@@ -67,6 +75,7 @@ namespace Systems.DialogueSystem.Scripts
 
             StopThought();
             IsInConversation = true;
+            LastConversationCompleted=false;
             _conversationOwner = owner;
             int version = ++_conversationVersion;
             _conversationRoutine = StartCoroutine(RunConversation(conversation, version));
@@ -83,6 +92,7 @@ namespace Systems.DialogueSystem.Scripts
 
         private IEnumerator RunConversation(ConversationSO conversation, int version)
         {
+            bool completed=false;
             // Ensure the coroutine handle is stored even for an empty conversation.
             yield return null;
             try
@@ -92,7 +102,7 @@ namespace Systems.DialogueSystem.Scripts
                 {
                     DialogueSO line = conversation.Dialogues[lineIndex++];
                     if (!line) continue;
-                    yield return uiDialogueScript.DisplayDialogue(line);
+                    yield return uiDialogueScript.DisplayDialogue(line,manualNpcAdvance||!conversation.AutoNext,line.Choices!=null&&line.Choices.Count>0);
                     if (line.Choices == null || line.Choices.Count == 0) continue;
 
                     var labels = new string[line.Choices.Count];
@@ -128,6 +138,7 @@ namespace Systems.DialogueSystem.Scripts
                     switch (choice.Outcome)
                     {
                         case DialogueChoiceOutcome.End:
+                            completed=true;
                             yield break;
                         case DialogueChoiceOutcome.Branch:
                             if (!choice.NextConversation)
@@ -142,10 +153,11 @@ namespace Systems.DialogueSystem.Scripts
                     // Give the presenter a frame to observe the resolved request.
                     yield return null;
                 }
+                completed=true;
             }
             finally
             {
-                if (version == _conversationVersion) FinishConversation();
+                if (version == _conversationVersion) FinishConversation(completed);
             }
         }
 
@@ -156,8 +168,9 @@ namespace Systems.DialogueSystem.Scripts
             if (IsInConversation) FinishConversation();
         }
 
-        private void FinishConversation()
+        private void FinishConversation(bool completed=false)
         {
+            LastConversationCompleted=completed;
             if (decisionManager) decisionManager.Release(this);
             IsInConversation = false;
             _conversationOwner = null;

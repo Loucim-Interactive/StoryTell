@@ -1,6 +1,8 @@
 using System;
 using StoryTell.PhysicalMap;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace StoryTell.MainIntegration
 {
@@ -18,6 +20,11 @@ namespace StoryTell.MainIntegration
         [SerializeField] private Camera mapCamera;
         [SerializeField] private GameObject overlay;
         [SerializeField] private Zone[] zones;
+        [SerializeField] private ObjectiveHud objective;
+        [SerializeField] private TMP_Text legend;
+        private int lastDestination=-2;
+        private string lastObjective;
+        public int ActiveDestination => objective ? objective.DestinationZone : -1;
         public Zone[] Zones => zones;
         private void LateUpdate(){Refresh();}
         public void Refresh()
@@ -25,6 +32,16 @@ namespace StoryTell.MainIntegration
             bool open=map!=null&&map.enabled&&map.IsOpen;
             if(overlay.activeSelf!=open)overlay.SetActive(open);
             if(!open||mapCamera==null)return;
+            if(objective&&(lastDestination!=ActiveDestination||lastObjective!=objective.CurrentObjective))
+            {
+                lastDestination=ActiveDestination;lastObjective=objective.CurrentObjective;
+                for(int i=0;i<zones.Length;i++)
+                {
+                    bool active=i==ActiveDestination;var image=zones[i].marker.GetComponent<Image>();if(image)image.color=active?new Color(1,.65f,.18f):new Color(.14f,.12f,.09f);
+                    var text=zones[i].marker.GetComponentInChildren<TMP_Text>();if(text)text.color=active?Color.black:Color.white;
+                }
+                if(legend)legend.text="1 · Equipamiento / Diego\n2 · Mateo / carta\n3 · Puesto avanzado\n4 · Frente\n\nDestino naranja · "+(ActiveDestination+1)+"\n"+objective.CurrentObjective+"\n\nPunto celeste: tu ubicación\n[M] Guardar mapa";
+            }
             var area=(RectTransform)overlay.transform;
             foreach(var zone in zones)
             {

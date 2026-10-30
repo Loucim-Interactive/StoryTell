@@ -216,6 +216,13 @@ namespace Systems.WalkieSystem.Scripts {
 
                 WalkieDecisionButton button = view.GetComponent<WalkieDecisionButton>();
                 button.Setup(label);
+                int index=currentChoices.Count;
+                button.Bind(()=>decisionManager.SetInitialChosen(index),()=>
+                {
+                    decisionManager.SetInitialChosen(index);
+                    if(decisionManager.HasRequest)decisionManager.Submit(index);
+                    else if(_state&&_state.IsChoosing&&walkieTalkie&&walkieTalkie.IsEquipped)_state.Resolve(index);
+                });
 
                 currentChoices.Add(button);
             }

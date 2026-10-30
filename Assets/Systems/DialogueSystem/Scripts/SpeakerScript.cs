@@ -13,8 +13,9 @@ namespace DialogueSystem.Scripts {
         
         [SerializeField] private NpcConversationFacing conversationFacing;
         private Coroutine facingRoutine;
-        private IEnumerator FaceWhileSpeaking() { if (conversationFacing && Camera.main) conversationFacing.Begin(Camera.main.transform); try { while (_dialogueManagerScript.IsConversationOwnedBy(this)) yield return null; } finally { if (conversationFacing) conversationFacing.End(); facingRoutine = null; } }
+        private IEnumerator FaceWhileSpeaking(ConversationSO started,bool givingHint) { if (conversationFacing && Camera.main) conversationFacing.Begin(Camera.main.transform); try { while (_dialogueManagerScript.IsConversationOwnedBy(this)) yield return null; if(_dialogueManagerScript.LastConversationCompleted&&!givingHint&&_convIndex<_conversationSos.Length&&_conversationSos[_convIndex]==started){_spokenAlready=true;if(_conversationSos.Length>1)_convIndex++;} } finally { if (conversationFacing) conversationFacing.End(); facingRoutine = null; } }
         private int _convIndex = 0;
+        public bool HasSpoken => _spokenAlready;
 
         // Changes the next interaction without interrupting a conversation already playing.
         public void SetConversation(ConversationSO conversation) {
@@ -30,21 +31,21 @@ namespace DialogueSystem.Scripts {
         
         [ContextMenu("Speak Conversation")]
         public void Speak() {
-            if (!_dialogueManagerScript ||
-                _dialogueManagerScript.IsInConversation ||
-                _conversationSos == null || _convIndex >= _conversationSos.Length) return;
+            if (!_dialogueManagerScript || _dialogueManagerScript.IsInConversation) return;
 
             var hints = GetComponent<LetterHintProvider>();
             ConversationSO conversation = hints ? hints.GetHint() : null;
             bool givingHint = conversation != null;
-            if (!conversation) conversation = _conversationSos[_convIndex];
+            if(!conversation)
+            {
+                if(_conversationSos==null||_conversationSos.Length==0||_spokenAlready&&!_canRestart)return;
+                if(_convIndex>=_conversationSos.Length){if(!_canRestart)return;_convIndex=0;}
+                conversation=_conversationSos[_convIndex];
+            }
             if (!conversation) return;
 
             if (_dialogueManagerScript.TryStartConversation(conversation, this)) {
-                if (conversationFacing) facingRoutine = StartCoroutine(FaceWhileSpeaking());
-                _spokenAlready = true;
-                if (!givingHint && _conversationSos.Length > 1)
-                    _convIndex++;
+                facingRoutine = StartCoroutine(FaceWhileSpeaking(conversation,givingHint));
             }
         }
 

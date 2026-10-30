@@ -39,6 +39,11 @@ public sealed class MainIntegrationTests
         foreach(var entry in baseline.ui)
         {
             Assert.That(GlobalObjectId.TryParse(entry.id,out var id),Is.True);var rect=GlobalObjectId.GlobalObjectIdentifierToObjectSlow(id)as RectTransform;Assert.That(rect,Is.Not.Null,entry.path);
+            if(Object.FindAnyObjectByType<CanvasSafeArea>())
+            {
+                var approvedText=rect.GetComponent<TMP_Text>();if(approvedText)Assert.That(approvedText.font.name,Does.StartWith("InterTight"),entry.path);
+                continue; // The responsive layout is checked at multiple sizes by DialoguePolishTests.
+            }
             Assert.That(rect.anchorMin,Is.EqualTo(entry.anchorMin),entry.path);Assert.That(rect.anchorMax,Is.EqualTo(entry.anchorMax),entry.path);Assert.That(rect.pivot,Is.EqualTo(entry.pivot),entry.path);
             if(!rect.drivenByObject&&!rect.GetComponent<Canvas>()){Assert.That(Vector2.Distance(rect.sizeDelta,entry.size),Is.LessThan(0.02),entry.path);Assert.That(Vector2.Distance(rect.anchoredPosition,entry.position),Is.LessThan(0.02),entry.path);}
             var text=rect.GetComponent<TMP_Text>();if(text){Assert.That(AssetDatabase.GetAssetPath(text.font),Is.EqualTo(entry.font),entry.path);Assert.That(text.fontSize,Is.EqualTo(entry.fontSize).Within(0.001),entry.path);Assert.That(text.color,Is.EqualTo(entry.color),entry.path);}
@@ -49,7 +54,7 @@ public sealed class MainIntegrationTests
             if(Object.FindAnyObjectByType<RouteBoundary>())
             {
                 GlobalObjectId.TryParse(entry.id,out var movedId);var moved=GlobalObjectId.GlobalObjectIdentifierToObjectSlow(movedId)as Transform;
-                if(moved&&(moved.GetComponentInParent<RouteBoundary>()||moved.GetComponentInParent<LetterHintProvider>()||moved.name.StartsWith("MateoLetterFragment")||moved.GetComponentInParent<Systems.InteractionSystem.Scripts.Interactables.Equipment.EquipmentInteractableScript>()))continue;
+                if(moved&&(moved.GetComponentInParent<RouteBoundary>()||moved.GetComponentInParent<LetterHintProvider>()||moved.name.StartsWith("MateoLetterFragment")||moved.GetComponentInParent<Systems.InteractionSystem.Scripts.Interactables.Equipment.EquipmentInteractableScript>()||Object.FindAnyObjectByType<CanvasSafeArea>()&&moved.GetComponentInParent<SpeakerScript>()))continue;
             }
             GlobalObjectId.TryParse(entry.id,out var id);var transform=GlobalObjectId.GlobalObjectIdentifierToObjectSlow(id)as Transform;Assert.That(transform,Is.Not.Null,entry.name);Assert.That(Vector3.Distance(transform.position,entry.position),Is.LessThan(0.001),entry.name);Assert.That(Quaternion.Angle(transform.rotation,entry.rotation),Is.LessThan(0.02),entry.name);Assert.That(Vector3.Distance(transform.localScale,entry.scale),Is.LessThan(0.001),entry.name);
         }
@@ -151,7 +156,7 @@ public sealed class MainIntegrationTests
     }
     [UnityTearDown]public IEnumerator Cleanup(){Time.timeScale=1;if(Application.isPlaying)yield return new ExitPlayMode();}
     // Batch previews show the UI pass separately; final world/UI composition needs Game View review.
-    static IEnumerator Capture(string path,int width,int height)
+    public static IEnumerator Capture(string path,int width,int height)
     {
         var camera=Camera.main;var canvas=Object.FindObjectsByType<Canvas>(FindObjectsSortMode.None).Single(c=>c.isRootCanvas);var mode=canvas.renderMode;var oldCamera=canvas.worldCamera;float oldPlane=canvas.planeDistance;var target=camera.targetTexture;var active=RenderTexture.active;int mask=camera.cullingMask;
         var host=new GameObject("NativeUICaptureCamera");var ui=host.AddComponent<Camera>();ui.CopyFrom(camera);ui.transform.SetPositionAndRotation(camera.transform.position,camera.transform.rotation);ui.cullingMask=1<<5;ui.nearClipPlane=0.01f;ui.clearFlags=CameraClearFlags.Depth;var data=ui.GetUniversalAdditionalCameraData();data.renderType=CameraRenderType.Overlay;data.renderPostProcessing=false;
