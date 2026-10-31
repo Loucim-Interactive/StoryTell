@@ -29,6 +29,7 @@ namespace StoryTell.MainIntegration
         private float previousTimeScale;
         private bool previousAudioPause;
         public bool IsOpen { get; private set; }
+        private void Awake(){if(panel)panel.SetActive(false);}
         private void OnEnable()
         {
             escape??=new InputAction("PauseOrClose",InputActionType.Button,"<Keyboard>/escape");escape.Enable();
@@ -68,7 +69,7 @@ namespace StoryTell.MainIntegration
             continueLabel.text=initialPrompt?"Continuar desde el checkpoint":"Continuar";
             newGameButton.gameObject.SetActive(initialPrompt);restartButton.gameObject.SetActive(!initialPrompt);
             restartButton.interactable=checkpoints.CanRestart;
-            status.text=initialPrompt?"Hay una partida guardada.":"[Esc] Volver · Los checkpoints se guardan automáticamente.";
+            status.text=initialPrompt?"Hay una partida guardada.":"[Esc] Volver";
             continueButton.Select();return true;
         }
         public void ShowContinuePrompt(){initialPrompt=true;Open();}

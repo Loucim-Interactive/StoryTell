@@ -26,7 +26,7 @@ namespace StoryTell.MainIntegration
         [SerializeField] private LevelProgress progress;
         [SerializeField] private UiSessionCoordinator session;
         private bool dirty=true;
-        private bool initialized, equipmentDone, letterDone, hadMap;
+        private bool initialized, letterDone, hadMap;
         private int equipmentCount, letterCount;
         public string CurrentObjective {get;private set;}
         // Matches the four authored map references; no future events are disclosed.
@@ -60,14 +60,12 @@ namespace StoryTell.MainIntegration
             if(initialized&&feedback)
             {
                 if(equipment.EquippedCount>equipmentCount)feedback.ShowPickup($"Recogiste equipo · {equipment.EquippedCount}/3");
-                if(equipment.MissionCompleted&&!equipmentDone)feedback.ShowMessage("✓ Equipo completo");
                 if(letter.CollectedCount>letterCount)feedback.ShowPickup($"Recogiste un fragmento · {letter.CollectedCount}/4");
-                if(letter.CollectedCount==4&&letterCount<4)feedback.ShowMessage("Devolvé la carta a Mateo");
                 if(letter.MissionCompleted&&!letterDone)feedback.ShowMessage("✓ Carta entregada");
                 if(map.enabled&&!hadMap)feedback.ShowPickup("Mapa guardado · [M] Consultar");
             }
-            initialized=true;equipmentCount=equipment.EquippedCount;letterCount=letter.CollectedCount;equipmentDone=equipment.MissionCompleted;letterDone=letter.MissionCompleted;hadMap|=map.enabled;
-            if(missions)missions.ShowOnlyMission(!equipment.MissionCompleted&&equipment.MissionStarted?equipment.MissionTitle:letter.MissionStarted&&!letter.MissionCompleted?letter.MissionTitle:null);
+            initialized=true;equipmentCount=equipment.EquippedCount;letterCount=letter.CollectedCount;letterDone=letter.MissionCompleted;hadMap|=map.enabled;
+            if(missions)missions.ShowOnlyMission(null);
         }
     }
 }

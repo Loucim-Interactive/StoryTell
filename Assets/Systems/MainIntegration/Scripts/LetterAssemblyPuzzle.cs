@@ -43,7 +43,7 @@ namespace StoryTell.MainIntegration
         public void Open()
         {
             if(IsOpen)return;
-            foreach(var piece in pieces) piece.GetComponentInChildren<TMP_Text>(true).text = controller.LetterFragmentText(piece.slotIndex);
+            foreach(var piece in pieces){var text=piece.GetComponentInChildren<TMP_Text>(true);if(text){text.text=controller.LetterFragmentText(piece.slotIndex);text.gameObject.SetActive(!piece.HasArtwork);}}
             IsOpen=true;openedFrame=Time.frameCount;panel.SetActive(true);
             previousCursor=Cursor.lockState;previousVisible=Cursor.visible;Cursor.lockState=CursorLockMode.None;Cursor.visible=true;
             UpdateStatus();
@@ -90,7 +90,7 @@ namespace StoryTell.MainIntegration
         }
         private void UpdateStatus()
         {
-            status.text=state.Complete?"Carta reconstruida. Podés leerla con L o guardarla y volver con Mateo.\n[E] Guardar carta":"Fragmentos colocados: "+state.PlacedCount+"/4\nArrastrá los bordes hasta hacerlos coincidir. R o clic derecho para girar.\n[E / Esc] Volver · Se conserva lo que ya encajaste";
+            status.text=state.Complete?"Carta reconstruida · [E] Volver":"Fragmentos: "+state.PlacedCount+"/4 · Arrastrá · [R / clic derecho] Girar · [E / Esc] Volver";
         }
     }
 }

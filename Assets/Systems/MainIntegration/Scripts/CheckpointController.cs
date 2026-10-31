@@ -33,6 +33,7 @@ namespace StoryTell.MainIntegration
         [SerializeField] private StoryTriggerBinding[] storyTriggers;
         [SerializeField] private NarrationBinding[] narrations;
         [SerializeField] private MissionAnnouncement feedback;
+        [SerializeField] private SaveStatusToast saveStatus;
         [SerializeField] private ObjectiveHud objective;
         [SerializeField] private PauseMenu pause;
         [SerializeField] private GameObject mapPickup;
@@ -65,7 +66,7 @@ namespace StoryTell.MainIntegration
             else if (store.TryRead(out var saved))
             {
                 LastSaved = saved;
-                pause.ShowContinuePrompt();
+                Restore(saved); started=true;
             }
             else BeginNewSession();
         }
@@ -101,9 +102,9 @@ namespace StoryTell.MainIntegration
             if(store == null || !IsSafe || restoring) return false;
             var data = Capture();
             pendingSave = false;
-            if(!store.TryWrite(data)) { feedback.ShowMessage("No se pudo guardar el checkpoint."); return false; }
+            if(!store.TryWrite(data)) { if(saveStatus)saveStatus.Show(false); return false; }
             LastSaved = data;
-            feedback.ShowMessage("Checkpoint guardado");
+            if(saveStatus)saveStatus.Show(true);
             return true;
         }
         public CheckpointData Capture()

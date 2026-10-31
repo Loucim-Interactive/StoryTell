@@ -9,6 +9,19 @@ namespace StoryTell.MainIntegration
     {
         public int slotIndex;
         public LetterAssemblyPuzzle owner;
+        [SerializeField] private Mesh artworkMesh;
+        [SerializeField] private Texture2D artworkTexture;
+        [SerializeField] private Texture2D artworkHitMask;
+        public bool HasArtwork=>artworkMesh&&artworkTexture;
+        public override Texture mainTexture=>artworkTexture?artworkTexture:base.mainTexture;
+        public override bool Raycast(Vector2 screenPoint,Camera eventCamera)
+        {
+            if(!base.Raycast(screenPoint,eventCamera))return false;
+            if(!artworkHitMask)return true;
+            if(!RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,screenPoint,eventCamera,out var point))return false;
+            var rect=rectTransform.rect;float u=(point.x-rect.xMin)/rect.width,v=(point.y-rect.yMin)/rect.height;
+            return u>=0&&u<=1&&v>=0&&v<=1&&artworkHitMask.GetPixelBilinear(u,v).r>.1f;
+        }
         private Vector3 grabOffset;
         public bool Placed { get; private set; }
         protected override void OnEnable(){useLegacyMeshGeneration=false;base.OnEnable();}
@@ -41,6 +54,13 @@ namespace StoryTell.MainIntegration
         protected override void OnPopulateMesh(VertexHelper mesh)
         {
             mesh.Clear();Rect rect = GetPixelAdjustedRect();
+            if(HasArtwork)
+            {
+                var vertices=artworkMesh.vertices;var uv=artworkMesh.uv;var triangles=artworkMesh.triangles;
+                for(int i=0;i<vertices.Length;i++)mesh.AddVert(new Vector3(rect.center.x+vertices[i].x*rect.width,rect.center.y+vertices[i].y*rect.height),color,uv[i]);
+                for(int i=0;i<triangles.Length;i+=3)mesh.AddTriangle(triangles[i],triangles[i+1],triangles[i+2]);
+                return;
+            }
             mesh.AddVert(new Vector3(rect.center.x,rect.center.y),color,Vector2.one*0.5f);
             int col=slotIndex%2,row=slotIndex/2;
             const int samples=8,count=samples*4;

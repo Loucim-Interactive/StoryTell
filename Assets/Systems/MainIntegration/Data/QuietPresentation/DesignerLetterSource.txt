@@ -1,0 +1,1 @@
+The source FBX planes share the complete sheet geometry. The actual four cuts are in the PNG alpha channels. UI uses their original front textures and alpha silhouettes, with crops and matching target positions derived from their opaque bounds. Original FBX, materials and textures remain unchanged.

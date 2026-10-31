@@ -67,7 +67,7 @@ namespace StoryTell.MainIntegration
             mapLegend.SetActive(open);
             bool ready=letter.CollectedCount==4&&!modal&&!open;
             assemblyHint.SetActive(ready);
-            assemblyHintText.text=letter.LetterAssembled?"[L] Leer la carta reconstruida":"[L] Reconstruir la carta · Se conservan los avances";
+            assemblyHintText.text=letter.LetterAssembled?"[L] Leer carta":"[L] Reconstruir carta";
             weapon.SetPresentationBlocked(BlocksWeapon);
             map.SetKeyboardInputEnabled(HasMap&&!modal&&!(radio&&radio.IsEquipped));
             if(ready&&assemble.WasPressedThisFrame())

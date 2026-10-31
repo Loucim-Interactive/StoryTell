@@ -15,9 +15,6 @@ namespace StoryTell.MainIntegration
         public void Clear(){pending.Clear();remaining=0;label.text="";panel.SetActive(false);}
         public void ShowMessage(string message){if(!string.IsNullOrWhiteSpace(message)&&pending.Count<8)pending.Enqueue(message);}
         public void ShowPickup(string message){if(string.IsNullOrWhiteSpace(message))return;label.text=message;remaining=2.5f;}
-        private void OnEnable(){missions.MissionAdded+=Show;}
-        private void OnDisable(){if(missions)missions.MissionAdded-=Show;}
-        private void Show(string title){ShowMessage("NUEVA TAREA · "+title);}
         private void LateUpdate()
         {
             bool visible=missions&&missions.IsVisible;
