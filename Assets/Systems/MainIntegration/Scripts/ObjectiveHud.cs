@@ -59,12 +59,12 @@ namespace StoryTell.MainIntegration
             CurrentObjective=objective;if(label.text!=objective)label.text=objective;
             if(initialized&&feedback)
             {
-                if(equipment.EquippedCount>equipmentCount)feedback.ShowMessage($"Equipo recogido · {equipment.EquippedCount}/3");
+                if(equipment.EquippedCount>equipmentCount)feedback.ShowPickup($"Recogiste equipo · {equipment.EquippedCount}/3");
                 if(equipment.MissionCompleted&&!equipmentDone)feedback.ShowMessage("✓ Equipo completo");
-                if(letter.CollectedCount>letterCount)feedback.ShowMessage($"Fragmento recogido · {letter.CollectedCount}/4");
+                if(letter.CollectedCount>letterCount)feedback.ShowPickup($"Recogiste un fragmento · {letter.CollectedCount}/4");
                 if(letter.CollectedCount==4&&letterCount<4)feedback.ShowMessage("Devolvé la carta a Mateo");
                 if(letter.MissionCompleted&&!letterDone)feedback.ShowMessage("✓ Carta entregada");
-                if(map.enabled&&!hadMap)feedback.ShowMessage("Mapa guardado · [M] Consultar");
+                if(map.enabled&&!hadMap)feedback.ShowPickup("Mapa guardado · [M] Consultar");
             }
             initialized=true;equipmentCount=equipment.EquippedCount;letterCount=letter.CollectedCount;equipmentDone=equipment.MissionCompleted;letterDone=letter.MissionCompleted;hadMap|=map.enabled;
             if(missions)missions.ShowOnlyMission(!equipment.MissionCompleted&&equipment.MissionStarted?equipment.MissionTitle:letter.MissionStarted&&!letter.MissionCompleted?letter.MissionTitle:null);

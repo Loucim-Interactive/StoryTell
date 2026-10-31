@@ -68,7 +68,7 @@ namespace DialogueSystem.Scripts
                     while(token==version&&!ConsumeAdvance()){page=Mathf.Min(page,PageCount-1);_dialogueTextMesh.pageToDisplay=page+1;_dialogueTextMesh.maxVisibleCharacters=PageEnd(page);yield return null;}
                     IsWaitingForAdvance=false;
                 }
-                else
+                else if(!manual)
                 {
                     float remaining=Mathf.Max(.35f,hold);while(token==version&&(remaining>0||_audio&&_audio.isPlaying||Time.timeScale<=0)){remaining-=Time.deltaTime;yield return null;}
                 }
