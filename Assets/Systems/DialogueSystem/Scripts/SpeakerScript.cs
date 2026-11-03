@@ -16,6 +16,10 @@ namespace DialogueSystem.Scripts {
         private IEnumerator FaceWhileSpeaking(ConversationSO started,bool givingHint) { if (conversationFacing && Camera.main) conversationFacing.Begin(Camera.main.transform); try { while (_dialogueManagerScript.IsConversationOwnedBy(this)) yield return null; if(_dialogueManagerScript.LastConversationCompleted&&!givingHint&&_convIndex<_conversationSos.Length&&_conversationSos[_convIndex]==started){_spokenAlready=true;if(_conversationSos.Length>1)_convIndex++;ConversationCompleted?.Invoke();} } finally { if (conversationFacing) conversationFacing.End(); facingRoutine = null; } }
         private int _convIndex = 0;
         public bool HasSpoken => _spokenAlready;
+        public bool HasMet {get;private set;}
+        public event System.Action Met;
+        public void RestoreKnown(bool known){HasMet=known;}
+        [SerializeField] private CampRoutine campRoutine;
         public int ConversationIndex => _convIndex;
         public event System.Action ConversationCompleted;
         public void RestoreProgress(int index,bool spoken){_convIndex=Mathf.Clamp(index,0,_conversationSos.Length);_spokenAlready=spoken;ConversationCompleted?.Invoke();}
@@ -37,7 +41,8 @@ namespace DialogueSystem.Scripts {
             if (!_dialogueManagerScript || _dialogueManagerScript.IsInConversation) return;
 
             var hints = GetComponent<LetterHintProvider>();
-            ConversationSO conversation = hints ? hints.GetHint() : null;
+            ConversationSO gate = campRoutine ? campRoutine.ConversationOverride(this) : null;
+            ConversationSO conversation = gate ? gate : hints ? hints.GetHint() : null;
             bool givingHint = conversation != null;
             if(!conversation)
             {
@@ -48,6 +53,7 @@ namespace DialogueSystem.Scripts {
             if (!conversation) return;
 
             if (_dialogueManagerScript.TryStartConversation(conversation, this)) {
+                if(!HasMet){HasMet=true;Met?.Invoke();}
                 facingRoutine = StartCoroutine(FaceWhileSpeaking(conversation,givingHint));
             }
         }

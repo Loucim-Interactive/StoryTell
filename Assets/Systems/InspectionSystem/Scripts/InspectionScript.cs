@@ -51,7 +51,7 @@ namespace Systems.InspectionSystem.Scripts
             originalScale = obj.transform.localScale;
             _originalInspectorAnchorLocalPos = inspectAnchor.localPosition;
             inspectedBody = obj.GetComponent<Rigidbody>();
-            if (inspectedBody) { originalKinematic = inspectedBody.isKinematic; inspectedBody.isKinematic = true; }
+            if (inspectedBody) { originalKinematic = inspectedBody.isKinematic; if(!originalKinematic){inspectedBody.linearVelocity=Vector3.zero;inspectedBody.angularVelocity=Vector3.zero;} inspectedBody.isKinematic = true; }
             obj.transform.SetParent(inspectAnchor, false);
             obj.transform.localPosition = Vector3.zero;
             document = obj.GetComponent<InspectableDocument>();
@@ -59,7 +59,7 @@ namespace Systems.InspectionSystem.Scripts
             documentExtent = 0;
             _currentRot = document ? Quaternion.Euler(document.inspectionEulerAngles) : Quaternion.identity;
             obj.transform.localRotation = _currentRot;
-            if (document)
+            // Normalize every held prop, including helmets and ammunition cases.
             {
                 Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
                 if (renderers.Length > 0)
@@ -68,7 +68,7 @@ namespace Systems.InspectionSystem.Scripts
                     foreach (var renderer in renderers) bounds.Encapsulate(renderer.bounds);
                     float extent = Mathf.Max(bounds.size.x, Mathf.Max(bounds.size.y, bounds.size.z));
                     documentExtent = extent;
-                    if (extent > 0.001f) obj.transform.localScale *= document.inspectionSize / extent;
+                    if (extent > 0.001f) obj.transform.localScale *= (document?document.inspectionSize:.38f) / extent;
                 }
             }
             holdPosition = _originalInspectorAnchorLocalPos + (document ? document.inspectionOffset : Vector3.zero);
@@ -134,7 +134,7 @@ namespace Systems.InspectionSystem.Scripts
             if (!_target) { StopInspect(); return; }
             if (Time.unscaledTime - startedAt > 0.2f && (inspectAction?.action?.WasPressedThisFrame() ?? false)) { StopInspect(); return; }
             Vector2 movement = movementAction?.action?.ReadValue<Vector2>() ?? Vector2.zero;
-            float limit = _target.GetComponent<InspectableDocument>() ? Mathf.Min(maxLateralOffset, 0.14f) : maxLateralOffset;
+            float limit = Mathf.Min(maxLateralOffset, 0.14f);
             _lateralOffset = Vector2.ClampMagnitude(_lateralOffset + movement * (moveSpeed * Time.deltaTime), limit);
             _currentPos = FitDocument(holdPosition + new Vector3(_lateralOffset.x, _lateralOffset.y, 0));
             inspectAnchor.localPosition = Vector3.Lerp(inspectAnchor.localPosition, _currentPos, Time.deltaTime * smoothing);
@@ -146,13 +146,13 @@ namespace Systems.InspectionSystem.Scripts
         }
         private Vector3 FitDocument(Vector3 position)
         {
-            if (!document || !documentCamera || documentExtent <= 0.001f) return position;
+            if (!documentCamera || documentExtent <= 0.001f) return position;
             float halfHeight = position.z * Mathf.Tan(documentCamera.fieldOfView * Mathf.Deg2Rad * 0.5f);
             float halfWidth = halfHeight * documentCamera.aspect;
-            float size = Mathf.Min(document.inspectionSize, halfWidth * 0.85f, halfHeight * 1.4f);
+            float size = Mathf.Min(document?document.inspectionSize:.38f, halfWidth * 0.85f, halfHeight * 1.4f);
             _target.transform.localScale = originalScale * (size / documentExtent);
             float margin = size * 0.55f;
-            position.x = Mathf.Clamp(position.x, -halfWidth * 0.94f + margin, halfWidth * 0.14f - margin);
+            position.x = Mathf.Clamp(position.x, -halfWidth * 0.94f + margin, halfWidth * (document ? .14f : .94f) - margin);
             position.y = Mathf.Clamp(position.y, -halfHeight + margin, halfHeight - margin);
             return position;
         }

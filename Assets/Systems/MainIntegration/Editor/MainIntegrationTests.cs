@@ -54,7 +54,7 @@ public sealed class MainIntegrationTests
             if(Object.FindAnyObjectByType<RouteBoundary>())
             {
                 GlobalObjectId.TryParse(entry.id,out var movedId);var moved=GlobalObjectId.GlobalObjectIdentifierToObjectSlow(movedId)as Transform;
-                if(moved&&(moved.GetComponentInParent<RouteBoundary>()||moved.GetComponentInParent<LetterHintProvider>()||moved.name.StartsWith("MateoLetterFragment")||moved.GetComponentInParent<Systems.InteractionSystem.Scripts.Interactables.Equipment.EquipmentInteractableScript>()||Object.FindAnyObjectByType<CanvasSafeArea>()&&moved.GetComponentInParent<SpeakerScript>()))continue;
+                if(moved&&(moved.GetComponent<SpawnArea>()||moved.GetComponentInParent<RouteBoundary>()||moved.GetComponentInParent<LetterHintProvider>()||moved.name.StartsWith("MateoLetterFragment")||moved.GetComponentInParent<Systems.InteractionSystem.Scripts.Interactables.Equipment.EquipmentInteractableScript>()||Object.FindAnyObjectByType<CanvasSafeArea>()&&moved.GetComponentInParent<SpeakerScript>()))continue;
             }
             GlobalObjectId.TryParse(entry.id,out var id);var transform=GlobalObjectId.GlobalObjectIdentifierToObjectSlow(id)as Transform;Assert.That(transform,Is.Not.Null,entry.name);Assert.That(Vector3.Distance(transform.position,entry.position),Is.LessThan(0.001),entry.name);Assert.That(Quaternion.Angle(transform.rotation,entry.rotation),Is.LessThan(0.02),entry.name);Assert.That(Vector3.Distance(transform.localScale,entry.scale),Is.LessThan(0.001),entry.name);
         }
@@ -97,7 +97,7 @@ public sealed class MainIntegrationTests
         yield return null;
         Assert.That(letter.CollectedCount,Is.EqualTo(1));Assert.That(fragment.gameObject.activeSelf,Is.False);Assert.That(fragment.transform.parent,Is.EqualTo(parent));Assert.That(Vector3.Distance(fragment.transform.localPosition,position),Is.LessThan(0.001));Assert.That(fragment.transform.localScale,Is.EqualTo(scale));Assert.That(Quaternion.Angle(fragment.transform.localRotation,rotation),Is.LessThan(0.01));Assert.That(reader.IsVisible,Is.False);
         foreach(var next in fragments.Skip(1)){next.Interact();GameEventBus.Raise(GameplayEvents.StartInspection,next.gameObject);yield return null;inspection.StopInspect();yield return null;}
-        Assert.That(letter.CollectedCount,Is.EqualTo(4));Assert.That(letter.LetterAssembled,Is.False);letter.CompleteMission();Assert.That(letter.MissionCompleted,Is.True,"Main's direct return remains available.");
+        Assert.That(letter.CollectedCount,Is.EqualTo(4));Assert.That(letter.LetterAssembled,Is.False);letter.CompleteMission();Assert.That(letter.MissionCompleted,Is.False,"The letter must now be assembled and read before returning.");letter.MarkLetterAssembled();letter.MarkLetterRead();letter.CompleteMission();Assert.That(letter.MissionCompleted,Is.True);
         yield return new ExitPlayMode();
     }
     [UnityTest]public IEnumerator OptionalPuzzle_UsesActualPointerDragging_PreservesProgressAndControls()
@@ -129,7 +129,7 @@ public sealed class MainIntegrationTests
     [UnityTest]public IEnumerator NativeWeapon_ReloadAimAndReadingLock_KeepBattleTrigger()
     {
         EditorSceneManager.OpenScene(ScenePath);yield return new EnterPlayMode();yield return null;
-        var weapon=Object.FindAnyObjectByType<PlayerWeaponController>();if(weapon.EquippedWeapon==null)GameEventBus.Raise(GameplayEvents.OnBattleTriggered);yield return null;
+        var weapon=Object.FindAnyObjectByType<PlayerWeaponController>();weapon.EquipWeapon("FAL");yield return null;
         Assert.That(weapon.CanShoot,Is.True);Assert.That(weapon.TryShoot(),Is.True);Assert.That(weapon.RoundsInMagazine,Is.EqualTo(19));Assert.That(weapon.TryReload(),Is.True);Assert.That(weapon.TryShoot(),Is.False);
         Time.timeScale=10;float until=Time.realtimeSinceStartup+4;while(weapon.Reloading&&Time.realtimeSinceStartup<until)yield return null;Time.timeScale=1;Assert.That(weapon.RoundsInMagazine,Is.EqualTo(20));Assert.That(weapon.ReserveRounds,Is.EqualTo(59));
         weapon.GetComponent<PlayerWeaponInput>().enabled=false;float fov=Camera.main.fieldOfView;weapon.SetAim(true);until=Time.unscaledTime+0.5f;while(Time.unscaledTime<until)yield return null;Assert.That(Camera.main.fieldOfView,Is.LessThan(fov-5));

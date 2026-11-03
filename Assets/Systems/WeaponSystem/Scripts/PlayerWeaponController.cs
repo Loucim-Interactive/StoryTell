@@ -30,6 +30,7 @@ namespace Systems.WeaponSystem
         public string EquippedWeapon {get;private set;}
         public int RoundsInMagazine {get;private set;}
         public int ReserveRounds => reserveRounds;
+        public void AddReserve(int rounds){reserveRounds+=Mathf.Max(0,rounds);}
         public bool Reloading {get;private set;}
         public bool CanShoot=>isActiveAndEnabled&&EquippedWeapon=="FAL"&&!presentationBlocked&&!Reloading&&RoundsInMagazine>0;
         public event Action ShotFired;

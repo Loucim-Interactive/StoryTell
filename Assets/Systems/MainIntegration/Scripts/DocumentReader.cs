@@ -12,6 +12,10 @@ namespace StoryTell.MainIntegration
         [SerializeField] private GameObject panel, hint;
         [SerializeField] private TMP_Text title, body, controls;
         [SerializeField] private ScrollRect scroll;
+        [SerializeField] private Systems.Missions.FindObjects.LetterManager letter;
+        [SerializeField] private InspectableDocument completedLetter;
+        private bool readCompleted;
+        private float readingTime;
         private InputAction toggle, wheel;
         private GameObject target;
         private bool visible;
@@ -30,7 +34,7 @@ namespace StoryTell.MainIntegration
             GameObject current=inspection.IsInspecting?inspection.CurrentTarget:null;
             var document=current?current.GetComponent<InspectableDocument>():null;
             if(!document||string.IsNullOrWhiteSpace(document.transcription))
-            {target=null;panel.SetActive(false);hint.SetActive(false);return;}
+            {if(readCompleted&&letter)letter.MarkLetterRead();readCompleted=false;readingTime=0;target=null;panel.SetActive(false);hint.SetActive(false);return;}
             if(target!=current)
             {
                 target=current;title.text=document.title;body.text=document.transcription;visible=true;
@@ -38,8 +42,10 @@ namespace StoryTell.MainIntegration
             }
             if(toggle.WasPressedThisFrame())ToggleText();
             panel.SetActive(visible);hint.SetActive(true);
-            controls.text=(visible?"[T] Ocultar texto":"[T] Mostrar texto")+"   ·   [E] Dejar documento\nCLIC IZQ + RATÓN · Girar    WASD · Mover    RUEDA · Leer";
+            bool fragment=current.GetComponent<Systems.InteractionSystem.Scripts.Interactables.Pickables.LetterInteractableScript>();
+            controls.text=(visible?"[T] Ocultar texto":"[T] Mostrar texto")+"   ·   [E / Esc] "+(fragment?"Guardar fragmento":"Dejar documento")+"\nCLIC IZQ + RATÓN · Girar    WASD · Mover    RUEDA · Leer";
             if(!visible)return;
+            if(document==completedLetter){readingTime+=Time.unscaledDeltaTime;if(readingTime>=.5f)readCompleted=true;}
             float height=scroll.content.rect.height-scroll.viewport.rect.height;
             if(height>0)scroll.verticalNormalizedPosition=Mathf.Clamp01(scroll.verticalNormalizedPosition+wheel.ReadValue<float>()/120*70/height);
         }

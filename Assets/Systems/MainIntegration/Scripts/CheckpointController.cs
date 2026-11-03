@@ -37,6 +37,8 @@ namespace StoryTell.MainIntegration
         [SerializeField] private ObjectiveHud objective;
         [SerializeField] private PauseMenu pause;
         [SerializeField] private GameObject mapPickup;
+        [SerializeField] private CampRoutine campRoutine;
+        [SerializeField] private AmmunitionPickup ammunition;
         private CheckpointStore store;
         private bool pendingSave, started, restoring;
         private static CheckpointData pendingRestart;
@@ -75,14 +77,18 @@ namespace StoryTell.MainIntegration
             equipment.Changed += RequestSave; letter.Changed += RequestSave;
             progress.Changed += RequestSave; presentation.MapUnlocked += RequestSave;
             presentation.Puzzle.ProgressChanged += RequestSave;
-            foreach(var binding in speakers) if(binding.speaker) binding.speaker.ConversationCompleted += RequestSave;
+            if(campRoutine)campRoutine.Changed+=RequestSave;
+            if(ammunition)ammunition.Changed+=RequestSave;
+            foreach(var binding in speakers) if(binding.speaker){binding.speaker.ConversationCompleted += RequestSave;binding.speaker.Met+=RequestSave;}
         }
         private void OnDisable()
         {
             equipment.Changed -= RequestSave; letter.Changed -= RequestSave;
             progress.Changed -= RequestSave; presentation.MapUnlocked -= RequestSave;
             presentation.Puzzle.ProgressChanged -= RequestSave;
-            foreach(var binding in speakers) if(binding.speaker) binding.speaker.ConversationCompleted -= RequestSave;
+            if(campRoutine)campRoutine.Changed-=RequestSave;
+            if(ammunition)ammunition.Changed-=RequestSave;
+            foreach(var binding in speakers) if(binding.speaker){binding.speaker.ConversationCompleted -= RequestSave;binding.speaker.Met-=RequestSave;}
         }
         public void UseTestStore(string path) { store = new CheckpointStore(path); started = true; }
         public void BeginNewSession() { started = true; RequestSave(); }
@@ -114,9 +120,10 @@ namespace StoryTell.MainIntegration
                 stage=progress.Stage,equipmentStarted=equipment.MissionStarted,equipmentMask=equipment.CollectedMask,
                 letterStarted=letter.MissionStarted,letterCompleted=letter.MissionCompleted,letterMask=letter.CollectedMask,
                 puzzleMask=presentation.Puzzle.PlacedMask,mapUnlocked=presentation.HasMap,
+                briefed=campRoutine&&campRoutine.Briefed,ate=campRoutine&&campRoutine.Ate,letterRead=letter.LetterRead,ammunitionCollected=ammunition&&ammunition.Collected,
                 speakers=new SpeakerCheckpoint[speakers.Length]
             };
-            for(int i=0;i<speakers.Length;i++) data.speakers[i]=new SpeakerCheckpoint{id=speakers[i].id,index=speakers[i].speaker.ConversationIndex,spoken=speakers[i].speaker.HasSpoken};
+            for(int i=0;i<speakers.Length;i++) data.speakers[i]=new SpeakerCheckpoint{id=speakers[i].id,index=speakers[i].speaker.ConversationIndex,spoken=speakers[i].speaker.HasSpoken,met=speakers[i].speaker.HasMet};
             var flags=new List<string>();
             foreach(var binding in storyTriggers) if(binding.trigger.HasTriggered) flags.Add(binding.id);
             data.triggeredZones=flags.ToArray();
@@ -127,14 +134,18 @@ namespace StoryTell.MainIntegration
         {
             if(data == null || !data.IsValid || (session.Mode != UiMode.None && session.Mode != UiMode.Pause)) return false;
             restoring=true;
+            if(campRoutine)campRoutine.SetRestoring(true);
             try
             {
                 equipment.RestoreProgress(data.equipmentStarted,data.equipmentMask);
-                letter.RestoreProgress(data.letterStarted,data.letterMask,data.letterCompleted,data.puzzleMask==15);
+                letter.RestoreProgress(data.letterStarted,data.letterMask,data.letterCompleted,data.puzzleMask==15||data.letterCompleted,data.letterRead);
+                // Older checkpoints beyond camp already passed the former route gate.
+                if(campRoutine)campRoutine.Restore(data.briefed||data.stage>RouteStage.Camp,data.ate||data.stage>RouteStage.Camp);
+                if(ammunition&&data.ammunitionCollected)ammunition.RestoreCollected();
                 presentation.Puzzle.RestorePlaced(data.puzzleMask);
                 if(data.mapUnlocked){presentation.UnlockMap();mapPickup.SetActive(false);}
                 foreach(var saved in data.speakers)
-                    foreach(var binding in speakers) if(saved!=null && binding.id==saved.id) binding.speaker.RestoreProgress(saved.index,saved.spoken);
+                    foreach(var binding in speakers) if(saved!=null && binding.id==saved.id){binding.speaker.RestoreProgress(saved.index,saved.spoken);binding.speaker.RestoreKnown(saved.met||saved.spoken);}
                 var flags=new HashSet<string>(data.triggeredZones);
                 foreach(var binding in storyTriggers) binding.trigger.RestoreTriggered(flags.Contains(binding.id));
                 flags=new HashSet<string>(data.narratedZones);foreach(var binding in narrations)binding.zone.RestoreTriggered(flags.Contains(binding.id));
@@ -147,7 +158,7 @@ namespace StoryTell.MainIntegration
                 pendingSave=false;
                 return true;
             }
-            finally{restoring=false;}
+            finally{restoring=false;if(campRoutine)campRoutine.SetRestoring(false);}
         }
         public void RestartCheckpoint()
         {

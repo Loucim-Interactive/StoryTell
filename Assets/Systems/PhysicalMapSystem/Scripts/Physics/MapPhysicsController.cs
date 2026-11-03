@@ -4,6 +4,7 @@ namespace StoryTell.PhysicalMap
 {
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody))]
+[DefaultExecutionOrder(500)]
 public class MapPhysicsController : MonoBehaviour
 {
     [SerializeField] private MapSettings settings;

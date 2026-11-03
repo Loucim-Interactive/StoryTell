@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 13
-  _dialogueText: "Bien, ya ten\xE9s el casco, la radio y el rifle. Ahora s\xED est\xE1s
-    equipado. Manten\xE9 la radio a mano y quedate atento a las indicaciones."
+  _dialogueText: "Ya ten\xE9s el equipo. And\xE1 a la cocina y com\xE9 algo caliente;
+    Mateo est\xE1 por ah\xED."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

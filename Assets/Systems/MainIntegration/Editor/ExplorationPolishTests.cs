@@ -16,7 +16,7 @@ public sealed class ExplorationPolishTests
     [Test] public void ApprovedLightingAndFogAreUnchanged()
     {
         var scene=EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
-        Assert.That(ExplorationPolishAuthoring.CaptureLighting(scene),Is.EqualTo(File.ReadAllText(ExplorationPolishAuthoring.LightingBaseline)));
+        Assert.That(ExplorationPolishAuthoring.CaptureLighting(scene),Is.EqualTo(File.ReadAllText("Assets/Systems/MainIntegration/Data/ExperienceRevision/ApprovedLightingBeforeRevision.json")));
     }
     [Test] public void ExplorationAllowsCampFlanksAndOutpostWhileDistantEdgesRemainClosed()
     {

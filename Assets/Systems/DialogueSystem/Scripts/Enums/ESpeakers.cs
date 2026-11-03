@@ -14,5 +14,6 @@ namespace DialogueSystem.Scripts {
         Yo,
         Mateo,
         Diego,
+        Pedro,
     }
 }

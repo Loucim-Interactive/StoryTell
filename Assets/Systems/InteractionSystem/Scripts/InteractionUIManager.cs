@@ -36,7 +36,8 @@ namespace Systems.InteractionSystem.Scripts {
             uiObject.SetActive(true);
             UIInteraction interaction = interactionScript.UIInteraction;
             interactionName.text = interactionScript.interactableName;
-            interactionAction.text = interaction.label;
+            string key=interaction.interactionType switch{EInteractions.LeftClick=>"Clic izq.",EInteractions.RightClick=>"Clic der.",EInteractions.MiddleClick=>"Clic central",EInteractions.Spacebar=>"Espacio",_=>"E"};
+            interactionAction.text = "["+key+"] "+(interaction.label??"").Replace("[E] ","");
             
             Sprite imgSprite = GetSprite(interaction.interactionType);
             if (!imgSprite) interactionImage.enabled = false;

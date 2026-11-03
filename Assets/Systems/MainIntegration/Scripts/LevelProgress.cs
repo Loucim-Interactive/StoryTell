@@ -13,7 +13,7 @@ namespace StoryTell.MainIntegration
         public event Action Changed;
         private void OnEnable() => GameEventBus.Subscribe(GameplayEvents.OnBattleTriggered, OnBattle);
         private void OnDisable() => GameEventBus.Unsubscribe(GameplayEvents.OnBattleTriggered, OnBattle);
-        private void OnBattle() { Stage = RouteStage.Battle; Changed?.Invoke(); }
+        private void OnBattle() { if(route&&!route.CanProceed)return;Stage = RouteStage.Battle; Changed?.Invoke(); }
         public bool Reach(RouteStage stage)
         {
             if (stage <= Stage || stage >= RouteStage.Battle || (route && !route.CanProceed)) return false;

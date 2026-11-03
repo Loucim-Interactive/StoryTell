@@ -42,7 +42,7 @@ public sealed class GuidanceTests
         yield return Talk(speakers.Single(s=>s.name.Contains("Diego")));Assert.That(eq.MissionStarted,Is.True);
         var equipment=(EquipmentInteractableScript[])new SerializedObject(eq).FindProperty("equipment").GetValueArray();
         foreach(var item in equipment){item.OnInspectionEnded();yield return null;}
-        Assert.That(eq.MissionCompleted,Is.True);Assert.That(route.CanProceed,Is.True);yield return null;
+        Assert.That(eq.MissionCompleted,Is.True);Assert.That(route.CanProceed,Is.False);yield return Talk(speakers.Single(s=>s.name.Contains("Diego")));Assert.That(One<CampRoutine>().Eat(),Is.True);yield return null;
         Assert.That(hud.CurrentObjective,Does.Contain("Hablá con Mateo"));Assert.That(hud.DestinationZone,Is.EqualTo(1));
         yield return Talk(speakers.Single(s=>s.name.Contains("Mateo")));Assert.That(letter.MissionStarted,Is.True);Assert.That(route.CanProceed,Is.False);yield return null;
         Assert.That(hud.CurrentObjective,Does.Contain("0/4"));Assert.That(hud.DestinationZone,Is.EqualTo(1));
@@ -54,7 +54,7 @@ public sealed class GuidanceTests
             Assert.That(letter.CollectedCount,Is.EqualTo(i+1));
             if(i<3){Assert.That(hud.CurrentObjective,Does.Contain($"{i+1}/4"));for(int j=0;j<hints.Length;j++){var next=hints[j].GetHint();Assert.That(next,Is.Not.Null);Assert.That(next,Is.Not.EqualTo(previous[j]));previous[j]=next;}}
         }
-        Assert.That(hud.CurrentObjective,Is.EqualTo("Devolvé la carta a Mateo"));Assert.That(route.CanProceed,Is.False);
+        Assert.That(hud.CurrentObjective,Does.Contain("Reconstruí"));Assert.That(route.CanProceed,Is.False);letter.MarkLetterAssembled();letter.MarkLetterRead();yield return null;
         yield return Talk(speakers.Single(s=>s.name.Contains("Mateo")));Assert.That(letter.MissionCompleted,Is.True);yield return null;Assert.That(route.CanProceed,Is.True);Assert.That(hud.CurrentObjective,Is.EqualTo("Andá al puesto avanzado"));
         Assert.That(hints.All(h=>h.GetHint()==null),Is.True);
         One<MapPickup>().Interact();One<MainPresentation>().Map.SetOpen(true,true);yield return null;yield return null;var overlay=One<MapZoneOverlay>();overlay.Refresh();Assert.That(overlay.ActiveDestination,Is.EqualTo(2));Assert.That(One<MissionsUIManager>().IsVisible,Is.False);

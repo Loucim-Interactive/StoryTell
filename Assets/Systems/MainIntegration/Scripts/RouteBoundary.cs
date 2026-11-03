@@ -14,6 +14,9 @@ namespace StoryTell.MainIntegration
         [SerializeField] private CharacterController controller;
         [SerializeField] private EquipmentManager equipment;
         [SerializeField] private LetterManager letter;
+        [SerializeField] private CampRoutine campRoutine;
+        [SerializeField] private LevelProgress progress;
+        [SerializeField] private float retreatLimitZ=525;
         [SerializeField] private Section[] sections;
         [SerializeField] private Vector2 minimumWorldXZ = new Vector2(8,205);
         [SerializeField] private Vector2 maximumWorldXZ = new Vector2(170,610);
@@ -24,7 +27,7 @@ namespace StoryTell.MainIntegration
         private float nextThought;
         private bool initialized;
         public Section[] Sections => sections;
-        public bool CanProceed => equipment.MissionCompleted && (!letter.MissionStarted || letter.MissionCompleted);
+        public bool CanProceed => campRoutine?campRoutine.ReadyForFront:equipment.MissionCompleted && (!letter.MissionStarted || letter.MissionCompleted);
         public bool Contains(Vector3 position)
         {
             if(position.x<minimumWorldXZ.x||position.x>maximumWorldXZ.x||position.z<minimumWorldXZ.y||position.z>maximumWorldXZ.y)return false;
@@ -43,7 +46,8 @@ namespace StoryTell.MainIntegration
             if(frontBarrier && frontBarrier.activeSelf!=locked)frontBarrier.SetActive(locked);
             if(!initialized || !player || !controller || !controller.enabled)return;
             Vector3 current=player.position;
-            bool outside=!Contains(current), gated=locked&&current.z>frontGateZ;
+            bool retreat=progress&&progress.Stage==RouteStage.Battle&&current.z<retreatLimitZ;
+            bool outside=!Contains(current), gated=locked&&current.z>frontGateZ||retreat;
             if(locked&&current.z>frontGateZ-2)Thought(true);
             if(!outside&&!gated){lastSafe=current;return;}
             // Revert movement in the same frame, including sprinting across an edge.
@@ -59,7 +63,7 @@ namespace StoryTell.MainIntegration
         {
             if(Time.unscaledTime>=nextThought)
             {
-                string text=gated?(!equipment.MissionCompleted?"Me falta recoger mi equipo.":letter.CollectedCount<4?$"Me faltan partes de la carta · {letter.CollectedCount}/4.":"Tengo que devolverle la carta a Mateo."):
+                string text=progress&&progress.Stage==RouteStage.Battle?"Mis compañeros me necesitan acá.":gated?(!equipment.MissionCompleted?"Me falta recoger mi equipo.":campRoutine&&!campRoutine.Ate?"Tengo que pasar por la cocina.":letter.CollectedCount<4?$"Me faltan partes de la carta · {letter.CollectedCount}/4.":!letter.LetterAssembled?"Tengo que reconstruir la carta.":!letter.LetterRead?"Tengo que leer la carta.":"Tengo que devolverle la carta a Mateo."):
                     "Tengo que seguir el camino.";
                 GameEventBus.Raise(GameplayEvents.StateThought,text);nextThought=Time.unscaledTime+7;
             }

@@ -39,7 +39,7 @@ public sealed class DialoguePolishTests
     [UnityTest]public IEnumerator ManualDialogueRevealsPagesAndRestoresControlsOnCancel()
     {
         EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;
-        var manager=Object.FindAnyObjectByType<DialogueManagerScript>();var ui=manager.uiDialogueScript;var player=Object.FindAnyObjectByType<PlayerControllerScript>();var speaker=All<SpeakerScript>().First(s=>s.name.Contains("Mateo"));
+        var manager=Object.FindAnyObjectByType<DialogueManagerScript>();var ui=manager.uiDialogueScript;var player=Object.FindAnyObjectByType<PlayerControllerScript>();var speaker=All<SpeakerScript>().First(s=>s.name.Contains("Simon"));
         var conversation=Conversation(string.Join(" ",Enumerable.Repeat("<emphasis>La carta</emphasis> está cerca del refugio. Preguntá a tus compañeros antes de seguir hacia el frente.",12)));speaker.SetConversation(conversation);speaker.Speak();yield return Wait(.25f);
         Assert.That(manager.IsInConversation,Is.True);Assert.That(player.enabled,Is.False);Assert.That(ui.IsTyping,Is.True);Assert.That(ui.PageCount,Is.GreaterThan(1));
         yield return Wait(.2f);ui.RequestAdvance();yield return null;yield return null;Assert.That(ui.IsWaitingForAdvance,Is.True);Assert.That(ui.Page,Is.EqualTo(1));

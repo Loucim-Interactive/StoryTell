@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 10
-  _dialogueText: "Hay uno cerca de la mesa de correspondencia, al lado de Mateo.
-    No deber\xEDa estar lejos."
+  _dialogueText: "Hay otro en el caj\xF3n entre la cocina y la fogata central. Revis\xE1
+    los bordes del paquete."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

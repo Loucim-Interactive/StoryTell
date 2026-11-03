@@ -71,7 +71,7 @@ public sealed class ProgrammingPolishTests
         Assert.That(One<EquipmentManager>().EquippedCount,Is.EqualTo(3));Assert.That(One<LetterManager>().CollectedCount,Is.EqualTo(4));Assert.That(One<LetterManager>().MissionCompleted,Is.False);
         Assert.That(One<MainPresentation>().HasMap,Is.True);Assert.That(One<MainPresentation>().Puzzle.PlacedCount,Is.EqualTo(2));Assert.That(One<MainPresentation>().Puzzle.PlacedMask,Is.EqualTo(5));
         bool restoredNarration=false;foreach(var candidate in Object.FindObjectsByType<CharacterNarrationZoneScript>(FindObjectsSortMode.None))if(candidate.name==zoneName)restoredNarration=candidate.HasTriggered;Assert.That(restoredNarration,Is.True);
-        Assert.That(One<ObjectiveHud>().CurrentObjective,Is.EqualTo("Devolvé la carta a Mateo"));Assert.That(One<UiSessionCoordinator>().Mode,Is.EqualTo(UiMode.None));Assert.That(One<PlayerControllerScript>().enabled,Is.True);
+        Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Diego"));Assert.That(One<UiSessionCoordinator>().Mode,Is.EqualTo(UiMode.None));Assert.That(One<PlayerControllerScript>().enabled,Is.True);
         Assert.That(One<MainPresentation>().BeginLetterAssembly(),Is.True);yield return null;Assert.That(One<MainPresentation>().Puzzle.PlacedCount,Is.EqualTo(2));One<MainPresentation>().Puzzle.Close();
         yield return new ExitPlayMode();
     }
@@ -94,6 +94,7 @@ public sealed class ProgrammingPolishTests
         EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;yield return null;
         var progress=One<LevelProgress>();Assert.That(progress.Reach(RouteStage.Front),Is.False);
         One<EquipmentManager>().RestoreProgress(true,7);var mateo=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).Single(s=>s.name.Contains("Mateo"));mateo.RestoreProgress(0,true);
+        One<CampRoutine>().Restore(true,true);One<LetterManager>().RestoreProgress(true,15,true,true,true);
         Assert.That(progress.Reach(RouteStage.Outpost),Is.True);Assert.That(progress.Reach(RouteStage.Camp),Is.False);yield return null;Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Andá al frente"));
         var controller=One<CheckpointController>();controller.UseTestStore(TestPath);Assert.That(controller.SaveNow(),Is.True);
         var initial=controller.GetInstanceID();One<PauseMenu>().Open();controller.RestartCheckpoint();float until=Time.unscaledTime+15;

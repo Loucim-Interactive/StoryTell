@@ -3,6 +3,7 @@ using UnityEngine;
 namespace StoryTell.PhysicalMap
 {
 [DisallowMultipleComponent]
+[DefaultExecutionOrder(600)]
 public sealed class MapMarkerController : MonoBehaviour
 {
     [Header("Map")]

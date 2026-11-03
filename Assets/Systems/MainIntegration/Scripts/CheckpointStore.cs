@@ -9,6 +9,7 @@ namespace StoryTell.MainIntegration
         public string id;
         public int index;
         public bool spoken;
+        public bool met;
     }
     [Serializable] public sealed class CheckpointData
     {
@@ -16,6 +17,7 @@ namespace StoryTell.MainIntegration
         public string scene = "Level1";
         public RouteStage stage;
         public bool equipmentStarted, letterStarted, letterCompleted, mapUnlocked;
+        public bool briefed, ate, letterRead, ammunitionCollected;
         public int equipmentMask, letterMask, puzzleMask;
         public SpeakerCheckpoint[] speakers = Array.Empty<SpeakerCheckpoint>();
         public string[] triggeredZones = Array.Empty<string>();

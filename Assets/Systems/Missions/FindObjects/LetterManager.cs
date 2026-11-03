@@ -19,7 +19,10 @@ namespace Systems.Missions.FindObjects {
         [SerializeField] private string returnObjective = "Devolverla";
 
         public bool LetterAssembled { get; private set; }
-        public bool MarkLetterAssembled() { if (_collected.Count != fragments.Length || LetterAssembled) return false; LetterAssembled = true; Changed?.Invoke(); return true; }
+        public bool LetterRead {get;private set;}
+        public bool ReadyToReturn=>LetterAssembled&&LetterRead&&_collected.Count==fragments.Length;
+        public bool MarkLetterAssembled() { if (_collected.Count != fragments.Length || LetterAssembled) return false; LetterAssembled = true; RefreshProgress(); Changed?.Invoke(); return true; }
+        public bool MarkLetterRead(){if(!LetterAssembled||LetterRead)return false;LetterRead=true;RefreshProgress();Changed?.Invoke();return true;}
         public event System.Action Changed;
         private readonly HashSet<LetterInteractableScript> _collected = new();
         public bool MissionStarted { get; private set; }
@@ -62,19 +65,20 @@ namespace Systems.Missions.FindObjects {
         }
 
         public void CompleteMission() {
-            if (!MissionStarted || MissionCompleted || _collected.Count != fragments.Length) return;
+            if (!MissionStarted || MissionCompleted || !ReadyToReturn) return;
             MissionCompleted = true;
             _missionsUI.SetItemCompleted(missionTitle, returnObjective);
             if (missionGiver) missionGiver.SetConversation(completedConversation);
             Changed?.Invoke();
         }
         public int CollectedMask { get { int mask=0;for(int i=0;i<fragments.Length;i++)if(_collected.Contains(fragments[i]))mask|=1<<i;return mask; } }
-        public void RestoreProgress(bool started,int mask,bool complete,bool assembled)
+        public void RestoreProgress(bool started,int mask,bool complete,bool assembled,bool read=false)
         {
             if(!started)return;
             StartMission();
             for(int i=0;i<fragments.Length;i++)if((mask&(1<<i))!=0)OnPickup(fragments[i]);
             if(assembled)MarkLetterAssembled();
+            if(read||complete)MarkLetterRead();
             if(complete)CompleteMission();
         }
 
@@ -82,7 +86,7 @@ namespace Systems.Missions.FindObjects {
             for (int i = 0; i < fragments.Length; i++)
                 _missionsUI.SetItemCompleted(missionTitle, FragmentObjective(i), _collected.Contains(fragments[i]));
             if (missionGiver) missionGiver.SetConversation(
-                _collected.Count == fragments.Length ? returnConversation : searchingConversation);
+                ReadyToReturn ? returnConversation : searchingConversation);
         }
 
         private string FragmentObjective(int index) => $"Pieza {index + 1}";

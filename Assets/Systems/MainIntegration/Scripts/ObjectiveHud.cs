@@ -25,14 +25,15 @@ namespace StoryTell.MainIntegration
         [SerializeField] private SpeakerScript mateo;
         [SerializeField] private LevelProgress progress;
         [SerializeField] private UiSessionCoordinator session;
+        [SerializeField] private CampRoutine campRoutine;
         private bool dirty=true;
         private bool initialized, letterDone, hadMap;
         private int equipmentCount, letterCount;
         public string CurrentObjective {get;private set;}
         // Matches the four authored map references; no future events are disclosed.
         public int DestinationZone {get;private set;}
-        private void OnEnable(){equipment.Changed+=MarkDirty;letter.Changed+=MarkDirty;if(mateo)mateo.ConversationCompleted+=MarkDirty;if(progress)progress.Changed+=MarkDirty;}
-        private void OnDisable(){equipment.Changed-=MarkDirty;letter.Changed-=MarkDirty;if(mateo)mateo.ConversationCompleted-=MarkDirty;if(progress)progress.Changed-=MarkDirty;}
+        private void OnEnable(){equipment.Changed+=MarkDirty;letter.Changed+=MarkDirty;if(mateo)mateo.ConversationCompleted+=MarkDirty;if(progress)progress.Changed+=MarkDirty;if(campRoutine)campRoutine.Changed+=MarkDirty;}
+        private void OnDisable(){equipment.Changed-=MarkDirty;letter.Changed-=MarkDirty;if(mateo)mateo.ConversationCompleted-=MarkDirty;if(progress)progress.Changed-=MarkDirty;if(campRoutine)campRoutine.Changed-=MarkDirty;}
         private void MarkDirty()=>dirty=true;
         public void ResetFeedback(){initialized=false;dirty=true;}
         private void LateUpdate()
@@ -47,13 +48,15 @@ namespace StoryTell.MainIntegration
             DestinationZone=0;
             if(!equipment.MissionStarted)objective="Hablá con Diego\nJunto a la carpa de equipamiento.";
             else if(!equipment.MissionCompleted)objective=$"Recogé tu equipo · {equipment.EquippedCount}/3\nEn la mesa de equipamiento.";
+            else if(campRoutine&&!campRoutine.Briefed)objective="Volvé a hablar con Diego";
+            else if(campRoutine&&!campRoutine.Ate){DestinationZone=4;objective="Andá a la cocina y comé";}
             else if(letter.MissionStarted&&!letter.MissionCompleted)
             {
                 DestinationZone=1;
-                objective=letter.CollectedCount<4?$"Buscá los fragmentos · {letter.CollectedCount}/4\nPreguntales a Simón y José.":"Devolvé la carta a Mateo";
+                objective=letter.CollectedCount<4?$"Buscá los fragmentos · {letter.CollectedCount}/4\nPreguntales a Simón y José.":!letter.LetterAssembled?"[L] Reconstruí la carta":!letter.LetterRead?"[L] Leé la carta":"Devolvé la carta a Mateo";
             }
-            else if(!letter.MissionStarted&&mateo&&!mateo.HasSpoken&&(!progress||progress.Stage==RouteStage.Camp)){DestinationZone=1;objective="Hablá con Mateo\nEstá en el campamento.";}
-            else if(progress&&progress.Stage==RouteStage.Battle){DestinationZone=3;objective="Seguí por el camino";}
+            else if(!letter.MissionStarted&&mateo&&(campRoutine||!mateo.HasSpoken&&(!progress||progress.Stage==RouteStage.Camp))){DestinationZone=1;objective="Hablá con Mateo\nEstá junto a la cocina.";}
+            else if(progress&&progress.Stage==RouteStage.Battle){DestinationZone=3;objective="Defendé la posición";}
             else if(!progress||progress.Stage==RouteStage.Camp){DestinationZone=2;objective="Andá al puesto avanzado";}
             else {DestinationZone=3;objective="Andá al frente\nPor el paso entre los sacos de arena.";}
             CurrentObjective=objective;if(label.text!=objective)label.text=objective;

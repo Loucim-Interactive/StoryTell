@@ -6,6 +6,7 @@ using TMPro;
 
 namespace StoryTell.MainIntegration
 {
+    [DefaultExecutionOrder(650)]
     public sealed class MapZoneOverlay : MonoBehaviour
     {
         [Serializable] public sealed class Zone
@@ -40,7 +41,7 @@ namespace StoryTell.MainIntegration
                     bool active=i==ActiveDestination;var image=zones[i].marker.GetComponent<Image>();if(image)image.color=active?new Color(1,.65f,.18f):new Color(.14f,.12f,.09f);
                     var text=zones[i].marker.GetComponentInChildren<TMP_Text>();if(text)text.color=active?Color.black:Color.white;
                 }
-                if(legend)legend.text="1 · Equipo / Diego\n2 · Mateo\n3 · Puesto avanzado\n4 · Frente\n\n"+objective.CurrentObjective+"\n[M] Cerrar mapa";
+                if(legend)legend.text="1 · Equipo / Diego\n2 · Mateo\n3 · Puesto avanzado\n4 · Frente\n5 · Cocina\n\n"+objective.CurrentObjective+"\n[M] Cerrar mapa";
             }
             var area=(RectTransform)overlay.transform;
             foreach(var zone in zones)
@@ -51,11 +52,11 @@ namespace StoryTell.MainIntegration
                 bool visible=mapped&&inside&&viewport.z>0;
                 zone.marker.gameObject.SetActive(visible);zone.leader.gameObject.SetActive(visible);
                 if(!visible)continue;
-                Vector2 point=new Vector2(viewport.x,viewport.y);
-                zone.marker.anchorMin=zone.marker.anchorMax=point;
-                zone.marker.anchoredPosition=zone.labelOffset;
-                zone.leader.anchorMin=zone.leader.anchorMax=point;
-                zone.leader.anchoredPosition=zone.labelOffset*0.5f;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(area,mapCamera.WorldToScreenPoint(position),null,out var point);
+                zone.marker.anchorMin=zone.marker.anchorMax=Vector2.one*.5f;
+                zone.marker.anchoredPosition=point+zone.labelOffset;
+                zone.leader.anchorMin=zone.leader.anchorMax=Vector2.one*.5f;
+                zone.leader.anchoredPosition=point+zone.labelOffset*0.5f;
                 zone.leader.sizeDelta=new Vector2(zone.labelOffset.magnitude,2);
                 zone.leader.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(zone.labelOffset.y,zone.labelOffset.x)*Mathf.Rad2Deg);
             }

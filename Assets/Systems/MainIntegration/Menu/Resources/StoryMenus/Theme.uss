@@ -505,3 +505,12 @@
 .notebook-secondary-actions { width: 100%; flex-direction: row; justify-content: space-between; }
 .paper-link { min-width: 0; width: 48%; height: 78px; margin-left: 0; margin-right: 0; font-size: 20px; }
 #start-button { display: none; }
+
+/* Keep all actions inside the right notebook page at every aspect ratio. */
+.notebook-page { min-width: 0; flex-shrink: 0; }
+.notebook-page--right { align-items: stretch; }
+.notebook-action { white-space: normal; -unity-text-align: middle-center; }
+.notebook-secondary-actions { flex-wrap: wrap; flex-shrink: 0; margin-top: 12px; }
+.notebook-secondary-actions .paper-link { width: 46%; font-size: 17px; letter-spacing: 0; }
+.part-button { white-space: normal; font-size: 20px; letter-spacing: 1px; }
+.campaign-photo { min-height: 0; max-height: 340px; }
