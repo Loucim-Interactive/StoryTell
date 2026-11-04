@@ -50,6 +50,12 @@ public sealed class MainIntegrationTests
         }
         foreach(var entry in baseline.positions)
         {
+            const string placements="Assets/Systems/MainIntegration/Data/GroundBreath/PlacementChanges.json";
+            if(File.Exists(placements))
+            {
+                var changes=JsonUtility.FromJson<StoryTell.MainIntegration.Editor.GroundBreathAuthoring.Placements>(File.ReadAllText(placements));var approved=changes.items.FirstOrDefault(p=>p.id==entry.id);
+                if(approved!=null){GlobalObjectId.TryParse(entry.id,out var moved);var target=GlobalObjectId.GlobalObjectIdentifierToObjectSlow(moved)as Transform;Assert.That(target,Is.Not.Null,entry.name);Assert.That(Vector3.Distance(target.position,approved.after),Is.LessThan(.001f),entry.name);continue;}
+            }
             // The polish request deliberately relocates the spawn, scouts and papers.
             if(Object.FindAnyObjectByType<RouteBoundary>())
             {

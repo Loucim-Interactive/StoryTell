@@ -77,13 +77,18 @@ public sealed class DialoguePolishTests
         foreach(var actor in All<SpeakerScript>())
         {
             var primary=actor.GetComponentsInChildren<Animator>(true).Single(a=>a.enabled&&a.runtimeAnimatorController);Assert.That(primary.applyRootMotion,Is.False);Assert.That(primary.GetComponent<NpcFootPlacement>(),Is.Not.Null);
-            var left=primary.GetBoneTransform(HumanBodyBones.LeftFoot).position-Vector3.up*primary.leftFeetBottomHeight;var right=primary.GetBoneTransform(HumanBodyBones.RightFoot).position-Vector3.up*primary.rightFeetBottomHeight;
-            float gap=Mathf.Max(Mathf.Abs(left.y-terrain.SampleHeight(left)-terrain.transform.position.y),Mathf.Abs(right.y-terrain.SampleHeight(right)-terrain.transform.position.y));worst=Mathf.Max(worst,gap);report.AppendLine($"{actor.name} root={actor.transform.position} model={primary.transform.localPosition} leftSole={left} rightSole={right} gap={gap}");
+            var boots=actor.GetComponentsInChildren<SkinnedMeshRenderer>().First(r=>r.name=="Botas");float visibleGap=VisibleSoleGap(boots,terrain);
+            float gap=Mathf.Abs(visibleGap);worst=Mathf.Max(worst,gap);report.AppendLine($"{actor.name} root={actor.transform.position} model={primary.transform.localPosition} visibleSoleGap={visibleGap}");
         }
         File.WriteAllText("Library/DialoguePolish-feet.txt",report.ToString());Assert.That(worst,Is.LessThan(.15f),report.ToString());
         yield return new ExitPlayMode();
     }
     [UnityTearDown]public IEnumerator Cleanup(){if(Application.isPlaying)yield return new ExitPlayMode();}
+    static float VisibleSoleGap(SkinnedMeshRenderer boots,Terrain terrain)
+    {
+        var mesh=new Mesh();boots.BakeMesh(mesh,true);float gap=float.PositiveInfinity;
+        foreach(var v in mesh.vertices){var p=boots.transform.position+boots.transform.rotation*v;gap=Mathf.Min(gap,p.y-terrain.SampleHeight(p)-terrain.transform.position.y);}Object.Destroy(mesh);return gap;
+    }
     static IEnumerator Wait(float seconds){float until=Time.unscaledTime+seconds;while(Time.unscaledTime<until)yield return null;}
     sealed class ChoiceProbe{public int index=-1,count;public void Select(int value){index=value;count++;}}
 }

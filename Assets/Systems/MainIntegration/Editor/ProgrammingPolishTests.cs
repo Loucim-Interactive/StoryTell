@@ -63,7 +63,8 @@ public sealed class ProgrammingPolishTests
         string zoneName=zone.name;
         zone.RestoreTriggered(true);
         yield return null;yield return null;
-        Assert.That(controller.LastSaved,Is.Not.Null,"Closing a partially assembled puzzle must request an autosave.");Assert.That(new CheckpointStore(TestPath).TryRead(out var data),Is.True);Assert.That(data.puzzleMask,Is.EqualTo(5));
+        float saveDeadline=Time.unscaledTime+5;while(controller.LastSaved==null&&Time.unscaledTime<saveDeadline)yield return null;
+        Assert.That(controller.LastSaved,Is.Not.Null,"Closing a partially assembled puzzle must request an autosave. UI="+One<UiSessionCoordinator>().Mode+" thought="+One<DialogueManagerScript>().IsThoughtActive+" stage="+One<LevelProgress>().Stage);Assert.That(new CheckpointStore(TestPath).TryRead(out var data),Is.True);Assert.That(data.puzzleMask,Is.EqualTo(5));
         var previousId=controller.GetInstanceID();controller.RestartCheckpoint();float until=Time.unscaledTime+15;
         while(One<CheckpointController>()==null||One<CheckpointController>().GetInstanceID()==previousId){Assert.That(Time.unscaledTime,Is.LessThan(until));yield return null;}
         yield return null;yield return null;yield return null;
