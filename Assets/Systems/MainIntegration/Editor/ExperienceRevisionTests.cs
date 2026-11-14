@@ -37,7 +37,7 @@ public sealed class ExperienceRevisionTests
   Assert.That(One<DialogueManagerScript>().IsInConversation,Is.False);yield return null;
  }
  static void Equip(){var eq=One<EquipmentManager>();eq.StartMission();var items=new SerializedObject(eq).FindProperty("equipment");for(int i=0;i<items.arraySize;i++)((EquipmentInteractableScript)items.GetArrayElementAtIndex(i).objectReferenceValue).OnInspectionEnded();}
- static void Ready(){Equip();One<CampRoutine>().Restore(true,true);var l=One<LetterManager>();l.StartMission();foreach(var f in Object.FindObjectsByType<LetterInteractableScript>(FindObjectsSortMode.None))if(f.name.StartsWith("MateoLetterFragment"))f.OnInspectionEnded();l.MarkLetterAssembled();l.MarkLetterRead();l.CompleteMission();}
+ static void Ready(){Equip();One<CampRoutine>().Restore(true,true);var l=One<LetterManager>();l.StartMission();foreach(var f in Object.FindObjectsByType<LetterInteractableScript>(FindObjectsSortMode.None))if(f.name.StartsWith("MateoLetterFragment"))f.OnInspectionEnded();l.MarkLetterAssembled();l.MarkLetterRead();l.CompleteMission();if(One<SupplyDispatch>())One<SupplyDispatch>().Restore(DispatchStage.Delivered);}
  static void AtFront(){var player=One<Systems.InteractionSystem.Scripts.InteractionScript>().transform;var cc=player.GetComponent<CharacterController>();cc.enabled=false;var terrain=One<Terrain>();var ground=new Vector3(56,terrain.SampleHeight(new Vector3(56,0,531))+terrain.transform.position.y,531);Assert.That(NavMesh.SamplePosition(ground,out var p,2,NavMesh.AllAreas),Is.True);player.position=p.position+Vector3.up*.1f;cc.enabled=true;Physics.SyncTransforms();}
  [UnityTest]public IEnumerator CampRouteRequiresBriefingFoodAssemblyReadingAndDelivery()
  {
@@ -50,7 +50,7 @@ public sealed class ExperienceRevisionTests
   var p=One<MainPresentation>();Assert.That(p.BeginLetterAssembly(),Is.True);yield return null;foreach(var piece in Object.FindObjectsByType<LetterPuzzlePiece>(FindObjectsSortMode.None)){piece.transform.position=p.Puzzle.Slot(piece.slotIndex).position;piece.rectTransform.localRotation=Quaternion.identity;Assert.That(p.Puzzle.TrySnap(piece),Is.True);}p.Puzzle.Close();yield return null;
   Assert.That(l.LetterAssembled,Is.True);l.CompleteMission();Assert.That(l.MissionCompleted,Is.False);
   var doc=(InspectableDocument)new SerializedObject(p).FindProperty("completedLetter").objectReferenceValue;doc.gameObject.SetActive(true);One<InspectionScript>().StartInspect(doc.gameObject);yield return Wait(.7f);Assert.That(One<DocumentReader>().IsVisible,Is.True);One<InspectionScript>().StopInspect();yield return null;yield return null;Assert.That(l.LetterRead,Is.True);
-  yield return Talk(Npc("Mateo"));Assert.That(l.MissionCompleted,Is.True);Assert.That(One<RouteBoundary>().CanProceed,Is.True);
+  yield return Talk(Npc("Mateo"));Assert.That(l.MissionCompleted,Is.True);Assert.That(One<RouteBoundary>().CanProceed,Is.False);yield return Talk(Npc("Sargento Ibarra"));Assert.That(One<RouteBoundary>().CanProceed,Is.True);
   var cp=One<CheckpointController>().Capture();Assert.That(cp.ate&&cp.briefed&&cp.letterRead,Is.True);Assert.That(cp.speakers.Any(x=>x.met),Is.True);yield return new ExitPlayMode();
  }
  [UnityTest]public IEnumerator MovingMapMarkersRemainAttachedAfterWalkingAndLooking()

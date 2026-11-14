@@ -36,7 +36,7 @@ namespace DialogueSystem.Scripts
         public IEnumerator DisplayDialogue(DialogueSO line,bool manual,bool choicesFollow=false)
         {
             if(!line)yield break;
-            yield return Display(DialogueFormatter.Format(line.DialogueText??""),line.SpeakerName.ToString(),line.FontAsset?line.FontAsset:_defaultFont,line.VoiceClip,GetCharSpeed(line.TextSpeed),line.ExtraReadTime,manual,!choicesFollow);
+            yield return Display(DialogueFormatter.Format(line.DialogueText??""),line.DisplayName,line.FontAsset?line.FontAsset:_defaultFont,line.VoiceClip,GetCharSpeed(line.TextSpeed),line.ExtraReadTime,manual,!choicesFollow);
         }
         public IEnumerator DisplayDialogue(string text,AudioClip voiceClip)=>Display(DialogueFormatter.Format(text??""),"",_defaultFont,voiceClip,.025f,waitSecondsAfterDisplay,false);
         public IEnumerator DisplayDialogue(string text)=>DisplayDialogue(text,(AudioClip)null);

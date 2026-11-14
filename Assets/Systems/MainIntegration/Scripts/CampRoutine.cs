@@ -11,9 +11,11 @@ namespace StoryTell.MainIntegration
   [SerializeField] private SpeakerScript diego, mateo;
   [SerializeField] private ConversationSO beforeFood;
   [SerializeField] private MissionAnnouncement feedback;
+  [SerializeField] private SupplyDispatch dispatch;
   public bool Briefed {get;private set;}
   public bool Ate {get;private set;}
-  public bool ReadyForFront=>equipment.MissionCompleted&&Ate&&letter.MissionCompleted;
+  public bool ReadyToLeaveCamp=>equipment.MissionCompleted&&Ate&&letter.MissionCompleted&&(!dispatch||dispatch.MayLeaveCamp);
+  public bool ReadyForFront=>equipment.MissionCompleted&&Ate&&letter.MissionCompleted&&(!dispatch||dispatch.Delivered);
   public event Action Changed;
   private bool restoring;
   public void SetRestoring(bool value)=>restoring=value;

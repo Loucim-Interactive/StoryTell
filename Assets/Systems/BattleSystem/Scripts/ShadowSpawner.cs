@@ -21,6 +21,8 @@ namespace Systems.BattleSystem {
         private float nextWave;
         private Vector3 entryPosition;
         private Vector3 approachDirection;
+        [SerializeField,Min(15)]private float minimumCombatDistance=28;
+        [SerializeField]private Terrain spawnGround;
         public bool HasStarted { get; private set; }
         public int DefeatedCount { get; private set; }
         public int TotalCount { get; private set; }
@@ -65,7 +67,8 @@ namespace Systems.BattleSystem {
             while(remaining>0&&alive<maximumActive&&attempts++<32)
             {
                 if(!spawnArea.TryGetPosition(out var point)){noPoint++;continue;}
-                if(!IsAhead(point))point=combatTarget.position+approachDirection*18+Vector3.Cross(Vector3.up,approachDirection)*Random.Range(-12f,12f);
+                if(!IsAhead(point))point=combatTarget.position+approachDirection*Random.Range(minimumCombatDistance+3,minimumCombatDistance+12)+Vector3.Cross(Vector3.up,approachDirection)*Random.Range(-12f,12f);
+                if(spawnGround)point.y=spawnGround.SampleHeight(point)+spawnGround.transform.position.y;
                 if(!IsAhead(point)){close++;continue;}if(!NavMesh.SamplePosition(point,out var nav,5,NavMesh.AllAreas)){noNav++;continue;}
                 if(!IsAhead(nav.position)){close++;continue;}
                 var path=new NavMeshPath();if(!NavMesh.SamplePosition(entryPosition,out var entry,2,NavMesh.AllAreas)||!NavMesh.CalculatePath(nav.position,entry.position,NavMesh.AllAreas,path)||path.status!=NavMeshPathStatus.PathComplete){noPath++;continue;}
@@ -84,7 +87,7 @@ namespace Systems.BattleSystem {
         public bool IsAhead(Vector3 point)
         {
             Vector3 fromPlayer=Vector3.ProjectOnPlane(point-combatTarget.position,Vector3.up);
-            if(fromPlayer.sqrMagnitude<100)return false;
+            if(fromPlayer.sqrMagnitude<minimumCombatDistance*minimumCombatDistance)return false;
             // "Ahead" follows the front's route, independently of a sideways camera glance.
             return Vector3.Dot(fromPlayer.normalized,approachDirection)>.12f;
         }

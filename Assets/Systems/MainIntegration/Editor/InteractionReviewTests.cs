@@ -31,7 +31,7 @@ public sealed class InteractionReviewTests
  static void Ready()
  {
   var equipment=One<EquipmentManager>();equipment.StartMission();var items=new SerializedObject(equipment).FindProperty("equipment");for(int i=0;i<items.arraySize;i++)((EquipmentInteractableScript)items.GetArrayElementAtIndex(i).objectReferenceValue).OnInspectionEnded();
-  One<CampRoutine>().Restore(true,true);var letter=One<LetterManager>();letter.StartMission();foreach(var part in Object.FindObjectsByType<LetterInteractableScript>())if(part.name.StartsWith("MateoLetterFragment"))part.OnInspectionEnded();letter.MarkLetterAssembled();letter.MarkLetterRead();letter.CompleteMission();
+  One<CampRoutine>().Restore(true,true);var letter=One<LetterManager>();letter.StartMission();foreach(var part in Object.FindObjectsByType<LetterInteractableScript>())if(part.name.StartsWith("MateoLetterFragment"))part.OnInspectionEnded();letter.MarkLetterAssembled();letter.MarkLetterRead();letter.CompleteMission();if(One<SupplyDispatch>())One<SupplyDispatch>().Restore(DispatchStage.Delivered);
  }
  static void Move(float x,float z)
  {

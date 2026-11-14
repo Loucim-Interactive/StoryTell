@@ -39,6 +39,7 @@ namespace StoryTell.MainIntegration
         [SerializeField] private GameObject mapPickup;
         [SerializeField] private CampRoutine campRoutine;
         [SerializeField] private AmmunitionPickup ammunition;
+        [SerializeField] private SupplyDispatch dispatch;
         private CheckpointStore store;
         private bool pendingSave, started, restoring;
         private static CheckpointData pendingRestart;
@@ -79,6 +80,7 @@ namespace StoryTell.MainIntegration
             presentation.Puzzle.ProgressChanged += RequestSave;
             if(campRoutine)campRoutine.Changed+=RequestSave;
             if(ammunition)ammunition.Changed+=RequestSave;
+            if(dispatch)dispatch.Changed+=RequestSave;
             foreach(var binding in speakers) if(binding.speaker){binding.speaker.ConversationCompleted += RequestSave;binding.speaker.Met+=RequestSave;}
         }
         private void OnDisable()
@@ -88,6 +90,7 @@ namespace StoryTell.MainIntegration
             presentation.Puzzle.ProgressChanged -= RequestSave;
             if(campRoutine)campRoutine.Changed-=RequestSave;
             if(ammunition)ammunition.Changed-=RequestSave;
+            if(dispatch)dispatch.Changed-=RequestSave;
             foreach(var binding in speakers) if(binding.speaker){binding.speaker.ConversationCompleted -= RequestSave;binding.speaker.Met-=RequestSave;}
         }
         public void UseTestStore(string path) { store = new CheckpointStore(path); started = true; }
@@ -123,6 +126,7 @@ namespace StoryTell.MainIntegration
                 briefed=campRoutine&&campRoutine.Briefed,ate=campRoutine&&campRoutine.Ate,letterRead=letter.LetterRead,ammunitionCollected=ammunition&&ammunition.Collected,
                 speakers=new SpeakerCheckpoint[speakers.Length]
             };
+            if(dispatch){data.dispatchSchema=1;data.dispatchStage=(int)dispatch.Stage;}
             for(int i=0;i<speakers.Length;i++) data.speakers[i]=new SpeakerCheckpoint{id=speakers[i].id,index=speakers[i].speaker.ConversationIndex,spoken=speakers[i].speaker.HasSpoken,met=speakers[i].speaker.HasMet};
             var flags=new List<string>();
             foreach(var binding in storyTriggers) if(binding.trigger.HasTriggered) flags.Add(binding.id);
@@ -135,6 +139,7 @@ namespace StoryTell.MainIntegration
             if(data == null || !data.IsValid || (session.Mode != UiMode.None && session.Mode != UiMode.Pause)) return false;
             restoring=true;
             if(campRoutine)campRoutine.SetRestoring(true);
+            if(dispatch)dispatch.SetRestoring(true);
             try
             {
                 equipment.RestoreProgress(data.equipmentStarted,data.equipmentMask);
@@ -149,8 +154,11 @@ namespace StoryTell.MainIntegration
                 var flags=new HashSet<string>(data.triggeredZones);
                 foreach(var binding in storyTriggers) binding.trigger.RestoreTriggered(flags.Contains(binding.id));
                 flags=new HashSet<string>(data.narratedZones);foreach(var binding in narrations)binding.zone.RestoreTriggered(flags.Contains(binding.id));
-                progress.Restore(data.stage);
-                var spawn=safeSpawns[(int)data.stage];
+                if(dispatch)dispatch.Restore(data.dispatchSchema==1?(DispatchStage)data.dispatchStage:DispatchStage.None);
+                // Existing saves keep their inventory and letter, and resume the new sequence in camp.
+                var resumeStage=dispatch&&data.dispatchSchema==0?RouteStage.Camp:data.stage;
+                progress.Restore(resumeStage);
+                var spawn=safeSpawns[(int)resumeStage];
                 var cc=player.GetComponent<CharacterController>();bool enabledBefore=cc.enabled;cc.enabled=false;
                 player.SetPositionAndRotation(spawn.position,spawn.rotation);cc.enabled=enabledBefore;
                 if(enabledBefore)player.GetComponent<PlayerMotorScript>().ResetMotion();
@@ -158,7 +166,7 @@ namespace StoryTell.MainIntegration
                 pendingSave=false;
                 return true;
             }
-            finally{restoring=false;if(campRoutine)campRoutine.SetRestoring(false);}
+            finally{restoring=false;if(campRoutine)campRoutine.SetRestoring(false);if(dispatch)dispatch.SetRestoring(false);}
         }
         public void RestartCheckpoint()
         {

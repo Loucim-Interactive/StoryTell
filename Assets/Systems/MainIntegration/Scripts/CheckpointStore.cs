@@ -18,6 +18,7 @@ namespace StoryTell.MainIntegration
         public RouteStage stage;
         public bool equipmentStarted, letterStarted, letterCompleted, mapUnlocked;
         public bool briefed, ate, letterRead, ammunitionCollected;
+        public int dispatchSchema,dispatchStage;
         public int equipmentMask, letterMask, puzzleMask;
         public SpeakerCheckpoint[] speakers = Array.Empty<SpeakerCheckpoint>();
         public string[] triggeredZones = Array.Empty<string>();
@@ -27,6 +28,7 @@ namespace StoryTell.MainIntegration
             (equipmentStarted || equipmentMask == 0) && (letterStarted || letterMask == 0) &&
             (!letterCompleted || letterMask == 15) && (puzzleMask == 0 || letterMask == 15) &&
             (stage == RouteStage.Camp || equipmentMask == 7 && (!letterStarted || letterCompleted)) &&
+            (dispatchSchema==0||dispatchSchema==1&&dispatchStage>=0&&dispatchStage<=5&&(dispatchStage==0||letterCompleted))&&
             speakers != null && speakers.Length <= 64 && triggeredZones != null && triggeredZones.Length <= 256 && narratedZones != null && narratedZones.Length <= 256;
     }
 

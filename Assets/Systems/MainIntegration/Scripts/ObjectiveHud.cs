@@ -26,6 +26,7 @@ namespace StoryTell.MainIntegration
         [SerializeField] private LevelProgress progress;
         [SerializeField] private UiSessionCoordinator session;
         [SerializeField] private CampRoutine campRoutine;
+        [SerializeField] private SupplyDispatch dispatch;
         private bool dirty=true;
         private bool initialized, letterDone, hadMap;
         private int equipmentCount, letterCount;
@@ -34,6 +35,8 @@ namespace StoryTell.MainIntegration
         public int DestinationZone {get;private set;}
         private void OnEnable(){equipment.Changed+=MarkDirty;letter.Changed+=MarkDirty;if(mateo)mateo.ConversationCompleted+=MarkDirty;if(progress)progress.Changed+=MarkDirty;if(campRoutine)campRoutine.Changed+=MarkDirty;}
         private void OnDisable(){equipment.Changed-=MarkDirty;letter.Changed-=MarkDirty;if(mateo)mateo.ConversationCompleted-=MarkDirty;if(progress)progress.Changed-=MarkDirty;if(campRoutine)campRoutine.Changed-=MarkDirty;}
+        private void Start(){if(dispatch)dispatch.Changed+=MarkDirty;}
+        private void OnDestroy(){if(dispatch)dispatch.Changed-=MarkDirty;}
         private void MarkDirty()=>dirty=true;
         public void ResetFeedback(){initialized=false;dirty=true;}
         private void LateUpdate()
@@ -57,6 +60,7 @@ namespace StoryTell.MainIntegration
             }
             else if(!letter.MissionStarted&&mateo&&(campRoutine||!mateo.HasSpoken&&(!progress||progress.Stage==RouteStage.Camp))){DestinationZone=1;objective="Hablá con Mateo\nEstá junto a la cocina.";}
             else if(progress&&progress.Stage==RouteStage.Battle){DestinationZone=3;objective="Defendé la posición";}
+            else if(dispatch&&dispatch.Stage!=DispatchStage.None){DestinationZone=dispatch.Destination;objective=dispatch.Objective;}
             else if(!progress||progress.Stage==RouteStage.Camp){DestinationZone=2;objective="Andá al puesto avanzado";}
             else {DestinationZone=3;objective="Andá al frente\nPor el paso entre los sacos de arena.";}
             CurrentObjective=objective;if(label.text!=objective)label.text=objective;

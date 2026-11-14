@@ -41,7 +41,7 @@ namespace StoryTell.MainIntegration
                     bool active=i==ActiveDestination;var image=zones[i].marker.GetComponent<Image>();if(image)image.color=active?new Color(1,.65f,.18f):new Color(.14f,.12f,.09f);
                     var text=zones[i].marker.GetComponentInChildren<TMP_Text>();if(text)text.color=active?Color.black:Color.white;
                 }
-                if(legend)legend.text="1 · Equipo / Diego\n2 · Mateo\n3 · Puesto avanzado\n4 · Frente\n5 · Cocina\n\n"+objective.CurrentObjective+"\n[M] Cerrar mapa";
+                if(legend){var entries=new System.Text.StringBuilder();for(int i=0;i<zones.Length;i++)entries.Append(i+1).Append(" · ").AppendLine(zones[i].name);legend.text=entries+"\n"+objective.CurrentObjective+"\n[M] Cerrar mapa";}
             }
             var area=(RectTransform)overlay.transform;
             foreach(var zone in zones)

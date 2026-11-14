@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137606ee1d91474eb7b182be693a05f, type: 3}
+  m_Name: SergeantOrder
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Scripts.ConversationSO
+  _autoNext: 0
+  Dialogues:
+  - {fileID: 11400000, guid: 4249c7851a4f93547bcea77eec0b270a, type: 2}
+  - {fileID: 11400000, guid: 0cbec4dad1a9a3244bb0e4c92706d7c2, type: 2}
+  - {fileID: 11400000, guid: 8f1ef83491902ba4ab4e2c9824ed7efe, type: 2}

@@ -25,6 +25,7 @@ namespace DialogueSystem.Scripts {
         public IReadOnlyList<DialogueChoice> Choices => choices;
 
         public ESpeakers SpeakerName => _speaker;
+        public string DisplayName => _speaker switch { ESpeakers.SargentoIbarra=>"Sargento Ibarra",ESpeakers.Nestor=>"Néstor",ESpeakers.Andres=>"Andrés",ESpeakers.Benitez=>"Benítez",_=>_speaker.ToString() };
         public ETextSpeed TextSpeed => _textSpeed;
         public string DialogueText => _dialogueText;
         public Transform LookAtTarget => _lookAtTarget;

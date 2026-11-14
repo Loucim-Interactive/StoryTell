@@ -15,5 +15,9 @@ namespace DialogueSystem.Scripts {
         Mateo,
         Diego,
         Pedro,
+        SargentoIbarra,
+        Nestor,
+        Andres,
+        Benitez,
     }
 }
