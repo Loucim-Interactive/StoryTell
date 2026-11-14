@@ -20,11 +20,17 @@ namespace Systems.BattleSystem {
         public int Remaining=>remaining+alive;
         private float nextWave;
         private Vector3 entryPosition;
+        private Vector3 approachDirection;
+        public bool HasStarted { get; private set; }
+        public int DefeatedCount { get; private set; }
+        public int TotalCount { get; private set; }
+        public int ActiveCount => alive;
+        public bool Cleared => HasStarted && TotalCount > 0 && DefeatedCount == TotalCount && Remaining == 0;
         public bool IsConfigured => spawnArea && blackUnlitMaterial;
 
         public int Spawn(int count) {
             if (!IsConfigured) return 0;
-            if(combatTarget&&conclusion){entryPosition=combatTarget.position;remaining=Mathf.Max(0,count);alive=0;FillWave();return alive;}
+            if(combatTarget&&conclusion){if(HasStarted)return 0;entryPosition=combatTarget.position;approachDirection=Vector3.ProjectOnPlane(spawnArea.transform.position-entryPosition,Vector3.up).normalized;if(approachDirection.sqrMagnitude<.1f)approachDirection=Vector3.forward;remaining=Mathf.Max(0,count);TotalCount=remaining;HasStarted=true;alive=0;FillWave();return alive;}
             shadows.RemoveAll(shadow => !shadow);
             float radius = Mathf.Max(.01f, capsuleRadius);
             float height = Mathf.Max(radius * 2, capsuleHeight);
@@ -58,7 +64,10 @@ namespace Systems.BattleSystem {
             int attempts=0,noPoint=0,noNav=0,noPath=0,close=0;
             while(remaining>0&&alive<maximumActive&&attempts++<32)
             {
-                if(!spawnArea.TryGetPosition(out var point)){noPoint++;continue;}if(Vector3.Distance(point,combatTarget.position)<10){close++;continue;}if(!NavMesh.SamplePosition(point,out var nav,3,NavMesh.AllAreas)){noNav++;continue;}
+                if(!spawnArea.TryGetPosition(out var point)){noPoint++;continue;}
+                if(!IsAhead(point))point=combatTarget.position+approachDirection*18+Vector3.Cross(Vector3.up,approachDirection)*Random.Range(-12f,12f);
+                if(!IsAhead(point)){close++;continue;}if(!NavMesh.SamplePosition(point,out var nav,5,NavMesh.AllAreas)){noNav++;continue;}
+                if(!IsAhead(nav.position)){close++;continue;}
                 var path=new NavMeshPath();if(!NavMesh.SamplePosition(entryPosition,out var entry,2,NavMesh.AllAreas)||!NavMesh.CalculatePath(nav.position,entry.position,NavMesh.AllAreas,path)||path.status!=NavMeshPathStatus.PathComplete){noPath++;continue;}
                 var go=GameObject.CreatePrimitive(PrimitiveType.Capsule);go.name="Sombra";go.transform.position=nav.position;
                 // Keep the agent root at the soles; primitive geometry is centered one metre up.
@@ -72,7 +81,14 @@ namespace Systems.BattleSystem {
             }
             if(alive==0&&remaining>0&&Application.isBatchMode)Debug.Log($"Shadow spawn diagnostic: target={combatTarget.position} area={spawnArea.transform.position} point={noPoint} nav={noNav} path={noPath} close={close}");
         }
-        private void OnDefeated(){alive--;if(remaining==0&&alive==0)conclusion.Finish(false);else nextWave=Time.time+.6f;}
+        public bool IsAhead(Vector3 point)
+        {
+            Vector3 fromPlayer=Vector3.ProjectOnPlane(point-combatTarget.position,Vector3.up);
+            if(fromPlayer.sqrMagnitude<100)return false;
+            // "Ahead" follows the front's route, independently of a sideways camera glance.
+            return Vector3.Dot(fromPlayer.normalized,approachDirection)>.12f;
+        }
+        private void OnDefeated(){if(alive<=0||conclusion.Ending)return;alive--;DefeatedCount++;if(Cleared)conclusion.Finish(false);else nextWave=Time.time+.6f;}
 
         private void OnDestroy() {
             foreach (var shadow in shadows) if (shadow) Destroy(shadow);

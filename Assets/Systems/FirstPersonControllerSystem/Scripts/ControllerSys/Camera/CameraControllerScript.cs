@@ -34,6 +34,7 @@ namespace Systems.FirstPersonControllerSystem.Scripts.ControllerSys.Camera
         public void SetWeaponShakeRotationOffset(Vector3 value) => _weaponShakeRotationOffset = value;
         private float _recoilPitchOffset;
         private bool    _inputLocked;
+        public bool IsInputLocked => _inputLocked;
         private float comfortSensitivity=1,comfortMotion=1;
         public void SetComfort(float sensitivity,float motion){comfortSensitivity=sensitivity;comfortMotion=motion;}
         private UnityEngine.Camera _camera;

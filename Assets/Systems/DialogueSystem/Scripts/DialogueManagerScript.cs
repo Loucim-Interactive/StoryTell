@@ -5,6 +5,7 @@ using Systems.EventSystem.Scripts;
 using Systems.WalkieSystem.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using StoryTell.MainIntegration;
 
 namespace Systems.DialogueSystem.Scripts
 {
@@ -62,7 +63,7 @@ namespace Systems.DialogueSystem.Scripts
             cancel?.Dispose();
             if (Instance == this) Instance = null;
         }
-        private void Update(){if(IsInConversation&&cancel.WasPressedThisFrame())CancelConversation();}
+        private void Update(){if(IsInConversation&&cancel.WasPressedThisFrame())CancelConversation();if(!IsInConversation&&session&&session.Mode!=UiMode.None)StopThought();}
 
         public bool TryStartConversation(ConversationSO conversation, Object owner = null)
         {
@@ -193,7 +194,7 @@ namespace Systems.DialogueSystem.Scripts
 
         public void StateThoughts(string[] thoughts, string caller)
         {
-            if (!isActiveAndEnabled || IsInConversation || !uiDialogueScript || thoughts == null) return;
+            if (!isActiveAndEnabled || IsInConversation || !uiDialogueScript || thoughts == null || (session&&session.Mode!=UiMode.None)) return;
             // Ignore empty requests without interrupting the current thought.
             if (!System.Array.Exists(thoughts, line => !string.IsNullOrWhiteSpace(line))) return;
             StopThought();

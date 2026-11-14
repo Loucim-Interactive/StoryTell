@@ -9,9 +9,9 @@ namespace Systems.InteractionSystem.Scripts.Interactables.GlobalUtil {
         public SpeakerScript speaker;
 
         public void Start() {
-            if (!speaker) {
-                speaker = gameObject.GetComponentInParent<SpeakerScript>();
-            }
+            // A duplicated NPC must never keep the original actor's speaker reference.
+            var owner = GetComponentInParent<SpeakerScript>();
+            if (owner) speaker = owner;
         }
 
         protected override void OnInteract() {

@@ -11,7 +11,7 @@ namespace StoryTell.MainIntegration
   {
    bool visible=inspection.IsInspecting&&inspection.CurrentTarget&&!inspection.CurrentTarget.GetComponent<InspectableDocument>();
    label.gameObject.SetActive(visible);
-   if(visible)label.text="Clic izq. + ratón · Girar   |   WASD · Mover   |   E / Esc · Dejar";
+   if(visible)label.text="Clic izq. + ratón · Girar   |   WASD · Mover   |   Rueda · Zoom   |   E / Esc · Dejar";
   }
  }
 }

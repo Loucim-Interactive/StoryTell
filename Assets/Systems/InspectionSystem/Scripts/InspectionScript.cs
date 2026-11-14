@@ -35,6 +35,9 @@ namespace Systems.InspectionSystem.Scripts
         private InspectableDocument document;
         private Camera documentCamera;
         private float documentExtent;
+        private InputAction inspectZoom;
+        private float magnification=1;
+        public float Magnification=>magnification;
         public bool IsInspecting => _isInspecting;
         public GameObject CurrentTarget => _target;
         public int LastInspectionEndFrame { get; private set; } = -1;
@@ -44,7 +47,7 @@ namespace Systems.InspectionSystem.Scripts
         {
             if (_isInspecting || !obj || !obj.activeInHierarchy || !inspectAnchor || !isActiveAndEnabled) return;
             if (session && !session.TryAcquire(StoryTell.MainIntegration.UiMode.Inspection, this)) return;
-            _target = obj; _isInspecting = true; startedAt = Time.unscaledTime;
+            _target = obj; _isInspecting = true; startedAt = Time.unscaledTime;magnification=1;
             _originalParent = obj.transform.parent;
             _originalLocalPos = obj.transform.localPosition;
             _originalLocalRot = obj.transform.localRotation;
@@ -112,6 +115,7 @@ namespace Systems.InspectionSystem.Scripts
         private void CloseStarted(InputAction.CallbackContext _) { if (_isInspecting && Time.unscaledTime - startedAt > 0.2f) StopInspect(); }
         private void OnEnable()
         {
+            inspectZoom??=new InputAction("InspectZoom",InputActionType.Value,"<Mouse>/scroll/y");inspectZoom.Enable();
             GameEventBus.Subscribe<GameObject>(GameplayEvents.StartInspection, StartInspect);
             if (inspectAction?.action != null) inspectAction.action.started += CloseStarted;
             var actions = Actions(); ownedActions = new bool[actions.Length];
@@ -120,6 +124,7 @@ namespace Systems.InspectionSystem.Scripts
         }
         private void OnDisable()
         {
+            inspectZoom?.Disable();
             StopInspect();
             GameEventBus.Unsubscribe<GameObject>(GameplayEvents.StartInspection, StartInspect);
             if (inspectAction?.action != null) inspectAction.action.started -= CloseStarted;
@@ -127,11 +132,14 @@ namespace Systems.InspectionSystem.Scripts
             for (int i = 0; i < actions.Length; i++) if (ownedActions != null && ownedActions[i] && actions[i]?.action != null) actions[i].action.Disable();
         }
         private InputActionReference[] Actions() => new[] { inspectAction, rotateDelta, mouseClick, movementAction };
+        private void OnDestroy()=>inspectZoom?.Dispose();
+        public void AdjustMagnification(float steps){if(_isInspecting&&!document)magnification=Mathf.Clamp(magnification+steps*.12f,.7f,1.6f);}
         private void Update()
         {
             if (!_isInspecting) return;
             GameObject inspected = _target;
             if (!_target) { StopInspect(); return; }
+            float wheel=inspectZoom?.ReadValue<float>()??0;if(Mathf.Abs(wheel)>.01f)AdjustMagnification(Mathf.Sign(wheel));
             if (Time.unscaledTime - startedAt > 0.2f && (inspectAction?.action?.WasPressedThisFrame() ?? false)) { StopInspect(); return; }
             Vector2 movement = movementAction?.action?.ReadValue<Vector2>() ?? Vector2.zero;
             float limit = Mathf.Min(maxLateralOffset, 0.14f);
@@ -149,7 +157,7 @@ namespace Systems.InspectionSystem.Scripts
             if (!documentCamera || documentExtent <= 0.001f) return position;
             float halfHeight = position.z * Mathf.Tan(documentCamera.fieldOfView * Mathf.Deg2Rad * 0.5f);
             float halfWidth = halfHeight * documentCamera.aspect;
-            float size = Mathf.Min(document?document.inspectionSize:.38f, halfWidth * 0.85f, halfHeight * 1.4f);
+            float size = Mathf.Min(document?document.inspectionSize:.38f*magnification, halfWidth * 0.85f, halfHeight * 1.4f);
             _target.transform.localScale = originalScale * (size / documentExtent);
             float margin = size * 0.55f;
             position.x = Mathf.Clamp(position.x, -halfWidth * 0.94f + margin, halfWidth * (document ? .14f : .94f) - margin);

@@ -11,6 +11,7 @@ namespace StoryTell.MainIntegration
         [SerializeField] private RectTransform board;
         [SerializeField] private RectTransform[] slots;
         [SerializeField] private LetterPuzzlePiece[] pieces;
+        [SerializeField] private UnityEngine.UI.Graphic[] guides;
         [SerializeField] private TMP_Text status;
         private readonly LetterAssemblyState state = new();
         private LetterPuzzlePiece selected;
@@ -60,6 +61,7 @@ namespace StoryTell.MainIntegration
             if(piece==null||piece.Placed)return;
             if(selected!=null&&!selected.Placed)selected.color=new Color(0.94f,0.89f,0.76f);
             selected=piece;selected.color=new Color(1,0.96f,0.83f);
+            if(guides!=null)for(int i=0;i<guides.Length;i++)if(guides[i])guides[i].color=new Color(.86f,.9f,.91f,i==piece.slotIndex?.32f:.07f);
         }
         public void RotateSelected()
         {
@@ -87,6 +89,7 @@ namespace StoryTell.MainIntegration
         private void PlaceVisual(LetterPuzzlePiece piece)
         {
             var target=slots[piece.slotIndex];piece.transform.SetParent(board,false);piece.rectTransform.anchorMin=target.anchorMin;piece.rectTransform.anchorMax=target.anchorMax;piece.rectTransform.pivot=target.pivot;piece.rectTransform.sizeDelta=target.sizeDelta;piece.rectTransform.anchoredPosition=target.anchoredPosition;piece.rectTransform.localRotation=Quaternion.identity;piece.MarkPlaced();
+            if(guides!=null&&piece.slotIndex<guides.Length&&guides[piece.slotIndex])guides[piece.slotIndex].gameObject.SetActive(false);
         }
         private void UpdateStatus()
         {
