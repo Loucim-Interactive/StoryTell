@@ -177,7 +177,7 @@ namespace StoryTell.MainIntegration.Editor
         {
             BuildCleanResponse();
             var scene=EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
-            var objective=All<ObjectiveHud>(scene).Single();Set(objective,"feedback",All<MissionAnnouncement>(scene).Single());Set(objective,"missions",All<MissionsUIManager>(scene).Single());Set(objective,"mateo",All<SpeakerScript>(scene).Single(s=>s.name.Contains("Mateo")));
+            var objective=All<ObjectiveHud>(scene).Single();Set(objective,"feedback",All<MissionAnnouncement>(scene).Single());Set(objective,"missions",All<MissionsUIManager>(scene).Single());Set(objective,"mateo",All<SpeakerScript>(scene).Single(s=>s.name.Contains("Marcos")));
             var overlay=All<MapZoneOverlay>(scene).Single();Set(overlay,"objective",objective);
             var legend=All<TMP_Text>(scene).Single(t=>t.name=="Zones"&&t.transform.parent.name=="MapLegend");Set(overlay,"legend",legend);
             Undo.RecordObject(legend,"Readable current destination");legend.fontSize=24;legend.enableAutoSizing=false;legend.overflowMode=TextOverflowModes.Overflow;

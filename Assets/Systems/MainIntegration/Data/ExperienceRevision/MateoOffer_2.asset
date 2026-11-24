@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 12
-  _dialogueText: "Preguntales a Sim\xF3n y Jos\xE9. Cuando los tengas, juntalos y
-    leela; despu\xE9s tra\xE9mela."
+  _dialogueText: "Preguntales a Sim\xF3n y Jos\xE9. Cuando tengas los cuatro pedazos,
+    unilos con cuidado y traeme la carta."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

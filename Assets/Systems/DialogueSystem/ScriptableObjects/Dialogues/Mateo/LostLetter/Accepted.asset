@@ -17,9 +17,9 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 12
-  _dialogueText: "Gracias, che. Son cuatro pedazos de papel, por el suelo de este
-    sector. Si encontr\xE1s todos, tra\xE9melos. Aunque tenga que pegarla, quiero
-    poder leerla entera."
+  _dialogueText: "Gracias, che. Son cuatro pedazos, por el suelo de este sector.
+    Si los encontr\xE1s, ayudame a unirlos y devolveme la carta. Es lo \xFAnico que
+    tengo de mi vieja ac\xE1."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

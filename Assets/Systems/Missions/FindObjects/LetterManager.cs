@@ -15,7 +15,7 @@ namespace Systems.Missions.FindObjects {
         [SerializeField] private ConversationSO completedConversation;
 
         [Header("Mission")]
-        [SerializeField] private string missionTitle = "La carta de Mateo";
+        [SerializeField] private string missionTitle = "La carta de Marcos";
         [SerializeField] private string returnObjective = "Devolverla";
 
         public bool LetterAssembled { get; private set; }

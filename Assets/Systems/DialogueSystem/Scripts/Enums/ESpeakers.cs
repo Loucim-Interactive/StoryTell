@@ -12,12 +12,14 @@ namespace DialogueSystem.Scripts {
         Jeremias,
         Simon,
         Yo,
-        Mateo,
+        Marcos,
         Diego,
         Pedro,
         SargentoIbarra,
         Nestor,
         Andres,
         Benitez,
+        Luis,
+        Ernesto,
     }
 }

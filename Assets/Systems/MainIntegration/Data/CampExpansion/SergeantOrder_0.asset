@@ -17,7 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 15
-  _dialogueText: "Soy el sargento Ibarra. Mateo me dijo que pod\xEDa contar con vos."
+  _dialogueText: "Soy el sargento Ibarra. Marcos me dijo que pod\xEDa contar con
+    vos."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

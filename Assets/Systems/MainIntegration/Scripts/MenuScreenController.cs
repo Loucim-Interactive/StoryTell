@@ -33,6 +33,9 @@ namespace StoryTell.MainIntegration
         private void Bind(string name,System.Action action){var button=Root.Q<Button>(name);if(button!=null)button.clicked+=action;}
         private void BindMain()
         {
+            frame=Root.Q("main-menu-frame");
+            var background=Root.Q<Image>("main-background");
+            if(background!=null){background.image=Resources.Load<Texture2D>("StoryMenus/Images/MainMenuBackground");background.scaleMode=ScaleMode.ScaleAndCrop;}
             Bind("continue-button",ContinueGame);Bind("new-game-button",OpenSelection);Bind("exit-button",Exit);
             options=Root.Q("options-overlay");Bind("options-button",()=>options.style.display=DisplayStyle.Flex);Bind("close-options-button",()=>options.style.display=DisplayStyle.None);
             var volume=Root.Q<Slider>("volume-slider");volume.SetValueWithoutNotify(ComfortSettings.Current.master);volume.RegisterValueChangedCallback(e=>{var setting=ComfortSettings.Current;setting.master=e.newValue;ComfortSettings.Apply(setting);AudioListener.volume=setting.master;});
@@ -50,7 +53,7 @@ namespace StoryTell.MainIntegration
         }
         private void Fit(GeometryChangedEvent _)
         {
-            if(frame==null)return;float scale=Mathf.Min(Root.resolvedStyle.width/1536,Root.resolvedStyle.height/1024)*.97f;
+            if(frame==null)return;float scale=Mathf.Min(Root.resolvedStyle.width/1536,Root.resolvedStyle.height/(campaignSelection?1024:864))*(campaignSelection?.97f:.94f);
             if(float.IsNaN(scale)||scale<=0)return;frame.style.scale=new Scale(new Vector3(scale,scale,1));
         }
         private void KeyDown(KeyDownEvent e){if(e.keyCode!=KeyCode.Escape)return;if(options!=null&&options.resolvedStyle.display!=DisplayStyle.None)options.style.display=DisplayStyle.None;else if(campaignSelection)Back();}

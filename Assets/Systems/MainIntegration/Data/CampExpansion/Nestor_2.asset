@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 16
-  _dialogueText: "La cocina qued\xF3 entre las carpas del centro. Si no comiste,
-    acercate."
+  _dialogueText: "El comedor est\xE1 ac\xE1, junto a la mesa de M\xE1ximo. Todav\xEDa
+    queda algo caliente."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

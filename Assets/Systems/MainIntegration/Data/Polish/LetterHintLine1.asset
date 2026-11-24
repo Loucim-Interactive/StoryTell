@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 10
-  _dialogueText: "El viento llev\xF3 otro hacia los suministros del norte del campamento.
-    Revis\xE1 el caj\xF3n junto a la carpa."
+  _dialogueText: "Revis\xE1 el caj\xF3n peque\xF1o junto a la carpa de suministros,
+    cerca del puesto de comunicaciones."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

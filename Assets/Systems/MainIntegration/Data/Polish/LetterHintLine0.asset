@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 10
-  _dialogueText: "Vi un papel junto al caj\xF3n del refugio del oeste. Busc\xE1 cerca
-    de la fogata peque\xF1a."
+  _dialogueText: "Vi un papel en el caj\xF3n bajo, al sur del puesto de comunicaciones.
+    Revis\xE1 ese sector del campamento."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

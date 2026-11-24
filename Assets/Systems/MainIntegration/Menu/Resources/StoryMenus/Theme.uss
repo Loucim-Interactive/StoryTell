@@ -514,3 +514,22 @@
 .notebook-secondary-actions .paper-link { width: 46%; font-size: 17px; letter-spacing: 0; }
 .part-button { white-space: normal; font-size: 20px; letter-spacing: 1px; }
 .campaign-photo { min-height: 0; max-height: 340px; }
+
+/* Keep the original art proportional and let the full page carry its controls. */
+.main-menu__background { background-image: none; }
+.main-menu__shade { width: 100%; background-color: rgba(3, 3, 3, 0.28); border-right-width: 0; }
+.main-menu__content { left: 50%; top: 50%; bottom: auto; width: 1536px; height: 864px; translate: -50% -50%; }
+.main-menu__title { margin-left: 48px; margin-top: 30px; font-size: 76px; letter-spacing: 4px; max-width: 1400px; white-space: nowrap; }
+.main-menu__navigation { left: 48px; top: 300px; width: 540px; }
+.menu-button { height: 82px; margin-bottom: 20px; font-size: 40px; }
+.notebook-layout { left: 12%; right: 12%; top: 11%; bottom: 11%; width: 76%; height: 78%; }
+.notebook-page--left { padding-left: 32px; padding-right: 58px; }
+.notebook-page--right { padding-left: 58px; padding-right: 32px; }
+.notebook-title { font-size: 60px; }
+.campaign-title { font-size: 54px; }
+.notebook-action { font-size: 31px; }
+.part-button { font-size: 28px; letter-spacing: 1px; }
+.notebook-action:disabled, .part-button:disabled, .paper-link:disabled { opacity: 0.58; }
+.campaign-status { font-size: 24px; letter-spacing: 1px; }
+.notebook-secondary-actions .paper-link { font-size: 24px; }
+.notebook-screen__background, .campaign-photo { background-image: none; }

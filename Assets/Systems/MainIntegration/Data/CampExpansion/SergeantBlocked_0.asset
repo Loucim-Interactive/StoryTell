@@ -17,7 +17,7 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 15
-  _dialogueText: "Primero termin\xE1 lo que ten\xE9s pendiente con Diego y Mateo.
+  _dialogueText: "Primero termin\xE1 lo que ten\xE9s pendiente con Diego y Marcos.
     Despu\xE9s ven\xED a verme."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}

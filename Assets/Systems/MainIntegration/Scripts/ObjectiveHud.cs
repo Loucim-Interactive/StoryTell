@@ -56,9 +56,9 @@ namespace StoryTell.MainIntegration
             else if(letter.MissionStarted&&!letter.MissionCompleted)
             {
                 DestinationZone=1;
-                objective=letter.CollectedCount<4?$"Buscá los fragmentos · {letter.CollectedCount}/4\nPreguntales a Simón y José.":!letter.LetterAssembled?"[L] Reconstruí la carta":!letter.LetterRead?"[L] Leé la carta":"Devolvé la carta a Mateo";
+                objective=letter.CollectedCount<4?$"Buscá los fragmentos · {letter.CollectedCount}/4\nPreguntales a Simón y José.":!letter.LetterAssembled?"[L] Reconstruí la carta":!letter.LetterRead?"[L] Leé la carta":"Devolvé la carta a Marcos";
             }
-            else if(!letter.MissionStarted&&mateo&&(campRoutine||!mateo.HasSpoken&&(!progress||progress.Stage==RouteStage.Camp))){DestinationZone=1;objective="Hablá con Mateo\nEstá junto a la cocina.";}
+            else if(!letter.MissionStarted&&mateo&&(campRoutine||!mateo.HasSpoken&&(!progress||progress.Stage==RouteStage.Camp))){DestinationZone=1;objective="Hablá con Marcos\nEstá junto a la cocina.";}
             else if(progress&&progress.Stage==RouteStage.Battle){DestinationZone=3;objective="Defendé la posición";}
             else if(dispatch&&dispatch.Stage!=DispatchStage.None){DestinationZone=dispatch.Destination;objective=dispatch.Objective;}
             else if(!progress||progress.Stage==RouteStage.Camp){DestinationZone=2;objective="Andá al puesto avanzado";}

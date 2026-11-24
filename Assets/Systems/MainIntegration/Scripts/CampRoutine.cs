@@ -10,6 +10,7 @@ namespace StoryTell.MainIntegration
   [SerializeField] private LetterManager letter;
   [SerializeField] private SpeakerScript diego, mateo;
   [SerializeField] private ConversationSO beforeFood;
+  [SerializeField] private ConversationSO beforeEquipment, beforeBriefing, diegoAfterFood;
   [SerializeField] private MissionAnnouncement feedback;
   [SerializeField] private SupplyDispatch dispatch;
   public bool Briefed {get;private set;}
@@ -21,9 +22,22 @@ namespace StoryTell.MainIntegration
   public void SetRestoring(bool value)=>restoring=value;
   private void OnEnable(){diego.ConversationCompleted+=DiegoFinished;mateo.ConversationCompleted+=MateoFinished;}
   private void OnDisable(){diego.ConversationCompleted-=DiegoFinished;mateo.ConversationCompleted-=MateoFinished;}
-  private void DiegoFinished(){if(restoring||!equipment.MissionCompleted||Briefed)return;Briefed=true;Changed?.Invoke();}
+  private void DiegoFinished(){ReceiveMealInstruction(diego);}
+  // The instruction has been given when its conversation opens, even if the player leaves early.
+  public void ReceiveMealInstruction(SpeakerScript speaker)
+  {
+   if(restoring||speaker!=diego||!equipment.MissionCompleted||Briefed)return;
+   Briefed=true;Changed?.Invoke();
+  }
   private void MateoFinished(){if(!restoring&&Ate&&mateo.HasSpoken&&!letter.MissionStarted)letter.StartMission();}
-  public ConversationSO ConversationOverride(SpeakerScript speaker)=>speaker==mateo&&!Ate?beforeFood:null;
+  public ConversationSO ConversationOverride(SpeakerScript speaker)
+  {
+   if(speaker==diego&&Ate)return diegoAfterFood;
+   if(speaker!=mateo||Ate)return null;
+   if(!equipment.MissionCompleted)return beforeEquipment?beforeEquipment:beforeFood;
+   if(!Briefed)return beforeBriefing?beforeBriefing:beforeFood;
+   return beforeFood;
+  }
   public bool Eat()
   {
    if(Ate)return false;

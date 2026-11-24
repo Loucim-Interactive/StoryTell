@@ -17,7 +17,7 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 4
-  _dialogueText: "Mateo est\xE1 junto a la cocina. Ven\xEDa cuidando una carta como
+  _dialogueText: "Marcos est\xE1 junto a la cocina. Ven\xEDa cuidando una carta como
     si fuera un tesoro."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}

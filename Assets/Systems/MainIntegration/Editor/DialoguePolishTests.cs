@@ -26,7 +26,7 @@ public sealed class DialoguePolishTests
     static T[] All<T>()where T:Component=>Object.FindObjectsByType<T>(FindObjectsInactive.Include,FindObjectsSortMode.None);
     static ConversationSO Conversation(string text)
     {
-        var line=ScriptableObject.CreateInstance<DialogueSO>();var data=new SerializedObject(line);data.FindProperty("_dialogueText").stringValue=text;data.FindProperty("_speaker").enumValueIndex=(int)ESpeakers.Mateo;data.FindProperty("_extraReadTime").floatValue=.1f;data.ApplyModifiedProperties();var c=ScriptableObject.CreateInstance<ConversationSO>();c.Dialogues=new[]{line};return c;
+        var line=ScriptableObject.CreateInstance<DialogueSO>();var data=new SerializedObject(line);data.FindProperty("_dialogueText").stringValue=text;data.FindProperty("_speaker").enumValueIndex=(int)ESpeakers.Marcos;data.FindProperty("_extraReadTime").floatValue=.1f;data.ApplyModifiedProperties();var c=ScriptableObject.CreateInstance<ConversationSO>();c.Dialogues=new[]{line};return c;
     }
     [Test]public void ResponsiveLayoutUsesPositiveTextRectsAndConsistentFonts()
     {

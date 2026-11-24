@@ -24,6 +24,7 @@ namespace StoryTell.MainIntegration
   private float nextLine=8,hideAt,nextScan;
   public string CurrentLine=>subtitle?subtitle.text:"";
   public bool IsShowing=>subtitle&&subtitle.gameObject.activeSelf;
+  public event Action<SpeakerScript> LineStarted;
   private bool Available=>session.Mode==UiMode.None&&!dialogue.IsInConversation&&!dialogue.IsThoughtActive&&progress.Stage<RouteStage.Approach;
   private void Update()
   {
@@ -42,6 +43,7 @@ namespace StoryTell.MainIntegration
    if(Physics.Linecast(source,destination,out var hit,Physics.DefaultRaycastLayers,QueryTriggerInteraction.Ignore)&&!hit.transform.IsChildOf(player)&&!hit.transform.IsChildOf(nearest.actor.transform))return;
    subtitle.text=nearest.displayName+": «"+nearest.lines[nearest.nextLine++%nearest.lines.Length]+"»";
    subtitle.gameObject.SetActive(true);hideAt=Time.time+5;nextLine=Time.time+22;nearest.nextTime=Time.time+85;
+   LineStarted?.Invoke(nearest.actor);
   }
   private void OnDisable(){if(subtitle)subtitle.gameObject.SetActive(false);}
  }

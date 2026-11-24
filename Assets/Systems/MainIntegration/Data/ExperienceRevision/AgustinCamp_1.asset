@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 6
-  _dialogueText: "Si necesit\xE1s calentarte, la cocina est\xE1 del otro lado de
-    la fogata del campamento."
+  _dialogueText: "Si necesit\xE1s calentarte, el comedor est\xE1 en el sector sur
+    del campamento, junto a M\xE1ximo."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

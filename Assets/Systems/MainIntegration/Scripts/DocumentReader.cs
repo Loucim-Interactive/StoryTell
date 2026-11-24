@@ -43,7 +43,7 @@ namespace StoryTell.MainIntegration
             if(toggle.WasPressedThisFrame())ToggleText();
             panel.SetActive(visible);hint.SetActive(true);
             bool fragment=current.GetComponent<Systems.InteractionSystem.Scripts.Interactables.Pickables.LetterInteractableScript>();
-            controls.text=(visible?"[T] Ocultar texto":"[T] Mostrar texto")+"   ·   [E / Esc] "+(fragment?"Guardar fragmento":"Dejar documento")+"\nCLIC IZQ + RATÓN · Girar    WASD · Mover"+(visible&&scroll.content.rect.height>scroll.viewport.rect.height+1?"    RUEDA · Desplazar texto":"");
+            controls.text="Mantené clic izquierdo + mové el ratón · Girar\n"+(visible?"T · Ocultar texto":"T · Mostrar texto")+"   |   E / Esc · "+(fragment?"Guardar fragmento":"Dejar")+"   |   WASD · Mover"+(visible&&scroll.content.rect.height>scroll.viewport.rect.height+1?"   |   Rueda · Texto":"");
             if(!visible)return;
             if(document==completedLetter){readingTime+=Time.unscaledDeltaTime;if(readingTime>=.5f)readCompleted=true;}
             float height=scroll.content.rect.height-scroll.viewport.rect.height;

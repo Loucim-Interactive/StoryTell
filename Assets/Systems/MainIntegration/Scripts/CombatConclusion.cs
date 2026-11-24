@@ -27,7 +27,7 @@ namespace StoryTell.MainIntegration
   {
    // A spatial zone or stale UnityEvent cannot finish an uncleared battle.
    if(Ending||!battle||!battle.HasStarted||(!touched&&!battle.Cleared))return;Ending=true;Reason=touched?"contact":"cleared";
-   if(pause)pause.Close();if(presentation){presentation.Map.SetOpen(false,true);presentation.Puzzle.Close();}if(inspection)inspection.StopInspect();if(dialogue)dialogue.CancelConversation();if(radio)radio.ExitWalkie();
+   if(pause)pause.Close();if(presentation){presentation.Map.SetOpen(false,true);presentation.Puzzle.Close();presentation.CloseDeliveredLetter();}if(inspection)inspection.StopInspect();if(dialogue)dialogue.CancelConversation();if(radio)radio.ExitWalkie();
    weapon.HolsterWeapon();blackout.gameObject.SetActive(true);blackout.color=new Color(0,0,0,0);
   }
   private void LateUpdate()

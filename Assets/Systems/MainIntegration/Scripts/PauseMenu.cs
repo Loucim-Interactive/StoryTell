@@ -55,6 +55,7 @@ namespace StoryTell.MainIntegration
                 case UiMode.Dialogue:dialogue.CancelConversation();return;
                 case UiMode.Puzzle:presentation.Puzzle.Close();return;
                 case UiMode.Radio:radio.ExitWalkie();return;
+                case UiMode.LetterText:presentation.CloseDeliveredLetter();return;
             }
             Open();
         }

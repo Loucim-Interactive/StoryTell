@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <ui:VisualElement class="screen main-menu">
-        <ui:VisualElement class="main-menu__background" />
+        <ui:Image name="main-background" class="main-menu__background" picking-mode="Ignore" />
         <ui:VisualElement class="main-menu__shade" />
-        <ui:VisualElement class="main-menu__content">
+        <ui:VisualElement name="main-menu-frame" class="main-menu__content">
             <ui:Label text="PROYECTO HISTORIA" class="main-menu__title stencil" />
             <ui:VisualElement class="main-menu__navigation">
                 <ui:Button name="continue-button" text="CONTINUAR" class="menu-button menu-button--primary stencil" />

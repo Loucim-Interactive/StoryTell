@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace StoryTell.MainIntegration
 {
-    public enum UiMode { None, Map, Dialogue, Inspection, Puzzle, Radio, Pause }
+    public enum UiMode { None, Map, Dialogue, Inspection, Puzzle, Radio, Pause, LetterText }
 
     // A single owner restores the controls it acquired. Closing another view cannot unlock them.
     [DefaultExecutionOrder(-400)]
@@ -27,7 +27,7 @@ namespace StoryTell.MainIntegration
             Mode = mode;
             savedCursor = Cursor.lockState;
             savedVisible = Cursor.visible;
-            bool fullLock = mode == UiMode.Dialogue || mode == UiMode.Inspection || mode == UiMode.Puzzle || mode == UiMode.Pause;
+            bool fullLock = mode == UiMode.Dialogue || mode == UiMode.Inspection || mode == UiMode.Puzzle || mode == UiMode.Pause || mode == UiMode.LetterText;
             lockedControls = fullLock ? movementControls : interactionControls;
             previous = new bool[lockedControls.Length];
             for (int i = 0; i < lockedControls.Length; i++)
@@ -36,7 +36,7 @@ namespace StoryTell.MainIntegration
                 previous[i] = lockedControls[i].enabled;
                 lockedControls[i].enabled = false;
             }
-            bool pointer = mode == UiMode.Dialogue || mode == UiMode.Puzzle || mode == UiMode.Pause;
+            bool pointer = mode == UiMode.Dialogue || mode == UiMode.Puzzle || mode == UiMode.Pause || mode == UiMode.LetterText;
             Cursor.lockState = pointer ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = pointer;
             Changed?.Invoke();

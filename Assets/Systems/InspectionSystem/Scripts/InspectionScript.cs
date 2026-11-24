@@ -37,6 +37,7 @@ namespace Systems.InspectionSystem.Scripts
         private float documentExtent;
         private InputAction inspectZoom;
         private float magnification=1;
+        private Vector3 inspectionCenter;
         public float Magnification=>magnification;
         public bool IsInspecting => _isInspecting;
         public GameObject CurrentTarget => _target;
@@ -60,6 +61,7 @@ namespace Systems.InspectionSystem.Scripts
             document = obj.GetComponent<InspectableDocument>();
             documentCamera = inspectAnchor.GetComponentInParent<Camera>();
             documentExtent = 0;
+            inspectionCenter = Vector3.zero;
             _currentRot = document ? Quaternion.Euler(document.inspectionEulerAngles) : Quaternion.identity;
             obj.transform.localRotation = _currentRot;
             // Normalize every held prop, including helmets and ammunition cases.
@@ -71,12 +73,14 @@ namespace Systems.InspectionSystem.Scripts
                     foreach (var renderer in renderers) bounds.Encapsulate(renderer.bounds);
                     float extent = Mathf.Max(bounds.size.x, Mathf.Max(bounds.size.y, bounds.size.z));
                     documentExtent = extent;
+                    inspectionCenter = obj.transform.InverseTransformPoint(bounds.center);
                     if (extent > 0.001f) obj.transform.localScale *= (document?document.inspectionSize:.38f) / extent;
                 }
             }
             holdPosition = _originalInspectorAnchorLocalPos + (document ? document.inspectionOffset : Vector3.zero);
             _lateralOffset = Vector2.zero; _currentPos = FitDocument(holdPosition);
             inspectAnchor.localPosition = _currentPos;
+            CenterInspectedObject();
             enabledScripts = new bool[session ? 0 : onOffScripts?.Length ?? 0];
             for (int i = 0; i < enabledScripts.Length; i++)
                 if (onOffScripts[i] && onOffScripts[i] != this) { enabledScripts[i] = onOffScripts[i].enabled; onOffScripts[i].enabled = false; }
@@ -146,22 +150,29 @@ namespace Systems.InspectionSystem.Scripts
             _lateralOffset = Vector2.ClampMagnitude(_lateralOffset + movement * (moveSpeed * Time.deltaTime), limit);
             _currentPos = FitDocument(holdPosition + new Vector3(_lateralOffset.x, _lateralOffset.y, 0));
             inspectAnchor.localPosition = Vector3.Lerp(inspectAnchor.localPosition, _currentPos, Time.deltaTime * smoothing);
+            CenterInspectedObject();
             if (needsMouseClick && !(mouseClick?.action?.IsPressed() ?? false)) return;
             Vector2 delta = rotateDelta?.action?.ReadValue<Vector2>() ?? Vector2.zero;
             float speed = rotateSpeed * Time.deltaTime;
             _currentRot = Quaternion.AngleAxis(-delta.x * speed, Vector3.up) * Quaternion.AngleAxis(delta.y * speed, Vector3.right) * _currentRot;
             _target.transform.localRotation = Quaternion.Lerp(_target.transform.localRotation, _currentRot, Time.deltaTime * smoothing);
+            CenterInspectedObject();
+        }
+        private void CenterInspectedObject()
+        {
+            if (_target) _target.transform.localPosition = -(_target.transform.localRotation * Vector3.Scale(inspectionCenter, _target.transform.localScale));
         }
         private Vector3 FitDocument(Vector3 position)
         {
             if (!documentCamera || documentExtent <= 0.001f) return position;
             float halfHeight = position.z * Mathf.Tan(documentCamera.fieldOfView * Mathf.Deg2Rad * 0.5f);
             float halfWidth = halfHeight * documentCamera.aspect;
-            float size = Mathf.Min(document?document.inspectionSize:.38f*magnification, halfWidth * 0.85f, halfHeight * 1.4f);
+            float size = Mathf.Min(document?document.inspectionSize:.54f*magnification, halfWidth * (document ? .85f : 1.5f), halfHeight * (document ? 1.4f : 2f));
             _target.transform.localScale = originalScale * (size / documentExtent);
             float margin = size * 0.55f;
             position.x = Mathf.Clamp(position.x, -halfWidth * 0.94f + margin, halfWidth * (document ? .14f : .94f) - margin);
-            position.y = Mathf.Clamp(position.y, -halfHeight + margin, halfHeight - margin);
+            float verticalMargin = Mathf.Min(margin, halfHeight * .9f);
+            position.y = Mathf.Clamp(position.y, -halfHeight + verticalMargin, halfHeight - verticalMargin);
             return position;
         }
     }

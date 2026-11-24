@@ -32,7 +32,13 @@ public sealed class ExperienceRevisionTests
  static IEnumerator Wait(float seconds){float end=Time.unscaledTime+seconds;while(Time.unscaledTime<end)yield return null;}
  static IEnumerator Talk(SpeakerScript npc)
  {
+  // A native narration trigger may start its introductory radio call before the first NPC.
+  var openingRadio=One<Systems.WalkieSystem.Scripts.WalkieInteractionMachine>();float radioDeadline=Time.unscaledTime+40;
+  while(openingRadio&&!openingRadio.IsFinished){Assert.That(Time.unscaledTime,Is.LessThan(radioDeadline),"Opening radio call did not finish");if(openingRadio.IsChoosing)openingRadio.Resolve(0);yield return Wait(.1f);}
+  var configured=new SerializedObject(npc).FindProperty("_conversationSos");var names=Enumerable.Range(0,configured.arraySize).Select(i=>configured.GetArrayElementAtIndex(i).objectReferenceValue?.name??"null");var radio=One<Systems.WalkieSystem.Scripts.WalkieInteractionMachine>();
+  File.AppendAllText("Library/KitchenRelocation-route-trace.txt",npc.name+" conversations="+string.Join(",",names)+" spoken="+npc.HasSpoken+" index="+npc.ConversationIndex+" mode="+One<UiSessionCoordinator>().Mode+" radio="+(radio?radio.IsFinished.ToString():"none")+"\n");
   npc.Speak();yield return Wait(.25f);float end=Time.unscaledTime+25;
+  Assert.That(One<DialogueManagerScript>().IsConversationOwnedBy(npc),Is.True,"Conversation did not open for "+npc.name);
   while(One<DialogueManagerScript>().IsInConversation&&Time.unscaledTime<end){if(One<DecisionManagerScript>().HasRequest)One<DecisionManagerScript>().Submit(0);else One<DialogueManagerScript>().uiDialogueScript.RequestAdvance();yield return Wait(.22f);}
   Assert.That(One<DialogueManagerScript>().IsInConversation,Is.False);yield return null;
  }
@@ -42,22 +48,22 @@ public sealed class ExperienceRevisionTests
  [UnityTest]public IEnumerator CampRouteRequiresBriefingFoodAssemblyReadingAndDelivery()
  {
   EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;yield return null;
-  Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Diego"));yield return Talk(Npc("Mateo"));Assert.That(One<LetterManager>().MissionStarted,Is.False);
+  Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Diego"));yield return Talk(Npc("Marcos"));Assert.That(One<LetterManager>().MissionStarted,Is.False);
   yield return Talk(Npc("Diego"));Assert.That(One<EquipmentManager>().MissionStarted,Is.True);Equip();yield return null;Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Diego"));Assert.That(One<CampRoutine>().Eat(),Is.False);
-  yield return Talk(Npc("Diego"));Assert.That(One<CampRoutine>().Briefed,Is.True);Assert.That(One<CampRoutine>().Eat(),Is.True);yield return Talk(Npc("Mateo"));Assert.That(One<LetterManager>().MissionStarted,Is.True);
+  yield return Talk(Npc("Diego"));Assert.That(One<CampRoutine>().Briefed,Is.True);Assert.That(One<CampRoutine>().Eat(),Is.True);yield return Talk(Npc("Marcos"));Assert.That(One<LetterManager>().MissionStarted,Is.True);
   foreach(var f in Object.FindObjectsByType<LetterInteractableScript>(FindObjectsSortMode.None))if(f.name.StartsWith("MateoLetterFragment"))f.OnInspectionEnded();yield return null;
   var l=One<LetterManager>();l.CompleteMission();Assert.That(l.MissionCompleted,Is.False);Assert.That(One<RouteBoundary>().CanProceed,Is.False);
   var p=One<MainPresentation>();Assert.That(p.BeginLetterAssembly(),Is.True);yield return null;foreach(var piece in Object.FindObjectsByType<LetterPuzzlePiece>(FindObjectsSortMode.None)){piece.transform.position=p.Puzzle.Slot(piece.slotIndex).position;piece.rectTransform.localRotation=Quaternion.identity;Assert.That(p.Puzzle.TrySnap(piece),Is.True);}p.Puzzle.Close();yield return null;
   Assert.That(l.LetterAssembled,Is.True);l.CompleteMission();Assert.That(l.MissionCompleted,Is.False);
   var doc=(InspectableDocument)new SerializedObject(p).FindProperty("completedLetter").objectReferenceValue;doc.gameObject.SetActive(true);One<InspectionScript>().StartInspect(doc.gameObject);yield return Wait(.7f);Assert.That(One<DocumentReader>().IsVisible,Is.True);One<InspectionScript>().StopInspect();yield return null;yield return null;Assert.That(l.LetterRead,Is.True);
-  yield return Talk(Npc("Mateo"));Assert.That(l.MissionCompleted,Is.True);Assert.That(One<RouteBoundary>().CanProceed,Is.False);yield return Talk(Npc("Sargento Ibarra"));Assert.That(One<RouteBoundary>().CanProceed,Is.True);
+  yield return Talk(Npc("Marcos"));Assert.That(l.MissionCompleted,Is.True);Assert.That(One<RouteBoundary>().CanProceed,Is.False);yield return Talk(Npc("Sargento Ibarra"));Assert.That(One<RouteBoundary>().CanProceed,Is.True);
   var cp=One<CheckpointController>().Capture();Assert.That(cp.ate&&cp.briefed&&cp.letterRead,Is.True);Assert.That(cp.speakers.Any(x=>x.met),Is.True);yield return new ExitPlayMode();
  }
  [UnityTest]public IEnumerator MovingMapMarkersRemainAttachedAfterWalkingAndLooking()
  {
   EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;One<MapPickup>().Interact();One<MainPresentation>().Map.SetOpen(true,true);yield return null;yield return null;
   var overlay=One<MapZoneOverlay>();var camera=One<PhysicalMapViewCamera>().MapCamera;var reference=One<MapWorldReference>();
-  for(int frame=0;frame<12;frame++){camera.transform.parent.rotation*=Quaternion.Euler(0,5,0);camera.transform.parent.position+=Vector3.right*.15f;yield return null;overlay.Refresh();foreach(var z in overlay.Zones){reference.TryWorldToMapPosition(z.location.position,out var position,out _);var actual=RectTransformUtility.WorldToScreenPoint(null,z.marker.position);var expected=(Vector2)camera.WorldToScreenPoint(position);var scale=z.marker.parent.lossyScale.x;Assert.That(Vector2.Distance(actual,expected+z.labelOffset*scale),Is.LessThan(2),z.name);}}
+  for(int frame=0;frame<12;frame++){camera.transform.parent.rotation*=Quaternion.Euler(0,5,0);camera.transform.parent.position+=Vector3.right*.15f;yield return null;overlay.Refresh();foreach(var z in overlay.Zones){reference.TryWorldToMapPosition(z.location.position,out var position,out _);var actual=RectTransformUtility.WorldToScreenPoint(null,z.marker.position);var expected=One<PhysicalMapViewCamera>().ProjectToScreen(position);var middle=RectTransformUtility.WorldToScreenPoint(null,z.leader.position);Assert.That(Vector2.Distance(middle,(actual+expected)*.5f),Is.LessThan(2),z.name);}}
   yield return MainIntegrationTests.Capture("Library/ExperienceRevision-map.png",1280,720);yield return new ExitPlayMode();
  }
  [UnityTest]public IEnumerator CombatWaitsForKillsAndEndsAfterTheLastShadow()
@@ -131,8 +137,8 @@ public sealed class ExperienceRevisionTests
  {
   EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;yield return null;
   Assert.That(One<CheckpointController>().Restore(new CheckpointData{equipmentStarted=true,equipmentMask=7,stage=RouteStage.Outpost}),Is.True);yield return null;yield return null;
-  Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Mateo"));Assert.That(One<CampRoutine>().Ate,Is.True);Assert.That(One<RouteBoundary>().CanProceed,Is.False);
-  yield return Talk(Npc("Mateo"));Assert.That(One<LetterManager>().MissionStarted,Is.True);yield return new ExitPlayMode();
+  Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Marcos"));Assert.That(One<CampRoutine>().Ate,Is.True);Assert.That(One<RouteBoundary>().CanProceed,Is.False);
+  yield return Talk(Npc("Marcos"));Assert.That(One<LetterManager>().MissionStarted,Is.True);yield return new ExitPlayMode();
  }
  [UnityTearDown]public IEnumerator Cleanup(){Time.timeScale=1;AudioListener.pause=false;if(Application.isPlaying)yield return new ExitPlayMode();}
 }

@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 13
-  _dialogueText: "Ya ten\xE9s el equipo. And\xE1 a la cocina y com\xE9 algo caliente;
-    Mateo est\xE1 por ah\xED."
+  _dialogueText: "Ya ten\xE9s el equipo. And\xE1 al comedor del sector sur del campamento
+    y com\xE9 en la mesa de M\xE1ximo."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

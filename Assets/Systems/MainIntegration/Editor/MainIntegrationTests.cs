@@ -145,7 +145,7 @@ public sealed class MainIntegrationTests
     [UnityTest]public IEnumerator NativeNPC_FacesPlayer_AndReturnsAfterConversationCancellation()
     {
         EditorSceneManager.OpenScene(ScenePath);yield return new EnterPlayMode();yield return null;
-        var speaker=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).First(s=>s.name.Contains("Mateo"));var rotation=speaker.transform.rotation;var cc=Object.FindAnyObjectByType<PlayerControllerScript>().GetComponent<CharacterController>();cc.enabled=false;cc.transform.position=speaker.transform.position+Vector3.right*3;cc.enabled=true;
+        var speaker=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).First(s=>s.name.Contains("Marcos"));var rotation=speaker.transform.rotation;var cc=Object.FindAnyObjectByType<PlayerControllerScript>().GetComponent<CharacterController>();cc.enabled=false;cc.transform.position=speaker.transform.position+Vector3.right*3;cc.enabled=true;
         speaker.Speak();float until=Time.unscaledTime+1.5f;while(Time.unscaledTime<until)yield return null;
         Assert.That(Vector3.Dot(speaker.transform.forward,Vector3.right),Is.GreaterThan(0.97f));Object.FindAnyObjectByType<DialogueManagerScript>().CancelConversation(speaker);until=Time.unscaledTime+1.5f;while(Time.unscaledTime<until)yield return null;Assert.That(Quaternion.Angle(speaker.transform.rotation,rotation),Is.LessThan(0.2f));
         yield return new ExitPlayMode();

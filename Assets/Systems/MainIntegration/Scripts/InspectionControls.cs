@@ -7,11 +7,12 @@ namespace StoryTell.MainIntegration
  {
   [SerializeField]private InspectionScript inspection;
   [SerializeField]private TMP_Text label;
+  [SerializeField]private GameObject panel;
   private void LateUpdate()
   {
    bool visible=inspection.IsInspecting&&inspection.CurrentTarget&&!inspection.CurrentTarget.GetComponent<InspectableDocument>();
-   label.gameObject.SetActive(visible);
-   if(visible)label.text="Clic izq. + ratón · Girar   |   WASD · Mover   |   Rueda · Zoom   |   E / Esc · Dejar";
+   if(panel)panel.SetActive(visible);else label.gameObject.SetActive(visible);
+   if(visible)label.text="Mantené el clic izquierdo y mové el ratón para girar\nWASD · Mover   |   Rueda · Zoom   |   E / Esc · Dejar";
   }
  }
 }

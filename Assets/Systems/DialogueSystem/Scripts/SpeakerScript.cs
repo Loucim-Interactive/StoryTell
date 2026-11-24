@@ -53,6 +53,7 @@ namespace DialogueSystem.Scripts {
             if (!conversation) return;
 
             if (_dialogueManagerScript.TryStartConversation(conversation, this)) {
+                if(campRoutine)campRoutine.ReceiveMealInstruction(this);
                 if(!HasMet){HasMet=true;Met?.Invoke();}
                 facingRoutine = StartCoroutine(FaceWhileSpeaking(conversation,givingHint));
             }

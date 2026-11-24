@@ -99,7 +99,7 @@ namespace Systems.WalkieSystem.Scripts {
             // Talking is a deliberate quiet phase between conversation steps.
             // The next interaction UI animates back only when a response is ready.
             bool showIndicator = responseNeeded && !walkieTalkie.IsEquipped;
-            bool showTimer = _state.HasTimedResponse;
+            bool showTimer = _state.HasTimedResponse && walkieTalkie.IsEquipped;
 
             ShowIndicator(showIndicator);
             ShowChoices(showChoices);

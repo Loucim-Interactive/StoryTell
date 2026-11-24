@@ -13,6 +13,7 @@ namespace Systems.InteractionSystem.Scripts {
         [SerializeField] private TextMeshProUGUI interactionName;
         [SerializeField] private TextMeshProUGUI interactionAction;
         [SerializeField] private Image interactionImage;
+        [SerializeField] private Material mouseIconMaterial;
         [SerializeField] private GameObject uiObject;
         public static InteractionUIManager Instance { get; private set; }
 
@@ -37,9 +38,12 @@ namespace Systems.InteractionSystem.Scripts {
             UIInteraction interaction = interactionScript.UIInteraction;
             interactionName.text = interactionScript.interactableName;
             string key=interaction.interactionType switch{EInteractions.LeftClick=>"Clic izq.",EInteractions.RightClick=>"Clic der.",EInteractions.MiddleClick=>"Clic central",EInteractions.Spacebar=>"Espacio",_=>"E"};
-            interactionAction.text = "["+key+"] "+(interaction.label??"").Replace("[E] ","");
-            
             Sprite imgSprite = GetSprite(interaction.interactionType);
+            bool mouse=interaction.interactionType==EInteractions.LeftClick||interaction.interactionType==EInteractions.RightClick||interaction.interactionType==EInteractions.MiddleClick;
+            interactionAction.text = (mouse&&imgSprite?"":"["+key+"] ")+(interaction.label??"").Replace("[E] ","");
+            interactionImage.preserveAspect=true;
+            interactionImage.material=mouse&&mouseIconMaterial?mouseIconMaterial:null;
+            interactionImage.rectTransform.sizeDelta=Vector2.one*(mouse?64:48);
             if (!imgSprite) interactionImage.enabled = false;
             else {
                 interactionImage.enabled = true;

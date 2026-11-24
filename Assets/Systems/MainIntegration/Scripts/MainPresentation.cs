@@ -31,6 +31,7 @@ namespace StoryTell.MainIntegration
         [SerializeField] private GameObject mapLegend, assemblyHint;
         [SerializeField] private TMP_Text assemblyHintText;
         [SerializeField] private InspectableDocument completedLetter;
+        [SerializeField] private DeliveredLetterReader deliveredReader;
         [SerializeField,TextArea] private string[] letterParts;
         [SerializeField] private GameObject combatInstructions;
         [SerializeField] private UiSessionCoordinator session;
@@ -48,7 +49,7 @@ namespace StoryTell.MainIntegration
         private void Start(){map.SetOpen(false,true);map.enabled=false;originalInstructionsActive=combatInstructions&&combatInstructions.activeSelf;}
         private void OnDisable()
         {
-            assemble?.Disable();if(puzzleLocked)EndLetterAssembly();ReleaseMapInteraction();if(missions)missions.SetOverlaySuppressed(false);if(map)map.SetOpen(false,true);
+            assemble?.Disable();if(deliveredReader)deliveredReader.Close();if(puzzleLocked)EndLetterAssembly();ReleaseMapInteraction();if(missions)missions.SetOverlaySuppressed(false);if(map)map.SetOpen(false,true);
             if(map){map.MapOpened-=MapOpened;map.MapClosed-=MapClosed;}if(session)session.Release(this);
         }
         private void OnDestroy(){assemble?.Dispose();}
@@ -57,7 +58,7 @@ namespace StoryTell.MainIntegration
         private void MapClosed(){if(session)session.Release(this);}
         private void LateUpdate()
         {
-            bool modal=inspection.IsInspecting||puzzle.IsOpen||dialogue.IsInConversation||(session&&(session.Mode==UiMode.Pause||session.Mode==UiMode.Radio));
+            bool modal=inspection.IsInspecting||puzzle.IsOpen||dialogue.IsInConversation||(session&&(session.Mode==UiMode.Pause||session.Mode==UiMode.Radio||session.Mode==UiMode.LetterText));
             if((modal||(radio&&radio.IsEquipped))&&map.IsOpen)map.SetOpen(false,true);
             bool open=HasMap&&map.enabled&&map.IsOpen;
             if(combatInstructions)combatInstructions.SetActive(originalInstructionsActive&&!modal&&!open&&weapon.EquippedWeapon==null);
@@ -73,9 +74,22 @@ namespace StoryTell.MainIntegration
             if(ready&&assemble.WasPressedThisFrame())
             {
                 if(!letter.LetterAssembled)BeginLetterAssembly();
-                else {map.SetOpen(false,true);completedLetter.gameObject.SetActive(true);Systems.EventSystem.Scripts.GameEventBus.Raise(Systems.EventSystem.Scripts.GameplayEvents.StartInspection,completedLetter.gameObject);}
+                else OpenLetter();
             }
         }
+        public bool OpenLetter()
+        {
+            if(!letter.LetterAssembled||dialogue.IsInConversation||puzzle.IsOpen)return false;
+            map.SetOpen(false,true);
+            if(letter.MissionCompleted)
+            {
+                if(inspection.IsInspecting&&inspection.CurrentTarget==completedLetter.gameObject)inspection.StopInspect();
+                completedLetter.gameObject.SetActive(false);
+                return deliveredReader&&deliveredReader.Open(LetterText);
+            }
+            completedLetter.gameObject.SetActive(true);Systems.EventSystem.Scripts.GameEventBus.Raise(Systems.EventSystem.Scripts.GameplayEvents.StartInspection,completedLetter.gameObject);return inspection.IsInspecting;
+        }
+        public void CloseDeliveredLetter(){if(deliveredReader)deliveredReader.Close();}
         private void ReleaseMapInteraction(){if(!mapInteractionLocked)return;interaction.enabled=interactionBeforeMap;mapInteractionLocked=false;}
         public bool BeginLetterAssembly()
         {

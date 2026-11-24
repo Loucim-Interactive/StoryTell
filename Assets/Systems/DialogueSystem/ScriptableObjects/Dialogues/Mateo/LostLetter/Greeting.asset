@@ -17,8 +17,8 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 12
-  _dialogueText: "Che, \xBFten\xE9s un minuto? Soy Mateo. Perd\xED una carta de mi
-    vieja, de Lan\xFAs. Es la \xFAnica que me lleg\xF3 desde que estoy ac\xE1."
+  _dialogueText: "Che, \xBFten\xE9s un minuto? Soy Marcos. Perd\xED una carta de
+    mi vieja, de Lan\xFAs. Es la \xFAnica que me lleg\xF3 desde que estoy ac\xE1."
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

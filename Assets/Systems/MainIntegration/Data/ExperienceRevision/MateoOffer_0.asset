@@ -17,7 +17,7 @@ MonoBehaviour:
   _lookAtTarget: {fileID: 0}
   _fontAsset: {fileID: 0}
   _speaker: 12
-  _dialogueText: "Soy Mateo. \xBFPudiste comer algo caliente?"
+  _dialogueText: "Soy Marcos. \xBFPudiste comer algo caliente?"
   _voiceClip: {fileID: 0}
   _subDialogueSO: {fileID: 0}
   choices: []

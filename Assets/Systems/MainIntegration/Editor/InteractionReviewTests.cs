@@ -49,6 +49,9 @@ public sealed class InteractionReviewTests
  [UnityTest]public IEnumerator HeldPropReallyZoomsAndRestoresItsWorldPlacement()
  {
   EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;yield return null;
+  // The opening radio call owns dialogue until its timed response has completed.
+  var radio=One<Systems.WalkieSystem.Scripts.WalkieInteractionMachine>();float radioDeadline=Time.unscaledTime+40;
+  while(radio&&!radio.IsFinished){Assert.That(Time.unscaledTime,Is.LessThan(radioDeadline),"Opening radio call did not finish");if(radio.IsChoosing)radio.Resolve(0);yield return Wait(.1f);}
   var prop=Object.FindObjectsByType<NPCInteractableScript>().First();prop.Interact();yield return null;Assert.That(One<DialogueManagerScript>().IsConversationOwnedBy(prop.speaker),Is.True);One<DialogueManagerScript>().CancelConversation();yield return null;
   One<EquipmentManager>().StartMission();var helmet=Object.FindObjectsByType<EquipmentInteractableScript>(FindObjectsInactive.Include).First(i=>i.name=="Casco");helmet.gameObject.SetActive(true);var position=helmet.transform.position;var scale=helmet.transform.localScale;var inspection=One<InspectionScript>();inspection.StartInspect(helmet.gameObject);yield return Wait(.2f);float before=helmet.transform.localScale.magnitude;inspection.AdjustMagnification(2);yield return Wait(.2f);Assert.That(inspection.Magnification,Is.EqualTo(1.24f).Within(.001));Assert.That(helmet.transform.localScale.magnitude,Is.GreaterThan(before*1.05f));inspection.AdjustMagnification(100);Assert.That(inspection.Magnification,Is.EqualTo(1.6f));inspection.StopInspect();Assert.That(Vector3.Distance(position,helmet.transform.position),Is.LessThan(.001f));Assert.That(Vector3.Distance(scale,helmet.transform.localScale),Is.LessThan(.001f));yield return new ExitPlayMode();
  }

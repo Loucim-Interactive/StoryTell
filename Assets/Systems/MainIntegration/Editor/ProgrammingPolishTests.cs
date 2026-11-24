@@ -57,7 +57,7 @@ public sealed class ProgrammingPolishTests
         var pieces=Object.FindObjectsByType<LetterPuzzlePiece>(FindObjectsInactive.Include,FindObjectsSortMode.None);
         foreach(var piece in pieces)if(piece.slotIndex==0||piece.slotIndex==2){piece.transform.position=presentation.Puzzle.Slot(piece.slotIndex).position;piece.rectTransform.localRotation=Quaternion.identity;Assert.That(presentation.Puzzle.TrySnap(piece),Is.True);}
         presentation.Puzzle.Close();One<MapPickup>().Interact();
-        var mateo=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).Single(s=>s.name.Contains("Mateo"));mateo.RestoreProgress(0,true);
+        var mateo=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).Single(s=>s.name.Contains("Marcos"));mateo.RestoreProgress(0,true);
         var zone=Object.FindObjectsByType<CharacterNarrationZoneScript>(FindObjectsSortMode.None).First();
         Assert.That((bool)zone,Is.True,"Narration zone must be alive");
         string zoneName=zone.name;
@@ -94,7 +94,7 @@ public sealed class ProgrammingPolishTests
     {
         EditorSceneManager.OpenScene(Scene);yield return new EnterPlayMode();yield return null;yield return null;
         var progress=One<LevelProgress>();Assert.That(progress.Reach(RouteStage.Front),Is.False);
-        One<EquipmentManager>().RestoreProgress(true,7);var mateo=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).Single(s=>s.name.Contains("Mateo"));mateo.RestoreProgress(0,true);
+        One<EquipmentManager>().RestoreProgress(true,7);var mateo=Object.FindObjectsByType<SpeakerScript>(FindObjectsSortMode.None).Single(s=>s.name.Contains("Marcos"));mateo.RestoreProgress(0,true);
         One<CampRoutine>().Restore(true,true);One<LetterManager>().RestoreProgress(true,15,true,true,true);
         Assert.That(progress.Reach(RouteStage.Outpost),Is.True);Assert.That(progress.Reach(RouteStage.Camp),Is.False);yield return null;Assert.That(One<ObjectiveHud>().CurrentObjective,Does.Contain("Andá al frente"));
         var controller=One<CheckpointController>();controller.UseTestStore(TestPath);Assert.That(controller.SaveNow(),Is.True);

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: SO_MapSettings_Main
   m_EditorClassIdentifier: Assembly-CSharp::MapSettings
   mapKey: 109
-  localHoldPosition: {x: -0.13, y: -0.015, z: 0.62}
+  localHoldPosition: {x: -0.18, y: -0.005, z: 0.62}
   localHoldEulerAngles: {x: -90, y: 0, z: 0}
-  openCloseDuration: 0.2
+  openCloseDuration: 0
   closedScale: 0.88
   followStrength: 55
   rotationStrength: 18
   maxFollowSpeed: 6
   subdivisionsX: 50
   subdivisionsY: 50
-  width: 0.58
-  height: 0.386667
+  width: 0.66
+  height: 0.44
   colliderThickness: 0.012
   bendStrength: 0
   foldAmount: 0

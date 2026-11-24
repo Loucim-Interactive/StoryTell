@@ -67,7 +67,7 @@ namespace StoryTell.MainIntegration
         {
             if(Time.unscaledTime>=nextThought)
             {
-                string text=progress&&progress.Stage==RouteStage.Battle?"Mis compañeros me necesitan acá.":gated?(!equipment.MissionCompleted?"Me falta recoger mi equipo.":campRoutine&&!campRoutine.Ate?"Tengo que pasar por la cocina.":letter.CollectedCount<4?$"Me faltan partes de la carta · {letter.CollectedCount}/4.":!letter.LetterAssembled?"Tengo que reconstruir la carta.":!letter.LetterRead?"Tengo que leer la carta.":"Tengo que devolverle la carta a Mateo."):
+                string text=progress&&progress.Stage==RouteStage.Battle?"Mis compañeros me necesitan acá.":gated?(!equipment.MissionCompleted?"Me falta recoger mi equipo.":campRoutine&&!campRoutine.Ate?"Tengo que pasar por la cocina.":letter.CollectedCount<4?$"Me faltan partes de la carta · {letter.CollectedCount}/4.":!letter.LetterAssembled?"Tengo que reconstruir la carta.":!letter.LetterRead?"Tengo que leer la carta.":"Tengo que devolverle la carta a Marcos."):
                     "Tengo que seguir el camino.";
                 if(gated&&dispatch&&letter.MissionCompleted&&dispatch.Stage!=DispatchStage.Delivered)text=dispatch.Objective.Replace("\n"," ");
                 GameEventBus.Raise(GameplayEvents.StateThought,text);nextThought=Time.unscaledTime+7;

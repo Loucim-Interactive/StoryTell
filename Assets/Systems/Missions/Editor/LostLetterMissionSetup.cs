@@ -122,7 +122,7 @@ namespace Systems.Missions.Editor {
         private static DialogueSO Line(string name, string text) {
             var line = ScriptableObject.CreateInstance<DialogueSO>();
             var serialized = new SerializedObject(line);
-            serialized.FindProperty("_speaker").enumValueIndex = (int)ESpeakers.Mateo;
+            serialized.FindProperty("_speaker").enumValueIndex = (int)ESpeakers.Marcos;
             serialized.FindProperty("_dialogueText").stringValue = text;
             serialized.FindProperty("_extraReadTime").floatValue = 1.5f;
             serialized.FindProperty("_textSpeed").enumValueIndex = (int)ETextSpeed.Fast;
